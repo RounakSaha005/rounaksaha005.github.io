@@ -38,7 +38,7 @@ title: Home
       <div class="flex items-center gap-2 pt-1 flex-wrap">
         <a 
           href="/resume/" 
-          class="btn btn-neutral btn-sm rounded-lg px-4 font-normal text-xs normal-case shadow-2xs"
+          class="btn btn-neutral btn-sm rounded-lg px-4 font-normal text-xs normal-case shadow-2xs font-mono"
         >
           Download Resume
         </a>
@@ -202,7 +202,7 @@ title: Home
     <h2 class="font-heading text-xl font-semibold text-base-content">
       Selected Work
     </h2>
-    <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-sans">
+    <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-mono">
       View all →
     </a>
   </div>
@@ -221,14 +221,14 @@ title: Home
           {{ project.description }}
         </p>
 
-        <div class="flex items-center justify-between pt-3 mt-3 border-t border-dotted border-base-300 text-[11px]">
-          <span class="text-base-content/50 font-mono">{{ project.tags | join(" · ") }}</span>
+        <div class="flex items-center justify-between pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
+          <span class="text-base-content/50">{{ project.tags | join(" · ") }}</span>
           <div class="flex gap-3">
             {% if project.github %}
-              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100">Code</a>
+              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 font-mono">Code</a>
             {% endif %}
             {% if project.link %}
-              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="font-medium text-primary hover:underline">Demo →</a>
+              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="font-medium text-primary hover:underline font-mono">Demo →</a>
             {% endif %}
           </div>
         </div>
@@ -251,7 +251,7 @@ title: Home
       </h2>
       <span class="text-xs text-base-content/50">· 45K subscribers</span>
     </div>
-    <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-sans">
+    <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-mono">
       Channel →
     </a>
   </div>
@@ -299,7 +299,7 @@ title: Home
     <h2 class="font-heading text-xl font-semibold text-base-content">
       Notes
     </h2>
-    <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-sans">
+    <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-mono">
       All notes →
     </a>
   </div>
@@ -333,7 +333,7 @@ title: Home
     <h2 class="font-heading text-xl font-semibold text-base-content">
       Art & Photography
     </h2>
-    <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-sans">
+    <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-mono">
       Gallery →
     </a>
   </div>

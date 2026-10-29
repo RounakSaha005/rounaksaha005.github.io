@@ -134,6 +134,18 @@ code, kbd, samp, pre, .font-mono {
   font-family: var(--font-mono);
 }
 
+/* Navlinks and Links use Geist Mono */
+a, nav a, .nav-link, .link, .btn {
+  font-family: var(--font-mono);
+}
+
+/* Ensure headings inside links preserve Mona Sans */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+a h1, a h2, a h3, a h4, a h5, a h6,
+.font-heading, .font-heading a, a .font-heading {
+  font-family: var(--font-heading);
+}
+
 /* ==========================================================================
    Minimal Developer Gridlines & Utilities
    ========================================================================== */

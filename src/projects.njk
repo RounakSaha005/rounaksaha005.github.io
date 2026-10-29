@@ -31,14 +31,14 @@ permalink: /projects/index.html
           </p>
         </div>
 
-        <div class="flex items-center justify-between pt-3 mt-3 border-t border-dotted border-base-300 text-[11px]">
-          <span class="text-base-content/50 font-mono">{{ project.tags | join(" · ") }}</span>
+        <div class="flex items-center justify-between pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
+          <span class="text-base-content/50">{{ project.tags | join(" · ") }}</span>
           <div class="flex gap-3">
             {% if project.github %}
-              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100">Code</a>
+              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 font-mono">Code</a>
             {% endif %}
             {% if project.link %}
-              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="font-medium text-primary hover:underline">Demo →</a>
+              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="font-medium text-primary hover:underline font-mono">Demo →</a>
             {% endif %}
           </div>
         </div>
