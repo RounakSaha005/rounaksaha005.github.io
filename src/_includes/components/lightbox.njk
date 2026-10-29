@@ -1,0 +1,198 @@
+<!-- =======================================================================
+     GALLERY LIGHTBOX MODAL (daisyUI 5 Native Dialog)
+     ======================================================================= -->
+<dialog id="gallery-lightbox-modal" class="modal modal-middle bg-black/85 backdrop-blur-md p-2 sm:p-4 z-50">
+  <div class="modal-box max-w-4xl w-full p-0 bg-base-100/98 border border-dotted border-base-300 text-base-content rounded-2xl overflow-hidden shadow-2xl relative flex flex-col max-h-[92vh]">
+    
+    <!-- Header: Category Badge, Counter & Close Controls -->
+    <div class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-dotted border-base-300 font-mono text-xs shrink-0 bg-base-100">
+      <div class="flex items-center gap-2.5">
+        <span id="lb-category" class="badge badge-neutral badge-sm text-[10px] uppercase font-mono">
+          Gallery
+        </span>
+        <span id="lb-counter" class="text-base-content/50 text-[11px] font-mono">
+          1 / 1
+        </span>
+      </div>
+
+      <!-- Action buttons: Open Full Image + Close Modal -->
+      <div class="flex items-center gap-1.5">
+        <a 
+          id="lb-download" 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-ghost btn-xs btn-circle text-base-content/60 hover:text-base-content" 
+          title="Open original image"
+          aria-label="Open original image"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+        <button 
+          type="button" 
+          onclick="closeLightbox()" 
+          class="btn btn-ghost btn-xs btn-circle text-base-content/70 hover:text-base-content font-mono text-sm" 
+          aria-label="Close lightbox"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <!-- Image Display Canvas with Navigation Controls -->
+    <div class="relative flex-1 min-h-[260px] sm:min-h-[420px] max-h-[64vh] bg-base-200/40 flex items-center justify-center p-3 sm:p-6 overflow-hidden select-none">
+      
+      <!-- Previous Arrow -->
+      <button 
+        type="button" 
+        onclick="prevLightboxImage()" 
+        class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-base-100/90 hover:bg-base-100 border border-dotted border-base-300 text-base-content flex items-center justify-center shadow-lg transition-all hover:scale-105 active:scale-95 z-10 cursor-pointer"
+        aria-label="Previous image"
+        title="Previous (Left Arrow)"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <!-- Enlarged Image -->
+      <img 
+        id="lb-image" 
+        src="" 
+        alt="" 
+        class="max-h-[58vh] w-auto max-w-full rounded-lg object-contain transition-opacity duration-200 shadow-md"
+      />
+
+      <!-- Next Arrow -->
+      <button 
+        type="button" 
+        onclick="nextLightboxImage()" 
+        class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-base-100/90 hover:bg-base-100 border border-dotted border-base-300 text-base-content flex items-center justify-center shadow-lg transition-all hover:scale-105 active:scale-95 z-10 cursor-pointer"
+        aria-label="Next image"
+        title="Next (Right Arrow)"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Caption Footer: Title, Location & Narrative Description -->
+    <div class="px-4 sm:px-6 py-3 border-t border-dotted border-base-300 bg-base-100 shrink-0 space-y-1">
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+        <h3 id="lb-title" class="font-heading font-semibold text-sm sm:text-base text-base-content">
+          Photo Title
+        </h3>
+        <span id="lb-meta" class="font-mono text-[11px] text-base-content/50">
+          Bengaluru Studio · 2026
+        </span>
+      </div>
+      <p id="lb-desc" class="text-xs text-base-content/75 font-sans leading-relaxed line-clamp-2">
+        Photo description
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Native dialog backdrop click to close -->
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<!-- Embedded Photos JSON for Instant Client-Side Access -->
+<script id="photos-data" type="application/json">
+  {{ photos | dump | safe }}
+</script>
+
+<script>
+  let currentLightboxIndex = 0;
+  let cachedPhotos = null;
+
+  function getPhotosList() {
+    if (!cachedPhotos) {
+      const dataElem = document.getElementById('photos-data');
+      if (dataElem && dataElem.textContent) {
+        try {
+          cachedPhotos = JSON.parse(dataElem.textContent);
+        } catch (e) {
+          cachedPhotos = [];
+        }
+      } else {
+        cachedPhotos = [];
+      }
+    }
+    return cachedPhotos;
+  }
+
+  function openLightbox(index) {
+    const list = getPhotosList();
+    if (!list || list.length === 0) return;
+    currentLightboxIndex = (index >= 0 && index < list.length) ? index : 0;
+    updateLightboxContent();
+    const modal = document.getElementById('gallery-lightbox-modal');
+    if (modal) {
+      modal.showModal();
+      document.addEventListener('keydown', handleLightboxKeydown);
+    }
+  }
+
+  function closeLightbox() {
+    const modal = document.getElementById('gallery-lightbox-modal');
+    if (modal) modal.close();
+    document.removeEventListener('keydown', handleLightboxKeydown);
+  }
+
+  function prevLightboxImage() {
+    const list = getPhotosList();
+    if (!list || list.length === 0) return;
+    currentLightboxIndex = (currentLightboxIndex - 1 + list.length) % list.length;
+    updateLightboxContent();
+  }
+
+  function nextLightboxImage() {
+    const list = getPhotosList();
+    if (!list || list.length === 0) return;
+    currentLightboxIndex = (currentLightboxIndex + 1) % list.length;
+    updateLightboxContent();
+  }
+
+  function updateLightboxContent() {
+    const list = getPhotosList();
+    const photo = list[currentLightboxIndex];
+    if (!photo) return;
+
+    const img = document.getElementById('lb-image');
+    const title = document.getElementById('lb-title');
+    const desc = document.getElementById('lb-desc');
+    const meta = document.getElementById('lb-meta');
+    const category = document.getElementById('lb-category');
+    const counter = document.getElementById('lb-counter');
+    const download = document.getElementById('lb-download');
+
+    if (img) {
+      img.style.opacity = '0.3';
+      img.src = photo.image;
+      img.alt = photo.title || 'Gallery image';
+      img.onload = () => { img.style.opacity = '1'; };
+    }
+    if (title) title.textContent = photo.title || '';
+    if (desc) desc.textContent = photo.description || '';
+    if (meta) meta.textContent = `${photo.location || ''} · ${photo.date || ''}`;
+    if (category) category.textContent = photo.category || 'Photo';
+    if (counter) counter.textContent = `${currentLightboxIndex + 1} / ${list.length}`;
+    if (download) download.href = photo.image;
+  }
+
+  function handleLightboxKeydown(e) {
+    if (e.key === 'ArrowLeft') {
+      prevLightboxImage();
+    } else if (e.key === 'ArrowRight') {
+      nextLightboxImage();
+    } else if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  }
+</script>
