@@ -11,7 +11,7 @@
       </span>
     </a>
 
-    <!-- Center/Right: Clean Muted Navigation Links (Work, Art, Notes, Info style) -->
+    <!-- Center/Right: Clean Muted Navigation Links & Theme Toggle -->
     <nav class="flex items-center gap-4 sm:gap-6 text-xs text-base-content/75 font-sans">
       <a href="/" class="hover:text-base-content transition-colors {% if page.url == '/' %}text-base-content font-semibold{% endif %}">
         Home
@@ -29,21 +29,38 @@
         Info
       </a>
 
-      <!-- Minimal Dropdown for other pages & themes -->
+      <!-- 1-Click Light / Dark Theme Toggle Button -->
+      <button 
+        id="theme-toggle-btn"
+        type="button" 
+        onclick="toggleLightDarkTheme()" 
+        class="p-1 rounded-md text-base-content/60 hover:text-base-content transition-colors cursor-pointer"
+        aria-label="Toggle Light and Dark Theme"
+        title="Toggle Theme (Light / Dark)"
+      >
+        <!-- Sun icon (shown in dark theme) -->
+        <svg id="theme-sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <!-- Moon icon (shown in light theme) -->
+        <svg id="theme-moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+
+      <!-- Minimal Dropdown for other pages -->
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="cursor-pointer text-base-content/60 hover:text-base-content p-1" aria-label="More menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
           </svg>
         </label>
-        <ul tabindex="0" class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-lg w-44 border border-base-200 text-xs z-50 mt-2">
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-lg w-40 border border-base-200 text-xs z-50 mt-2">
           <li><a href="/resume/">Resume / CV</a></li>
           <li><a href="/friends/">Friends / Roll</a></li>
           <li class="menu-title mt-2 pt-2 border-t border-base-200 text-[10px] uppercase font-mono">Theme</li>
-          <li><button type="button" onclick="setTheme('ocean-sun')">☀ Ocean Sun</button></li>
-          <li><button type="button" onclick="setTheme('electric-pop')">⚡ Electric Pop</button></li>
-          <li><button type="button" onclick="setTheme('midnight-indigo')">🌙 Midnight</button></li>
-          <li><button type="button" onclick="setTheme('slate-mint')">🌿 Slate Mint</button></li>
+          <li><button type="button" onclick="setSpecificTheme('light')">☀ Light Mode</button></li>
+          <li><button type="button" onclick="setSpecificTheme('dark')">🌙 Dark Mode</button></li>
         </ul>
       </div>
 
@@ -53,8 +70,35 @@
 </header>
 
 <script>
-  function setTheme(name) {
-    document.documentElement.dataset.theme = name;
-    localStorage.setItem('theme', name);
+  function updateThemeUI(theme) {
+    const sun = document.getElementById('theme-sun-icon');
+    const moon = document.getElementById('theme-moon-icon');
+    if (sun && moon) {
+      if (theme === 'dark') {
+        sun.classList.remove('hidden');
+        moon.classList.add('hidden');
+      } else {
+        sun.classList.add('hidden');
+        moon.classList.remove('hidden');
+      }
+    }
   }
+
+  function setSpecificTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    updateThemeUI(theme);
+  }
+
+  function toggleLightDarkTheme() {
+    const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    setSpecificTheme(next);
+  }
+
+  // Sync icon on initial page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const active = document.documentElement.dataset.theme || 'light';
+    updateThemeUI(active);
+  });
 </script>

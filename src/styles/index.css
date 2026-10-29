@@ -3,67 +3,33 @@
 @plugin "daisyui";
 
 /* ==========================================================================
-   daisyUI 5 Theme Definitions (4 selectable palettes)
+   daisyUI 5 Theme Definitions (1 Optimized Light & 1 Optimized Dark)
    ========================================================================== */
 
 @plugin "daisyui/theme" {
-  name: "ocean-sun";
+  name: "light";
   default: true;
   prefersdark: false;
   color-scheme: light;
-  --color-base-100: #FFFDF5;
-  --color-base-200: #FCE59A;
-  --color-base-300: #FFD758;
-  --color-base-content: #102E38;
-  --color-primary: #218DAE;
-  --color-primary-content: #FFFFFF;
-  --color-secondary: #2BBBD7;
-  --color-secondary-content: #FFFFFF;
-  --color-accent: #FFD758;
-  --color-accent-content: #102E38;
-  --color-neutral: #102E38;
-  --color-neutral-content: #FFFDF5;
-  --color-info: #218DAE;
-  --color-info-content: #FFFFFF;
-  --color-success: #2BBBD7;
-  --color-success-content: #FFFFFF;
-  --color-warning: #FFD758;
-  --color-warning-content: #102E38;
-  --color-error: #E53E3E;
-  --color-error-content: #FFFFFF;
-  --radius-selector: 0.5rem;
-  --radius-field: 0.375rem;
-  --radius-box: 0.75rem;
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-  --border: 1px;
-  --depth: 1;
-  --noise: 0;
-}
-
-@plugin "daisyui/theme" {
-  name: "electric-pop";
-  prefersdark: false;
-  color-scheme: light;
   --color-base-100: #FFFFFF;
-  --color-base-200: #FFF83F;
-  --color-base-300: #FFCD54;
-  --color-base-content: #0F172A;
-  --color-primary: #2391FF;
+  --color-base-200: #F4F4F5;
+  --color-base-300: #E4E4E7;
+  --color-base-content: #18181B;
+  --color-primary: #18181B;
   --color-primary-content: #FFFFFF;
-  --color-secondary: #F70063;
+  --color-secondary: #52525B;
   --color-secondary-content: #FFFFFF;
-  --color-accent: #FFCD54;
-  --color-accent-content: #0F172A;
-  --color-neutral: #0F172A;
-  --color-neutral-content: #FFFFFF;
-  --color-info: #2391FF;
+  --color-accent: #2563EB;
+  --color-accent-content: #FFFFFF;
+  --color-neutral: #18181B;
+  --color-neutral-content: #FAFAFA;
+  --color-info: #2563EB;
   --color-info-content: #FFFFFF;
-  --color-success: #10B981;
+  --color-success: #16A34A;
   --color-success-content: #FFFFFF;
-  --color-warning: #FFCD54;
-  --color-warning-content: #0F172A;
-  --color-error: #F70063;
+  --color-warning: #D97706;
+  --color-warning-content: #FFFFFF;
+  --color-error: #DC2626;
   --color-error-content: #FFFFFF;
   --radius-selector: 0.5rem;
   --radius-field: 0.375rem;
@@ -76,62 +42,28 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "midnight-indigo";
+  name: "dark";
   prefersdark: true;
   color-scheme: dark;
-  --color-base-100: #030164;
-  --color-base-200: #363199;
-  --color-base-300: #2D7495;
-  --color-base-content: #E8E085;
-  --color-primary: #2D7495;
-  --color-primary-content: #FFFFFF;
-  --color-secondary: #363199;
-  --color-secondary-content: #FFFFFF;
-  --color-accent: #E8E085;
-  --color-accent-content: #030164;
-  --color-neutral: #1E2575;
-  --color-neutral-content: #E8E085;
-  --color-info: #2D7495;
-  --color-info-content: #FFFFFF;
-  --color-success: #48BB78;
-  --color-success-content: #030164;
-  --color-warning: #E8E085;
-  --color-warning-content: #030164;
-  --color-error: #E53E3E;
-  --color-error-content: #FFFFFF;
-  --radius-selector: 0.5rem;
-  --radius-field: 0.375rem;
-  --radius-box: 0.75rem;
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-  --border: 1px;
-  --depth: 1;
-  --noise: 0;
-}
-
-@plugin "daisyui/theme" {
-  name: "slate-mint";
-  prefersdark: false;
-  color-scheme: dark;
-  --color-base-100: #202734;
-  --color-base-200: #36415A;
-  --color-base-300: #4B5A7A;
-  --color-base-content: #E0F8C7;
-  --color-primary: #B7D894;
-  --color-primary-content: #202734;
-  --color-secondary: #36415A;
-  --color-secondary-content: #E0F8C7;
-  --color-accent: #E0F8C7;
-  --color-accent-content: #202734;
-  --color-neutral: #181E29;
-  --color-neutral-content: #E0F8C7;
-  --color-info: #63B3ED;
-  --color-info-content: #202734;
-  --color-success: #B7D894;
-  --color-success-content: #202734;
-  --color-warning: #ECC94B;
-  --color-warning-content: #202734;
-  --color-error: #F56565;
+  --color-base-100: #09090B;
+  --color-base-200: #18181B;
+  --color-base-300: #27272A;
+  --color-base-content: #F4F4F5;
+  --color-primary: #FAFAFA;
+  --color-primary-content: #09090B;
+  --color-secondary: #A1A1AA;
+  --color-secondary-content: #09090B;
+  --color-accent: #38BDF8;
+  --color-accent-content: #09090B;
+  --color-neutral: #27272A;
+  --color-neutral-content: #FAFAFA;
+  --color-info: #38BDF8;
+  --color-info-content: #09090B;
+  --color-success: #22C55E;
+  --color-success-content: #09090B;
+  --color-warning: #F59E0B;
+  --color-warning-content: #09090B;
+  --color-error: #EF4444;
   --color-error-content: #FFFFFF;
   --radius-selector: 0.5rem;
   --radius-field: 0.375rem;
@@ -145,55 +77,30 @@
 
 /* ==========================================================================
    Semantic Theme CSS Variables (RGB space-separated for opacity modifiers)
-   Scoped by [data-theme="..."] on <html>
    ========================================================================== */
 
 :root,
-[data-theme="ocean-sun"] {
-  --bg: 255 253 245;
-  --surface: 252 229 154;
-  --primary: 33 141 174;
-  --secondary: 43 187 215;
-  --accent: 255 215 88;
-  --text: 16 46 56;
-  --text-muted: 50 86 98;
-  --border: 252 229 154;
-  color-scheme: light;
-}
-
-[data-theme="electric-pop"] {
+[data-theme="light"] {
   --bg: 255 255 255;
-  --surface: 255 248 63;
-  --primary: 35 145 255;
-  --secondary: 247 0 99;
-  --accent: 255 205 84;
-  --text: 15 23 42;
-  --text-muted: 71 85 105;
-  --border: 226 232 240;
+  --surface: 244 244 245;
+  --primary: 24 24 27;
+  --secondary: 82 82 91;
+  --accent: 37 99 235;
+  --text: 24 24 27;
+  --text-muted: 113 113 122;
+  --border: 228 228 231;
   color-scheme: light;
 }
 
-[data-theme="midnight-indigo"] {
-  --bg: 3 1 100;
-  --surface: 54 49 153;
-  --primary: 45 116 149;
-  --secondary: 54 49 153;
-  --accent: 232 224 133;
-  --text: 232 224 133;
-  --text-muted: 180 186 210;
-  --border: 54 49 153;
-  color-scheme: dark;
-}
-
-[data-theme="slate-mint"] {
-  --bg: 32 39 52;
-  --surface: 54 65 90;
-  --primary: 183 216 148;
-  --secondary: 54 65 90;
-  --accent: 224 248 199;
-  --text: 224 248 199;
-  --text-muted: 156 174 196;
-  --border: 54 65 90;
+[data-theme="dark"] {
+  --bg: 9 9 11;
+  --surface: 24 24 27;
+  --primary: 250 250 250;
+  --secondary: 161 161 170;
+  --accent: 56 189 248;
+  --text: 244 244 245;
+  --text-muted: 161 161 170;
+  --border: 39 39 42;
   color-scheme: dark;
 }
 
@@ -206,10 +113,10 @@
   --color-border: rgb(var(--border));
 }
 
-@custom-variant dark (&:where([data-theme="midnight-indigo"], [data-theme="slate-mint"], [data-theme="midnight-indigo"] *, [data-theme="slate-mint"] *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ==========================================================================
-   Minimal Developer Gridlines (Clean, subtle Vercel & Cloudflare feel)
+   Minimal Developer Gridlines & Utilities
    ========================================================================== */
 
 .grid-lines-bg {

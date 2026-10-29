@@ -28,13 +28,12 @@
 <!-- Theme script to prevent FOUC (Flash of Unstyled Content) -->
 <script>
   (function() {
-    const validThemes = ['ocean-sun', 'electric-pop', 'midnight-indigo', 'slate-mint'];
     const saved = localStorage.getItem('theme');
-    if (saved && validThemes.includes(saved)) {
+    if (saved === 'dark' || saved === 'light') {
       document.documentElement.dataset.theme = saved;
     } else {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.dataset.theme = prefersDark ? 'midnight-indigo' : 'ocean-sun';
+      document.documentElement.dataset.theme = prefersDark ? 'dark' : 'light';
     }
   })();
 </script>
