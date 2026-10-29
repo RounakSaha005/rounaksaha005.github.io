@@ -1,8 +1,20 @@
 [
   {
+    "title": "Goibibo flights seat selection",
+    "description": "Redesigning the flight seat selection UX across direct and meta booking funnels to lift conversion and reduce checkout drop-off.",
+    "tags": ["UX Architecture", "Design Systems", "Performance"],
+    "caseStudy": "/projects/flight-seat-selection/",
+    "link": "https://example.com/seat-selection",
+    "github": "https://github.com/rounaksaha",
+    "featured": true,
+    "year": "2024",
+    "status": "Shipped to 12M+ users"
+  },
+  {
     "title": "AuraUI",
     "description": "An accessible, themeable UI component toolkit built with modern CSS, Tailwind, and Web Components.",
     "tags": ["TypeScript", "Tailwind CSS", "Web Components"],
+    "caseStudy": "/projects/auraui/",
     "link": "https://example.com/auraui",
     "github": "https://github.com/rounaksaha/auraui",
     "featured": true,
@@ -13,6 +25,7 @@
     "title": "HyperDoc",
     "description": "Lightweight, Markdown-driven documentation generator with instant full-text search and zero client-side JS by default.",
     "tags": ["Eleventy", "Node.js", "Algolia"],
+    "caseStudy": null,
     "link": "https://example.com/hyperdoc",
     "github": "https://github.com/rounaksaha/hyperdoc",
     "featured": true,
@@ -23,6 +36,7 @@
     "title": "DevPulse",
     "description": "Developer productivity metrics dashboard monitoring GitHub repository health, CI build speeds, and PR velocity.",
     "tags": ["React", "Go", "PostgreSQL"],
+    "caseStudy": null,
     "link": "https://example.com/devpulse",
     "github": "https://github.com/rounaksaha/devpulse",
     "featured": true,
@@ -33,6 +47,7 @@
     "title": "PaletteCraft",
     "description": "WCAG AA/AAA automated color palette generator and contrast auditor for design systems and frontend teams.",
     "tags": ["JavaScript", "CSS Color 4", "daisyUI"],
+    "caseStudy": null,
     "link": "https://example.com/palettecraft",
     "github": "https://github.com/rounaksaha/palettecraft",
     "featured": false,
@@ -40,4 +55,3 @@
     "status": "Live Tool"
   }
 ]
-

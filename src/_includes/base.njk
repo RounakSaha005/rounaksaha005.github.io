@@ -11,7 +11,7 @@
   </a>
 
   <!-- Centered Architectural Column Frame with Dotted Vertical Gridlines -->
-  <div class="w-full max-w-2xl sm:max-w-3xl mx-auto border-x border-dotted border-base-300 min-h-screen flex flex-col bg-base-100 shadow-2xs">
+  <div class="w-full max-w-2xl sm:max-w-3xl {% if wide %}lg:max-w-5xl xl:max-w-6xl{% endif %} mx-auto border-x border-dotted border-base-300 min-h-screen flex flex-col bg-base-100 shadow-2xs transition-all duration-200">
     
     <!-- Global Header / Navbar -->
     {% include "components/navbar.njk" %}

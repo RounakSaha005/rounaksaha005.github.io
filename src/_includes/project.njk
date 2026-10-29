@@ -1,0 +1,268 @@
+---
+layout: base.njk
+wide: true
+---
+
+<div class="flex flex-col lg:flex-row min-h-full">
+  
+  <!-- =======================================================================
+       01 // LEFT COLUMN: STICKY SECTION NAVIGATION (TOC)
+       ======================================================================= -->
+  <aside class="hidden lg:block w-48 xl:w-56 shrink-0 border-r border-dotted border-base-300 p-6 sm:p-8">
+    <div class="sticky top-8 space-y-3 font-mono">
+      <div class="text-[10px] uppercase tracking-wider text-base-content/40 font-semibold mb-2">
+        Sections
+      </div>
+      <nav id="toc-desktop-nav" class="space-y-1" aria-label="Table of contents">
+        <!-- Dynamically populated by JS: Top, • Context, Problem, etc. -->
+        <a href="#article-top" class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono text-base-content font-medium active" data-target="article-top">
+          <span class="toc-bullet text-primary shrink-0 opacity-100">•</span>
+          <span class="toc-label truncate">Top</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- =======================================================================
+       02 // RIGHT COLUMN: MAIN CASE STUDY CONTENT & ACTION HEADER
+       ======================================================================= -->
+  <div class="flex-1 min-w-0 p-6 sm:p-8 lg:p-12 space-y-8">
+
+    <!-- Top Action Bar (Back Arrow & Copy Link as in Reference Screenshot) -->
+    <div id="article-top" class="flex items-center justify-between pb-5 border-b border-dotted border-base-300">
+      <!-- Back to Projects Button -->
+      <a 
+        href="/projects/" 
+        class="w-8 h-8 rounded-full border border-dotted border-base-300 flex items-center justify-center text-base-content/60 hover:text-base-content hover:border-primary transition-colors cursor-pointer"
+        title="Back to all projects"
+        aria-label="Back to all projects"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+      </a>
+
+      <!-- Share / Copy Link Button -->
+      <button 
+        type="button" 
+        onclick="copyPageLink(this)"
+        class="w-8 h-8 rounded-full border border-dotted border-base-300 flex items-center justify-center text-base-content/60 hover:text-base-content hover:border-primary transition-colors cursor-pointer relative"
+        title="Copy Link"
+        aria-label="Copy page link"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+        </svg>
+        <span class="copy-tooltip hidden absolute -bottom-7 right-0 text-[10px] font-mono px-2 py-0.5 rounded bg-base-content text-base-100 shadow whitespace-nowrap z-10">
+          Link copied!
+        </span>
+      </button>
+    </div>
+
+    <!-- Mobile Sticky Section Quick-Jump (visible only < lg) -->
+    <div class="block lg:hidden border border-dotted border-base-300 rounded-lg p-2.5 bg-base-200/40 font-mono text-xs">
+      <details id="toc-mobile-dropdown" class="dropdown w-full">
+        <summary class="flex items-center justify-between cursor-pointer text-base-content/75 select-none">
+          <span class="flex items-center gap-1.5 truncate">
+            <span class="text-primary">•</span>
+            <span id="toc-mobile-current" class="truncate">Top</span>
+          </span>
+          <span class="text-base-content/50 text-[10px]">Jump to ↓</span>
+        </summary>
+        <ul id="toc-mobile-nav" class="menu p-2 mt-2 w-full bg-base-100 rounded-lg border border-dotted border-base-300 space-y-1">
+          <!-- Populated by JS -->
+        </ul>
+      </details>
+    </div>
+
+    <!-- Case Study Header -->
+    <header class="space-y-4">
+      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-base-content leading-tight">
+        {{ title }}
+      </h1>
+
+      {% if description %}
+        <p class="text-base sm:text-lg text-base-content/75 leading-relaxed font-sans">
+          {{ description }}
+        </p>
+      {% endif %}
+
+      <!-- Case Study Meta Bar -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 pb-4 border-y border-dotted border-base-300 text-xs font-mono">
+        <div>
+          <span class="text-base-content/40 block text-[10px] uppercase">Role</span>
+          <span class="text-base-content/85">{{ role | default("Engineering & Design") }}</span>
+        </div>
+        <div>
+          <span class="text-base-content/40 block text-[10px] uppercase">Timeline</span>
+          <span class="text-base-content/85">{{ timeline | default(year) }}</span>
+        </div>
+        <div>
+          <span class="text-base-content/40 block text-[10px] uppercase">Stack</span>
+          <span class="text-base-content/85 truncate block">{{ tags | join(", ") }}</span>
+        </div>
+        <div>
+          <span class="text-base-content/40 block text-[10px] uppercase">Links</span>
+          <div class="flex items-center gap-2 pt-0.5">
+            {% if link %}
+              <a href="{{ link }}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">Demo →</a>
+            {% endif %}
+            {% if github %}
+              <a href="{{ github }}" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100">Code</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if image %}
+        <div class="mt-4 overflow-hidden rounded-xl border border-dotted border-base-300 bg-base-200/30">
+          <img src="{{ image }}" alt="{{ title }}" class="w-full h-auto max-h-[460px] object-cover" loading="lazy">
+        </div>
+      {% endif %}
+    </header>
+
+    <!-- Case Study Content (Target for dynamic headings) -->
+    <article id="article-content" class="prose prose-base sm:prose-lg max-w-none font-sans text-base-content/85 leading-relaxed pt-2">
+      {{ content | safe }}
+    </article>
+
+    <!-- Footer Navigation -->
+    <footer class="pt-8 border-t border-dotted border-base-300 flex items-center justify-between text-xs font-mono">
+      <a href="/projects/" class="btn btn-outline btn-xs font-mono">
+        ← All work
+      </a>
+      <a href="#article-top" class="btn btn-ghost btn-xs font-mono">
+        Top ↑
+      </a>
+    </footer>
+
+  </div>
+
+</div>
+
+<script>
+function copyPageLink(button) {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    const tooltip = button.querySelector('.copy-tooltip');
+    if (tooltip) {
+      tooltip.classList.remove('hidden');
+      setTimeout(() => tooltip.classList.add('hidden'), 2000);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const contentArea = document.getElementById('article-content');
+  const desktopNav = document.getElementById('toc-desktop-nav');
+  const mobileNav = document.getElementById('toc-mobile-nav');
+  const mobileLabel = document.getElementById('toc-mobile-current');
+  if (!contentArea || (!desktopNav && !mobileNav)) return;
+
+  const headings = Array.from(contentArea.querySelectorAll('h2, h3'));
+  if (headings.length === 0) return;
+
+  const items = [{ id: 'article-top', text: 'Top', level: 2 }];
+
+  headings.forEach((heading, idx) => {
+    let id = heading.id;
+    if (!id) {
+      id = heading.textContent
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-');
+      if (!id) id = 'section-' + (idx + 1);
+      heading.id = id;
+    }
+    heading.classList.add('scroll-mt-24');
+    const isH3 = heading.tagName.toLowerCase() === 'h3';
+    items.push({ id, text: heading.textContent.trim(), level: isH3 ? 3 : 2 });
+  });
+
+  if (desktopNav) {
+    desktopNav.innerHTML = items.map((item, index) => `
+      <a 
+        href="#${item.id}" 
+        class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono transition-colors duration-150 ${item.level === 3 ? 'pl-3' : ''} ${index === 0 ? 'text-base-content font-medium active' : 'text-base-content/40 hover:text-base-content/75'}"
+        data-target="${item.id}"
+      >
+        <span class="toc-bullet text-primary shrink-0 transition-opacity duration-150 ${index === 0 ? 'opacity-100' : 'opacity-0'}">•</span>
+        <span class="toc-label truncate">${item.text}</span>
+      </a>
+    `).join('');
+  }
+
+  if (mobileNav) {
+    mobileNav.innerHTML = items.map(item => `
+      <li>
+        <a 
+          href="#${item.id}" 
+          class="toc-mobile-link text-xs font-mono ${item.level === 3 ? 'pl-4 opacity-75' : ''}"
+          data-target="${item.id}"
+        >
+          ${item.text}
+        </a>
+      </li>
+    `).join('');
+  }
+
+  const allLinks = document.querySelectorAll('.toc-item, .toc-mobile-link');
+  allLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('data-target');
+      const targetElem = document.getElementById(targetId);
+      if (targetElem) {
+        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', '#' + targetId);
+        const mobileDetails = document.getElementById('toc-mobile-dropdown');
+        if (mobileDetails) mobileDetails.removeAttribute('open');
+      }
+    });
+  });
+
+  const updateActiveSection = (activeId) => {
+    const desktopLinks = document.querySelectorAll('.toc-item');
+    desktopLinks.forEach(link => {
+      const isCurrent = link.getAttribute('data-target') === activeId;
+      const bullet = link.querySelector('.toc-bullet');
+      if (isCurrent) {
+        link.classList.remove('text-base-content/40', 'font-normal');
+        link.classList.add('text-base-content', 'font-medium', 'active');
+        if (bullet) {
+          bullet.classList.remove('opacity-0');
+          bullet.classList.add('opacity-100');
+        }
+      } else {
+        link.classList.remove('text-base-content', 'font-medium', 'active');
+        link.classList.add('text-base-content/40');
+        if (bullet) {
+          bullet.classList.remove('opacity-100');
+          bullet.classList.add('opacity-0');
+        }
+      }
+    });
+
+    if (mobileLabel) {
+      const matched = items.find(i => i.id === activeId);
+      if (matched) mobileLabel.textContent = matched.text;
+    }
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    const visibleEntries = entries.filter(e => e.isIntersecting);
+    if (visibleEntries.length > 0) {
+      const topVisible = visibleEntries.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      updateActiveSection(topVisible.target.id);
+    }
+  }, {
+    rootMargin: '-10% 0px -60% 0px',
+    threshold: 0
+  });
+
+  const topAnchor = document.getElementById('article-top');
+  if (topAnchor) observer.observe(topAnchor);
+  headings.forEach(h => observer.observe(h));
+});
+</script>

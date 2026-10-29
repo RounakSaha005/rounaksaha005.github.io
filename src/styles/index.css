@@ -120,6 +120,10 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Base Typography: Mona Sans for Headings, Redaction for Body, Geist Mono for Code/Mono */
 body {
   font-family: var(--font-sans);
