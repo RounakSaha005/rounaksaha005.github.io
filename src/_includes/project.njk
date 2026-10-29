@@ -11,9 +11,8 @@ layout: base.njk
        ======================================================================= -->
   <aside class="hidden xl:block toc-fixed-left font-mono select-none pointer-events-auto" aria-label="Table of contents navigation">
     <nav id="toc-desktop-nav" class="space-y-1 max-h-[82vh] overflow-y-auto no-scrollbar py-2" aria-label="Table of contents">
-      <!-- Dynamically populated by JS: Top, • Context, Problem and opportunity, etc. -->
-      <a href="#article-top" class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono text-base-content font-medium active" data-target="article-top">
-        <span class="toc-bullet text-primary shrink-0 opacity-100">•</span>
+      <!-- Dynamically populated by JS: Top, Context, Problem and opportunity, etc. -->
+      <a href="#article-top" class="toc-item block py-1 text-xs font-mono text-base-content font-medium active" data-target="article-top">
         <span class="toc-label leading-snug break-words">Top</span>
       </a>
     </nav>
@@ -55,10 +54,7 @@ layout: base.njk
     <div class="block xl:hidden sticky top-3 z-30 border border-dotted border-base-300 rounded-lg p-2.5 bg-base-100/95 backdrop-blur-md shadow-xs font-mono text-xs">
       <details id="toc-mobile-dropdown" class="dropdown w-full">
         <summary class="flex items-center justify-between cursor-pointer text-base-content/75 select-none">
-          <span class="flex items-center gap-1.5 truncate">
-            <span class="text-primary">•</span>
-            <span id="toc-mobile-current" class="truncate">Top</span>
-          </span>
+          <span id="toc-mobile-current" class="truncate font-medium">Top</span>
           <span class="text-base-content/50 text-[10px] flex items-center gap-0.5">Jump to section <i class="ph ph-arrow-down text-[10px]"></i></span>
         </summary>
         <ul id="toc-mobile-nav" class="menu p-2 mt-2 w-full bg-base-100 rounded-lg border border-dotted border-base-300 space-y-1">
@@ -176,10 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     desktopNav.innerHTML = items.map((item, index) => `
       <a 
         href="#${item.id}" 
-        class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono transition-colors duration-150 ${index === 0 ? 'text-base-content font-medium active' : 'text-base-content/40 hover:text-base-content/80'}"
+        class="toc-item block py-1 text-xs font-mono transition-colors duration-150 ${index === 0 ? 'text-base-content font-medium active' : 'text-base-content/40 hover:text-base-content/80'}"
         data-target="${item.id}"
       >
-        <span class="toc-bullet text-primary shrink-0 transition-opacity duration-150 ${index === 0 ? 'opacity-100' : 'opacity-0'}">•</span>
         <span class="toc-label leading-snug break-words">${item.text}</span>
       </a>
     `).join('');
@@ -219,21 +214,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const desktopLinks = document.querySelectorAll('.toc-item');
     desktopLinks.forEach(link => {
       const isCurrent = link.getAttribute('data-target') === activeId;
-      const bullet = link.querySelector('.toc-bullet');
       if (isCurrent) {
         link.classList.remove('text-base-content/40', 'font-normal');
         link.classList.add('text-base-content', 'font-medium', 'active');
-        if (bullet) {
-          bullet.classList.remove('opacity-0');
-          bullet.classList.add('opacity-100');
-        }
       } else {
         link.classList.remove('text-base-content', 'font-medium', 'active');
         link.classList.add('text-base-content/40');
-        if (bullet) {
-          bullet.classList.remove('opacity-100');
-          bullet.classList.add('opacity-0');
-        }
       }
     });
 

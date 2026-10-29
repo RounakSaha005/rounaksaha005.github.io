@@ -117,20 +117,19 @@ title: Home
      ======================================================================= -->
 <section class="py-3 px-4 sm:px-8 border-b border-dotted border-base-300 overflow-hidden bg-base-200/20">
   <div class="marquee-container">
-    <div id="gsap-marquee-track" class="marquee-track flex items-center gap-6 text-[11px] text-base-content/70 font-mono cursor-pointer">
+    <div id="gsap-marquee-track" class="marquee-track flex items-center gap-8 text-[11px] text-base-content/70 font-mono cursor-pointer">
       
       {% for lang in languages %}
-        <div class="flex items-center gap-2 shrink-0 py-0.5 hover:text-base-content transition-colors">
-          <span class="w-1 h-1 rounded-full bg-base-content/40"></span>
-          <span>{{ lang.name }}</span>
-        </div>
+        <span class="shrink-0 py-0.5 hover:text-base-content transition-colors select-none">
+          {{ lang.name }}
+        </span>
       {% endfor %}
 
+      <!-- Duplicate items for seamless continuous looping -->
       {% for lang in languages %}
-        <div class="flex items-center gap-2 shrink-0 py-0.5 hover:text-base-content transition-colors">
-          <span class="w-1 h-1 rounded-full bg-base-content/40"></span>
-          <span>{{ lang.name }}</span>
-        </div>
+        <span class="shrink-0 py-0.5 hover:text-base-content transition-colors select-none">
+          {{ lang.name }}
+        </span>
       {% endfor %}
 
     </div>
