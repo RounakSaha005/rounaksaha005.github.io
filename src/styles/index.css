@@ -199,7 +199,6 @@
 
 @theme {
   --font-serif: "Newsreader", Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-bengali: "Noto Serif Bengali", serif;
   --color-bg: rgb(var(--bg));
   --color-surface: rgb(var(--surface));
   --color-text: rgb(var(--text));
