@@ -1,98 +1,106 @@
 <!-- =======================================================================
-     GALLERY LIGHTBOX MODAL (daisyUI 5 Native Dialog)
+     CINEMATIC MINIMAL LIGHTBOX MODAL
+     Pure, unbounded image viewer with floating glass controls & crisp typography
      ======================================================================= -->
-<dialog id="gallery-lightbox-modal" class="modal modal-middle bg-black/85 backdrop-blur-md p-2 sm:p-4 z-50">
-  <div class="modal-box max-w-4xl w-full p-0 bg-base-100/98 border border-dotted border-base-300 text-base-content rounded-2xl overflow-hidden shadow-2xl relative flex flex-col max-h-[92vh]">
+<dialog id="gallery-lightbox-modal" class="modal modal-bottom sm:modal-middle bg-black/95 backdrop-blur-2xl p-0 m-0 w-screen h-screen max-w-none max-h-none border-none select-none z-50">
+  
+  <div class="relative w-full h-full flex flex-col justify-between p-4 sm:p-6 overflow-hidden">
     
-    <!-- Header: Category Badge, Counter & Close Controls -->
-    <div class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-dotted border-base-300 font-mono text-xs shrink-0 bg-base-100">
-      <div class="flex items-center gap-2.5">
-        <span id="lb-category" class="badge badge-neutral badge-sm text-[10px] uppercase font-mono">
-          Gallery
-        </span>
-        <span id="lb-counter" class="text-base-content/50 text-[11px] font-mono">
-          1 / 1
-        </span>
+    <!-- ================= FLOATING MINIMAL TOP BAR ================= -->
+    <header class="w-full flex items-center justify-between z-20 pointer-events-none shrink-0">
+      
+      <!-- Counter & Category Glass Pill -->
+      <div class="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white/80 font-mono text-xs pointer-events-auto shadow-sm">
+        <span id="lb-counter" class="text-white/60 tracking-wider">1 / 6</span>
+        <span class="w-1 h-1 rounded-full bg-white/30"></span>
+        <span id="lb-category" class="text-white/90 font-medium tracking-wide">SETUP</span>
       </div>
 
-      <!-- Action buttons: Open Full Image + Close Modal -->
-      <div class="flex items-center gap-1.5">
+      <!-- Action Controls: Expand original + Close -->
+      <div class="flex items-center gap-2 pointer-events-auto">
         <a 
           id="lb-download" 
           href="#" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="btn btn-ghost btn-xs btn-circle text-base-content/60 hover:text-base-content" 
-          title="Open original image"
+          class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center backdrop-blur-md transition-all active:scale-95 cursor-pointer shadow-sm" 
+          title="Open original image in new tab"
           aria-label="Open original image"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
         </a>
+
         <button 
           type="button" 
           onclick="closeLightbox()" 
-          class="btn btn-ghost btn-xs btn-circle text-base-content/70 hover:text-base-content font-mono text-sm" 
+          class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md transition-all active:scale-95 cursor-pointer shadow-sm" 
+          title="Close (Esc)"
           aria-label="Close lightbox"
         >
-          ✕
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
-    </div>
+    </header>
 
-    <!-- Image Display Canvas with Navigation Controls -->
-    <div class="relative flex-1 min-h-[260px] sm:min-h-[420px] max-h-[64vh] bg-base-200/40 flex items-center justify-center p-3 sm:p-6 overflow-hidden select-none">
-      
-      <!-- Previous Arrow -->
+    <!-- ================= MAIN HERO IMAGE CANVAS ================= -->
+    <div 
+      class="relative flex-1 w-full flex items-center justify-center my-auto py-2 z-10 cursor-zoom-out" 
+      onclick="if(event.target === this) closeLightbox();"
+    >
+      <!-- Floating Previous Arrow -->
       <button 
         type="button" 
-        onclick="prevLightboxImage()" 
-        class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-base-100/95 hover:bg-base-100 text-base-content flex items-center justify-center shadow-lg transition-all hover:scale-105 active:scale-95 z-10 cursor-pointer"
+        onclick="event.stopPropagation(); prevLightboxImage();" 
+        class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md transition-all shadow-lg z-20 cursor-pointer"
         aria-label="Previous image"
         title="Previous (Left Arrow)"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
-      <!-- Enlarged Image -->
+      <!-- Centered Unbounded Image -->
       <img 
         id="lb-image" 
         src="" 
         alt="" 
-        class="max-h-[58vh] w-auto max-w-full rounded-lg object-contain transition-opacity duration-200 shadow-md"
+        class="max-h-[70vh] sm:max-h-[74vh] max-w-[92vw] sm:max-w-[82vw] w-auto h-auto rounded-lg object-contain shadow-2xl transition-opacity duration-200 cursor-default"
+        onclick="event.stopPropagation();"
       />
 
-      <!-- Next Arrow -->
+      <!-- Floating Next Arrow -->
       <button 
         type="button" 
-        onclick="nextLightboxImage()" 
-        class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-base-100/95 hover:bg-base-100 text-base-content flex items-center justify-center shadow-lg transition-all hover:scale-105 active:scale-95 z-10 cursor-pointer"
+        onclick="event.stopPropagation(); nextLightboxImage();" 
+        class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md transition-all shadow-lg z-20 cursor-pointer"
         aria-label="Next image"
         title="Next (Right Arrow)"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 5l7 7-7 7" />
         </svg>
       </button>
     </div>
 
-    <!-- Caption Footer: Title, Location & Narrative Description -->
-    <div class="px-4 sm:px-6 py-3 border-t border-dotted border-base-300 bg-base-100 shrink-0 space-y-1">
-      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-        <h3 id="lb-title" class="font-heading font-semibold text-sm sm:text-base text-base-content">
+    <!-- ================= FLOATING MINIMAL BOTTOM CAPTION ================= -->
+    <footer class="w-full flex justify-center z-20 pointer-events-none shrink-0">
+      <div class="max-w-xl text-center space-y-1 pointer-events-auto px-5 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg">
+        <h3 id="lb-title" class="font-heading font-medium text-sm sm:text-base text-white/95 tracking-tight">
           Photo Title
         </h3>
-        <span id="lb-meta" class="font-mono text-[11px] text-base-content/50">
+        <p id="lb-desc" class="text-xs text-white/65 font-sans leading-relaxed line-clamp-2">
+          Photo description
+        </p>
+        <span id="lb-meta" class="block text-[11px] font-mono text-white/40 pt-0.5">
           Bengaluru Studio · 2026
         </span>
       </div>
-      <p id="lb-desc" class="text-xs text-base-content/75 font-sans leading-relaxed line-clamp-2">
-        Photo description
-      </p>
-    </div>
+    </footer>
 
   </div>
 
@@ -112,6 +120,9 @@
   let cachedPhotos = null;
 
   function getPhotosList() {
+    if (window.galleryImages && window.galleryImages.length > 0) {
+      return window.galleryImages;
+    }
     if (!cachedPhotos) {
       const dataElem = document.getElementById('photos-data');
       if (dataElem && dataElem.textContent) {
@@ -143,6 +154,7 @@
     const modal = document.getElementById('gallery-lightbox-modal');
     if (modal) modal.close();
     document.removeEventListener('keydown', handleLightboxKeydown);
+    window.galleryImages = null;
   }
 
   function prevLightboxImage() {
@@ -177,11 +189,27 @@
       img.src = photo.image;
       img.alt = photo.title || 'Gallery image';
       img.onload = () => { img.style.opacity = '1'; };
+      setTimeout(() => { img.style.opacity = '1'; }, 100);
     }
     if (title) title.textContent = photo.title || '';
-    if (desc) desc.textContent = photo.description || '';
-    if (meta) meta.textContent = `${photo.location || ''} · ${photo.date || ''}`;
-    if (category) category.textContent = photo.category || 'Photo';
+    if (desc) {
+      if (photo.description) {
+        desc.textContent = photo.description;
+        desc.classList.remove('hidden');
+      } else {
+        desc.classList.add('hidden');
+      }
+    }
+    if (meta) {
+      const parts = [photo.location, photo.date].filter(Boolean);
+      meta.textContent = parts.join(' · ');
+      if (parts.length > 0) {
+        meta.classList.remove('hidden');
+      } else {
+        meta.classList.add('hidden');
+      }
+    }
+    if (category) category.textContent = (photo.category || 'Photo').toUpperCase();
     if (counter) counter.textContent = `${currentLightboxIndex + 1} / ${list.length}`;
     if (download) download.href = photo.image;
   }
@@ -196,4 +224,3 @@
     }
   }
 </script>
-
