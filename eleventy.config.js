@@ -92,6 +92,31 @@ export default function (eleventyConfig) {
     return (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1);
   });
 
+  // SEO & Feed Filters
+  eleventyConfig.addFilter('absoluteUrl', (url, base) => {
+    if (!url) return base || '';
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    const cleanBase = (base || '').replace(/\/+$/, '');
+    const cleanUrl = url.startsWith('/') ? url : `/${url}`;
+    return `${cleanBase}${cleanUrl}`;
+  });
+
+  eleventyConfig.addFilter('isoDateString', (dateObj) => {
+    if (!dateObj) return new Date().toISOString();
+    const d = typeof dateObj === 'string' ? new Date(dateObj) : dateObj;
+    return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
+  });
+
+  eleventyConfig.addFilter('xmlEscape', (str) => {
+    if (typeof str !== 'string') return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
+  });
+
   return {
     dir: { input: 'src', output: 'dist' },
   };

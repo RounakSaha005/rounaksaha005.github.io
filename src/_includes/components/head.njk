@@ -1,29 +1,100 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>{% if title %}{{ title }} · {{ site.name }}{% else %}{{ site.title }}{% endif %}</title>
-<meta name="description" content="{{ description | default(site.description) }}">
+{% set pageTitle = (title ~ " · " ~ site.name) if (title and title != "Home") else site.title %}
+{% set pageDescription = description | default(site.description) %}
+{% set canonicalUrl = page.url | absoluteUrl(site.url) %}
+{% set ogImage = (image | default(site.avatar)) | absoluteUrl(site.url) %}
+{% set isArticle = page.url and page.url.startsWith('/posts/') and page.url != '/posts/' and page.url != '/posts/index.html' %}
+
+<!-- Primary SEO Meta Tags -->
+<title>{{ pageTitle }}</title>
+<meta name="title" content="{{ pageTitle }}">
+<meta name="description" content="{{ pageDescription }}">
 <meta name="author" content="{{ site.author.name }}">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="{{ canonicalUrl }}">
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="{% if page.url and page.url.startsWith('/posts/') and page.url != '/posts/' %}article{% else %}website{% endif %}">
-<meta property="og:url" content="{{ site.url }}{{ page.url }}">
-<meta property="og:title" content="{% if title %}{{ title }} · {{ site.name }}{% else %}{{ site.title }}{% endif %}">
-<meta property="og:description" content="{{ description | default(site.description) }}">
+<meta property="og:type" content="{% if isArticle %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ canonicalUrl }}">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ pageDescription }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="{{ ogImage }}">
+<meta property="og:image:alt" content="{{ pageTitle }}">
 
-<!-- Twitter -->
+<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{% if title %}{{ title }} · {{ site.name }}{% else %}{{ site.title }}{% endif %}">
-<meta name="twitter:description" content="{{ description | default(site.description) }}">
+<meta name="twitter:site" content="@rounaksaha">
+<meta name="twitter:creator" content="@rounaksaha">
+<meta name="twitter:url" content="{{ canonicalUrl }}">
+<meta name="twitter:title" content="{{ pageTitle }}">
+<meta name="twitter:description" content="{{ pageDescription }}">
+<meta name="twitter:image" content="{{ ogImage }}">
 
-<!-- Social Sharing Image -->
-{% if image %}
-<meta property="og:image" content="{{ site.url }}{{ image }}">
-<meta name="twitter:image" content="{{ site.url }}{{ image }}">
-{% elif site.avatar %}
-<meta property="og:image" content="{{ site.url }}{{ site.avatar }}">
-<meta name="twitter:image" content="{{ site.url }}{{ site.avatar }}">
-{% endif %}
+<!-- Discovery Feeds & Sitemaps -->
+<link rel="alternate" type="application/atom+xml" title="{{ site.name }} · RSS Feed" href="{{ '/feed.xml' | absoluteUrl(site.url) }}">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="{{ '/sitemap.xml' | absoluteUrl(site.url) }}">
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#1A212D">
+
+<!-- Schema.org JSON-LD Knowledge Graph & Rich Snippets -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": "{{ site.name }}",
+      "description": "{{ site.description }}",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "{{ site.url }}/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}/#person",
+      "name": "{{ site.name }}",
+      "url": "{{ site.url }}/",
+      "image": "{{ site.avatar | absoluteUrl(site.url) }}",
+      "jobTitle": "{{ site.role }}",
+      "description": "{{ site.description }}",
+      "sameAs": [
+        "{{ site.author.github }}",
+        "{{ site.author.linkedin }}",
+        "{{ site.author.twitter }}",
+        "{{ site.author.youtube }}"
+      ]
+    }{% if isArticle %},
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ canonicalUrl }}#article",
+      "isPartOf": {
+        "@id": "{{ site.url }}/#website"
+      },
+      "author": {
+        "@id": "{{ site.url }}/#person"
+      },
+      "headline": "{{ title }}",
+      "description": "{{ pageDescription }}",
+      "datePublished": "{{ date | isoDateString }}",
+      "dateModified": "{{ (updated | default(date)) | isoDateString }}",
+      "mainEntityOfPage": "{{ canonicalUrl }}",
+      "image": "{{ ogImage }}",
+      "publisher": {
+        "@id": "{{ site.url }}/#person"
+      }
+    }
+    {% endif %}
+  ]
+}
+</script>
 
 <!-- Theme script to prevent FOUC (Flash of Unstyled Content) -->
 <script>

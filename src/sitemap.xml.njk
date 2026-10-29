@@ -1,0 +1,18 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+layout: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for item in collections.all %}
+  {% if item.url and not item.data.eleventyExcludeFromCollections and item.url != '/posts/' and not item.url.endsWith('.xml') and not item.url.endsWith('.txt') %}
+  <url>
+    <loc>{{ item.url | absoluteUrl(site.url) }}</loc>
+    <lastmod>{{ (item.date or page.date) | htmlDateString }}</lastmod>
+    <changefreq>{% if item.url == '/' %}daily{% elif item.url.startsWith('/posts/') %}monthly{% else %}weekly{% endif %}</changefreq>
+    <priority>{% if item.url == '/' %}1.0{% elif item.url == '/projects/' or item.url == '/blog/' %}0.9{% else %}0.8{% endif %}</priority>
+  </url>
+  {% endif %}
+{% endfor %}
+</urlset>
