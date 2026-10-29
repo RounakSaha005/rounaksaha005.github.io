@@ -48,11 +48,11 @@ title: Home
         <!-- Mail Icon -->
         <a 
           href="mailto:{{ site.author.email }}" 
-          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors"
+          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors flex items-center justify-center"
           title="Email"
           aria-label="Send email"
         >
-          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+          <i class="ph ph-envelope text-sm"></i>
         </a>
 
         <!-- Twitter / X Icon -->
@@ -60,11 +60,11 @@ title: Home
           href="{{ site.author.twitter }}" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors"
+          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors flex items-center justify-center"
           title="X / Twitter"
           aria-label="Twitter profile"
         >
-          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <i class="ph ph-x-logo text-sm"></i>
         </a>
 
         <!-- LinkedIn Icon -->
@@ -72,11 +72,11 @@ title: Home
           href="{{ site.author.linkedin }}" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors"
+          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors flex items-center justify-center"
           title="LinkedIn"
           aria-label="LinkedIn profile"
         >
-          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <i class="ph ph-linkedin-logo text-sm"></i>
         </a>
 
         <!-- YouTube Icon -->
@@ -84,11 +84,11 @@ title: Home
           href="{{ site.author.youtube }}" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-red-500 transition-colors"
+          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-red-500 transition-colors flex items-center justify-center"
           title="YouTube Channel"
           aria-label="YouTube Channel"
         >
-          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <i class="ph ph-youtube-logo text-sm"></i>
         </a>
       </div>
 
@@ -204,8 +204,8 @@ title: Home
     <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
       Selected Work
     </h2>
-    <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-mono">
-      View all →
+    <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1">
+      View all <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
 
@@ -229,16 +229,16 @@ title: Home
         <div class="flex items-center justify-between gap-2 pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
           <span class="text-base-content/50 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none">{{ project.tags | join(" · ") }}</span>
           <div class="flex items-center gap-3 shrink-0">
-            <span class="font-medium text-primary group-hover:underline font-mono">
-              {% if project.caseStudy %}Case study →{% else %}Demo →{% endif %}
+            <span class="font-medium text-primary group-hover:underline font-mono flex items-center gap-1">
+              {% if project.caseStudy %}Case study <i class="ph ph-arrow-right text-[11px]"></i>{% else %}Demo <i class="ph ph-arrow-right text-[11px]"></i>{% endif %}
             </span>
             {% if project.github %}
               <span 
                 onclick="event.preventDefault(); event.stopPropagation(); window.open('{{ project.github }}', '_blank', 'noopener,noreferrer');" 
-                class="opacity-70 hover:opacity-100 font-mono hover:underline cursor-pointer"
+                class="opacity-70 hover:opacity-100 font-mono hover:underline cursor-pointer flex items-center gap-0.5"
                 title="View source code"
               >
-                Code ↗
+                Code <i class="ph ph-arrow-up-right text-[11px]"></i>
               </span>
             {% endif %}
           </div>
@@ -262,8 +262,8 @@ title: Home
       </h2>
       <span class="text-xs text-base-content/50">· 45K subscribers</span>
     </div>
-    <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-mono">
-      Channel →
+    <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1">
+      Channel <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
 
@@ -310,8 +310,8 @@ title: Home
     <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
       Notes
     </h2>
-    <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-mono">
-      All notes →
+    <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1">
+      All notes <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
 
@@ -354,8 +354,8 @@ title: Home
     <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
       Art & Photography
     </h2>
-    <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-mono">
-      Gallery →
+    <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1">
+      Gallery <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
 
@@ -377,10 +377,8 @@ title: Home
             loading="lazy"
           />
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <span class="p-1.5 rounded-full bg-base-100/95 text-base-content shadow-md">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-              </svg>
+            <span class="p-1.5 rounded-full bg-base-100/95 text-base-content shadow-md flex items-center justify-center">
+              <i class="ph ph-magnifying-glass-plus text-sm"></i>
             </span>
           </div>
         </div>

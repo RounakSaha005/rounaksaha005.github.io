@@ -35,9 +35,7 @@ layout: base.njk
         title="Back to all notes"
         aria-label="Back to all notes"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
+        <i class="ph ph-arrow-left text-sm"></i>
       </a>
 
       <!-- Share / Copy Link Button -->
@@ -48,11 +46,9 @@ layout: base.njk
         title="Copy Link"
         aria-label="Copy page link"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-        </svg>
-        <span class="copy-tooltip hidden absolute -bottom-7 right-0 text-[10px] font-mono px-2 py-0.5 rounded bg-base-content text-base-100 shadow whitespace-nowrap z-10">
-          Link copied!
+        <i class="ph ph-link text-sm"></i>
+        <span class="copy-tooltip hidden absolute -bottom-7 right-0 text-[10px] font-mono px-2 py-0.5 rounded bg-base-content text-base-100 shadow whitespace-nowrap z-10 flex items-center gap-1">
+          <i class="ph ph-check text-[10px]"></i> Link copied!
         </span>
       </button>
     </div>
@@ -65,7 +61,7 @@ layout: base.njk
             <span class="text-primary">•</span>
             <span id="toc-mobile-current" class="truncate">Top</span>
           </span>
-          <span class="text-base-content/50 text-[10px]">Jump to section ↓</span>
+          <span class="text-base-content/50 text-[10px] flex items-center gap-0.5">Jump to section <i class="ph ph-arrow-down text-[10px]"></i></span>
         </summary>
         <ul id="toc-mobile-nav" class="menu p-2 mt-2 w-full bg-base-100 rounded-lg border border-dotted border-base-300 space-y-1">
           <!-- Populated by JS -->
@@ -112,11 +108,11 @@ layout: base.njk
 
     <!-- Footer Navigation -->
     <footer class="pt-8 border-t border-dotted border-base-300 flex items-center justify-between text-xs font-mono">
-      <a href="/blog/" class="btn btn-outline btn-xs font-mono">
-        ← All notes
+      <a href="/blog/" class="btn btn-outline btn-xs font-mono flex items-center gap-1">
+        <i class="ph ph-arrow-left text-xs"></i> All notes
       </a>
-      <a href="#article-top" class="btn btn-ghost btn-xs font-mono">
-        Top ↑
+      <a href="#article-top" class="btn btn-ghost btn-xs font-mono flex items-center gap-1">
+        Top <i class="ph ph-arrow-up text-xs"></i>
       </a>
     </footer>
 

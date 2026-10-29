@@ -16,11 +16,11 @@ permalink: /resume/index.html
       </p>
     </div>
     <div class="flex items-center gap-2 pt-1 sm:pt-0">
-      <button onclick="window.print()" class="btn btn-outline btn-xs font-mono">
-        Print / PDF
+      <button onclick="window.print()" class="btn btn-outline btn-xs font-mono flex items-center gap-1">
+        <i class="ph ph-printer text-xs"></i> Print / PDF
       </button>
-      <a href="mailto:{{ resume.basics.email }}" class="btn btn-neutral btn-xs rounded-lg font-mono">
-        Contact
+      <a href="mailto:{{ resume.basics.email }}" class="btn btn-neutral btn-xs rounded-lg font-mono flex items-center gap-1">
+        <i class="ph ph-envelope text-xs"></i> Contact
       </a>
     </div>
   </header>

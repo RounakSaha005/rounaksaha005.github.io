@@ -39,8 +39,8 @@ permalink: /blog/index.html
             <span class="text-base-content/50 truncate max-w-[150px] sm:max-w-none">
               {{ (post.data.tags | filterTagList | join(" · ")) or "Architecture" }}
             </span>
-            <span class="text-primary font-medium group-hover:underline shrink-0">
-              Read note →
+            <span class="text-primary font-medium group-hover:underline shrink-0 flex items-center gap-1">
+              Read note <i class="ph ph-arrow-right text-[11px]"></i>
             </span>
           </div>
         </a>
