@@ -34,9 +34,9 @@ permalink: /projects/index.html
           </p>
         </div>
 
-        <div class="flex items-center justify-between pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
-          <span class="text-base-content/50">{{ project.tags | join(" · ") }}</span>
-          <div class="flex items-center gap-3">
+        <div class="flex items-center justify-between gap-2 pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
+          <span class="text-base-content/50 truncate max-w-[140px] xs:max-w-[180px] sm:max-w-none">{{ project.tags | join(" · ") }}</span>
+          <div class="flex items-center gap-3 shrink-0">
             <span class="font-medium text-primary group-hover:underline font-mono">
               {% if project.caseStudy %}Case study →{% else %}Demo →{% endif %}
             </span>

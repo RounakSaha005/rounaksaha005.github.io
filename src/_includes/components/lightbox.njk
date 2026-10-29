@@ -1,33 +1,36 @@
 <!-- =======================================================================
      CINEMATIC MINIMAL LIGHTBOX MODAL
-     Pure, unbounded image viewer with floating glass controls & crisp typography
+     Fully responsive across mobile (portrait/landscape), tablet, desktop & 4K
      ======================================================================= -->
-<dialog id="gallery-lightbox-modal" class="modal modal-bottom sm:modal-middle bg-black/95 backdrop-blur-2xl p-0 m-0 w-screen h-screen max-w-none max-h-none border-none select-none z-50">
-  
-  <div class="relative w-full h-full flex flex-col justify-between p-4 sm:p-6 overflow-hidden">
+<dialog 
+  id="gallery-lightbox-modal" 
+  class="modal bg-black/95 backdrop-blur-2xl p-0 m-0 w-screen h-screen max-w-none max-h-none border-none select-none z-50 fixed inset-0 overflow-hidden"
+  style="margin: 0; padding: 0; width: 100vw; height: 100dvh; max-width: 100vw; max-height: 100dvh; border: none; background-color: rgba(0, 0, 0, 0.96);"
+>
+  <div class="relative w-full h-full flex flex-col justify-between p-3 sm:p-6 overflow-hidden">
     
-    <!-- ================= FLOATING MINIMAL TOP BAR ================= -->
-    <header class="w-full flex items-center justify-between z-20 pointer-events-none shrink-0">
+    <!-- ================= 01 // FLOATING TOP BAR ================= -->
+    <header class="w-full flex items-center justify-between z-20 pointer-events-none shrink-0 py-1">
       
       <!-- Counter & Category Glass Pill -->
-      <div class="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white/80 font-mono text-xs pointer-events-auto shadow-sm">
+      <div class="flex items-center gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white/80 font-mono text-[11px] sm:text-xs pointer-events-auto shadow-sm">
         <span id="lb-counter" class="text-white/60 tracking-wider">1 / 6</span>
         <span class="w-1 h-1 rounded-full bg-white/30"></span>
-        <span id="lb-category" class="text-white/90 font-medium tracking-wide">SETUP</span>
+        <span id="lb-category" class="text-white/90 font-medium tracking-wide max-w-[90px] sm:max-w-none truncate">SETUP</span>
       </div>
 
       <!-- Action Controls: Expand original + Close -->
-      <div class="flex items-center gap-2 pointer-events-auto">
+      <div class="flex items-center gap-1.5 sm:gap-2 pointer-events-auto">
         <a 
           id="lb-download" 
           href="#" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center backdrop-blur-md transition-all active:scale-95 cursor-pointer shadow-sm" 
+          class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white/70 hover:text-white flex items-center justify-center backdrop-blur-md transition-all cursor-pointer shadow-sm" 
           title="Open original image in new tab"
           aria-label="Open original image"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
         </a>
@@ -35,41 +38,42 @@
         <button 
           type="button" 
           onclick="closeLightbox()" 
-          class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md transition-all active:scale-95 cursor-pointer shadow-sm" 
-          title="Close (Esc)"
+          class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md transition-all cursor-pointer shadow-sm" 
+          title="Close (Esc or swipe down)"
           aria-label="Close lightbox"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
     </header>
 
-    <!-- ================= MAIN HERO IMAGE CANVAS ================= -->
+    <!-- ================= 02 // MAIN HERO IMAGE CANVAS ================= -->
     <div 
-      class="relative flex-1 w-full flex items-center justify-center my-auto py-2 z-10 cursor-zoom-out" 
+      id="lb-canvas"
+      class="relative flex-1 min-h-0 w-full flex items-center justify-center my-auto py-1 sm:py-2 z-10 cursor-zoom-out overflow-hidden" 
       onclick="if(event.target === this) closeLightbox();"
     >
       <!-- Floating Previous Arrow -->
       <button 
         type="button" 
         onclick="event.stopPropagation(); prevLightboxImage();" 
-        class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md transition-all shadow-lg z-20 cursor-pointer"
+        class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md transition-all shadow-lg z-20 cursor-pointer"
         aria-label="Previous image"
-        title="Previous (Left Arrow)"
+        title="Previous (Left Arrow or Swipe Right)"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
-      <!-- Centered Unbounded Image -->
+      <!-- Centered Unbounded Image with Dynamic Aspect Constraint -->
       <img 
         id="lb-image" 
         src="" 
         alt="" 
-        class="max-h-[70vh] sm:max-h-[74vh] max-w-[92vw] sm:max-w-[82vw] w-auto h-auto rounded-lg object-contain shadow-2xl transition-opacity duration-200 cursor-default"
+        class="max-h-full max-w-[92vw] sm:max-w-[84vw] w-auto h-auto rounded-lg object-contain shadow-2xl transition-opacity duration-200 cursor-default"
         onclick="event.stopPropagation();"
       />
 
@@ -77,26 +81,26 @@
       <button 
         type="button" 
         onclick="event.stopPropagation(); nextLightboxImage();" 
-        class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md transition-all shadow-lg z-20 cursor-pointer"
+        class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md transition-all shadow-lg z-20 cursor-pointer"
         aria-label="Next image"
-        title="Next (Right Arrow)"
+        title="Next (Right Arrow or Swipe Left)"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 5l7 7-7 7" />
         </svg>
       </button>
     </div>
 
-    <!-- ================= FLOATING MINIMAL BOTTOM CAPTION ================= -->
-    <footer class="w-full flex justify-center z-20 pointer-events-none shrink-0">
-      <div class="max-w-xl text-center space-y-1 pointer-events-auto px-5 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg">
-        <h3 id="lb-title" class="font-heading font-medium text-sm sm:text-base text-white/95 tracking-tight">
+    <!-- ================= 03 // FLOATING BOTTOM CAPTION ================= -->
+    <footer class="w-full flex justify-center z-20 pointer-events-none shrink-0 pt-1">
+      <div class="max-w-xl w-full sm:w-auto text-center space-y-0.5 sm:space-y-1 pointer-events-auto px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg mx-2">
+        <h3 id="lb-title" class="font-heading font-medium text-xs sm:text-base text-white/95 tracking-tight truncate sm:whitespace-normal">
           Photo Title
         </h3>
-        <p id="lb-desc" class="text-xs text-white/65 font-sans leading-relaxed line-clamp-2">
+        <p id="lb-desc" class="text-[11px] sm:text-xs text-white/65 font-sans leading-relaxed line-clamp-1 sm:line-clamp-2">
           Photo description
         </p>
-        <span id="lb-meta" class="block text-[11px] font-mono text-white/40 pt-0.5">
+        <span id="lb-meta" class="block text-[10px] sm:text-[11px] font-mono text-white/40 pt-0.5">
           Bengaluru Studio · 2026
         </span>
       </div>
@@ -147,6 +151,7 @@
     if (modal) {
       modal.showModal();
       document.addEventListener('keydown', handleLightboxKeydown);
+      attachLightboxTouchHandlers();
     }
   }
 
@@ -154,6 +159,7 @@
     const modal = document.getElementById('gallery-lightbox-modal');
     if (modal) modal.close();
     document.removeEventListener('keydown', handleLightboxKeydown);
+    removeLightboxTouchHandlers();
     window.galleryImages = null;
   }
 
@@ -221,6 +227,59 @@
       nextLightboxImage();
     } else if (e.key === 'Escape') {
       closeLightbox();
+    }
+  }
+
+  // ================= TOUCH SWIPE NAVIGATION FOR MOBILE =================
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+
+  function onTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }
+
+  function onTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleTouchGesture();
+  }
+
+  function handleTouchGesture() {
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+    const absX = Math.abs(diffX);
+    const absY = Math.abs(diffY);
+
+    // Horizontal swipe: left to next, right to prev
+    if (absX > 45 && absX > absY * 1.5) {
+      if (diffX < 0) {
+        nextLightboxImage(); // Swiped left
+      } else {
+        prevLightboxImage(); // Swiped right
+      }
+    } 
+    // Vertical swipe down to close
+    else if (diffY > 80 && absY > absX * 1.5) {
+      closeLightbox();
+    }
+  }
+
+  function attachLightboxTouchHandlers() {
+    const canvas = document.getElementById('lb-canvas');
+    if (canvas) {
+      canvas.addEventListener('touchstart', onTouchStart, { passive: true });
+      canvas.addEventListener('touchend', onTouchEnd, { passive: true });
+    }
+  }
+
+  function removeLightboxTouchHandlers() {
+    const canvas = document.getElementById('lb-canvas');
+    if (canvas) {
+      canvas.removeEventListener('touchstart', onTouchStart);
+      canvas.removeEventListener('touchend', onTouchEnd);
     }
   }
 </script>
