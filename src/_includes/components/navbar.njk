@@ -8,25 +8,29 @@
       </span>
     </a>
 
-    <!-- Center/Right: Clean Muted Navigation Links & Theme Toggle -->
-    <nav class="flex items-center gap-3 sm:gap-6 text-xs text-base-content/75 font-mono">
-      <a href="/" class="hover:text-base-content transition-colors {% if page.url == '/' %}text-base-content font-semibold{% endif %}">
-        Home
-      </a>
-      <a href="/projects/" class="hover:text-base-content transition-colors {% if page.url == '/projects/' %}text-base-content font-semibold{% endif %}">
-        Work
-      </a>
-      <a href="/blog/" class="hover:text-base-content transition-colors {% if page.url == '/blog/' %}text-base-content font-semibold{% endif %}">
-        Notes
-      </a>
-      <a href="/photos/" class="hover:text-base-content transition-colors {% if page.url == '/photos/' %}text-base-content font-semibold{% endif %}">
-        Art
-      </a>
-      <a href="/about/" class="hover:text-base-content transition-colors {% if page.url == '/about/' %}text-base-content font-semibold{% endif %}">
-        Info
-      </a>
+    <!-- Center/Right: Clean Muted Navigation Links & Controls -->
+    <div class="flex items-center gap-2 sm:gap-6">
 
-      <!-- 1-Click Light / Dark Theme Toggle (daisyUI Swap-Rotate) -->
+      <!-- Desktop Navigation Links (hidden on mobile, visible on sm and up) -->
+      <nav class="hidden sm:flex items-center gap-4 md:gap-6 text-xs text-base-content/75 font-mono">
+        <a href="/" class="hover:text-base-content transition-colors {% if page.url == '/' %}text-base-content font-semibold{% endif %}">
+          Home
+        </a>
+        <a href="/projects/" class="hover:text-base-content transition-colors {% if page.url == '/projects/' %}text-base-content font-semibold{% endif %}">
+          Work
+        </a>
+        <a href="/blog/" class="hover:text-base-content transition-colors {% if page.url == '/blog/' %}text-base-content font-semibold{% endif %}">
+          Notes
+        </a>
+        <a href="/photos/" class="hover:text-base-content transition-colors {% if page.url == '/photos/' %}text-base-content font-semibold{% endif %}">
+          Art
+        </a>
+        <a href="/about/" class="hover:text-base-content transition-colors {% if page.url == '/about/' %}text-base-content font-semibold{% endif %}">
+          Info
+        </a>
+      </nav>
+
+      <!-- 1-Click Light / Dark Theme Toggle (daisyUI Swap-Rotate, visible on BOTH mobile and desktop) -->
       <label 
         id="theme-toggle-label"
         class="swap swap-rotate p-1.5 rounded-lg text-base-content/60 hover:text-base-content hover:bg-base-200/60 transition-colors cursor-pointer shrink-0"
@@ -49,8 +53,8 @@
         <i class="swap-off ph ph-moon text-base"></i>
       </label>
 
-      <!-- Minimal Dropdown for other pages and mobile quick-access -->
-      <div class="dropdown dropdown-end">
+      <!-- Desktop Dropdown for secondary pages (Resume, Friends) - hidden on mobile -->
+      <div class="dropdown dropdown-end hidden sm:inline-block">
         <label tabindex="0" class="cursor-pointer text-base-content/60 hover:text-base-content hover:bg-base-200/60 p-1.5 rounded-lg flex items-center justify-center transition-colors" aria-label="More navigation links">
           <i class="ph ph-dots-three-vertical text-base"></i>
         </label>
@@ -70,40 +74,150 @@
         </ul>
       </div>
 
-    </nav>
+      <!-- Mobile Hamburger Dropdown (visible only on mobile: sm:hidden) -->
+      <div id="mobile-menu-dropdown" class="dropdown dropdown-end sm:hidden">
+        <button 
+          id="mobile-menu-trigger" 
+          type="button"
+          class="cursor-pointer text-base-content/75 hover:text-base-content hover:bg-base-200/60 p-1.5 rounded-lg flex items-center justify-center transition-colors" 
+          aria-label="Toggle navigation menu"
+        >
+          <!-- Hamburger list icon (shown when menu closed) -->
+          <i id="mobile-menu-open-icon" class="ph ph-list text-lg"></i>
+          <!-- Close X icon (shown when menu open) -->
+          <i id="mobile-menu-close-icon" class="ph ph-x text-lg hidden"></i>
+        </button>
+
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow-2xl bg-base-100 rounded-xl w-52 border border-dotted border-base-300 text-xs font-mono z-50 mt-2 space-y-0.5">
+          <li>
+            <a href="/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/' %}text-primary font-semibold bg-base-200/50{% endif %}">
+              <i class="ph ph-house text-sm"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="/projects/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/projects/' %}text-primary font-semibold bg-base-200/50{% endif %}">
+              <i class="ph ph-folder text-sm"></i>
+              <span>Work</span>
+            </a>
+          </li>
+          <li>
+            <a href="/blog/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/blog/' %}text-primary font-semibold bg-base-200/50{% endif %}">
+              <i class="ph ph-note-pencil text-sm"></i>
+              <span>Notes</span>
+            </a>
+          </li>
+          <li>
+            <a href="/photos/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/photos/' %}text-primary font-semibold bg-base-200/50{% endif %}">
+              <i class="ph ph-image text-sm"></i>
+              <span>Art</span>
+            </a>
+          </li>
+          <li>
+            <a href="/about/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/about/' %}text-primary font-semibold bg-base-200/50{% endif %}">
+              <i class="ph ph-info text-sm"></i>
+              <span>Info</span>
+            </a>
+          </li>
+          <li class="border-t border-dotted border-base-300 my-1"></li>
+          <li>
+            <a href="/resume/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/resume/' %}text-primary font-semibold bg-base-200/50{% endif %}">
+              <i class="ph ph-file-text text-sm"></i>
+              <span>Resume / CV</span>
+            </a>
+          </li>
+          <li>
+            <a href="/friends/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/friends/' %}text-primary font-semibold bg-base-200/50{% endif %}">
+              <i class="ph ph-users text-sm"></i>
+              <span>Friends / Roll</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
 
   </div>
 </header>
 
 <script>
   (function() {
+    // 1. Theme toggle synchronization
     const cb = document.getElementById('theme-toggle-checkbox');
-    if (!cb) return;
+    if (cb) {
+      function syncCheckbox() {
+        const isDark = document.documentElement.dataset.theme === 'dark';
+        cb.checked = isDark;
+      }
 
-    function syncCheckbox() {
-      const isDark = document.documentElement.dataset.theme === 'dark';
-      cb.checked = isDark;
+      // Sync immediately
+      syncCheckbox();
+
+      // Toggle listener
+      cb.addEventListener('change', function() {
+        const next = this.checked ? 'dark' : 'light';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+      });
+
+      // Cross-tab synchronization
+      window.addEventListener('storage', function(e) {
+        if (e.key === 'theme') {
+          document.documentElement.dataset.theme = e.newValue;
+          syncCheckbox();
+        }
+      });
+
+      // Re-sync after page ready
+      document.addEventListener('DOMContentLoaded', syncCheckbox);
     }
 
-    // Sync immediately
-    syncCheckbox();
+    // 2. Mobile Hamburger Menu Toggle Controller
+    const mobileDropdown = document.getElementById('mobile-menu-dropdown');
+    const mobileTrigger = document.getElementById('mobile-menu-trigger');
+    const mobileOpenIcon = document.getElementById('mobile-menu-open-icon');
+    const mobileCloseIcon = document.getElementById('mobile-menu-close-icon');
 
-    // Toggle listener
-    cb.addEventListener('change', function() {
-      const next = this.checked ? 'dark' : 'light';
-      document.documentElement.dataset.theme = next;
-      localStorage.setItem('theme', next);
-    });
-
-    // Cross-tab synchronization
-    window.addEventListener('storage', function(e) {
-      if (e.key === 'theme') {
-        document.documentElement.dataset.theme = e.newValue;
-        syncCheckbox();
+    function setMobileMenuState(isOpen) {
+      if (!mobileDropdown) return;
+      if (isOpen) {
+        mobileDropdown.classList.add('dropdown-open');
+        if (mobileOpenIcon) mobileOpenIcon.classList.add('hidden');
+        if (mobileCloseIcon) mobileCloseIcon.classList.remove('hidden');
+      } else {
+        mobileDropdown.classList.remove('dropdown-open');
+        if (mobileOpenIcon) mobileOpenIcon.classList.remove('hidden');
+        if (mobileCloseIcon) mobileCloseIcon.classList.add('hidden');
       }
-    });
+    }
 
-    // Re-sync after page ready
-    document.addEventListener('DOMContentLoaded', syncCheckbox);
+    if (mobileTrigger && mobileDropdown) {
+      mobileTrigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const willOpen = !mobileDropdown.classList.contains('dropdown-open');
+        setMobileMenuState(willOpen);
+      });
+
+      // Close when tapping outside
+      document.addEventListener('click', function(e) {
+        if (mobileDropdown && !mobileDropdown.contains(e.target)) {
+          setMobileMenuState(false);
+        }
+      });
+
+      // Close when pressing Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          setMobileMenuState(false);
+        }
+      });
+
+      // Close when any link inside menu is clicked
+      mobileDropdown.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          setMobileMenuState(false);
+        });
+      });
+    }
   })();
 </script>
