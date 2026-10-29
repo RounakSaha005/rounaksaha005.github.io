@@ -206,3 +206,75 @@
 }
 
 @custom-variant dark (&:where([data-theme="midnight-indigo"], [data-theme="slate-mint"], [data-theme="midnight-indigo"] *, [data-theme="slate-mint"] *));
+
+/* ==========================================================================
+   Vercel & Cloudflare Developer Gridlines & Utility Aesthetics
+   ========================================================================== */
+
+.grid-lines-bg {
+  background-image: 
+    linear-gradient(to right, color-mix(in srgb, currentColor 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, currentColor 8%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.grid-lines-dense {
+  background-image: 
+    linear-gradient(to right, color-mix(in srgb, currentColor 7%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, currentColor 7%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.grid-dots-bg {
+  background-image: radial-gradient(color-mix(in srgb, currentColor 12%, transparent) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+.grid-mask-fade {
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+}
+
+.grid-mask-radial {
+  mask-image: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 75%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 75%);
+}
+
+/* Developer Corner Crosshairs (+) for Cloudflare/Vercel Grid Cards */
+.crosshair-corner {
+  position: relative;
+}
+.crosshair-corner::before,
+.crosshair-corner::after {
+  content: "+";
+  position: absolute;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1;
+  color: color-mix(in srgb, currentColor 40%, transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+.crosshair-corner::before {
+  top: -7px;
+  left: -5px;
+}
+.crosshair-corner::after {
+  bottom: -7px;
+  right: -5px;
+}
+
+/* GSAP Marquee Container */
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+

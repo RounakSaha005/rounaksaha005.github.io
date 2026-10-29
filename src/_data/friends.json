@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Arjun Mehta",
+    "role": "Staff Systems Engineer @ Cloudflare",
+    "url": "https://example.com/arjun",
+    "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80",
+    "bio": "Low-level Rust wizard, eBPF enthusiast, and distributed network optimizer.",
+    "tags": ["Rust", "Networking", "Distributed Systems"]
+  },
+  {
+    "name": "Priya Sharma",
+    "role": "Lead Product Designer @ Vercel",
+    "url": "https://example.com/priya",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+    "bio": "Obsessed with design systems, micro-interactions, and accessible typography.",
+    "tags": ["Design Systems", "Figma", "UI/UX"]
+  },
+  {
+    "name": "Devin Chen",
+    "role": "Creator & DevRel Engineer",
+    "url": "https://example.com/devin",
+    "avatar": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=200&q=80",
+    "bio": "Makes developer videos, streams code on Twitch, and organizes local meetups.",
+    "tags": ["Content", "TypeScript", "Next.js"]
+  },
+  {
+    "name": "Ananya Roy",
+    "role": "Compiler Engineer @ Meta",
+    "url": "https://example.com/ananya",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
+    "bio": "LLVM hacker, static analysis researcher, and open-source enthusiast.",
+    "tags": ["Compilers", "C++", "Static Analysis"]
+  },
+  {
+    "name": "Lucas Rossi",
+    "role": "Indie Hacker & OSS Maintainer",
+    "url": "https://example.com/lucas",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    "bio": "Building micro-SaaS tools in public with Eleventy, Tailwind, and SQLite.",
+    "tags": ["Indie Hacker", "Eleventy", "Open Source"]
+  },
+  {
+    "name": "Sarah Jenkins",
+    "role": "Security Researcher",
+    "url": "https://example.com/sarah",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+    "bio": "Hunting race conditions in web applications and writing security breakdowns.",
+    "tags": ["AppSec", "Web Security", "Cryptography"]
+  }
+]
+

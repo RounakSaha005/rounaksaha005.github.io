@@ -1,0 +1,21 @@
+[
+  { "name": "TypeScript", "level": "Primary", "badge": "badge-primary" },
+  { "name": "JavaScript (ESNext)", "level": "Primary", "badge": "badge-secondary" },
+  { "name": "Python", "level": "Advanced", "badge": "badge-accent" },
+  { "name": "Rust", "level": "Systems", "badge": "badge-info" },
+  { "name": "Go (Golang)", "level": "Backend", "badge": "badge-success" },
+  { "name": "React 19", "level": "Frontend", "badge": "badge-primary" },
+  { "name": "Next.js", "level": "Full-Stack", "badge": "badge-secondary" },
+  { "name": "Eleventy v3", "level": "Static Sites", "badge": "badge-accent" },
+  { "name": "Tailwind CSS v4", "level": "Styling", "badge": "badge-info" },
+  { "name": "daisyUI 5", "level": "UI Components", "badge": "badge-warning" },
+  { "name": "Node.js", "level": "Runtime", "badge": "badge-success" },
+  { "name": "PostgreSQL", "level": "Database", "badge": "badge-primary" },
+  { "name": "GraphQL", "level": "API", "badge": "badge-secondary" },
+  { "name": "Docker", "level": "DevOps", "badge": "badge-info" },
+  { "name": "Cloudflare Workers", "level": "Edge", "badge": "badge-warning" },
+  { "name": "Vercel Edge", "level": "Deployment", "badge": "badge-accent" },
+  { "name": "Git & CI/CD", "level": "Tooling", "badge": "badge-neutral" },
+  { "name": "Redis", "level": "Cache", "badge": "badge-error" }
+]
+

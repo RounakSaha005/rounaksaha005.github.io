@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "title": "Building a Full-Stack Edge App with Cloudflare Workers & Hono",
+    "description": "Deep-dive into globally distributed edge architecture, sub-millisecond response times, and deploying serverless databases.",
+    "thumbnail": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+    "duration": "28:42",
+    "views": "64K views",
+    "published": "2 weeks ago",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tag": "Tutorial"
+  },
+  {
+    "id": "2",
+    "title": "Why Eleventy + Tailwind v4 + daisyUI 5 is the Ultimate Stack",
+    "description": "Zero client-side JS overhead, blazing fast compilation, and how I built this developer portfolio from scratch.",
+    "thumbnail": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+    "duration": "19:15",
+    "views": "42K views",
+    "published": "1 month ago",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tag": "Architecture"
+  },
+  {
+    "id": "3",
+    "title": "Modern CSS Systems in 2026: Container Queries & Fluid Types",
+    "description": "Say goodbye to rigid media queries. How modern frontend engineers structure layout tokens and responsive component hierarchies.",
+    "thumbnail": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+    "duration": "24:08",
+    "views": "58K views",
+    "published": "2 months ago",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tag": "CSS & UI"
+  },
+  {
+    "id": "4",
+    "title": "From Monolith to Micro-Frontends: Real-world Lessons & Pitfalls",
+    "description": "Engineering walkthrough of migrating high-traffic web applications without breaking user sessions or hurting SEO.",
+    "thumbnail": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    "duration": "35:50",
+    "views": "89K views",
+    "published": "3 months ago",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tag": "Engineering"
+  }
+]
+

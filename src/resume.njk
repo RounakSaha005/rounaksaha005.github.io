@@ -1,0 +1,131 @@
+---
+layout: base.njk
+title: Curriculum Vitae & Resume
+permalink: /resume/index.html
+---
+
+<div class="relative py-16 sm:py-20 border-b border-base-200/80 overflow-hidden">
+  <div class="absolute inset-0 grid-lines-bg opacity-25 grid-mask-fade pointer-events-none"></div>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Top Action Bar -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-base-200/80">
+      <div>
+        <div class="text-xs font-mono text-primary font-bold tracking-wider mb-1">// 04 · CURRICULUM VITAE</div>
+        <h1 class="text-4xl sm:text-5xl font-black tracking-tight">Resume</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="window.print()" class="btn btn-outline btn-sm font-mono gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          Print / PDF
+        </button>
+        <a href="mailto:{{ resume.basics.email }}" class="btn btn-primary btn-sm font-mono">
+          Contact Candidate
+        </a>
+      </div>
+    </div>
+
+    <!-- Resume Document Container (Vercel Style Clean Card) -->
+    <div class="crosshair-corner card bg-base-100 border border-base-300 shadow-xl rounded-2xl p-8 sm:p-12 space-y-12">
+      
+      <!-- Basics & Header -->
+      <div class="border-b border-base-200/80 pb-8 flex flex-col sm:flex-row justify-between gap-6">
+        <div>
+          <h2 class="text-3xl font-black font-mono tracking-tight text-base-content">{{ resume.basics.name }}</h2>
+          <p class="text-base text-primary font-mono font-medium mt-1">{{ resume.basics.label }}</p>
+          <p class="text-xs font-mono opacity-60 mt-1">{{ resume.basics.location.city }}, {{ resume.basics.location.country }}</p>
+        </div>
+        <div class="text-xs font-mono space-y-1.5 sm:text-right opacity-80">
+          <div><a href="mailto:{{ resume.basics.email }}" class="link link-hover">{{ resume.basics.email }}</a></div>
+          <div><a href="{{ resume.basics.url }}" target="_blank" rel="noopener noreferrer" class="link link-hover">{{ resume.basics.url }}</a></div>
+          <div><a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer" class="link link-hover">github.com/rounaksaha</a></div>
+          <div><a href="{{ site.author.youtube }}" target="_blank" rel="noopener noreferrer" class="link link-hover text-error">youtube.com/@rounaksaha</a></div>
+        </div>
+      </div>
+
+      <!-- Professional Summary -->
+      <div>
+        <h3 class="font-mono text-xs uppercase tracking-widest text-primary font-bold mb-3">// SUMMARY</h3>
+        <p class="text-sm opacity-85 leading-relaxed">
+          {{ resume.basics.summary }}
+        </p>
+      </div>
+
+      <!-- Experience Section -->
+      <div>
+        <h3 class="font-mono text-xs uppercase tracking-widest text-primary font-bold mb-6">// WORK EXPERIENCE</h3>
+        <div class="space-y-8">
+          {% for exp in resume.experience %}
+            <div class="border-l-2 border-base-300 pl-4 sm:pl-6 space-y-3 relative">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary absolute -left-[6px] top-1.5"></span>
+              
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <h4 class="text-lg font-bold font-mono text-base-content">
+                  {{ exp.position }} <span class="text-primary font-sans font-normal">@ {{ exp.company }}</span>
+                </h4>
+                <span class="text-xs font-mono opacity-60">{{ exp.startDate }} — {{ exp.endDate }} · {{ exp.location }}</span>
+              </div>
+
+              <ul class="list-disc list-inside space-y-1.5 text-xs sm:text-sm opacity-80 leading-relaxed">
+                {% for item in exp.highlights %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+
+              <div class="flex flex-wrap gap-1.5 pt-2">
+                {% for tech in exp.technologies %}
+                  <span class="badge badge-xs badge-soft badge-primary font-mono">{{ tech }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Skills Matrix -->
+      <div>
+        <h3 class="font-mono text-xs uppercase tracking-widest text-primary font-bold mb-6">// TECHNICAL SKILLS</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {% for skillGroup in resume.skills %}
+            <div class="p-4 rounded-xl border border-base-200 bg-base-200/30">
+              <h4 class="font-mono text-xs font-bold text-base-content mb-2">{{ skillGroup.category }}</h4>
+              <div class="flex flex-wrap gap-1.5">
+                {% for item in skillGroup.items %}
+                  <span class="badge badge-xs badge-outline font-mono">{{ item }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Education & Achievements -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-base-200/80 pt-8">
+        <div>
+          <h3 class="font-mono text-xs uppercase tracking-widest text-primary font-bold mb-4">// EDUCATION</h3>
+          {% for edu in resume.education %}
+            <div class="space-y-1 text-xs font-mono">
+              <h4 class="text-sm font-bold text-base-content font-sans">{{ edu.institution }}</h4>
+              <p class="text-primary font-medium">{{ edu.studyType }} in {{ edu.area }}</p>
+              <p class="opacity-60">{{ edu.startDate }} — {{ edu.endDate }} · {{ edu.score }}</p>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div>
+          <h3 class="font-mono text-xs uppercase tracking-widest text-primary font-bold mb-4">// HONORS & COMMUNITY</h3>
+          <ul class="space-y-2 text-xs font-mono opacity-80 list-disc list-inside">
+            {% for item in resume.achievements %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

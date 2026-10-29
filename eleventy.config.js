@@ -10,6 +10,7 @@ export default function (eleventyConfig) {
 
   // Passthrough copy for media uploads and static assets
   eleventyConfig.addPassthroughCopy({ './src/assets': 'assets' });
+  eleventyConfig.addPassthroughCopy({ './node_modules/gsap/dist/gsap.min.js': 'assets/js/gsap.min.js' });
 
   // PostCSS compilation hook before Eleventy builds
   eleventyConfig.on('eleventy.before', async () => {

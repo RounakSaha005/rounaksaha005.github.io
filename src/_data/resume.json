@@ -1,0 +1,92 @@
+{
+  "basics": {
+    "name": "Rounak Saha",
+    "label": "Full-Stack Engineer & Tech YouTuber",
+    "email": "rounak@example.com",
+    "phone": "+91 (987) 654-3210",
+    "url": "https://rounaksaha.dev",
+    "summary": "Full-Stack Engineer with 4+ years of experience engineering high-performance web systems, static architectures, and scalable cloud edge APIs. Creator of technical tutorials on YouTube reaching over 45K developers worldwide. Specialized in TypeScript, React, Next.js, Eleventy, and distributed edge runtimes.",
+    "location": {
+      "city": "Bengaluru",
+      "country": "India"
+    },
+    "profiles": [
+      { "network": "GitHub", "url": "https://github.com/rounaksaha", "username": "rounaksaha" },
+      { "network": "LinkedIn", "url": "https://linkedin.com/in/rounaksaha", "username": "rounaksaha" },
+      { "network": "YouTube", "url": "https://youtube.com/@rounaksaha", "username": "@rounaksaha" }
+    ]
+  },
+  "experience": [
+    {
+      "company": "Vortex Cloud Inc.",
+      "position": "Senior Frontend Engineer",
+      "startDate": "2024",
+      "endDate": "Present",
+      "location": "Bengaluru, India (Hybrid)",
+      "highlights": [
+        "Architected core dashboard telemetry interface processing over 12M daily real-time WebSocket events with zero frame-drops.",
+        "Engineered internal design system with custom CSS variables, reducing bundle size by 38% and ensuring 100% WCAG AA compliance.",
+        "Spearheaded migration to edge-rendered micro-frontends on Cloudflare Workers, trimming P99 TTFB from 680ms to 92ms."
+      ],
+      "technologies": ["TypeScript", "React", "Next.js", "Tailwind CSS", "Cloudflare Workers", "WebSockets"]
+    },
+    {
+      "company": "Hyperion Labs",
+      "position": "Full-Stack Software Engineer",
+      "startDate": "2022",
+      "endDate": "2024",
+      "location": "Bengaluru, India",
+      "highlights": [
+        "Developed high-throughput data visualization portals using Node.js, GraphQL, and PostgreSQL.",
+        "Built automated CI/CD deployment pipelines using GitHub Actions, reducing release deployment cycles from 45 to 8 minutes.",
+        "Mentored 6 junior engineers on static site generators, accessibility standards, and code review hygiene."
+      ],
+      "technologies": ["TypeScript", "Node.js", "PostgreSQL", "Docker", "GraphQL", "Jest"]
+    },
+    {
+      "company": "Nexus Studio",
+      "position": "Junior Frontend Developer",
+      "startDate": "2021",
+      "endDate": "2022",
+      "location": "Remote",
+      "highlights": [
+        "Constructed 15+ bespoke client web apps using Jamstack principles, achieving 100/100 Lighthouse performance scores.",
+        "Implemented automated responsive testing with Playwright, catching over 80 regressions prior to production."
+      ],
+      "technologies": ["JavaScript", "HTML5/CSS3", "Eleventy", "Tailwind CSS", "Git"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "National Institute of Technology",
+      "area": "Computer Science & Engineering",
+      "studyType": "Bachelor of Technology (B.Tech)",
+      "startDate": "2017",
+      "endDate": "2021",
+      "score": "8.8 / 10 CGPA"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "items": ["TypeScript", "JavaScript (ESNext)", "Python", "Rust", "Go", "HTML5", "CSS3 / Modern PostCSS"]
+    },
+    {
+      "category": "Frameworks & UI",
+      "items": ["React 19", "Next.js", "Eleventy v3", "Tailwind CSS v4", "daisyUI 5", "Node.js", "Express", "Hono"]
+    },
+    {
+      "category": "Databases & Cloud",
+      "items": ["PostgreSQL", "Redis", "Cloudflare Workers & D1", "Vercel Edge", "Docker", "Supabase"]
+    },
+    {
+      "category": "Practices & Tooling",
+      "items": ["WCAG AA/AAA Accessibility", "Performance Profiling", "Git / GitHub Actions", "Figma", "REST & GraphQL"]
+    }
+  ],
+  "achievements": [
+    "YouTube Silver Creator Milestone candidate with 45,000+ subscribers and 3.2M views.",
+    "Open Source maintainer of 3 community plugins downloaded over 50,000 times on npm.",
+    "Speaker at JSConf India 2025 on 'Building Resilient Edge Interfaces'."
+  ]
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "title": "Minimal Mechanical Keyboard & Ergonomic Workspace",
+    "category": "Setup",
+    "location": "Bengaluru Studio",
+    "date": "2026",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80",
+    "description": "Custom split keyboard with linear switches and high-DPI ultrawide setup."
+  },
+  {
+    "id": "2",
+    "title": "Keynote at JSConf India",
+    "category": "Speaking",
+    "location": "Bengaluru",
+    "date": "2025",
+    "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
+    "description": "Speaking about edge computing and frontend resilience to 1,200 engineers."
+  },
+  {
+    "id": "3",
+    "title": "Late Night Hackathon Session",
+    "category": "Community",
+    "location": "Bengaluru Tech Hub",
+    "date": "2025",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+    "description": "Collaborating with open-source contributors on distributed cache protocols."
+  },
+  {
+    "id": "4",
+    "title": "Coffee, Journaling & Architecture Schematics",
+    "category": "Life",
+    "location": "Indiranagar",
+    "date": "2026",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+    "description": "Sketching system designs before writing a single line of code."
+  },
+  {
+    "id": "5",
+    "title": "Remote Working from the Western Ghats",
+    "category": "Travel",
+    "location": "Coorg",
+    "date": "2025",
+    "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
+    "description": "Deep work surrounded by mountains, fog, and fresh filter coffee."
+  },
+  {
+    "id": "6",
+    "title": "Creator Studio Lighting & Microphones",
+    "category": "Setup",
+    "location": "Home Studio",
+    "date": "2026",
+    "image": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80",
+    "description": "Shure SM7B, Elgato Key Lights, and Sony A7IV for YouTube production."
+  }
+]
+

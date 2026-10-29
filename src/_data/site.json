@@ -1,37 +1,51 @@
 {
   "name": "Rounak Saha",
-  "role": "Frontend Engineer & UI Designer",
+  "role": "Full-Stack Engineer & Tech YouTuber",
   "location": "Bengaluru, India",
-  "title": "Rounak Saha · Frontend Engineer & UI Designer",
-  "description": "Personal portfolio of Rounak Saha. Crafting clean, performant, and accessible digital products.",
+  "title": "Rounak Saha · Full-Stack Engineer & Content Creator",
+  "description": "Developer portfolio and digital garden of Rounak Saha. Building scalable web systems, developer tooling, and sharing engineering tutorials on YouTube.",
   "url": "https://rounaksaha.dev",
-  "avatar": "",
-  "availability": "Available for new projects & roles",
+  "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+  "availability": "Open for Contracts & Tech Collaborations",
   "author": {
     "name": "Rounak Saha",
     "email": "rounak@example.com",
     "github": "https://github.com/rounaksaha",
     "linkedin": "https://linkedin.com/in/rounaksaha",
+    "youtube": "https://youtube.com/@rounaksaha",
     "twitter": "https://twitter.com/rounaksaha"
+  },
+  "youtubeChannel": {
+    "handle": "@rounaksaha",
+    "subscribers": "45K+",
+    "videosCount": "120+",
+    "totalViews": "3.2M+",
+    "url": "https://youtube.com/@rounaksaha"
   },
   "skills": [
     "TypeScript",
     "JavaScript",
+    "Python",
+    "Rust",
+    "Go",
     "React",
     "Next.js",
     "Eleventy",
     "Tailwind CSS",
     "daisyUI",
     "Node.js",
-    "GraphQL",
-    "REST APIs",
-    "Accessibility (a11y)",
-    "Figma"
+    "PostgreSQL",
+    "Docker",
+    "Cloudflare",
+    "Vercel"
   ],
   "navigation": [
     { "label": "Home", "url": "/" },
     { "label": "About", "url": "/about/" },
-    { "label": "Blog", "url": "/posts/" },
-    { "label": "Components", "url": "/components/" }
+    { "label": "Blog", "url": "/blog/" },
+    { "label": "Projects", "url": "/projects/" },
+    { "label": "Resume", "url": "/resume/" },
+    { "label": "Friends", "url": "/friends/" },
+    { "label": "Photos", "url": "/photos/" }
   ]
 }

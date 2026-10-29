@@ -47,33 +47,125 @@ content:
         label: Post Content
         type: rich-text
 
-  # Static Pages Collection (e.g. About, Contact)
-  - name: pages
-    label: Pages
-    type: collection
-    path: src/pages
-    format: yaml-frontmatter
-    exclude: [pages.json]
-    filename: "{slug}.md"
-    view:
-      primary: title
+  # Featured YouTube Videos Collection
+  - name: youtube
+    label: YouTube Videos
+    type: file
+    path: src/_data/youtube.json
     fields:
-      - name: title
-        label: Page Title
-        type: string
-        required: true
-      - name: subtitle
-        label: Subtitle
-        type: string
-      - name: image
-        label: Header / Banner Image
-        type: image
-      - name: permalink
-        label: URL Path
-        type: string
-      - name: body
-        label: Page Content
-        type: rich-text
+      - name: videos
+        label: Video List
+        type: list
+        fields:
+          - name: title
+            label: Video Title
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: text
+          - name: thumbnail
+            label: Video Thumbnail Image
+            type: image
+          - name: duration
+            label: Duration (e.g. 24:10)
+            type: string
+          - name: views
+            label: Views Count
+            type: string
+          - name: url
+            label: YouTube Video URL
+            type: string
+          - name: tag
+            label: Category Tag
+            type: string
+
+  # Developer Photos Gallery
+  - name: photos
+    label: Photo Gallery
+    type: file
+    path: src/_data/photos.json
+    fields:
+      - name: gallery
+        label: Photo Items
+        type: list
+        fields:
+          - name: title
+            label: Photo Title
+            type: string
+            required: true
+          - name: category
+            label: Category (Setup, Speaking, Community, Travel)
+            type: string
+          - name: location
+            label: Location
+            type: string
+          - name: date
+            label: Year / Date
+            type: string
+          - name: image
+            label: Upload Photo
+            type: image
+          - name: description
+            label: Caption
+            type: text
+
+  # Friends & Blogroll
+  - name: friends
+    label: Friends & Blogroll
+    type: file
+    path: src/_data/friends.json
+    fields:
+      - name: peers
+        label: Friend List
+        type: list
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: role
+            label: Role & Company
+            type: string
+          - name: url
+            label: Personal Website URL
+            type: string
+          - name: avatar
+            label: Avatar Image
+            type: image
+          - name: bio
+            label: Short Bio
+            type: text
+
+  # Projects Portfolio
+  - name: projects
+    label: Projects
+    type: file
+    path: src/_data/projects.json
+    fields:
+      - name: projectList
+        label: Projects
+        type: list
+        fields:
+          - name: title
+            label: Project Title
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: text
+          - name: year
+            label: Year
+            type: string
+          - name: status
+            label: Status (Production, Open Source, Shipped)
+            type: string
+          - name: github
+            label: GitHub URL
+            type: string
+          - name: link
+            label: Live URL
+            type: string
 
   # Global Site Configuration & Metadata
   - name: settings
@@ -114,6 +206,9 @@ content:
           - name: linkedin
             label: LinkedIn Profile URL
             type: string
+          - name: youtube
+            label: YouTube Channel URL
+            type: string
       - name: navigation
         label: Navigation Menu
         type: list
@@ -124,4 +219,3 @@ content:
           - name: url
             label: Link URL
             type: string
-

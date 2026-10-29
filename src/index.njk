@@ -4,238 +4,522 @@ title: Home
 ---
 
 <!-- =======================================================================
-     1. Hero Bento Grid Section
+     01 // HERO SECTION (Image on Left, Text on Right with Buttons)
+     Vercel & Cloudflare Gridlines Aesthetic
      ======================================================================= -->
-<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<section class="relative border-b border-base-200/80 overflow-hidden">
+  <!-- Subtle Ambient Gridlines Background -->
+  <div class="absolute inset-0 grid-lines-bg opacity-35 grid-mask-fade pointer-events-none"></div>
 
-    <!-- Bento Item 1: Profile & Intro (Span 2) -->
-    <div class="md:col-span-2 card bg-base-100 border border-base-200 shadow-sm rounded-box p-6 sm:p-8 flex flex-col justify-between">
-      <div>
-        <!-- Avatar & Status Badge -->
-        <div class="flex items-center justify-between gap-4">
-          <div class="avatar avatar-online placeholder">
-            <div class="bg-primary text-primary-content w-16 rounded-full shadow-inner ring ring-base-100 ring-offset-2">
-              <span class="text-xl font-bold tracking-tight">RS</span>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- HERO LEFT: Developer Image with Crosshair Grid Framing (5 cols) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-md">
+          
+          <!-- Outer Vercel-style Border Frame with Corner Crosshairs -->
+          <div class="crosshair-corner border border-base-300 bg-base-100/80 backdrop-blur-md p-3 sm:p-4 rounded-2xl shadow-xl">
+            
+            <!-- Technical Status Bar -->
+            <div class="flex items-center justify-between text-xs font-mono pb-3 border-b border-base-200 text-base-content/70">
+              <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-success animate-ping"></span>
+                <span>SYSTEM: ONLINE</span>
+              </span>
+              <span class="text-primary font-semibold">BLR // IN</span>
             </div>
-          </div>
-          <div class="badge badge-success badge-soft text-xs gap-1.5 py-3 px-3">
-            <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
-            {{ site.availability }}
+
+            <!-- Profile Image Container -->
+            <div class="relative mt-3 aspect-4/5 w-full rounded-xl overflow-hidden border border-base-200 bg-base-200">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" 
+                alt="{{ site.name }} - Full-Stack Developer & YouTuber"
+                class="w-full h-full object-cover object-center filter grayscale hover:grayscale-0 transition-all duration-500 scale-100 hover:scale-105"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-base-100 via-transparent to-transparent opacity-60"></div>
+              
+              <!-- Floating Overlay Badge -->
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between p-2.5 rounded-lg bg-base-100/90 backdrop-blur-md border border-base-300/80 text-xs font-mono shadow-sm">
+                <div>
+                  <span class="font-bold block text-base-content">{{ site.name }}</span>
+                  <span class="text-[11px] text-primary">@rounaksaha</span>
+                </div>
+                <div class="badge badge-primary badge-sm font-sans font-semibold">
+                  Creator & Dev
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Specs Under Photo -->
+            <div class="mt-3 grid grid-cols-3 gap-2 text-center text-xs font-mono pt-2 border-t border-base-200">
+              <div class="p-1.5 rounded bg-base-200/50">
+                <span class="text-[10px] opacity-60 block">XP</span>
+                <span class="font-bold text-primary">4+ YRS</span>
+              </div>
+              <div class="p-1.5 rounded bg-base-200/50">
+                <span class="text-[10px] opacity-60 block">COMMUNITY</span>
+                <span class="font-bold text-secondary">45K+</span>
+              </div>
+              <div class="p-1.5 rounded bg-base-200/50">
+                <span class="text-[10px] opacity-60 block">STACK</span>
+                <span class="font-bold text-accent">FULL</span>
+              </div>
+            </div>
+
           </div>
         </div>
+      </div>
 
-        <!-- Headline & Bio -->
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mt-6 leading-tight">
-          Hi, I'm <span class="text-primary">{{ site.name }}</span>.
+      <!-- HERO RIGHT: Bio, Headline, Status & CTA Buttons (7 cols) -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- Monospaced Section Tag -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 border border-base-300 text-xs font-mono text-primary">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          <span>// 01 · FULL-STACK ENGINEER & YOUTUBER</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
+          Engineering scalable web systems & teaching <span class="text-primary underline decoration-primary/40 underline-offset-8">modern code</span>.
         </h1>
-        <p class="text-lg sm:text-xl font-medium opacity-80 mt-2">
-          {{ site.role }} · {{ site.location }}
+
+        <!-- Subheading -->
+        <p class="text-lg sm:text-xl font-medium text-base-content/80 leading-relaxed max-w-2xl">
+          Hi, I'm <strong class="text-base-content font-bold">{{ site.name }}</strong>. I specialize in high-performance frontend architecture, edge runtimes, and developer tooling. On YouTube, I break down system design and modern web frameworks for 45K+ developers.
         </p>
-        <p class="text-sm sm:text-base opacity-75 mt-4 leading-relaxed max-w-xl">
-          {{ site.description }} I build modern, resilient, and accessible web experiences using static-first architecture and clean design systems.
-        </p>
-      </div>
 
-      <!-- Quick Action Buttons -->
-      <div class="flex flex-wrap items-center gap-3 mt-8 pt-6 border-t border-base-200">
-        <a href="#projects" class="btn btn-primary btn-sm sm:btn-md">
-          Explore Projects ↓
-        </a>
-        <a href="mailto:{{ site.author.email }}" class="btn btn-outline btn-sm sm:btn-md">
-          Get in Touch
-        </a>
-        <div class="ml-auto flex items-center gap-1">
-          {% if site.author.github %}
-            <a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-circle btn-sm" aria-label="GitHub">
-              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            </a>
-          {% endif %}
-          {% if site.author.linkedin %}
-            <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-circle btn-sm" aria-label="LinkedIn">
-              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-
-    <!-- Bento Item 2: Key Metrics & Stats (Span 1) -->
-    <div class="card bg-base-100 border border-base-200 shadow-sm rounded-box p-6 flex flex-col justify-between">
-      <div class="flex items-center justify-between pb-3 border-b border-base-200">
-        <h2 class="font-bold text-sm uppercase tracking-wider opacity-70">Key Metrics</h2>
-        <span class="badge badge-xs badge-primary">Verified</span>
-      </div>
-
-      <div class="stats stats-vertical bg-transparent border-0 w-full divide-y divide-base-200">
-        <div class="stat px-0 py-3">
-          <div class="stat-title text-xs">Experience</div>
-          <div class="stat-value text-2xl text-primary font-black">4+ Years</div>
-          <div class="stat-desc text-xs mt-0.5">Frontend & UI Systems</div>
-        </div>
-        <div class="stat px-0 py-3">
-          <div class="stat-title text-xs">Shipped Works</div>
-          <div class="stat-value text-2xl text-secondary font-black">20+ Projects</div>
-          <div class="stat-desc text-xs mt-0.5">Production & Open Source</div>
-        </div>
-        <div class="stat px-0 py-3">
-          <div class="stat-title text-xs">Lighthouse Score</div>
-          <div class="stat-value text-2xl text-accent font-black">100/100</div>
-          <div class="stat-desc text-xs mt-0.5">Speed & Core Web Vitals</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bento Item 3: Skills & Tech Stack (Span 2) -->
-    <div class="md:col-span-2 card bg-base-100 border border-base-200 shadow-sm rounded-box p-6">
-      <div class="flex items-center justify-between mb-4 pb-2 border-b border-base-200">
-        <h2 class="font-bold text-sm uppercase tracking-wider opacity-70">Tech Stack & Tools</h2>
-        <span class="text-xs opacity-60">Modern & Standard</span>
-      </div>
-
-      <div class="flex flex-wrap gap-2">
-        {% for skill in site.skills %}
-          <span class="badge badge-soft badge-primary text-xs py-3 px-3.5 font-medium transition-transform hover:scale-105">
-            {{ skill }}
+        <!-- Availability Card -->
+        <div class="p-4 rounded-xl border border-base-300 bg-base-200/40 backdrop-blur-xs flex items-center gap-3 max-w-xl">
+          <span class="w-3 h-3 rounded-full bg-success shrink-0"></span>
+          <span class="text-xs sm:text-sm font-mono text-base-content/90">
+            <strong>Current Status:</strong> {{ site.availability }}
           </span>
-        {% endfor %}
-      </div>
-    </div>
-
-    <!-- Bento Item 4: Current Focus (Span 1) -->
-    <div class="card bg-base-200/60 border border-base-300 shadow-sm rounded-box p-6 flex flex-col justify-between">
-      <div>
-        <div class="badge badge-outline badge-primary text-[11px] font-semibold mb-3">
-          Now · 2026
         </div>
-        <h3 class="font-bold text-base leading-snug">
-          Exploring Eleventy v3 & Component Systems
-        </h3>
-        <p class="text-xs opacity-75 leading-relaxed mt-2">
-          Deep-diving into static generation, WCAG AA/AAA theme tokens, and minimal design systems built with daisyUI 5.
-        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a href="#projects" class="btn btn-primary btn-md shadow-sm font-medium">
+            Explore Projects ↓
+          </a>
+          <a href="{{ site.author.youtube }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-md gap-2 font-medium hover:border-red-500 hover:bg-red-500 hover:text-white">
+            <svg class="h-4 w-4 fill-current text-red-500" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Watch on YouTube
+          </a>
+          <a href="/resume/" class="btn btn-ghost btn-md font-medium">
+            View Resume →
+          </a>
+        </div>
+
+        <!-- Social Proof Stats -->
+        <div class="pt-6 border-t border-base-200/80 flex flex-wrap items-center gap-6 sm:gap-10 text-xs font-mono text-base-content/70">
+          <div>
+            <span class="text-base font-bold text-base-content block font-sans">45,000+</span>
+            <span>YouTube Subscribers</span>
+          </div>
+          <div class="h-8 w-px bg-base-300"></div>
+          <div>
+            <span class="text-base font-bold text-base-content block font-sans">3.2M+</span>
+            <span>Channel Views</span>
+          </div>
+          <div class="h-8 w-px bg-base-300"></div>
+          <div>
+            <span class="text-base font-bold text-base-content block font-sans">100/100</span>
+            <span>Lighthouse Performance</span>
+          </div>
+        </div>
+
       </div>
 
-      <div class="mt-4 pt-3 border-t border-base-300 flex items-center justify-between text-xs opacity-70">
-        <span>Status</span>
-        <span class="font-semibold text-primary">Active Experiment</span>
-      </div>
     </div>
-
   </div>
 </section>
 
+
 <!-- =======================================================================
-     2. Featured Projects Grid
+     02 // INFINITE SCROLL (GSAP) WITH PROGRAMMING LANGUAGES
+     Vercel/Cloudflare Marquee
      ======================================================================= -->
-<section id="projects" class="py-16 bg-base-200/40 border-t border-base-200">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3">
+<section class="py-8 bg-base-200/40 border-b border-base-200/80 overflow-hidden relative">
+  <div class="max-w-7xl mx-auto px-4 mb-4 flex items-center justify-between text-xs font-mono text-base-content/60">
+    <span class="flex items-center gap-1.5">
+      <span class="text-primary font-bold">// 02</span> PROGRAMMING LANGUAGES & CORE DEV STACK
+    </span>
+    <span class="hidden sm:inline-block">POWERED BY GSAP ENGINE · PAUSE ON HOVER</span>
+  </div>
+
+  <!-- Marquee Container with Gradient Mask Fade -->
+  <div class="marquee-container py-3">
+    <div id="gsap-marquee-track" class="marquee-track flex items-center gap-4 cursor-pointer">
+      
+      <!-- First Sequence of Languages -->
+      {% for lang in languages %}
+        <div class="shrink-0 flex items-center gap-2.5 px-4 py-2 rounded-xl bg-base-100 border border-base-300 shadow-xs hover:border-primary transition-colors">
+          <span class="w-2 h-2 rounded-full bg-primary"></span>
+          <span class="font-mono text-sm font-bold text-base-content">{{ lang.name }}</span>
+          <span class="badge badge-xs {{ lang.badge }} font-sans font-medium">{{ lang.level }}</span>
+        </div>
+      {% endfor %}
+
+      <!-- Duplicate Sequence for Seamless Infinite Looping -->
+      {% for lang in languages %}
+        <div class="shrink-0 flex items-center gap-2.5 px-4 py-2 rounded-xl bg-base-100 border border-base-300 shadow-xs hover:border-primary transition-colors">
+          <span class="w-2 h-2 rounded-full bg-secondary"></span>
+          <span class="font-mono text-sm font-bold text-base-content">{{ lang.name }}</span>
+          <span class="badge badge-xs {{ lang.badge }} font-sans font-medium">{{ lang.level }}</span>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <!-- GSAP Animation Controller Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const initGSAPMarquee = () => {
+        if (!window.gsap) {
+          // Retry briefly if CDN is still resolving
+          setTimeout(initGSAPMarquee, 100);
+          return;
+        }
+        const track = document.getElementById('gsap-marquee-track');
+        if (!track) return;
+
+        // Calculate half the scroll width (since items are duplicated)
+        const totalWidth = track.scrollWidth;
+        const halfWidth = totalWidth / 2;
+
+        const tween = gsap.to(track, {
+          x: -halfWidth,
+          duration: 32,
+          ease: "none",
+          repeat: -1,
+          modifiers: {
+            x: gsap.utils.unitize(x => parseFloat(x) % halfWidth)
+          }
+        });
+
+        // Pause animation when user hovers to inspect languages
+        track.addEventListener('mouseenter', () => tween.pause());
+        track.addEventListener('mouseleave', () => tween.resume());
+      };
+
+      initGSAPMarquee();
+    });
+  </script>
+</section>
+
+
+<!-- =======================================================================
+     03 // FEATURED PROJECTS SECTION (Gridlines & Tech Cards)
+     ======================================================================= -->
+<section id="projects" class="py-20 border-b border-base-200/80 relative">
+  <!-- Subtle dots pattern -->
+  <div class="absolute inset-0 grid-dots-bg opacity-25 grid-mask-fade pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 pb-6 border-b border-base-200/80">
       <div>
-        <span class="badge badge-primary badge-outline text-xs uppercase tracking-wider mb-2 font-semibold">Portfolio</span>
-        <h2 class="text-3xl font-extrabold tracking-tight">Featured Projects</h2>
-        <p class="text-sm opacity-70 mt-1">A curated selection of applications, libraries, and open-source tools.</p>
+        <div class="text-xs font-mono text-primary font-bold tracking-wider mb-2">// 03 · PRODUCTION & OSS</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Featured Projects</h2>
+        <p class="text-sm text-base-content/70 mt-1 max-w-xl">Curated open-source developer tools, UI systems, and edge architecture builds.</p>
       </div>
-      <a href="https://github.com/rounaksaha" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm text-primary">
-        View all on GitHub →
+      <a href="/projects/" class="btn btn-outline btn-sm font-mono gap-1 self-start sm:self-auto">
+        <span>All Projects</span>
+        <span>→</span>
       </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {% for project in projects %}
-        <article class="card bg-base-100 border border-base-200 shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-200 rounded-box flex flex-col justify-between">
-          <div class="card-body p-6">
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="badge badge-sm badge-ghost text-xs font-semibold">{{ project.status }}</span>
-              <span class="text-xs opacity-60 font-mono">{{ project.year }}</span>
+    <!-- Projects Grid with Crosshair Corner Accents -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for project in projects | limit(3) %}
+        <article class="crosshair-corner card bg-base-100 border border-base-300 shadow-sm hover:shadow-md hover:border-primary transition-all duration-200 rounded-2xl flex flex-col justify-between">
+          <div class="card-body p-6 sm:p-7">
+            
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="badge badge-sm badge-outline font-mono text-xs">{{ project.status }}</span>
+              <span class="text-xs font-mono opacity-60">{{ project.year }}</span>
             </div>
 
-            <h3 class="card-title text-xl font-bold mt-1">
+            <h3 class="card-title text-xl font-bold font-mono tracking-tight text-base-content">
               {{ project.title }}
             </h3>
 
-            <p class="text-sm opacity-75 leading-relaxed mt-2">
+            <p class="text-sm opacity-80 leading-relaxed mt-2">
               {{ project.description }}
             </p>
 
             <div class="flex flex-wrap gap-1.5 mt-4 pt-2">
               {% for tag in project.tags %}
-                <span class="badge badge-xs badge-soft badge-primary text-[11px]">{{ tag }}</span>
+                <span class="badge badge-xs badge-soft badge-primary text-[11px] font-mono">{{ tag }}</span>
               {% endfor %}
             </div>
+
           </div>
 
-          <div class="card-actions justify-end p-6 pt-0 border-t border-base-200 mt-auto">
+          <div class="card-actions justify-between items-center p-6 pt-0 border-t border-base-200/80 mt-auto">
             {% if project.github %}
-              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-                Code
+              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-xs font-mono">
+                Source Code
               </a>
+            {% else %}
+              <span></span>
             {% endif %}
             {% if project.link %}
-              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                Visit →
+              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-xs font-mono">
+                Live Demo →
               </a>
             {% endif %}
           </div>
         </article>
       {% endfor %}
     </div>
+
   </div>
 </section>
 
+
 <!-- =======================================================================
-     3. Writing & Thoughts Section
+     04 // YOUTUBE VIDEOS (Featured added by him as he is a YouTuber)
      ======================================================================= -->
-<section class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="flex items-center justify-between mb-10">
-    <div>
-      <span class="badge badge-secondary badge-outline text-xs uppercase tracking-wider mb-2 font-semibold">Writing</span>
-      <h2 class="text-3xl font-extrabold tracking-tight">Recent Articles</h2>
-      <p class="text-sm opacity-70 mt-1">Thoughts on web development, design engineering, and modern tools.</p>
+<section id="videos" class="py-20 bg-base-200/30 border-b border-base-200/80 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header with YouTube Stats Banner -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6 pb-6 border-b border-base-200/80">
+      <div>
+        <div class="text-xs font-mono text-error font-bold tracking-wider mb-2 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-error"></span>
+          // 04 · YOUTUBE CREATOR STUDIO
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Featured Engineering Videos</h2>
+        <p class="text-sm text-base-content/70 mt-1 max-w-xl">Deep-dive video walkthroughs covering edge runtimes, modern CSS, and full-stack engineering.</p>
+      </div>
+
+      <!-- Channel Stats Pill -->
+      <a 
+        href="{{ site.youtubeChannel.url }}" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="flex items-center gap-3 p-3 px-4 rounded-xl bg-base-100 border border-base-300 shadow-xs hover:border-error transition-colors"
+      >
+        <svg class="h-6 w-6 fill-current text-red-500 shrink-0" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <div class="text-xs font-mono">
+          <span class="font-bold text-base-content block">{{ site.youtubeChannel.handle }}</span>
+          <span class="opacity-70">{{ site.youtubeChannel.subscribers }} subs · {{ site.youtubeChannel.totalViews }} views</span>
+        </div>
+        <span class="btn btn-xs btn-error text-white font-mono ml-2">Subscribe</span>
+      </a>
     </div>
-    <a href="/posts/" class="btn btn-ghost btn-sm text-primary">
-      All posts →
-    </a>
-  </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {% for post in collections.posts | reverse | limit(4) %}
-      {% include "components/post-card.njk" %}
-    {% else %}
-      <p class="opacity-60">No posts published yet.</p>
-    {% endfor %}
+    <!-- YouTube Videos Grid (Cards with Play Overlay & Meta) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {% for video in youtube %}
+        <div class="crosshair-corner card bg-base-100 border border-base-300 shadow-sm hover:shadow-lg transition-all duration-300 rounded-2xl overflow-hidden flex flex-col group">
+          
+          <!-- Video Thumbnail Container with Duration & Play Button -->
+          <div class="relative aspect-video w-full overflow-hidden bg-base-200">
+            <img 
+              src="{{ video.thumbnail }}" 
+              alt="{{ video.title }}" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                <svg class="h-5 w-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <!-- Duration Badge -->
+            <span class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/80 text-white text-[10px] font-mono font-medium">
+              {{ video.duration }}
+            </span>
+            <!-- Tag -->
+            <span class="absolute top-2 left-2 badge badge-xs badge-neutral font-mono">
+              {{ video.tag }}
+            </span>
+          </div>
+
+          <!-- Video Body -->
+          <div class="card-body p-4 flex flex-col justify-between flex-1">
+            <div>
+              <h3 class="font-bold text-sm leading-snug line-clamp-2 group-hover:text-primary transition-colors">
+                {{ video.title }}
+              </h3>
+              <p class="text-xs opacity-70 line-clamp-2 mt-2 leading-relaxed">
+                {{ video.description }}
+              </p>
+            </div>
+
+            <div class="pt-3 mt-3 border-t border-base-200 flex items-center justify-between text-[11px] font-mono opacity-60">
+              <span>{{ video.views }}</span>
+              <span>{{ video.published }}</span>
+            </div>
+
+            <a 
+              href="{{ video.url }}" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn btn-outline btn-xs font-mono mt-3 w-full"
+            >
+              Watch Video →
+            </a>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+
   </div>
 </section>
 
+
 <!-- =======================================================================
-     4. Minimal Call to Action / Connect Card
+     05 // BLOGS SECTION (Recent Technical Articles)
      ======================================================================= -->
-<section class="py-12 bg-base-200/50 border-t border-base-300">
+<section id="blog" class="py-20 border-b border-base-200/80 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 pb-6 border-b border-base-200/80">
+      <div>
+        <div class="text-xs font-mono text-secondary font-bold tracking-wider mb-2">// 05 · ENGINEERING BLOG</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Recent Writing</h2>
+        <p class="text-sm text-base-content/70 mt-1 max-w-xl">Deep dives, tutorials, and practical insights on modern web development and design systems.</p>
+      </div>
+      <a href="/blog/" class="btn btn-outline btn-sm font-mono gap-1 self-start sm:self-auto">
+        <span>All Articles</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for post in collections.posts | reverse | limit(4) %}
+        <article class="crosshair-corner card bg-base-100 border border-base-300 shadow-sm hover:shadow-md hover:border-secondary transition-all duration-200 rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 text-xs font-mono opacity-60 mb-2">
+              <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+              <span>·</span>
+              <span class="text-secondary font-semibold">5 min read</span>
+            </div>
+            
+            <h3 class="text-xl font-bold font-mono tracking-tight text-base-content hover:text-primary transition-colors">
+              <a href="{{ post.url }}">{{ post.data.title }}</a>
+            </h3>
+
+            <p class="text-sm opacity-75 mt-2 leading-relaxed">
+              {{ post.data.description | default(post.templateContent | striptags | truncate(140)) }}
+            </p>
+          </div>
+
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-base-200 text-xs font-mono">
+            <div class="flex gap-1.5">
+              {% for tag in post.data.tags %}
+                {% if tag != "posts" %}
+                  <span class="badge badge-xs badge-soft badge-secondary">{{ tag }}</span>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <a href="{{ post.url }}" class="link link-hover font-bold text-primary">
+              Read Post →
+            </a>
+          </div>
+        </article>
+      {% else %}
+        <div class="col-span-2 p-8 text-center border border-dashed border-base-300 rounded-xl">
+          <p class="font-mono text-sm opacity-60">Articles are currently being staged.</p>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =======================================================================
+     06 // GALLERY SECTION (Photos & Life of a Developer)
+     ======================================================================= -->
+<section id="gallery" class="py-20 bg-base-200/20 border-b border-base-200/80 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 pb-6 border-b border-base-200/80">
+      <div>
+        <div class="text-xs font-mono text-accent font-bold tracking-wider mb-2">// 06 · PHOTOGRAPHY & SPACES</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Developer Life & Studio</h2>
+        <p class="text-sm text-base-content/70 mt-1 max-w-xl">Snapshots of workspaces, speaking engagements, creator studio gear, and travel.</p>
+      </div>
+      <a href="/photos/" class="btn btn-outline btn-sm font-mono gap-1 self-start sm:self-auto">
+        <span>Full Gallery</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Gallery Bento Grid with Vercel Crosshair Borders -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for photo in photos | limit(3) %}
+        <figure class="crosshair-corner card bg-base-100 border border-base-300 shadow-sm hover:shadow-md transition-all duration-300 rounded-2xl overflow-hidden group">
+          <div class="relative aspect-4/3 w-full overflow-hidden bg-base-200">
+            <img 
+              src="{{ photo.image }}" 
+              alt="{{ photo.title }}" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter grayscale contrast-110 group-hover:grayscale-0"
+              loading="lazy"
+            />
+            <div class="absolute top-3 left-3 badge badge-sm badge-neutral font-mono">
+              {{ photo.category }}
+            </div>
+            <div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/75 text-white text-[11px] font-mono">
+              {{ photo.location }}
+            </div>
+          </div>
+          <figcaption class="p-4 border-t border-base-200">
+            <h4 class="font-bold text-sm tracking-tight">{{ photo.title }}</h4>
+            <p class="text-xs opacity-70 mt-1 line-clamp-1 font-mono">{{ photo.description }}</p>
+          </figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =======================================================================
+     07 // CONNECT / TERMINAL CALL TO ACTION
+     ======================================================================= -->
+<section class="py-16 relative">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="card bg-base-100 border border-base-200 shadow-sm p-8 sm:p-12 rounded-box text-center">
-      <div class="max-w-xl mx-auto">
-        <span class="badge badge-primary badge-soft text-xs uppercase tracking-wider mb-3 font-semibold">Let's Connect</span>
+    <div class="crosshair-corner card bg-base-100 border border-base-300 shadow-xl rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
+      <!-- Ambient background grid -->
+      <div class="absolute inset-0 grid-lines-dense opacity-20 pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-xl mx-auto">
+        <span class="badge badge-primary badge-outline font-mono text-xs mb-3 font-semibold">
+          // GET IN TOUCH
+        </span>
         <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
-          Have an idea or project in mind?
+          Let's build something remarkable together.
         </h2>
-        <p class="text-sm sm:text-base opacity-75 mt-3 leading-relaxed">
-          I'm currently open for freelance projects, open-source collaborations, and engineering roles. Drop me a line anytime.
+        <p class="text-sm opacity-75 mt-3 leading-relaxed">
+          Open for engineering contracts, technical advisory, conference speaking, and creator sponsorships.
         </p>
 
-        <div class="mt-8 flex flex-wrap justify-center gap-3">
-          <a href="mailto:{{ site.author.email }}" class="btn btn-primary">
-            Send an Email
+        <div class="mt-8 flex flex-wrap justify-center gap-3 font-mono text-sm">
+          <a href="mailto:{{ site.author.email }}" class="btn btn-primary btn-md">
+            {{ site.author.email }}
           </a>
-          {% if site.author.linkedin %}
-            <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-              LinkedIn
-            </a>
-          {% endif %}
-          {% if site.author.github %}
-            <a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
-              GitHub Profile
-            </a>
-          {% endif %}
+          <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-md">
+            Connect on LinkedIn
+          </a>
+          <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-md text-error">
+            YouTube Channel
+          </a>
         </div>
       </div>
     </div>
