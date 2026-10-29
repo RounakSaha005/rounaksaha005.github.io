@@ -1,9 +1,9 @@
+# =======================================================================
 # Pages CMS Configuration
 # Documentation: https://pagescms.org/docs/
+# =======================================================================
 
 # Media Uploads Configuration
-# Every uploaded image from the Pages CMS media manager or content fields
-# is saved into `input` (in Git) and referenced by `output` (public URL).
 media:
   input: src/assets/images
   output: /assets/images
@@ -11,9 +11,11 @@ media:
   rename: safe
 
 content:
-  # Blog Posts Collection
+  # =====================================================================
+  # 01 // BLOG POSTS COLLECTION (Markdown with YAML Frontmatter)
+  # =====================================================================
   - name: posts
-    label: Blog Posts
+    label: Blog Posts / Notes
     type: collection
     path: src/posts
     format: yaml-frontmatter
@@ -36,162 +38,470 @@ content:
         type: date
         default: now
       - name: image
-        label: Featured Image
+        label: Featured Cover Image
         type: image
         description: Cover image for this post and Open Graph cards
       - name: tags
         label: Tags
-        type: list
-        list: string
+        type: string
+        list: true
       - name: body
-        label: Post Content
+        label: Post Content (Markdown)
         type: rich-text
 
-  # Featured YouTube Videos Collection
+  # =====================================================================
+  # 02 // PROJECT CASE STUDIES (In-depth Markdown Case Studies)
+  # =====================================================================
+  - name: case-studies
+    label: Project Case Studies
+    type: collection
+    path: src/projects
+    format: yaml-frontmatter
+    filename: "{slug}.md"
+    view:
+      primary: title
+    fields:
+      - name: title
+        label: Project Title
+        type: string
+        required: true
+      - name: description
+        label: Short Summary
+        type: text
+      - name: role
+        label: Your Role (e.g. Creator & Core Maintainer)
+        type: string
+      - name: timeline
+        label: Timeline (e.g. 2025 — 2026)
+        type: string
+      - name: year
+        label: Year
+        type: string
+      - name: tags
+        label: Technology Tags
+        type: string
+        list: true
+      - name: link
+        label: Live Demo / Site URL
+        type: string
+      - name: github
+        label: GitHub Repository URL
+        type: string
+      - name: layout
+        label: Layout Template
+        type: string
+        default: project.njk
+      - name: body
+        label: Case Study Content (Markdown)
+        type: rich-text
+
+  # =====================================================================
+  # 03 // STANDALONE PAGES (Documentation, Showcases, etc.)
+  # =====================================================================
+  - name: pages
+    label: Standalone Pages
+    type: collection
+    path: src/pages
+    format: yaml-frontmatter
+    exclude: [pages.json]
+    filename: "{slug}.md"
+    view:
+      primary: title
+    fields:
+      - name: title
+        label: Page Title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle / Description
+        type: text
+      - name: permalink
+        label: Output URL Path
+        type: string
+      - name: body
+        label: Page Content (Markdown)
+        type: rich-text
+
+  # =====================================================================
+  # 04 // HOMEPAGE CONTENT & FEATURED WORK
+  # =====================================================================
+  - name: home
+    label: Homepage Content
+    type: file
+    path: src/_data/home.json
+    fields:
+      - name: headline
+        label: Hero Main Headline
+        type: string
+        required: true
+      - name: bio
+        label: Hero Biography Text (HTML supported)
+        type: text
+      - name: featuredWork
+        label: Featured Work / Current Company
+        type: object
+        fields:
+          - name: company
+            label: Company Name
+            type: string
+          - name: role
+            label: Your Role / Title
+            type: string
+          - name: period
+            label: Date Period (e.g. August 2024 - Present)
+            type: string
+          - name: initial
+            label: Logo Badge Letter / Initial
+            type: string
+          - name: description
+            label: Project / Role Narrative
+            type: text
+          - name: image
+            label: Featured Preview Graphic
+            type: image
+
+  # =====================================================================
+  # 05 // ABOUT PAGE CONTENT & TOOLS
+  # =====================================================================
+  - name: about
+    label: About Page
+    type: file
+    path: src/_data/about.json
+    fields:
+      - name: title
+        label: Page Heading
+        type: string
+        required: true
+      - name: subtitle
+        label: Subheading
+        type: string
+      - name: bio1
+        label: Primary Bio Paragraph
+        type: text
+      - name: bio2
+        label: Secondary Bio Paragraph (YouTube & Community)
+        type: text
+      - name: tools
+        label: Workstation Tools & Studio Gear
+        type: string
+        list: true
+
+  # =====================================================================
+  # 06 // PROJECTS CATALOG (Selected & All Projects)
+  # =====================================================================
+  - name: projects-list
+    label: Projects Catalog
+    type: file
+    path: src/_data/projects.json
+    list: true
+    fields:
+      - name: title
+        label: Project Title
+        type: string
+        required: true
+      - name: description
+        label: Project Description
+        type: text
+      - name: tags
+        label: Technology Tags
+        type: string
+        list: true
+      - name: caseStudy
+        label: Internal Case Study Path (or null)
+        type: string
+      - name: link
+        label: Live Demo / Product URL
+        type: string
+      - name: github
+        label: GitHub Repository URL
+        type: string
+      - name: featured
+        label: Feature on Homepage
+        type: boolean
+        default: true
+      - name: year
+        label: Year
+        type: string
+      - name: status
+        label: Status Badge (e.g. Production, Shipped)
+        type: string
+
+  # =====================================================================
+  # 07 // RESUME & WORK EXPERIENCE
+  # =====================================================================
+  - name: resume
+    label: Resume / CV
+    type: file
+    path: src/_data/resume.json
+    fields:
+      - name: basics
+        label: Personal Information
+        type: object
+        fields:
+          - name: name
+            label: Full Name
+            type: string
+          - name: label
+            label: Professional Title
+            type: string
+          - name: email
+            label: Email Address
+            type: string
+          - name: phone
+            label: Phone Number
+            type: string
+          - name: url
+            label: Website URL
+            type: string
+          - name: summary
+            label: Executive Summary
+            type: text
+          - name: location
+            label: Location
+            type: object
+            fields:
+              - name: city
+                label: City
+                type: string
+              - name: country
+                label: Country
+                type: string
+          - name: profiles
+            label: Social / Web Profiles
+            type: object
+            list: true
+            fields:
+              - name: network
+                label: Platform Name (e.g. GitHub, LinkedIn)
+                type: string
+              - name: username
+                label: Handle / Username
+                type: string
+              - name: url
+                label: Profile URL
+                type: string
+      - name: experience
+        label: Work Experience History
+        type: object
+        list: true
+        fields:
+          - name: company
+            label: Company Name
+            type: string
+          - name: position
+            label: Position / Job Title
+            type: string
+          - name: startDate
+            label: Start Year / Date
+            type: string
+          - name: endDate
+            label: End Year / Date (or Present)
+            type: string
+          - name: location
+            label: Workplace Location
+            type: string
+          - name: highlights
+            label: Key Accomplishments
+            type: string
+            list: true
+          - name: technologies
+            label: Tech Stack Used
+            type: string
+            list: true
+      - name: education
+        label: Education
+        type: object
+        list: true
+        fields:
+          - name: institution
+            label: Institution / University
+            type: string
+          - name: area
+            label: Field of Study / Major
+            type: string
+          - name: studyType
+            label: Degree (e.g. B.Tech)
+            type: string
+          - name: startDate
+            label: Start Year
+            type: string
+          - name: endDate
+            label: Graduation Year
+            type: string
+          - name: score
+            label: Grade / CGPA
+            type: string
+      - name: skills
+        label: Skill Categories
+        type: object
+        list: true
+        fields:
+          - name: category
+            label: Category Name
+            type: string
+          - name: items
+            label: Skill Items
+            type: string
+            list: true
+      - name: achievements
+        label: Key Career Achievements
+        type: string
+        list: true
+
+  # =====================================================================
+  # 08 // ART & PHOTOGRAPHY GALLERY
+  # =====================================================================
+  - name: photos
+    label: Art & Photo Gallery
+    type: file
+    path: src/_data/photos.json
+    list: true
+    fields:
+      - name: id
+        label: Photo ID
+        type: string
+      - name: title
+        label: Photo Title
+        type: string
+        required: true
+      - name: category
+        label: Category (e.g. Setup, Speaking, Community, Travel)
+        type: string
+      - name: location
+        label: Location
+        type: string
+      - name: date
+        label: Year / Date
+        type: string
+      - name: image
+        label: Photo Image
+        type: image
+        required: true
+      - name: description
+        label: Caption
+        type: text
+
+  # =====================================================================
+  # 09 // FEATURED YOUTUBE VIDEOS
+  # =====================================================================
   - name: youtube
     label: YouTube Videos
     type: file
     path: src/_data/youtube.json
+    list: true
     fields:
-      - name: videos
-        label: Video List
-        type: list
-        fields:
-          - name: title
-            label: Video Title
-            type: string
-            required: true
-          - name: description
-            label: Description
-            type: text
-          - name: thumbnail
-            label: Video Thumbnail Image
-            type: image
-          - name: duration
-            label: Duration (e.g. 24:10)
-            type: string
-          - name: views
-            label: Views Count
-            type: string
-          - name: url
-            label: YouTube Video URL
-            type: string
-          - name: tag
-            label: Category Tag
-            type: string
+      - name: id
+        label: Video ID
+        type: string
+      - name: title
+        label: Video Title
+        type: string
+        required: true
+      - name: description
+        label: Video Description
+        type: text
+      - name: thumbnail
+        label: Thumbnail Image
+        type: image
+      - name: duration
+        label: Video Duration (e.g. 24:10)
+        type: string
+      - name: views
+        label: Views Count (e.g. 64K views)
+        type: string
+      - name: published
+        label: Published Relative Time (e.g. 2 weeks ago)
+        type: string
+      - name: url
+        label: YouTube Video URL
+        type: string
+      - name: tag
+        label: Category Tag (e.g. Tutorial, Architecture)
+        type: string
 
-  # Developer Photos Gallery
-  - name: photos
-    label: Photo Gallery
-    type: file
-    path: src/_data/photos.json
-    fields:
-      - name: gallery
-        label: Photo Items
-        type: list
-        fields:
-          - name: title
-            label: Photo Title
-            type: string
-            required: true
-          - name: category
-            label: Category (Setup, Speaking, Community, Travel)
-            type: string
-          - name: location
-            label: Location
-            type: string
-          - name: date
-            label: Year / Date
-            type: string
-          - name: image
-            label: Upload Photo
-            type: image
-          - name: description
-            label: Caption
-            type: text
-
-  # Friends & Blogroll
+  # =====================================================================
+  # 10 // FRIENDS & BLOGROLL
+  # =====================================================================
   - name: friends
     label: Friends & Blogroll
     type: file
     path: src/_data/friends.json
+    list: true
     fields:
-      - name: peers
-        label: Friend List
-        type: list
-        fields:
-          - name: name
-            label: Name
-            type: string
-            required: true
-          - name: role
-            label: Role & Company
-            type: string
-          - name: url
-            label: Personal Website URL
-            type: string
-          - name: avatar
-            label: Avatar Image
-            type: image
-          - name: bio
-            label: Short Bio
-            type: text
+      - name: name
+        label: Full Name
+        type: string
+        required: true
+      - name: role
+        label: Professional Role & Company
+        type: string
+      - name: url
+        label: Personal Website URL
+        type: string
+      - name: avatar
+        label: Avatar Image
+        type: image
+      - name: bio
+        label: Short Bio
+        type: text
+      - name: tags
+        label: Skill Tags
+        type: string
+        list: true
 
-  # Projects Portfolio
-  - name: projects
-    label: Projects
+  # =====================================================================
+  # 11 // SKILLS & MARQUEE TECH BADGES
+  # =====================================================================
+  - name: languages
+    label: Skills & Marquee Badges
     type: file
-    path: src/_data/projects.json
+    path: src/_data/languages.json
+    list: true
     fields:
-      - name: projectList
-        label: Projects
-        type: list
-        fields:
-          - name: title
-            label: Project Title
-            type: string
-            required: true
-          - name: description
-            label: Description
-            type: text
-          - name: year
-            label: Year
-            type: string
-          - name: status
-            label: Status (Production, Open Source, Shipped)
-            type: string
-          - name: github
-            label: GitHub URL
-            type: string
-          - name: link
-            label: Live URL
-            type: string
+      - name: name
+        label: Technology Name (e.g. TypeScript)
+        type: string
+        required: true
+      - name: level
+        label: Proficiency / Domain (e.g. Primary, Systems, Frontend)
+        type: string
+      - name: badge
+        label: daisyUI Badge Style Class (e.g. badge-primary)
+        type: string
 
-  # Global Site Configuration & Metadata
+  # =====================================================================
+  # 12 // GLOBAL SITE SETTINGS & METADATA
+  # =====================================================================
   - name: settings
-    label: Site Settings
+    label: Global Site Settings
     type: file
     path: src/_data/site.json
     fields:
       - name: name
-        label: Site Name
+        label: Site / Person Name
         type: string
         required: true
+      - name: role
+        label: Tagline / Role (e.g. Full-Stack Engineer & Tech YouTuber)
+        type: string
+      - name: location
+        label: Location (e.g. Bengaluru, India)
+        type: string
       - name: title
-        label: Browser Title
+        label: Default Browser Window Title
         type: string
       - name: description
-        label: Site Description
+        label: Global Meta Description
         type: text
       - name: url
-        label: Production URL
+        label: Canonical Production URL
         type: string
       - name: avatar
-        label: Avatar / Logo Image
+        label: Portrait / Avatar Image
         type: image
-        description: Upload your personal avatar or logo
+        description: Photo displayed in OpenGraph cards and hero section
       - name: author
-        label: Author Info
+        label: Author Contact & Socials
         type: object
         fields:
           - name: name
@@ -209,13 +519,40 @@ content:
           - name: youtube
             label: YouTube Channel URL
             type: string
-      - name: navigation
-        label: Navigation Menu
-        type: list
+          - name: twitter
+            label: X / Twitter Profile URL
+            type: string
+      - name: youtubeChannel
+        label: YouTube Channel Statistics
+        type: object
         fields:
-          - name: label
-            label: Nav Label
+          - name: handle
+            label: Channel Handle (e.g. @rounaksaha)
+            type: string
+          - name: subscribers
+            label: Subscriber Count (e.g. 45K+)
+            type: string
+          - name: videosCount
+            label: Total Video Count (e.g. 120+)
+            type: string
+          - name: totalViews
+            label: Total Channel Views (e.g. 3.2M+)
             type: string
           - name: url
-            label: Link URL
+            label: Channel URL
+            type: string
+      - name: skills
+        label: Core Tech Keywords
+        type: string
+        list: true
+      - name: navigation
+        label: Navigation Menu Links
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Nav Item Label
+            type: string
+          - name: url
+            label: Destination Path (e.g. /projects/)
             type: string

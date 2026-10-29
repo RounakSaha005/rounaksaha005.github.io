@@ -27,12 +27,12 @@ title: Home
       <div class="space-y-2">
         <!-- Main Headline (Mona Sans) -->
         <h1 class="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl text-base-content font-bold tracking-tight leading-tight">
-          Hello I'm Rounak Saha, engineer, craftsman
+          {{ home.headline | default("Hello I'm Rounak Saha, engineer, craftsman") }}
         </h1>
 
         <!-- Bio / Description -->
         <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed font-sans">
-          Full-stack engineer based out of Bangalore with <strong>4 years</strong> of experience, currently <strong>engineering modern web platforms at Vortex</strong> and teaching <strong>45K+ developers on YouTube</strong>.
+          {{ (home.bio | default("Full-stack engineer based out of Bangalore with <strong>4 years</strong> of experience, currently <strong>engineering modern web platforms at Vortex</strong> and teaching <strong>45K+ developers on YouTube</strong>.")) | safe }}
         </p>
       </div>
 
@@ -107,24 +107,24 @@ title: Home
   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs mb-2">
     <div class="flex items-center gap-2">
       <div class="w-6 h-6 rounded-md bg-base-content text-base-100 flex items-center justify-center font-bold text-[10px]">
-        V
+        {{ home.featuredWork.initial | default("V") }}
       </div>
-      <span class="font-semibold text-base-content">Vortex Cloud</span>
-      <span class="text-base-content/50">/ Senior Frontend Engineer</span>
+      <span class="font-semibold text-base-content">{{ home.featuredWork.company | default("Vortex Cloud") }}</span>
+      <span class="text-base-content/50">/ {{ home.featuredWork.role | default("Senior Frontend Engineer") }}</span>
     </div>
-    <span class="text-base-content/50 font-sans text-[11px]">August 2024 - Present</span>
+    <span class="text-base-content/50 font-sans text-[11px]">{{ home.featuredWork.period | default("August 2024 - Present") }}</span>
   </div>
 
   <!-- Narrative Summary -->
   <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed mb-5 font-sans">
-    At Vortex, I currently design user experiences for real-time telemetry and edge cloud infrastructure while also managing their design system tokens.
+    {{ home.featuredWork.description | default("At Vortex, I currently design user experiences for real-time telemetry and edge cloud infrastructure while also managing their design system tokens.") }}
   </p>
 
   <!-- Large Featured Preview Graphic with 'Coming soon' Badge -->
   <div class="relative rounded-2xl overflow-hidden border border-dotted border-base-300 bg-base-200/30 aspect-16/9 sm:aspect-2/1">
     <img 
-      src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" 
-      alt="Vortex Cloud System Interface" 
+      src="{{ home.featuredWork.image | default('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80') }}" 
+      alt="{{ home.featuredWork.company | default('Vortex Cloud') }} System Interface" 
       class="w-full h-full object-cover filter contrast-105"
       loading="lazy"
     />
@@ -133,7 +133,7 @@ title: Home
     <!-- Central Geometric Logo Badge -->
     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
       <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border-2 border-white/60 bg-black/40 backdrop-blur-md flex items-center justify-center shadow-lg">
-        <span class="font-heading text-xl sm:text-2xl text-white font-bold">V</span>
+        <span class="font-heading text-xl sm:text-2xl text-white font-bold">{{ home.featuredWork.initial | default("V") }}</span>
       </div>
     </div>
   </div>
