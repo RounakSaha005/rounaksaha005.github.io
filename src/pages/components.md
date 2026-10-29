@@ -61,7 +61,7 @@ Use the daisyUI `btn` component for calls-to-action and interactive elements.
 Use the daisyUI `collapse collapse-arrow` component for expandable disclosures and FAQs.
 
 {% collapse "How do I switch themes?" %}
-Select any of the 4 themes in the top navbar: **Ocean Sun**, **Electric Pop**, **Midnight Indigo**, or **Slate Mint**. The change is instant with zero reload and stored in localStorage.
+Click the theme toggle button in the top navbar to seamlessly switch between Light and Dark mode. The change is instant with zero reload and stored in localStorage.
 {% endcollapse %}
 
 {% collapse "How does daisyUI 5 theming work?" %}

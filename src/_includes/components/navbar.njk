@@ -31,7 +31,7 @@
         id="theme-toggle-btn"
         type="button" 
         onclick="toggleLightDarkTheme()" 
-        class="p-1 rounded-md text-base-content/60 hover:text-base-content transition-colors cursor-pointer shrink-0 flex items-center justify-center"
+        class="p-1.5 rounded-lg text-base-content/60 hover:text-base-content hover:bg-base-200/60 transition-colors cursor-pointer shrink-0 flex items-center justify-center"
         aria-label="Toggle Light and Dark Theme"
         title="Toggle Theme (Light / Dark)"
       >
@@ -43,15 +43,22 @@
 
       <!-- Minimal Dropdown for other pages and mobile quick-access -->
       <div class="dropdown dropdown-end">
-        <label tabindex="0" class="cursor-pointer text-base-content/60 hover:text-base-content p-1 flex items-center justify-center" aria-label="More navigation links">
+        <label tabindex="0" class="cursor-pointer text-base-content/60 hover:text-base-content hover:bg-base-200/60 p-1.5 rounded-lg flex items-center justify-center transition-colors" aria-label="More navigation links">
           <i class="ph ph-dots-three-vertical text-base"></i>
         </label>
-        <ul tabindex="0" class="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-xl w-44 border border-dotted border-base-300 text-xs font-mono z-50 mt-2 space-y-0.5">
-          <li><a href="/resume/" class="flex items-center gap-2"><i class="ph ph-file-text text-sm"></i> Resume / CV</a></li>
-          <li><a href="/friends/" class="flex items-center gap-2"><i class="ph ph-users text-sm"></i> Friends / Roll</a></li>
-          <li class="menu-title mt-1.5 pt-1.5 border-t border-dotted border-base-300 text-[10px] uppercase font-mono text-base-content/40">Theme</li>
-          <li><button type="button" onclick="setSpecificTheme('light')" class="flex items-center gap-2"><i class="ph ph-sun text-sm"></i> Light Mode</button></li>
-          <li><button type="button" onclick="setSpecificTheme('dark')" class="flex items-center gap-2"><i class="ph ph-moon text-sm"></i> Dark Mode</button></li>
+        <ul tabindex="0" class="dropdown-content menu p-1.5 shadow-xl bg-base-100 rounded-xl w-40 border border-dotted border-base-300 text-xs font-mono z-50 mt-2 space-y-0.5">
+          <li>
+            <a href="/resume/" class="flex items-center gap-2 py-2 px-2.5 rounded-lg hover:bg-base-200 hover:text-primary transition-colors">
+              <i class="ph ph-file-text text-sm"></i> 
+              <span>Resume / CV</span>
+            </a>
+          </li>
+          <li>
+            <a href="/friends/" class="flex items-center gap-2 py-2 px-2.5 rounded-lg hover:bg-base-200 hover:text-primary transition-colors">
+              <i class="ph ph-users text-sm"></i> 
+              <span>Friends / Roll</span>
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -75,16 +82,12 @@
     }
   }
 
-  function setSpecificTheme(theme) {
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem('theme', theme);
-    updateThemeUI(theme);
-  }
-
   function toggleLightDarkTheme() {
     const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
     const next = current === 'dark' ? 'light' : 'dark';
-    setSpecificTheme(next);
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    updateThemeUI(next);
   }
 
   // Sync icon on initial page load
