@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import https from 'https';
 import postcss from 'postcss';
 import tailwindcss from '@tailwindcss/postcss';
 
@@ -31,6 +32,60 @@ export default function (eleventyConfig) {
     });
 
     fs.writeFileSync(tailwindOutputPath, result.css);
+
+    // Auto-resolve YouTube Channel ID & Initial Subscribers from Channel Link
+    try {
+      const sitePath = path.resolve('./src/_data/site.json');
+      if (fs.existsSync(sitePath)) {
+        const siteData = JSON.parse(fs.readFileSync(sitePath, 'utf8'));
+        const yt = siteData.youtubeChannel;
+        if (yt && yt.url && (!yt.channelId || !yt.subscribers)) {
+          const directMatch = yt.url.match(/UC[\w-]{21,23}/);
+          if (directMatch) {
+            yt.channelId = directMatch[0];
+            fs.writeFileSync(sitePath, JSON.stringify(siteData, null, 2), 'utf8');
+          } else {
+            const resolved = await new Promise((resolve) => {
+              const req = https.get(yt.url, {
+                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+                timeout: 3000
+              }, (r) => {
+                let d = '';
+                r.on('data', c => {
+                  d += c;
+                  const mId = d.match(/externalId["\s:]+(UC[\w-]+)/);
+                  const mSub = d.match(/"content":"([0-9\.]+[KMBkmb]?\s+subscribers?)"/);
+                  if (mId && mSub) {
+                    r.destroy();
+                    resolve({ id: mId[1], subs: mSub[1] });
+                  }
+                });
+                r.on('end', () => {
+                  const mId = d.match(/externalId["\s:]+(UC[\w-]+)/);
+                  const mSub = d.match(/"content":"([0-9\.]+[KMBkmb]?\s+subscribers?)"/);
+                  resolve({ id: mId ? mId[1] : null, subs: mSub ? mSub[1] : null });
+                });
+              });
+              req.on('error', () => resolve({ id: null, subs: null }));
+              req.on('timeout', () => { req.destroy(); resolve({ id: null, subs: null }); });
+            });
+
+            let changed = false;
+            if (resolved.id && !yt.channelId) {
+              yt.channelId = resolved.id;
+              changed = true;
+            }
+            if (resolved.subs && (!yt.subscribers || yt.subscribers === '45K+')) {
+              yt.subscribers = resolved.subs;
+              changed = true;
+            }
+            if (changed) {
+              fs.writeFileSync(sitePath, JSON.stringify(siteData, null, 2), 'utf8');
+            }
+          }
+        }
+      }
+    } catch (_) {}
   });
 
   // Shortcode for dynamic copyright year

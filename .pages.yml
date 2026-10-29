@@ -541,24 +541,21 @@ content:
             label: X / Twitter Profile URL
             type: string
       - name: youtubeChannel
-        label: YouTube Channel Statistics
+        label: YouTube Channel Link & Stats
         type: object
         fields:
+          - name: url
+            label: YouTube Channel URL
+            type: string
+            required: true
+            description: "Simply paste your YouTube channel link (e.g. https://youtube.com/@rounaksaha). Subscriber count is automatically fetched and cached!"
           - name: handle
-            label: Channel Handle (e.g. @rounaksaha)
+            label: Channel Handle (Optional)
             type: string
           - name: subscribers
-            label: Subscriber Count (e.g. 45K+)
+            label: Cached / Initial Subscribers (Auto-updated)
             type: string
-          - name: videosCount
-            label: Total Video Count (e.g. 120+)
-            type: string
-          - name: totalViews
-            label: Total Channel Views (e.g. 3.2M+)
-            type: string
-          - name: url
-            label: Channel URL
-            type: string
+            description: "Auto-updated on the client side. You can leave this blank." 
       - name: skills
         label: Core Tech Keywords
         type: string

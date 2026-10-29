@@ -240,7 +240,14 @@ title: Home
       <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
         YouTube
       </h2>
-      <span class="text-xs text-base-content/50">· 45K subscribers</span>
+      <span 
+        id="yt-sub-count"
+        class="yt-sub-count text-xs text-base-content/50"
+        data-channel-url="{{ site.youtubeChannel.url }}"
+        data-channel-id="{{ site.youtubeChannel.channelId }}"
+      >
+        · {{ site.youtubeChannel.subscribers or 'Subscribers' }}
+      </span>
     </div>
     <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1">
       Channel <i class="ph ph-arrow-right text-[11px]"></i>
@@ -278,6 +285,97 @@ title: Home
     {% endfor %}
   </div>
 
+  <!-- Client-side YouTube Subscriber Count Fetcher & Cache Manager -->
+  <script>
+    (function() {
+      const subElements = document.querySelectorAll('.yt-sub-count, #yt-sub-count');
+      if (!subElements.length) return;
+
+      const firstEl = subElements[0];
+      const channelUrl = firstEl.getAttribute('data-channel-url') || '{{ site.youtubeChannel.url }}';
+      let channelId = firstEl.getAttribute('data-channel-id') || '{{ site.youtubeChannel.channelId }}';
+
+      if (!channelId && channelUrl) {
+        const match = channelUrl.match(/UC[\w-]{21,23}/);
+        if (match) channelId = match[0];
+      }
+
+      const key = channelId || channelUrl || 'yt_default';
+      const cacheKey = 'yt_sub_cache_' + key;
+      const cacheTimeKey = 'yt_sub_time_' + key;
+      const TTL = 4 * 60 * 60 * 1000; // 4 hours client-side cache
+
+      function renderSubs(text) {
+        if (!text) return;
+        const clean = text.trim();
+        const formatted = clean.startsWith('·') ? clean : ('· ' + clean);
+        subElements.forEach(function(el) {
+          el.textContent = formatted;
+        });
+      }
+
+      // 1. Immediately apply cached subscriber count to prevent layout shift or waiting
+      const cached = localStorage.getItem(cacheKey);
+      const cachedTime = parseInt(localStorage.getItem(cacheTimeKey) || '0', 10);
+      const isCacheValid = cached && (Date.now() - cachedTime < TTL);
+
+      if (cached) {
+        renderSubs(cached);
+      }
+
+      function formatCount(count) {
+        if (!count) return null;
+        if (typeof count === 'string' && count.toLowerCase().includes('sub')) {
+          return count;
+        }
+        const num = Number(count);
+        if (isNaN(num)) return count + ' subscribers';
+        const formatted = new Intl.NumberFormat('en-US', {
+          notation: 'compact',
+          compactDisplay: 'short',
+          maximumFractionDigits: 2
+        }).format(num);
+        return formatted + ' subscribers';
+      }
+
+      // 2. Fetch latest subscriber count in the background and update afterwards if needed
+      async function updateSubscriberCount() {
+        try {
+          if (!channelId && channelUrl) {
+            const cachedId = localStorage.getItem('yt_channel_id_' + channelUrl);
+            if (cachedId) channelId = cachedId;
+          }
+
+          if (channelId) {
+            const res = await fetch('https://api.socialcounts.org/youtube-live-subscriber-count/' + encodeURIComponent(channelId), {
+              headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+              const data = await res.json();
+              const rawCount = data?.counters?.api?.subscriberCount ?? data?.counters?.estimation?.subscriberCount;
+              if (rawCount) {
+                const formattedText = formatCount(rawCount);
+                renderSubs(formattedText);
+                localStorage.setItem(cacheKey, formattedText);
+                localStorage.setItem(cacheTimeKey, Date.now().toString());
+              }
+            }
+          }
+        } catch (err) {
+          // Non-blocking background catch: cached value remains displayed
+        }
+      }
+
+      // If cache is missing or expired, fetch and update afterwards
+      if (!isCacheValid) {
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(updateSubscriberCount);
+        } else {
+          setTimeout(updateSubscriberCount, 200);
+        }
+      }
+    })();
+  </script>
 </section>
 
 

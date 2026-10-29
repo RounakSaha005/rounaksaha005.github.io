@@ -2,7 +2,7 @@
   "name": "Rounak Saha",
   "role": "Full-Stack Engineer & Tech YouTuber",
   "location": "Bengaluru, India",
-  "title": "Rounak Saha · Full-Stack Engineer & Content Creator",
+  "title": "Rounak Saha \u00b7 Full-Stack Engineer & Content Creator",
   "description": "Developer portfolio and digital garden of Rounak Saha. Building scalable web systems, developer tooling, and sharing engineering tutorials on YouTube.",
   "url": "https://rounaksaha005.github.io",
   "avatar": "/assets/images/me.jpeg",
@@ -42,11 +42,10 @@
     }
   ],
   "youtubeChannel": {
+    "url": "https://youtube.com/@rounaksaha",
+    "channelId": "UCHwXorK49Qxv77JlwW3WKZA",
     "handle": "@rounaksaha",
-    "subscribers": "45K+",
-    "videosCount": "120+",
-    "totalViews": "3.2M+",
-    "url": "https://youtube.com/@rounaksaha"
+    "subscribers": "2.38K subscribers"
   },
   "skills": [
     "TypeScript",
@@ -66,12 +65,33 @@
     "Vercel"
   ],
   "navigation": [
-    { "label": "Home", "url": "/" },
-    { "label": "About", "url": "/about/" },
-    { "label": "Blog", "url": "/blog/" },
-    { "label": "Projects", "url": "/projects/" },
-    { "label": "Resume", "url": "/resume/" },
-    { "label": "Friends", "url": "/friends/" },
-    { "label": "Photos", "url": "/photos/" }
+    {
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "About",
+      "url": "/about/"
+    },
+    {
+      "label": "Blog",
+      "url": "/blog/"
+    },
+    {
+      "label": "Projects",
+      "url": "/projects/"
+    },
+    {
+      "label": "Resume",
+      "url": "/resume/"
+    },
+    {
+      "label": "Friends",
+      "url": "/friends/"
+    },
+    {
+      "label": "Photos",
+      "url": "/photos/"
+    }
   ]
 }
