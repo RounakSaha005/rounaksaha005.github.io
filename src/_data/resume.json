@@ -3,7 +3,6 @@
     "name": "Rounak Saha",
     "label": "Full-Stack Engineer & Tech YouTuber",
     "email": "rounak@example.com",
-    "phone": "+91 (987) 654-3210",
     "url": "https://rounaksaha.dev",
     "summary": "Full-Stack Engineer with 4+ years of experience engineering high-performance web systems, static architectures, and scalable cloud edge APIs. Creator of technical tutorials on YouTube reaching over 45K developers worldwide. Specialized in TypeScript, React, Next.js, Eleventy, and distributed edge runtimes.",
     "location": {
@@ -11,9 +10,21 @@
       "country": "India"
     },
     "profiles": [
-      { "network": "GitHub", "url": "https://github.com/rounaksaha", "username": "rounaksaha" },
-      { "network": "LinkedIn", "url": "https://linkedin.com/in/rounaksaha", "username": "rounaksaha" },
-      { "network": "YouTube", "url": "https://youtube.com/@rounaksaha", "username": "@rounaksaha" }
+      {
+        "network": "GitHub",
+        "username": "rounaksaha",
+        "url": "https://github.com/rounaksaha"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "rounaksaha",
+        "url": "https://linkedin.com/in/rounaksaha"
+      },
+      {
+        "network": "YouTube",
+        "username": "@rounaksaha",
+        "url": "https://youtube.com/@rounaksaha"
+      }
     ]
   },
   "experience": [
@@ -28,7 +39,14 @@
         "Engineered internal design system with custom CSS variables, reducing bundle size by 38% and ensuring 100% WCAG AA compliance.",
         "Spearheaded migration to edge-rendered micro-frontends on Cloudflare Workers, trimming P99 TTFB from 680ms to 92ms."
       ],
-      "technologies": ["TypeScript", "React", "Next.js", "Tailwind CSS", "Cloudflare Workers", "WebSockets"]
+      "technologies": [
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Cloudflare Workers",
+        "WebSockets"
+      ]
     },
     {
       "company": "Hyperion Labs",
@@ -41,7 +59,14 @@
         "Built automated CI/CD deployment pipelines using GitHub Actions, reducing release deployment cycles from 45 to 8 minutes.",
         "Mentored 6 junior engineers on static site generators, accessibility standards, and code review hygiene."
       ],
-      "technologies": ["TypeScript", "Node.js", "PostgreSQL", "Docker", "GraphQL", "Jest"]
+      "technologies": [
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Docker",
+        "GraphQL",
+        "Jest"
+      ]
     },
     {
       "company": "Nexus Studio",
@@ -53,7 +78,13 @@
         "Constructed 15+ bespoke client web apps using Jamstack principles, achieving 100/100 Lighthouse performance scores.",
         "Implemented automated responsive testing with Playwright, catching over 80 regressions prior to production."
       ],
-      "technologies": ["JavaScript", "HTML5/CSS3", "Eleventy", "Tailwind CSS", "Git"]
+      "technologies": [
+        "JavaScript",
+        "HTML5/CSS3",
+        "Eleventy",
+        "Tailwind CSS",
+        "Git"
+      ]
     }
   ],
   "education": [
@@ -69,19 +100,49 @@
   "skills": [
     {
       "category": "Languages",
-      "items": ["TypeScript", "JavaScript (ESNext)", "Python", "Rust", "Go", "HTML5", "CSS3 / Modern PostCSS"]
+      "items": [
+        "TypeScript",
+        "JavaScript (ESNext)",
+        "Python",
+        "Rust",
+        "Go",
+        "HTML5",
+        "CSS3 / Modern PostCSS"
+      ]
     },
     {
       "category": "Frameworks & UI",
-      "items": ["React 19", "Next.js", "Eleventy v3", "Tailwind CSS v4", "daisyUI 5", "Node.js", "Express", "Hono"]
+      "items": [
+        "React 19",
+        "Next.js",
+        "Eleventy v3",
+        "Tailwind CSS v4",
+        "daisyUI 5",
+        "Node.js",
+        "Express",
+        "Hono"
+      ]
     },
     {
       "category": "Databases & Cloud",
-      "items": ["PostgreSQL", "Redis", "Cloudflare Workers & D1", "Vercel Edge", "Docker", "Supabase"]
+      "items": [
+        "PostgreSQL",
+        "Redis",
+        "Cloudflare Workers & D1",
+        "Vercel Edge",
+        "Docker",
+        "Supabase"
+      ]
     },
     {
       "category": "Practices & Tooling",
-      "items": ["WCAG AA/AAA Accessibility", "Performance Profiling", "Git / GitHub Actions", "Figma", "REST & GraphQL"]
+      "items": [
+        "WCAG AA/AAA Accessibility",
+        "Performance Profiling",
+        "Git / GitHub Actions",
+        "Figma",
+        "REST & GraphQL"
+      ]
     }
   ],
   "achievements": [
@@ -90,4 +151,3 @@
     "Speaker at JSConf India 2025 on 'Building Resilient Edge Interfaces'."
   ]
 }
-
