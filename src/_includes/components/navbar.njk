@@ -34,28 +34,20 @@
         </a>
       </nav>
 
-      <!-- 1-Click Light / Dark Theme Toggle (daisyUI Swap-Rotate, visible on BOTH mobile and desktop) -->
-      <label 
-        id="theme-toggle-label"
-        class="swap swap-rotate p-1.5 rounded-lg text-base-content/60 hover:text-base-content hover:bg-base-200/60 transition-colors cursor-pointer shrink-0"
+      <!-- 1-Click Light / Dark Theme Toggle with Telegram-Style Growing Circle (daisyUI Swap-Rotate, visible on BOTH mobile and desktop) -->
+      <button 
+        id="theme-toggle-btn"
+        type="button"
+        class="swap swap-rotate p-1.5 rounded-lg text-base-content/60 hover:text-base-content hover:bg-base-200/60 transition-colors cursor-pointer shrink-0 focus-visible:outline-2 focus-visible:outline-primary"
         aria-label="Toggle Light and Dark Theme"
         title="Toggle Theme (Light / Dark)"
       >
-        <!-- State controller checkbox -->
-        <input 
-          id="theme-toggle-checkbox" 
-          type="checkbox" 
-          class="theme-controller" 
-          value="dark"
-          aria-label="Dark mode toggle" 
-        />
-        
-        <!-- Sun icon (shown when swapped ON in dark mode - click to switch to light) -->
+        <!-- Sun icon (shown in dark mode - click to switch to light) -->
         <i class="swap-on ph ph-sun text-base"></i>
         
-        <!-- Moon icon (shown when swapped OFF in light mode - click to switch to dark) -->
+        <!-- Moon icon (shown in light mode - click to switch to dark) -->
         <i class="swap-off ph ph-moon text-base"></i>
-      </label>
+      </button>
 
       <!-- Desktop Dropdown for secondary pages (Resume, Friends) - hidden on mobile -->
       <div class="dropdown dropdown-end max-sm:hidden">
@@ -149,34 +141,95 @@
 
 <script>
   (function() {
-    // 1. Theme toggle synchronization
-    const cb = document.getElementById('theme-toggle-checkbox');
-    if (cb) {
-      function syncCheckbox() {
+    // 1. Theme toggle synchronization with Telegram-style growing circle (View Transitions API)
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) {
+      let isTransitioning = false;
+
+      function syncThemeButton() {
         const isDark = document.documentElement.dataset.theme === 'dark';
-        cb.checked = isDark;
+        themeBtn.classList.toggle('swap-active', isDark);
+        themeBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+        themeBtn.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      }
+
+      function applyTheme(theme) {
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+        syncThemeButton();
       }
 
       // Sync immediately
-      syncCheckbox();
+      syncThemeButton();
 
-      // Toggle listener
-      cb.addEventListener('change', function() {
-        const next = this.checked ? 'dark' : 'light';
-        document.documentElement.dataset.theme = next;
-        localStorage.setItem('theme', next);
+      themeBtn.addEventListener('click', function(e) {
+        if (isTransitioning) return;
+
+        const isDark = document.documentElement.dataset.theme === 'dark';
+        const nextTheme = isDark ? 'light' : 'dark';
+
+        // Check for reduced motion preference or lack of View Transitions API support
+        if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          applyTheme(nextTheme);
+          return;
+        }
+
+        isTransitioning = true;
+
+        // Calculate click / tap coordinates or fallback to button center
+        const rect = themeBtn.getBoundingClientRect();
+        const x = (e && typeof e.clientX === 'number' && e.clientX > 0)
+          ? e.clientX
+          : (rect.left + rect.width / 2);
+        const y = (e && typeof e.clientY === 'number' && e.clientY > 0)
+          ? e.clientY
+          : (rect.top + rect.height / 2);
+
+        // Maximum distance to the furthest viewport corner for 100% full-screen coverage
+        const endRadius = Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y)
+        );
+
+        const transition = document.startViewTransition(function() {
+          applyTheme(nextTheme);
+        });
+
+        transition.ready.then(function() {
+          const clipPath = [
+            'circle(0px at ' + x + 'px ' + y + 'px)',
+            'circle(' + endRadius + 'px at ' + x + 'px ' + y + 'px)'
+          ];
+
+          document.documentElement.animate(
+            { clipPath: clipPath },
+            {
+              duration: 480,
+              easing: 'cubic-bezier(0.2, 0, 0, 1)',
+              pseudoElement: '::view-transition-new(root)'
+            }
+          );
+        }).catch(function(err) {
+          console.warn('View Transition animation fallback:', err);
+        });
+
+        transition.finished.finally(function() {
+          isTransitioning = false;
+        });
       });
 
       // Cross-tab synchronization
       window.addEventListener('storage', function(e) {
-        if (e.key === 'theme') {
+        if (e.key === 'theme' && (e.newValue === 'light' || e.newValue === 'dark')) {
           document.documentElement.dataset.theme = e.newValue;
-          syncCheckbox();
+          syncThemeButton();
         }
       });
 
-      // Re-sync after page ready
-      document.addEventListener('DOMContentLoaded', syncCheckbox);
+      // Re-sync after DOM readiness
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', syncThemeButton);
+      }
     }
 
     // 2. Mobile Hamburger Menu Toggle Controller
