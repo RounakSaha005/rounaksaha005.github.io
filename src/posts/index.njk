@@ -1,10 +1,17 @@
 ---
-layout: base.njk
-title: Redirecting to Blog...
+layout: false
+eleventyExcludeFromCollections: true
 permalink: /posts/index.html
 ---
-
-<meta http-equiv="refresh" content="0; url=/blog/">
-<div class="py-20 text-center font-mono">
-  <p class="text-sm opacity-70">Redirecting to <a href="/blog/" class="link link-primary">/blog/</a>...</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=/blog/">
+  <link rel="canonical" href="/blog/">
+  <title>Redirecting to Notes...</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/blog/">/blog/</a>...</p>
+</body>
+</html>

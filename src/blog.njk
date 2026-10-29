@@ -37,17 +37,7 @@ permalink: /blog/index.html
 
           <div class="flex items-center justify-between gap-2 pt-2 border-t border-dotted border-base-300 text-[11px] font-mono">
             <span class="text-base-content/50 truncate max-w-[150px] sm:max-w-none">
-              {% if post.data.tags %}
-                {% set filteredTags = [] %}
-                {% for t in post.data.tags %}
-                  {% if t != "posts" %}
-                    {% set filteredTags = (filteredTags.push(t), filteredTags) %}
-                  {% endif %}
-                {% endfor %}
-                {{ filteredTags | join(" · ") }}
-              {% else %}
-                Architecture
-              {% endif %}
+              {{ (post.data.tags | filterTagList | join(" · ")) or "Architecture" }}
             </span>
             <span class="text-primary font-medium group-hover:underline shrink-0">
               Read note →

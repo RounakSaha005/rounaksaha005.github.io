@@ -87,6 +87,10 @@ export default function (eleventyConfig) {
     return array.slice(0, count);
   });
 
+  eleventyConfig.addFilter('filterTagList', (tags) => {
+    return (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1);
+  });
+
   return {
     dir: { input: 'src', output: 'dist' },
   };

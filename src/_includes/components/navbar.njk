@@ -9,8 +9,8 @@
     </a>
 
     <!-- Center/Right: Clean Muted Navigation Links & Theme Toggle -->
-    <nav class="flex items-center gap-2 xs:gap-3.5 sm:gap-6 text-[11px] sm:text-xs text-base-content/75 font-mono">
-      <a href="/" class="hidden xs:inline-block hover:text-base-content transition-colors {% if page.url == '/' %}text-base-content font-semibold{% endif %}">
+    <nav class="flex items-center gap-3 sm:gap-6 text-xs text-base-content/75 font-mono">
+      <a href="/" class="hover:text-base-content transition-colors {% if page.url == '/' %}text-base-content font-semibold{% endif %}">
         Home
       </a>
       <a href="/projects/" class="hover:text-base-content transition-colors {% if page.url == '/projects/' %}text-base-content font-semibold{% endif %}">
@@ -22,7 +22,7 @@
       <a href="/photos/" class="hover:text-base-content transition-colors {% if page.url == '/photos/' %}text-base-content font-semibold{% endif %}">
         Art
       </a>
-      <a href="/about/" class="hidden sm:inline-block hover:text-base-content transition-colors {% if page.url == '/about/' %}text-base-content font-semibold{% endif %}">
+      <a href="/about/" class="hover:text-base-content transition-colors {% if page.url == '/about/' %}text-base-content font-semibold{% endif %}">
         Info
       </a>
 
@@ -53,8 +53,6 @@
           </svg>
         </label>
         <ul tabindex="0" class="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-xl w-44 border border-dotted border-base-300 text-xs font-mono z-50 mt-2 space-y-0.5">
-          <li class="xs:hidden"><a href="/">Home</a></li>
-          <li class="sm:hidden"><a href="/about/">Info / About</a></li>
           <li><a href="/resume/">Resume / CV</a></li>
           <li><a href="/friends/">Friends / Roll</a></li>
           <li class="menu-title mt-1.5 pt-1.5 border-t border-dotted border-base-300 text-[10px] uppercase font-mono text-base-content/40">Theme</li>
