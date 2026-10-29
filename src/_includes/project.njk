@@ -9,16 +9,14 @@ layout: base.njk
        Floating to the left outside the max-width column, vertically centered in viewport
        (Matching Reference Screenshot media_1793281174454_52e7e69e.png)
        ======================================================================= -->
-  <aside class="hidden xl:block absolute right-full top-0 bottom-0 mr-8 2xl:mr-14 w-44 2xl:w-52 pointer-events-none select-none">
-    <div class="sticky top-1/2 -translate-y-1/2 font-mono pointer-events-auto">
-      <nav id="toc-desktop-nav" class="space-y-1" aria-label="Table of contents">
-        <!-- Dynamically populated by JS: Top, • Context, Problem and opportunity, etc. -->
-        <a href="#article-top" class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono text-base-content font-medium active" data-target="article-top">
-          <span class="toc-bullet text-primary shrink-0 opacity-100">•</span>
-          <span class="toc-label leading-snug break-words">Top</span>
-        </a>
-      </nav>
-    </div>
+  <aside class="hidden xl:block toc-fixed-left font-mono select-none pointer-events-auto" aria-label="Table of contents navigation">
+    <nav id="toc-desktop-nav" class="space-y-1 max-h-[82vh] overflow-y-auto no-scrollbar py-2" aria-label="Table of contents">
+      <!-- Dynamically populated by JS: Top, • Context, Problem and opportunity, etc. -->
+      <a href="#article-top" class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono text-base-content font-medium active" data-target="article-top">
+        <span class="toc-bullet text-primary shrink-0 opacity-100">•</span>
+        <span class="toc-label leading-snug break-words">Top</span>
+      </a>
+    </nav>
   </aside>
 
   <!-- =======================================================================

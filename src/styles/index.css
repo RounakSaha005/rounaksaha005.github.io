@@ -360,3 +360,34 @@ footer a:hover :is(.ph, i[class*="ph-"]) {
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   Fixed Left Table of Contents (TOC) for Blog & Case Studies
+   Always centered vertically in viewport, fixed to screen on the left of content
+   ========================================================================== */
+
+.toc-fixed-left {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: calc(50% + 384px + 1.75rem);
+  width: 11rem;
+  max-height: 82vh;
+  z-index: 30;
+  pointer-events: auto;
+}
+
+@media (min-width: 1536px) {
+  .toc-fixed-left {
+    right: calc(50% + 384px + 2.5rem);
+    width: 13rem;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
