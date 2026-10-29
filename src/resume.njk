@@ -4,18 +4,18 @@ title: Resume
 permalink: /resume/index.html
 ---
 
-<div class="p-6 sm:p-8 space-y-8">
+<div class="p-4 sm:p-8 space-y-6 sm:space-y-8">
   
-  <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-dotted border-base-300">
+  <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 pb-5 sm:pb-6 border-b border-dotted border-base-300">
     <div>
-      <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
+      <h1 class="font-heading text-2xl xs:text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
         {{ resume.basics.name }}
       </h1>
-      <p class="text-xs sm:text-sm text-base-content/60 mt-1">
+      <p class="text-xs sm:text-sm text-base-content/60 mt-1 font-sans">
         {{ resume.basics.label }} · {{ resume.basics.location.city }}, {{ resume.basics.location.country }}
       </p>
     </div>
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-2 pt-1 sm:pt-0">
       <button onclick="window.print()" class="btn btn-outline btn-xs font-mono">
         Print / PDF
       </button>
@@ -25,28 +25,28 @@ permalink: /resume/index.html
     </div>
   </header>
 
-  <div class="space-y-8 text-xs sm:text-sm">
+  <div class="space-y-6 sm:space-y-8 text-xs sm:text-sm">
     <!-- Summary -->
     <div>
       <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-2">Summary</h2>
-      <p class="text-base-content/80 leading-relaxed">
+      <p class="text-base-content/80 leading-relaxed font-sans">
         {{ resume.basics.summary }}
       </p>
     </div>
 
     <!-- Experience -->
-    <div class="pt-6 border-t border-dotted border-base-300">
+    <div class="pt-5 sm:pt-6 border-t border-dotted border-base-300">
       <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-4">Experience</h2>
       <div class="space-y-5">
         {% for exp in resume.experience %}
           <div class="space-y-1.5">
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-0.5 text-xs">
               <span class="font-semibold text-base-content">
                 {{ exp.position }} · {{ exp.company }}
               </span>
               <span class="font-mono text-base-content/40">{{ exp.startDate }} — {{ exp.endDate }}</span>
             </div>
-            <ul class="list-disc list-inside space-y-1 text-xs text-base-content/75 leading-relaxed">
+            <ul class="list-disc list-inside space-y-1 text-xs text-base-content/75 leading-relaxed font-sans">
               {% for item in exp.highlights %}
                 <li>{{ item }}</li>
               {% endfor %}
@@ -60,26 +60,26 @@ permalink: /resume/index.html
     </div>
 
     <!-- Skills -->
-    <div class="pt-6 border-t border-dotted border-base-300">
+    <div class="pt-5 sm:pt-6 border-t border-dotted border-base-300">
       <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-3">Skills</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         {% for skillGroup in resume.skills %}
           <div>
             <span class="font-semibold text-base-content block">{{ skillGroup.category }}</span>
-            <span class="text-base-content/70">{{ skillGroup.items | join(", ") }}</span>
+            <span class="text-base-content/70 font-sans">{{ skillGroup.items | join(", ") }}</span>
           </div>
         {% endfor %}
       </div>
     </div>
 
     <!-- Education -->
-    <div class="pt-6 border-t border-dotted border-base-300">
+    <div class="pt-5 sm:pt-6 border-t border-dotted border-base-300">
       <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-2">Education</h2>
       {% for edu in resume.education %}
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs gap-1">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs gap-0.5">
           <div>
             <span class="font-semibold text-base-content">{{ edu.institution }}</span>
-            <span class="text-base-content/65 block">{{ edu.studyType }} in {{ edu.area }}</span>
+            <span class="text-base-content/65 block font-sans">{{ edu.studyType }} in {{ edu.area }}</span>
           </div>
           <span class="font-mono text-base-content/40">{{ edu.startDate }} — {{ edu.endDate }}</span>
         </div>

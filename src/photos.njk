@@ -4,18 +4,18 @@ title: Art & Photography
 permalink: /photos/index.html
 ---
 
-<div class="p-6 sm:p-8 space-y-6">
+<div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
   
-  <header class="pb-6 border-b border-dotted border-base-300">
-    <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
+  <header class="pb-5 sm:pb-6 border-b border-dotted border-base-300">
+    <h1 class="font-heading text-2xl xs:text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
       Art & Photography
     </h1>
-    <p class="text-xs sm:text-sm text-base-content/60 mt-1">
+    <p class="text-xs sm:text-sm text-base-content/60 mt-1 font-sans">
       Visual journal: studio setups, hardware, and travels.
     </p>
   </header>
 
-  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4">
     {% for photo in photos %}
       <figure class="group">
         <div 
@@ -33,7 +33,7 @@ permalink: /photos/index.html
             loading="lazy"
           />
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <span class="p-2 rounded-full bg-base-100/95 text-base-content shadow-md">
+            <span class="p-1.5 sm:p-2 rounded-full bg-base-100/95 text-base-content shadow-md">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
               </svg>

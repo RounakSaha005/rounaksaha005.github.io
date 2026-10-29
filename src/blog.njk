@@ -4,10 +4,10 @@ title: Notes
 permalink: /blog/index.html
 ---
 
-<div class="p-6 sm:p-8 space-y-6">
+<div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
   
-  <header class="pb-6 border-b border-dotted border-base-300">
-    <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
+  <header class="pb-5 sm:pb-6 border-b border-dotted border-base-300">
+    <h1 class="font-heading text-2xl xs:text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
       Notes
     </h1>
     <p class="text-xs sm:text-sm text-base-content/60 mt-1 font-sans">
@@ -15,15 +15,15 @@ permalink: /blog/index.html
     </p>
   </header>
 
-  <div class="space-y-4">
+  <div class="space-y-3.5 sm:space-y-4">
     {% for post in collections.posts | reverse %}
       <article>
         <a 
           href="{{ post.url }}" 
-          class="group block p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer space-y-2"
+          class="group block p-3.5 sm:p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer space-y-2"
         >
-          <div class="flex items-baseline justify-between gap-4">
-            <h2 class="text-sm font-medium text-base-content group-hover:text-primary transition-colors">
+          <div class="flex flex-col xs:flex-row xs:items-baseline justify-between gap-1 xs:gap-4">
+            <h2 class="text-xs sm:text-sm font-medium text-base-content group-hover:text-primary transition-colors">
               {{ post.data.title }}
             </h2>
             <time datetime="{{ post.date | htmlDateString }}" class="text-[11px] text-base-content/40 font-mono shrink-0">
@@ -35,8 +35,8 @@ permalink: /blog/index.html
             {{ post.data.description | default(post.templateContent | striptags | truncate(140)) }}
           </p>
 
-          <div class="flex items-center justify-between pt-2 border-t border-dotted border-base-300 text-[11px] font-mono">
-            <span class="text-base-content/50">
+          <div class="flex items-center justify-between gap-2 pt-2 border-t border-dotted border-base-300 text-[11px] font-mono">
+            <span class="text-base-content/50 truncate max-w-[150px] sm:max-w-none">
               {% if post.data.tags %}
                 {% set filteredTags = [] %}
                 {% for t in post.data.tags %}
@@ -49,7 +49,7 @@ permalink: /blog/index.html
                 Architecture
               {% endif %}
             </span>
-            <span class="text-primary font-medium group-hover:underline">
+            <span class="text-primary font-medium group-hover:underline shrink-0">
               Read note →
             </span>
           </div>

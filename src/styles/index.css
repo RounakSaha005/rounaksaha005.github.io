@@ -152,6 +152,27 @@ html {
 /* Base Typography: Mona Sans for Headings, Archivo for Body, Geist Mono for Code/Mono */
 body {
   font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Responsive Code & Pre blocks with touch-friendly scrolling */
+pre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+/* Responsive tables on mobile devices */
+table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Media responsive scaling */
+img, svg, video, iframe {
+  max-width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {

@@ -24,10 +24,10 @@ layout: base.njk
   <!-- =======================================================================
        02 // MAIN CONTENT COLUMN (Exact Same Max-Width as All Pages)
        ======================================================================= -->
-  <div class="p-6 sm:p-8 space-y-6">
+  <div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
 
     <!-- Top Action Bar (Back Arrow & Copy Link as in Reference Screenshot) -->
-    <div id="article-top" class="flex items-center justify-between pb-5 border-b border-dotted border-base-300">
+    <div id="article-top" class="flex items-center justify-between pb-4 sm:pb-5 border-b border-dotted border-base-300">
       <!-- Back to Projects Button -->
       <a 
         href="/projects/" 
@@ -74,19 +74,19 @@ layout: base.njk
     </div>
 
     <!-- Case Study Header -->
-    <header class="space-y-4">
-      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-base-content leading-tight">
+    <header class="space-y-3.5 sm:space-y-4">
+      <h1 class="font-heading text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-base-content leading-tight">
         {{ title }}
       </h1>
 
       {% if description %}
-        <p class="text-base sm:text-lg text-base-content/75 leading-relaxed font-sans">
+        <p class="text-sm sm:text-lg text-base-content/75 leading-relaxed font-sans">
           {{ description | safe }}
         </p>
       {% endif %}
 
       <!-- Case Study Meta Bar -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 pb-4 border-y border-dotted border-base-300 text-xs font-mono">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-3 pb-4 border-y border-dotted border-base-300 text-xs font-mono">
         <div>
           <span class="text-base-content/40 block text-[10px] uppercase">Role</span>
           <span class="text-base-content/85">{{ role | default("Engineering & Design") }}</span>

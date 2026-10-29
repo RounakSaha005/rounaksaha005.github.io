@@ -6,12 +6,12 @@ title: Home
 <!-- =======================================================================
      01 // HERO SECTION (Image on Left, Text on Right with Buttons)
      ======================================================================= -->
-<section class="p-6 sm:p-8 border-b border-dotted border-base-300">
-  <div class="flex flex-col sm:flex-row sm:items-stretch gap-5 sm:gap-6">
+<section class="p-4 sm:p-8 border-b border-dotted border-base-300">
+  <div class="flex flex-col sm:flex-row sm:items-stretch gap-4 sm:gap-6">
     
-    <!-- Hero Left: Portrait Image (Matches full height of text block) -->
-    <div class="w-24 h-24 sm:w-36 md:w-44 sm:h-auto shrink-0 self-start sm:self-stretch">
-      <div class="w-full h-full min-h-[160px] sm:min-h-full rounded-2xl overflow-hidden border border-dotted border-base-300 bg-base-200/40 shadow-2xs">
+    <!-- Hero Left: Portrait Image (Matches full height of text block on desktop, square on mobile) -->
+    <div class="w-20 h-20 xs:w-24 xs:h-24 sm:w-36 md:w-44 sm:h-auto shrink-0 self-start sm:self-stretch">
+      <div class="w-full h-full aspect-square sm:aspect-auto rounded-2xl overflow-hidden border border-dotted border-base-300 bg-base-200/40 shadow-2xs">
         <img 
           src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
           alt="{{ site.name }}"
@@ -26,7 +26,7 @@ title: Home
       
       <div class="space-y-2">
         <!-- Main Headline (Mona Sans) -->
-        <h1 class="font-heading text-2xl sm:text-3xl md:text-4xl text-base-content font-bold tracking-tight leading-tight">
+        <h1 class="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl text-base-content font-bold tracking-tight leading-tight">
           Hello I'm Rounak Saha, engineer, craftsman
         </h1>
 
@@ -40,7 +40,7 @@ title: Home
       <div class="flex items-center gap-2 pt-1 flex-wrap">
         <a 
           href="/resume/" 
-          class="btn btn-neutral btn-sm rounded-lg px-4 font-normal text-xs normal-case shadow-2xs font-mono"
+          class="btn btn-neutral btn-sm rounded-lg px-3.5 sm:px-4 font-normal text-xs normal-case shadow-2xs font-mono"
         >
           Download Resume
         </a>
@@ -101,10 +101,10 @@ title: Home
 <!-- =======================================================================
      02 // CURRENT WORK & FEATURED CASE STUDY (Matching Screenshot)
      ======================================================================= -->
-<section class="p-6 sm:p-8 border-b border-dotted border-base-300">
+<section class="p-4 sm:p-8 border-b border-dotted border-base-300">
   
   <!-- Company / Role Header -->
-  <div class="flex items-center justify-between text-xs mb-2">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs mb-2">
     <div class="flex items-center gap-2">
       <div class="w-6 h-6 rounded-md bg-base-content text-base-100 flex items-center justify-center font-bold text-[10px]">
         V
@@ -116,7 +116,7 @@ title: Home
   </div>
 
   <!-- Narrative Summary -->
-  <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed mb-5">
+  <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed mb-5 font-sans">
     At Vortex, I currently design user experiences for real-time telemetry and edge cloud infrastructure while also managing their design system tokens.
   </p>
 
@@ -132,8 +132,8 @@ title: Home
     
     <!-- Central Geometric Logo Badge -->
     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div class="w-16 h-16 rounded-2xl border-2 border-white/60 bg-black/40 backdrop-blur-md flex items-center justify-center shadow-lg">
-        <span class="font-heading text-2xl text-white font-bold">V</span>
+      <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border-2 border-white/60 bg-black/40 backdrop-blur-md flex items-center justify-center shadow-lg">
+        <span class="font-heading text-xl sm:text-2xl text-white font-bold">V</span>
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@ title: Home
 <!-- =======================================================================
      03 // INFINITE SCROLL (GSAP) WITH PROGRAMMING LANGUAGES
      ======================================================================= -->
-<section class="py-3 px-6 sm:px-8 border-b border-dotted border-base-300 overflow-hidden bg-base-200/20">
+<section class="py-3 px-4 sm:px-8 border-b border-dotted border-base-300 overflow-hidden bg-base-200/20">
   <div class="marquee-container">
     <div id="gsap-marquee-track" class="marquee-track flex items-center gap-6 text-[11px] text-base-content/70 font-mono cursor-pointer">
       
@@ -198,10 +198,10 @@ title: Home
 <!-- =======================================================================
      04 // SELECTED PROJECTS (Work)
      ======================================================================= -->
-<section id="projects" class="p-6 sm:p-8 border-b border-dotted border-base-300">
+<section id="projects" class="p-4 sm:p-8 border-b border-dotted border-base-300">
   
-  <div class="flex items-baseline justify-between mb-5">
-    <h2 class="font-heading text-xl font-semibold text-base-content">
+  <div class="flex items-baseline justify-between mb-4 sm:mb-5">
+    <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
       Selected Work
     </h2>
     <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-mono">
@@ -209,25 +209,25 @@ title: Home
     </a>
   </div>
 
-  <div class="space-y-4">
+  <div class="space-y-3.5 sm:space-y-4">
     {% for project in projects | limit(3) %}
       <a 
         href="{{ project.caseStudy | default(project.link) }}" 
-        class="group block p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer"
+        class="group block p-3.5 sm:p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer"
       >
         <div class="flex items-baseline justify-between gap-2 mb-1">
-          <h3 class="font-medium text-sm text-base-content group-hover:text-primary transition-colors">
+          <h3 class="font-medium text-xs sm:text-sm text-base-content group-hover:text-primary transition-colors">
             {{ project.title }}
           </h3>
           <span class="text-[11px] font-mono text-base-content/40">{{ project.year }}</span>
         </div>
 
-        <p class="text-xs text-base-content/70 leading-relaxed">
+        <p class="text-xs text-base-content/70 leading-relaxed font-sans">
           {{ project.description }}
         </p>
 
         <div class="flex items-center justify-between gap-2 pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
-          <span class="text-base-content/50 truncate max-w-[140px] xs:max-w-[180px] sm:max-w-none">{{ project.tags | join(" · ") }}</span>
+          <span class="text-base-content/50 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none">{{ project.tags | join(" · ") }}</span>
           <div class="flex items-center gap-3 shrink-0">
             <span class="font-medium text-primary group-hover:underline font-mono">
               {% if project.caseStudy %}Case study →{% else %}Demo →{% endif %}
@@ -253,11 +253,11 @@ title: Home
 <!-- =======================================================================
      05 // YOUTUBE VIDEOS (Featured by Creator)
      ======================================================================= -->
-<section id="videos" class="p-6 sm:p-8 border-b border-dotted border-base-300">
+<section id="videos" class="p-4 sm:p-8 border-b border-dotted border-base-300">
   
-  <div class="flex items-baseline justify-between mb-5">
+  <div class="flex items-baseline justify-between mb-4 sm:mb-5">
     <div class="flex items-center gap-2">
-      <h2 class="font-heading text-xl font-semibold text-base-content">
+      <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
         YouTube
       </h2>
       <span class="text-xs text-base-content/50">· 45K subscribers</span>
@@ -267,7 +267,7 @@ title: Home
     </a>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
     {% for video in youtube | limit(2) %}
       <a 
         href="{{ video.url }}" 
@@ -304,10 +304,10 @@ title: Home
 <!-- =======================================================================
      06 // WRITING (Notes / Blog)
      ======================================================================= -->
-<section id="blog" class="p-6 sm:p-8 border-b border-dotted border-base-300">
+<section id="blog" class="p-4 sm:p-8 border-b border-dotted border-base-300">
   
   <div class="flex items-baseline justify-between mb-4">
-    <h2 class="font-heading text-xl font-semibold text-base-content">
+    <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
       Notes
     </h2>
     <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-mono">
@@ -331,7 +331,7 @@ title: Home
             </time>
           </div>
           {% if post.data.description %}
-            <p class="text-xs text-base-content/70 leading-relaxed mt-1 line-clamp-2">
+            <p class="text-xs text-base-content/70 leading-relaxed mt-1 line-clamp-2 font-sans">
               {{ post.data.description }}
             </p>
           {% endif %}
@@ -348,10 +348,10 @@ title: Home
 <!-- =======================================================================
      07 // ART & PHOTOGRAPHY (Gallery)
      ======================================================================= -->
-<section id="gallery" class="p-6 sm:p-8">
+<section id="gallery" class="p-4 sm:p-8">
   
   <div class="flex items-baseline justify-between mb-4">
-    <h2 class="font-heading text-xl font-semibold text-base-content">
+    <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
       Art & Photography
     </h2>
     <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-mono">
@@ -359,7 +359,7 @@ title: Home
     </a>
   </div>
 
-  <div class="grid grid-cols-3 gap-3">
+  <div class="grid grid-cols-3 gap-2 sm:gap-3">
     {% for photo in photos | limit(3) %}
       <figure class="group">
         <div 
