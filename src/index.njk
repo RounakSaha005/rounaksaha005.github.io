@@ -7,13 +7,13 @@ title: Home
      01 // HERO SECTION (Image on Left, Text on Right with Buttons)
      ======================================================================= -->
 <section class="p-6 sm:p-8 border-b border-dotted border-base-300">
-  <div class="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
+  <div class="flex flex-col sm:flex-row sm:items-stretch gap-5 sm:gap-6">
     
-    <!-- Hero Left: Portrait Image -->
-    <div class="shrink-0">
-      <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-dotted border-base-300 bg-base-200/40 shadow-2xs">
+    <!-- Hero Left: Portrait Image (Matches full height of text block) -->
+    <div class="w-24 h-24 sm:w-36 md:w-44 sm:h-auto shrink-0 self-start sm:self-stretch">
+      <div class="w-full h-full min-h-[160px] sm:min-h-full rounded-2xl overflow-hidden border border-dotted border-base-300 bg-base-200/40 shadow-2xs">
         <img 
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" 
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
           alt="{{ site.name }}"
           class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
           loading="eager"
@@ -22,17 +22,19 @@ title: Home
     </div>
 
     <!-- Hero Right: Headline, Bio & Action Buttons -->
-    <div class="flex-1 space-y-3.5">
+    <div class="flex-1 flex flex-col justify-between space-y-3.5">
       
-      <!-- Main Headline (Mona Sans) -->
-      <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight leading-tight">
-        Hello I'm Rounak Saha, engineer, craftsman
-      </h1>
+      <div class="space-y-2">
+        <!-- Main Headline (Mona Sans) -->
+        <h1 class="font-heading text-2xl sm:text-3xl md:text-4xl text-base-content font-bold tracking-tight leading-tight">
+          Hello I'm Rounak Saha, engineer, craftsman
+        </h1>
 
-      <!-- Bio / Description -->
-      <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed font-sans">
-        Full-stack engineer based out of Bangalore with <strong>4 years</strong> of experience, currently <strong>engineering modern web platforms at Vortex</strong> and teaching <strong>45K+ developers on YouTube</strong>.
-      </p>
+        <!-- Bio / Description -->
+        <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed font-sans">
+          Full-stack engineer based out of Bangalore with <strong>4 years</strong> of experience, currently <strong>engineering modern web platforms at Vortex</strong> and teaching <strong>45K+ developers on YouTube</strong>.
+        </p>
+      </div>
 
       <!-- Action Row (Pill Button + Inline Social Icons) -->
       <div class="flex items-center gap-2 pt-1 flex-wrap">
