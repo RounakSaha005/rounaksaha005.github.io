@@ -1,22 +1,24 @@
 ---
 layout: base.njk
-title: Photos
+title: Art & Photography
 permalink: /photos/index.html
 ---
 
-<div class="py-14 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6">
+<div class="p-6 sm:p-8 space-y-6">
   
-  <header class="mb-10 pb-6 border-b border-base-200/60">
-    <h1 class="text-3xl font-bold tracking-tight text-base-content">Photos</h1>
-    <p class="text-sm text-base-content/70 mt-1">
-      Moments outside of code: setups, speaking, hackathons, and travels.
+  <header class="pb-6 border-b border-dashed border-base-200/80">
+    <h1 class="font-['Newsreader',Georgia,serif] text-3xl sm:text-4xl text-base-content font-normal tracking-tight">
+      Art & Photography
+    </h1>
+    <p class="text-xs sm:text-sm text-base-content/60 mt-1">
+      Visual journal: studio setups, hardware, and travels.
     </p>
   </header>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
     {% for photo in photos %}
       <figure class="group">
-        <div class="aspect-4/3 rounded-xl overflow-hidden bg-base-200 border border-base-200/80">
+        <div class="aspect-square rounded-xl overflow-hidden bg-base-200 border border-base-200/80">
           <img 
             src="{{ photo.image }}" 
             alt="{{ photo.title }}" 
@@ -24,9 +26,8 @@ permalink: /photos/index.html
             loading="lazy"
           />
         </div>
-        <figcaption class="mt-2 text-xs">
-          <p class="font-medium text-base-content truncate">{{ photo.title }}</p>
-          <p class="text-[11px] text-base-content/50 font-mono mt-0.5">{{ photo.location }} · {{ photo.date }}</p>
+        <figcaption class="mt-1.5 text-[11px] text-base-content/60 truncate font-sans">
+          {{ photo.title }}
         </figcaption>
       </figure>
     {% endfor %}

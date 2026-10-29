@@ -1,44 +1,44 @@
 ---
 layout: base.njk
-title: Projects
+title: Work & Projects
 permalink: /projects/index.html
 ---
 
-<div class="py-14 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6">
+<div class="p-6 sm:p-8 space-y-6">
   
-  <header class="mb-10 pb-6 border-b border-base-200/60">
-    <h1 class="text-3xl font-bold tracking-tight text-base-content">Projects</h1>
-    <p class="text-sm text-base-content/70 mt-1">
-      Open source developer tools, UI systems, and web experiments.
+  <header class="pb-6 border-b border-dashed border-base-200/80">
+    <h1 class="font-['Newsreader',Georgia,serif] text-3xl sm:text-4xl text-base-content font-normal tracking-tight">
+      Work
+    </h1>
+    <p class="text-xs sm:text-sm text-base-content/60 mt-1">
+      Selected production builds, libraries, and open source utilities.
     </p>
   </header>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div class="space-y-4">
     {% for project in projects %}
-      <div class="p-5 rounded-xl border border-base-200/80 bg-base-100 flex flex-col justify-between hover:border-base-300 transition-colors">
+      <div class="p-4 rounded-xl border border-base-200/80 bg-base-100 flex flex-col justify-between hover:border-base-300 transition-colors">
         <div>
-          <div class="flex items-center justify-between text-xs font-mono text-base-content/50 mb-2">
-            <span>{{ project.year }}</span>
-            <span>{{ project.status }}</span>
+          <div class="flex items-baseline justify-between gap-2 mb-1">
+            <h2 class="text-sm font-medium text-base-content">
+              {{ project.title }}
+            </h2>
+            <span class="text-[11px] font-mono text-base-content/40">{{ project.year }} · {{ project.status }}</span>
           </div>
 
-          <h2 class="text-base font-semibold text-base-content">
-            {{ project.title }}
-          </h2>
-
-          <p class="text-xs text-base-content/75 leading-relaxed mt-1.5">
+          <p class="text-xs text-base-content/75 leading-relaxed">
             {{ project.description }}
           </p>
         </div>
 
-        <div class="flex items-center justify-between pt-4 mt-4 border-t border-base-200/50 text-xs">
+        <div class="flex items-center justify-between pt-3 mt-3 border-t border-base-200/50 text-[11px]">
           <span class="text-base-content/50 font-mono">{{ project.tags | join(" · ") }}</span>
           <div class="flex gap-3">
             {% if project.github %}
-              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="opacity-80 hover:underline">Code</a>
+              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100">Code</a>
             {% endif %}
             {% if project.link %}
-              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">Demo →</a>
+              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="font-medium text-primary hover:underline">Demo →</a>
             {% endif %}
           </div>
         </div>

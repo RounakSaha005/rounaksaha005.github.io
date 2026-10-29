@@ -4,51 +4,54 @@ title: Resume
 permalink: /resume/index.html
 ---
 
-<div class="py-14 sm:py-20 max-w-3xl mx-auto px-4 sm:px-6">
+<div class="p-6 sm:p-8 space-y-8">
   
-  <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-10 pb-6 border-b border-base-200/60">
+  <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-dashed border-base-200/80">
     <div>
-      <h1 class="text-3xl font-bold tracking-tight text-base-content">{{ resume.basics.name }}</h1>
-      <p class="text-sm text-primary font-medium mt-0.5">{{ resume.basics.label }}</p>
-      <p class="text-xs text-base-content/60 mt-0.5">{{ resume.basics.location.city }}, {{ resume.basics.location.country }}</p>
+      <h1 class="font-['Newsreader',Georgia,serif] text-3xl sm:text-4xl text-base-content font-normal tracking-tight">
+        {{ resume.basics.name }}
+      </h1>
+      <p class="text-xs sm:text-sm text-base-content/60 mt-1">
+        {{ resume.basics.label }} · {{ resume.basics.location.city }}, {{ resume.basics.location.country }}
+      </p>
     </div>
     <div class="flex items-center gap-2">
       <button onclick="window.print()" class="btn btn-outline btn-xs font-mono">
         Print / PDF
       </button>
-      <a href="mailto:{{ resume.basics.email }}" class="btn btn-primary btn-xs">
+      <a href="mailto:{{ resume.basics.email }}" class="btn btn-neutral btn-xs rounded-lg">
         Contact
       </a>
     </div>
   </header>
 
-  <div class="space-y-10 text-sm">
+  <div class="space-y-8 text-xs sm:text-sm">
     <!-- Summary -->
     <div>
-      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/50 font-semibold mb-2">Summary</h2>
+      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-2">Summary</h2>
       <p class="text-base-content/80 leading-relaxed">
         {{ resume.basics.summary }}
       </p>
     </div>
 
     <!-- Experience -->
-    <div>
-      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/50 font-semibold mb-4">Experience</h2>
-      <div class="space-y-6">
+    <div class="pt-6 border-t border-dashed border-base-200/80">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-4">Experience</h2>
+      <div class="space-y-5">
         {% for exp in resume.experience %}
           <div class="space-y-1.5">
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-              <h3 class="font-semibold text-base-content">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs">
+              <span class="font-semibold text-base-content">
                 {{ exp.position }} · {{ exp.company }}
-              </h3>
-              <span class="text-xs font-mono text-base-content/50">{{ exp.startDate }} — {{ exp.endDate }}</span>
+              </span>
+              <span class="font-mono text-base-content/40">{{ exp.startDate }} — {{ exp.endDate }}</span>
             </div>
             <ul class="list-disc list-inside space-y-1 text-xs text-base-content/75 leading-relaxed">
               {% for item in exp.highlights %}
                 <li>{{ item }}</li>
               {% endfor %}
             </ul>
-            <p class="text-[11px] font-mono text-base-content/50 pt-1">
+            <p class="text-[11px] font-mono text-base-content/45 pt-0.5">
               Stack: {{ exp.technologies | join(", ") }}
             </p>
           </div>
@@ -57,8 +60,8 @@ permalink: /resume/index.html
     </div>
 
     <!-- Skills -->
-    <div>
-      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/50 font-semibold mb-3">Skills</h2>
+    <div class="pt-6 border-t border-dashed border-base-200/80">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-3">Skills</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         {% for skillGroup in resume.skills %}
           <div>
@@ -70,15 +73,15 @@ permalink: /resume/index.html
     </div>
 
     <!-- Education -->
-    <div>
-      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/50 font-semibold mb-2">Education</h2>
+    <div class="pt-6 border-t border-dashed border-base-200/80">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-2">Education</h2>
       {% for edu in resume.education %}
         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs gap-1">
           <div>
             <span class="font-semibold text-base-content">{{ edu.institution }}</span>
-            <span class="text-base-content/70 block">{{ edu.studyType }} in {{ edu.area }}</span>
+            <span class="text-base-content/65 block">{{ edu.studyType }} in {{ edu.area }}</span>
           </div>
-          <span class="font-mono text-base-content/50">{{ edu.startDate }} — {{ edu.endDate }}</span>
+          <span class="font-mono text-base-content/40">{{ edu.startDate }} — {{ edu.endDate }}</span>
         </div>
       {% endfor %}
     </div>

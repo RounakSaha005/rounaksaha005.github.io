@@ -6,75 +6,169 @@ title: Home
 <!-- =======================================================================
      01 // HERO SECTION (Image on Left, Text on Right with Buttons)
      ======================================================================= -->
-<section class="py-14 sm:py-20 border-b border-base-200/60 relative">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6">
-    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12">
+<section class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+  <div class="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
+    
+    <!-- Hero Left: Portrait Image -->
+    <div class="shrink-0">
+      <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-base-200/80 bg-base-200/40 shadow-2xs">
+        <img 
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" 
+          alt="{{ site.name }}"
+          class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <!-- Hero Right: Status, Headline, Bio & Action Buttons -->
+    <div class="flex-1 space-y-3.5">
       
-      <!-- HERO LEFT: Image -->
-      <div class="shrink-0">
-        <div class="w-36 h-36 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border border-base-200 bg-base-200/50 shadow-xs">
-          <img 
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
-            alt="{{ site.name }}"
-            class="w-full h-full object-cover object-center filter grayscale hover:grayscale-0 transition-all duration-300"
-            loading="eager"
-          />
-        </div>
+      <!-- Status Indicator (matching screenshot green dot) -->
+      <div class="flex items-center gap-1.5 text-xs text-green-700 dark:text-green-400 font-sans">
+        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+        <span>Open to opportunities</span>
       </div>
 
-      <!-- HERO RIGHT: Text & Buttons -->
-      <div class="flex-1 text-center sm:text-left space-y-4">
-        <div>
-          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-base-content">
-            {{ site.name }}
-          </h1>
-          <p class="text-sm sm:text-base text-primary font-medium mt-1">
-            {{ site.role }}
-          </p>
-        </div>
+      <!-- Main Headline (Newsreader Serif matching screenshot) -->
+      <h1 class="font-['Newsreader',Georgia,serif] text-3xl sm:text-4xl text-base-content font-normal tracking-tight leading-tight">
+        Hello I'm Rounak, engineer, craftsman
+      </h1>
 
-        <p class="text-sm sm:text-base text-base-content/80 leading-relaxed max-w-xl">
-          {{ site.description }} I create developer tutorials and engineering walkthroughs for a community of 45K+ subscribers on YouTube.
-        </p>
+      <!-- Bio / Description -->
+      <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed font-sans">
+        Full-stack engineer based out of Bangalore with <strong>4 years</strong> of experience, currently <strong>engineering modern web platforms at Vortex</strong> and teaching <strong>45K+ developers on YouTube</strong>.
+      </p>
 
-        <!-- Minimal Action Buttons -->
-        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2">
-          <a href="#projects" class="btn btn-primary btn-sm">
-            Projects
-          </a>
-          <a href="{{ site.author.youtube }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-            YouTube
-          </a>
-          <a href="/about/" class="btn btn-ghost btn-sm">
-            About →
-          </a>
-        </div>
+      <!-- Action Row (Pill Button + Inline Social Icons) -->
+      <div class="flex items-center gap-2 pt-1 flex-wrap">
+        <a 
+          href="/resume/" 
+          class="btn btn-neutral btn-sm rounded-lg px-4 font-normal text-xs normal-case shadow-2xs"
+        >
+          Download Resume
+        </a>
+
+        <!-- Mail Icon -->
+        <a 
+          href="mailto:{{ site.author.email }}" 
+          class="p-2 rounded-lg border border-base-200/80 hover:border-base-300 text-base-content/70 hover:text-base-content transition-colors"
+          title="Email"
+          aria-label="Send email"
+        >
+          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+        </a>
+
+        <!-- Twitter / X Icon -->
+        <a 
+          href="{{ site.author.twitter }}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="p-2 rounded-lg border border-base-200/80 hover:border-base-300 text-base-content/70 hover:text-base-content transition-colors"
+          title="X / Twitter"
+          aria-label="Twitter profile"
+        >
+          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+
+        <!-- LinkedIn Icon -->
+        <a 
+          href="{{ site.author.linkedin }}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="p-2 rounded-lg border border-base-200/80 hover:border-base-300 text-base-content/70 hover:text-base-content transition-colors"
+          title="LinkedIn"
+          aria-label="LinkedIn profile"
+        >
+          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+
+        <!-- YouTube Icon -->
+        <a 
+          href="{{ site.author.youtube }}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="p-2 rounded-lg border border-base-200/80 hover:border-base-300 text-base-content/70 hover:text-red-500 transition-colors"
+          title="YouTube Channel"
+          aria-label="YouTube Channel"
+        >
+          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
       </div>
 
     </div>
+
   </div>
 </section>
 
 
 <!-- =======================================================================
-     02 // INFINITE SCROLL (GSAP) WITH PROGRAMMING LANGUAGES
+     02 // CURRENT WORK & FEATURED CASE STUDY (Matching Screenshot)
      ======================================================================= -->
-<section class="py-4 border-b border-base-200/60 overflow-hidden bg-base-200/20">
+<section class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+  
+  <!-- Company / Role Header -->
+  <div class="flex items-center justify-between text-xs mb-2">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-base-content text-base-100 flex items-center justify-center font-bold text-[10px]">
+        V
+      </div>
+      <span class="font-semibold text-base-content">Vortex Cloud</span>
+      <span class="text-base-content/50">/ Senior Frontend Engineer</span>
+    </div>
+    <span class="text-base-content/50 font-sans text-[11px]">August 2024 - Present</span>
+  </div>
+
+  <!-- Narrative Summary -->
+  <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed mb-5">
+    At Vortex, I currently design user experiences for real-time telemetry and edge cloud infrastructure while also managing their design system tokens.
+  </p>
+
+  <!-- Large Featured Preview Graphic with 'Coming soon' Badge -->
+  <div class="relative rounded-2xl overflow-hidden border border-base-200/80 bg-base-200/30 aspect-16/9 sm:aspect-2/1">
+    <img 
+      src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" 
+      alt="Vortex Cloud System Interface" 
+      class="w-full h-full object-cover filter contrast-105"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-black/30"></div>
+    
+    <!-- Central Geometric Logo Badge (Like screenshot) -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="w-16 h-16 rounded-2xl border-2 border-white/60 bg-black/40 backdrop-blur-md flex items-center justify-center shadow-lg">
+        <span class="font-['Newsreader',Georgia,serif] text-2xl text-white font-bold italic">V</span>
+      </div>
+    </div>
+
+    <!-- Coming Soon Badge (Top Right, matching screenshot) -->
+    <div class="absolute top-3 right-3">
+      <span class="px-2.5 py-0.5 rounded-full bg-base-100/95 backdrop-blur-md text-base-content text-[11px] font-sans font-medium border border-base-200/80 shadow-2xs">
+        Coming soon
+      </span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- =======================================================================
+     03 // INFINITE SCROLL (GSAP) WITH PROGRAMMING LANGUAGES
+     ======================================================================= -->
+<section class="py-3 px-6 sm:px-8 border-b border-dashed border-base-200/80 overflow-hidden bg-base-200/20">
   <div class="marquee-container">
-    <div id="gsap-marquee-track" class="marquee-track flex items-center gap-6 text-xs text-base-content/75 font-mono cursor-pointer">
+    <div id="gsap-marquee-track" class="marquee-track flex items-center gap-6 text-[11px] text-base-content/70 font-mono cursor-pointer">
       
-      <!-- Primary List -->
       {% for lang in languages %}
-        <div class="flex items-center gap-2 shrink-0 py-1 px-2.5 rounded-md hover:text-base-content transition-colors">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+        <div class="flex items-center gap-2 shrink-0 py-0.5 hover:text-base-content transition-colors">
+          <span class="w-1 h-1 rounded-full bg-base-content/40"></span>
           <span>{{ lang.name }}</span>
         </div>
       {% endfor %}
 
-      <!-- Duplicate for Seamless Infinite Loop -->
       {% for lang in languages %}
-        <div class="flex items-center gap-2 shrink-0 py-1 px-2.5 rounded-md hover:text-base-content transition-colors">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+        <div class="flex items-center gap-2 shrink-0 py-0.5 hover:text-base-content transition-colors">
+          <span class="w-1 h-1 rounded-full bg-base-content/40"></span>
           <span>{{ lang.name }}</span>
         </div>
       {% endfor %}
@@ -95,7 +189,7 @@ title: Home
         const halfWidth = track.scrollWidth / 2;
         const tween = gsap.to(track, {
           x: -halfWidth,
-          duration: 28,
+          duration: 30,
           ease: "none",
           repeat: -1,
           modifiers: {
@@ -113,197 +207,163 @@ title: Home
 
 
 <!-- =======================================================================
-     03 // PROJECTS
+     04 // SELECTED PROJECTS (Work)
      ======================================================================= -->
-<section id="projects" class="py-16 border-b border-base-200/60">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6">
-    
-    <div class="flex items-baseline justify-between mb-8">
-      <div>
-        <h2 class="text-xl font-bold tracking-tight text-base-content">Projects</h2>
-        <p class="text-xs text-base-content/60 mt-0.5">Selected open source and web tools.</p>
-      </div>
-      <a href="/projects/" class="text-xs text-primary hover:underline">All projects →</a>
-    </div>
+<section id="projects" class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+  
+  <div class="flex items-baseline justify-between mb-5">
+    <h2 class="font-['Newsreader',Georgia,serif] text-xl font-normal text-base-content">
+      Selected Work
+    </h2>
+    <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-sans">
+      View all →
+    </a>
+  </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      {% for project in projects | limit(4) %}
-        <div class="p-5 rounded-xl border border-base-200/80 bg-base-100 hover:border-base-300 transition-colors flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono text-base-content/60 mb-2">
-              <span>{{ project.year }}</span>
-              <span>{{ project.status }}</span>
-            </div>
-            
-            <h3 class="font-semibold text-base text-base-content">
-              {{ project.title }}
-            </h3>
+  <div class="space-y-4">
+    {% for project in projects | limit(3) %}
+      <div class="group block p-4 rounded-xl border border-base-200/80 bg-base-100 hover:border-base-300 transition-colors">
+        <div class="flex items-baseline justify-between gap-2 mb-1">
+          <h3 class="font-medium text-sm text-base-content group-hover:text-primary transition-colors">
+            {{ project.title }}
+          </h3>
+          <span class="text-[11px] font-mono text-base-content/40">{{ project.year }}</span>
+        </div>
 
-            <p class="text-xs text-base-content/75 leading-relaxed mt-1.5">
-              {{ project.description }}
-            </p>
-          </div>
+        <p class="text-xs text-base-content/70 leading-relaxed">
+          {{ project.description }}
+        </p>
 
-          <div class="flex items-center justify-between pt-4 mt-4 border-t border-base-200/50 text-xs">
-            <span class="text-base-content/50 font-mono">{{ project.tags | join(" · ") }}</span>
-            <div class="flex gap-3">
-              {% if project.github %}
-                <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="hover:underline opacity-80">Code</a>
-              {% endif %}
-              {% if project.link %}
-                <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">Demo →</a>
-              {% endif %}
-            </div>
+        <div class="flex items-center justify-between pt-3 mt-3 border-t border-base-200/50 text-[11px]">
+          <span class="text-base-content/50 font-mono">{{ project.tags | join(" · ") }}</span>
+          <div class="flex gap-3">
+            {% if project.github %}
+              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100">Code</a>
+            {% endif %}
+            {% if project.link %}
+              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="font-medium text-primary hover:underline">Demo →</a>
+            {% endif %}
           </div>
         </div>
-      {% endfor %}
-    </div>
-
+      </div>
+    {% endfor %}
   </div>
+
 </section>
 
 
 <!-- =======================================================================
-     04 // YOUTUBE VIDEOS (Featured by Creator)
+     05 // YOUTUBE VIDEOS (Featured by Creator)
      ======================================================================= -->
-<section id="videos" class="py-16 border-b border-base-200/60">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6">
-    
-    <div class="flex items-baseline justify-between mb-8">
-      <div>
-        <h2 class="text-xl font-bold tracking-tight text-base-content">YouTube</h2>
-        <p class="text-xs text-base-content/60 mt-0.5">Tutorials and system breakdowns · 45K subscribers.</p>
-      </div>
-      <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-primary hover:underline">Visit channel →</a>
+<section id="videos" class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+  
+  <div class="flex items-baseline justify-between mb-5">
+    <div class="flex items-center gap-2">
+      <h2 class="font-['Newsreader',Georgia,serif] text-xl font-normal text-base-content">
+        YouTube
+      </h2>
+      <span class="text-xs text-base-content/50">· 45K subscribers</span>
     </div>
+    <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-sans">
+      Channel →
+    </a>
+  </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      {% for video in youtube | limit(2) %}
-        <a 
-          href="{{ video.url }}" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="group block p-3 rounded-xl border border-base-200/80 bg-base-100 hover:border-base-300 transition-colors"
-        >
-          <div class="relative aspect-video rounded-lg overflow-hidden bg-base-200 mb-3">
-            <img 
-              src="{{ video.thumbnail }}" 
-              alt="{{ video.title }}" 
-              class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
-              loading="lazy"
-            />
-            <span class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/80 text-white text-[10px] font-mono">
-              {{ video.duration }}
-            </span>
-          </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {% for video in youtube | limit(2) %}
+      <a 
+        href="{{ video.url }}" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="group block p-3 rounded-xl border border-base-200/80 bg-base-100 hover:border-base-300 transition-colors"
+      >
+        <div class="relative aspect-video rounded-lg overflow-hidden bg-base-200 mb-2.5">
+          <img 
+            src="{{ video.thumbnail }}" 
+            alt="{{ video.title }}" 
+            class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+            loading="lazy"
+          />
+          <span class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/80 text-white text-[10px] font-mono">
+            {{ video.duration }}
+          </span>
+        </div>
 
-          <h3 class="font-medium text-sm leading-snug group-hover:text-primary transition-colors">
-            {{ video.title }}
+        <h3 class="font-medium text-xs sm:text-sm leading-snug group-hover:text-primary transition-colors line-clamp-2">
+          {{ video.title }}
+        </h3>
+
+        <p class="text-[11px] text-base-content/50 font-mono mt-1.5">
+          {{ video.views }}
+        </p>
+      </a>
+    {% endfor %}
+  </div>
+
+</section>
+
+
+<!-- =======================================================================
+     06 // WRITING (Notes / Blog)
+     ======================================================================= -->
+<section id="blog" class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+  
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="font-['Newsreader',Georgia,serif] text-xl font-normal text-base-content">
+      Notes
+    </h2>
+    <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-sans">
+      All notes →
+    </a>
+  </div>
+
+  <div class="divide-y divide-base-200/60">
+    {% for post in collections.posts | reverse | limit(3) %}
+      <article class="py-3.5 first:pt-0 last:pb-0">
+        <a href="{{ post.url }}" class="group flex items-baseline justify-between gap-4">
+          <h3 class="text-xs sm:text-sm font-medium group-hover:text-primary transition-colors text-base-content truncate">
+            {{ post.data.title }}
           </h3>
-
-          <p class="text-xs text-base-content/60 font-mono mt-2">
-            {{ video.views }} · {{ video.published }}
-          </p>
+          <time datetime="{{ post.date | htmlDateString }}" class="text-[11px] text-base-content/40 font-mono shrink-0">
+            {{ post.date | readableDate }}
+          </time>
         </a>
-      {% endfor %}
-    </div>
-
+      </article>
+    {% else %}
+      <p class="text-xs text-base-content/50 font-mono py-2">No notes published yet.</p>
+    {% endfor %}
   </div>
+
 </section>
 
 
 <!-- =======================================================================
-     05 // BLOGS (Writing)
+     07 // ART & PHOTOGRAPHY (Gallery)
      ======================================================================= -->
-<section id="blog" class="py-16 border-b border-base-200/60">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6">
-    
-    <div class="flex items-baseline justify-between mb-8">
-      <div>
-        <h2 class="text-xl font-bold tracking-tight text-base-content">Writing</h2>
-        <p class="text-xs text-base-content/60 mt-0.5">Thoughts on software architecture and developer tools.</p>
-      </div>
-      <a href="/blog/" class="text-xs text-primary hover:underline">All posts →</a>
-    </div>
-
-    <div class="divide-y divide-base-200/60">
-      {% for post in collections.posts | reverse | limit(3) %}
-        <article class="py-4 first:pt-0 last:pb-0">
-          <a href="{{ post.url }}" class="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-            <h3 class="text-sm sm:text-base font-medium group-hover:text-primary transition-colors">
-              {{ post.data.title }}
-            </h3>
-            <time datetime="{{ post.date | htmlDateString }}" class="text-xs text-base-content/50 font-mono shrink-0">
-              {{ post.date | readableDate }}
-            </time>
-          </a>
-          <p class="text-xs text-base-content/70 mt-1 max-w-2xl leading-relaxed">
-            {{ post.data.description | default(post.templateContent | striptags | truncate(120)) }}
-          </p>
-        </article>
-      {% else %}
-        <p class="text-xs text-base-content/50 font-mono py-4">No posts published yet.</p>
-      {% endfor %}
-    </div>
-
+<section id="gallery" class="p-6 sm:p-8">
+  
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="font-['Newsreader',Georgia,serif] text-xl font-normal text-base-content">
+      Art & Photography
+    </h2>
+    <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-sans">
+      Gallery →
+    </a>
   </div>
-</section>
 
-
-<!-- =======================================================================
-     06 // GALLERY (Photos)
-     ======================================================================= -->
-<section id="gallery" class="py-16 border-b border-base-200/60">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6">
-    
-    <div class="flex items-baseline justify-between mb-8">
-      <div>
-        <h2 class="text-xl font-bold tracking-tight text-base-content">Photos</h2>
-        <p class="text-xs text-base-content/60 mt-0.5">Workspaces, setups, and travels.</p>
-      </div>
-      <a href="/photos/" class="text-xs text-primary hover:underline">All photos →</a>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {% for photo in photos | limit(3) %}
-        <figure class="group">
-          <div class="aspect-4/3 rounded-xl overflow-hidden bg-base-200 border border-base-200/80">
-            <img 
-              src="{{ photo.image }}" 
-              alt="{{ photo.title }}" 
-              class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
-              loading="lazy"
-            />
-          </div>
-          <figcaption class="mt-2 text-xs text-base-content/70 truncate">
-            {{ photo.title }}
-          </figcaption>
-        </figure>
-      {% endfor %}
-    </div>
-
+  <div class="grid grid-cols-3 gap-3">
+    {% for photo in photos | limit(3) %}
+      <figure class="group">
+        <div class="aspect-square rounded-xl overflow-hidden bg-base-200 border border-base-200/80">
+          <img 
+            src="{{ photo.image }}" 
+            alt="{{ photo.title }}" 
+            class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
+            loading="lazy"
+          />
+        </div>
+      </figure>
+    {% endfor %}
   </div>
-</section>
 
-
-<!-- =======================================================================
-     07 // CONTACT
-     ======================================================================= -->
-<section class="py-16">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
-    <div>
-      <h2 class="text-lg font-bold tracking-tight text-base-content">Get in touch</h2>
-      <p class="text-xs text-base-content/70 mt-1">
-        Open for collaborations, contracts, and creator sponsorships.
-      </p>
-    </div>
-    <div class="flex gap-3">
-      <a href="mailto:{{ site.author.email }}" class="btn btn-primary btn-sm">
-        Email Me
-      </a>
-      <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-        LinkedIn
-      </a>
-    </div>
-  </div>
 </section>

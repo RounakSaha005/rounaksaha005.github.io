@@ -1,98 +1,60 @@
-<header class="sticky top-0 z-50 bg-base-100/90 backdrop-blur-md border-b border-base-200/60 transition-colors duration-200">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="navbar min-h-14 px-0 justify-between">
-      
-      <!-- Left: Name -->
-      <div class="navbar-start w-auto flex items-center gap-2">
-        <!-- Mobile Dropdown -->
-        <div class="dropdown lg:hidden">
-          <label tabindex="0" class="btn btn-ghost btn-circle btn-sm" aria-label="Open navigation menu">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </label>
-          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow-lg bg-base-100 rounded-lg w-56 border border-base-200">
-            {% for item in site.navigation %}
-              <li>
-                <a href="{{ item.url }}" class="py-1.5 {% if page.url == item.url %}active font-semibold text-primary{% endif %}">
-                  {{ item.label }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+<header class="border-b border-dashed border-base-200/80 px-6 sm:px-8 py-5">
+  <div class="flex items-center justify-between">
+    
+    <!-- Left: Bengali Script Identity (matching screenshot) -->
+    <a href="/" class="group flex items-baseline gap-2" title="Rounak Saha">
+      <span class="font-['Noto_Serif_Bengali',serif] text-2xl font-bold text-base-content tracking-tight">
+        রৌনক
+      </span>
+      <span class="text-xs text-base-content/50 font-serif italic hidden sm:inline-block">
+        / Rounak
+      </span>
+    </a>
 
-        <a href="/" class="text-sm font-semibold tracking-tight hover:opacity-80 transition-opacity">
-          {{ site.name }}
-        </a>
-      </div>
+    <!-- Center/Right: Clean Muted Navigation Links (Work, Art, Notes, Info style) -->
+    <nav class="flex items-center gap-4 sm:gap-6 text-xs text-base-content/75 font-sans">
+      <a href="/" class="hover:text-base-content transition-colors {% if page.url == '/' %}text-base-content font-semibold{% endif %}">
+        Home
+      </a>
+      <a href="/projects/" class="hover:text-base-content transition-colors {% if page.url == '/projects/' %}text-base-content font-semibold{% endif %}">
+        Work
+      </a>
+      <a href="/blog/" class="hover:text-base-content transition-colors {% if page.url == '/blog/' %}text-base-content font-semibold{% endif %}">
+        Notes
+      </a>
+      <a href="/photos/" class="hover:text-base-content transition-colors {% if page.url == '/photos/' %}text-base-content font-semibold{% endif %}">
+        Art
+      </a>
+      <a href="/about/" class="hover:text-base-content transition-colors {% if page.url == '/about/' %}text-base-content font-semibold{% endif %}">
+        Info
+      </a>
 
-      <!-- Center: Navigation Links -->
-      <div class="navbar-center hidden lg:flex">
-        <ul class="flex items-center gap-6 text-xs font-medium text-base-content/75">
-          {% for item in site.navigation %}
-            <li>
-              <a 
-                href="{{ item.url }}" 
-                class="transition-colors hover:text-base-content {% if page.url == item.url %}text-base-content font-semibold{% endif %}"
-              >
-                {{ item.label }}
-              </a>
-            </li>
-          {% endfor %}
+      <!-- Minimal Dropdown for other pages & themes -->
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="cursor-pointer text-base-content/60 hover:text-base-content p-1" aria-label="More menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+          </svg>
+        </label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-lg w-44 border border-base-200 text-xs z-50 mt-2">
+          <li><a href="/resume/">Resume / CV</a></li>
+          <li><a href="/friends/">Friends / Roll</a></li>
+          <li class="menu-title mt-2 pt-2 border-t border-base-200 text-[10px] uppercase font-mono">Theme</li>
+          <li><button type="button" onclick="setTheme('ocean-sun')">☀ Ocean Sun</button></li>
+          <li><button type="button" onclick="setTheme('electric-pop')">⚡ Electric Pop</button></li>
+          <li><button type="button" onclick="setTheme('midnight-indigo')">🌙 Midnight</button></li>
+          <li><button type="button" onclick="setTheme('slate-mint')">🌿 Slate Mint</button></li>
         </ul>
       </div>
 
-      <!-- Right: Social Links (LinkedIn, YouTube) & Minimal Theme Select -->
-      <div class="navbar-end w-auto flex items-center gap-2">
-        <a 
-          href="{{ site.author.linkedin }}" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="btn btn-ghost btn-circle btn-xs opacity-75 hover:opacity-100" 
-          title="LinkedIn"
-          aria-label="LinkedIn"
-        >
-          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
+    </nav>
 
-        <a 
-          href="{{ site.author.youtube }}" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="btn btn-ghost btn-circle btn-xs opacity-75 hover:opacity-100" 
-          title="YouTube"
-          aria-label="YouTube"
-        >
-          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-
-        <!-- Minimal Theme Select -->
-        <select
-          id="theme-select"
-          class="select select-bordered select-xs text-[11px] font-normal py-0 h-7 min-h-7"
-          aria-label="Select Theme"
-        >
-          <option value="ocean-sun">Ocean Sun</option>
-          <option value="electric-pop">Electric Pop</option>
-          <option value="midnight-indigo">Midnight</option>
-          <option value="slate-mint">Slate Mint</option>
-        </select>
-        <script>
-          (function() {
-            const select = document.getElementById('theme-select');
-            if (!select) return;
-            const currentTheme = document.documentElement.dataset.theme || 'ocean-sun';
-            select.value = currentTheme;
-            select.addEventListener('change', (e) => {
-              const nextTheme = e.target.value;
-              document.documentElement.dataset.theme = nextTheme;
-              localStorage.setItem('theme', nextTheme);
-            });
-          })();
-        </script>
-      </div>
-
-    </div>
   </div>
 </header>
+
+<script>
+  function setTheme(name) {
+    document.documentElement.dataset.theme = name;
+    localStorage.setItem('theme', name);
+  }
+</script>

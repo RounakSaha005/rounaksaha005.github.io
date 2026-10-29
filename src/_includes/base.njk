@@ -3,23 +3,28 @@
 <head>
   {% include "components/head.njk" %}
 </head>
-<body class="min-h-screen flex flex-col bg-base-100 text-base-content font-sans antialiased">
+<body class="min-h-screen flex flex-col bg-base-100 text-base-content font-sans antialiased selection:bg-primary/20 selection:text-primary">
 
   <!-- Skip to content link for accessibility -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 btn btn-primary btn-sm">
     Skip to main content
   </a>
 
-  <!-- Global Header / Navbar -->
-  {% include "components/navbar.njk" %}
+  <!-- Centered Architectural Column Frame with Dashed Vertical Gridlines -->
+  <div class="w-full max-w-2xl sm:max-w-3xl mx-auto border-x border-dashed border-base-200/80 min-h-screen flex flex-col bg-base-100 shadow-2xs">
+    
+    <!-- Global Header / Navbar -->
+    {% include "components/navbar.njk" %}
 
-  <!-- Main Content Area -->
-  <main id="main-content" class="flex-1 w-full">
-    {{ content | safe }}
-  </main>
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-1 w-full">
+      {{ content | safe }}
+    </main>
 
-  <!-- Global Footer -->
-  {% include "components/footer.njk" %}
+    <!-- Global Footer -->
+    {% include "components/footer.njk" %}
+
+  </div>
 
 </body>
 </html>

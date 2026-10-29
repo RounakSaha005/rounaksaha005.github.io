@@ -1,37 +1,39 @@
 ---
 layout: base.njk
-title: Writing & Blog
+title: Notes
 permalink: /blog/index.html
 ---
 
-<div class="py-14 sm:py-20 max-w-3xl mx-auto px-4 sm:px-6">
+<div class="p-6 sm:p-8 space-y-6">
   
-  <header class="mb-10 pb-6 border-b border-base-200/60">
-    <h1 class="text-3xl font-bold tracking-tight text-base-content">Writing</h1>
-    <p class="text-sm text-base-content/70 mt-1">
-      Articles, architecture breakdowns, and web development notes.
+  <header class="pb-6 border-b border-dashed border-base-200/80">
+    <h1 class="font-['Newsreader',Georgia,serif] text-3xl sm:text-4xl text-base-content font-normal tracking-tight">
+      Notes
+    </h1>
+    <p class="text-xs sm:text-sm text-base-content/60 mt-1">
+      Thoughts, architecture breakdowns, and web development notes.
     </p>
   </header>
 
-  <div class="divide-y divide-base-200/60">
+  <div class="divide-y divide-dashed divide-base-200/80">
     {% for post in collections.posts | reverse %}
-      <article class="py-5 first:pt-0 last:pb-0">
+      <article class="py-4 first:pt-0 last:pb-0">
         <a href="{{ post.url }}" class="group block space-y-1">
-          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-            <h2 class="text-base font-semibold text-base-content group-hover:text-primary transition-colors">
+          <div class="flex items-baseline justify-between gap-4">
+            <h2 class="text-sm font-medium text-base-content group-hover:text-primary transition-colors">
               {{ post.data.title }}
             </h2>
-            <time datetime="{{ post.date | htmlDateString }}" class="text-xs text-base-content/50 font-mono shrink-0">
+            <time datetime="{{ post.date | htmlDateString }}" class="text-[11px] text-base-content/40 font-mono shrink-0">
               {{ post.date | readableDate }}
             </time>
           </div>
-          <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed">
+          <p class="text-xs text-base-content/70 leading-relaxed line-clamp-2">
             {{ post.data.description | default(post.templateContent | striptags | truncate(140)) }}
           </p>
         </a>
       </article>
     {% else %}
-      <p class="text-xs text-base-content/50 font-mono py-6">No articles published yet.</p>
+      <p class="text-xs text-base-content/50 font-mono py-4">No notes published yet.</p>
     {% endfor %}
   </div>
 

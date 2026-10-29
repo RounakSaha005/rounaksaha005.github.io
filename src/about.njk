@@ -4,62 +4,64 @@ title: About
 permalink: /about/index.html
 ---
 
-<div class="py-14 sm:py-20 max-w-3xl mx-auto px-4 sm:px-6">
+<div class="p-6 sm:p-8 space-y-8">
   
-  <header class="mb-10 pb-6 border-b border-base-200/60">
-    <h1 class="text-3xl font-bold tracking-tight text-base-content">About Me</h1>
-    <p class="text-sm text-base-content/70 mt-1">
-      Full-stack software engineer and tech content creator based in Bengaluru.
+  <header class="pb-6 border-b border-dashed border-base-200/80">
+    <h1 class="font-['Newsreader',Georgia,serif] text-3xl sm:text-4xl text-base-content font-normal tracking-tight">
+      About Me
+    </h1>
+    <p class="text-xs sm:text-sm text-base-content/60 mt-1">
+      Background, engineering focus, and tools.
     </p>
   </header>
 
-  <div class="space-y-6 text-sm text-base-content/85 leading-relaxed">
+  <div class="space-y-5 text-xs sm:text-sm text-base-content/80 leading-relaxed font-sans">
     <p>
-      I'm <strong>{{ site.name }}</strong>. I focus on building performant, accessible web systems with static architectures, edge runtimes, and clean design systems.
+      I'm <strong>{{ site.name }}</strong>, a software engineer and digital creator based in Bangalore, India. I specialize in building performant, accessible web systems, static architectures, and edge services.
     </p>
 
     <p>
-      Over the last 4+ years, I've worked across full-stack engineering, leading telemetry dashboards, data platforms, and design token implementations. I care deeply about web standards, zero-bloat interfaces, and 100/100 Lighthouse performance.
+      Over the last 4 years, I've engineered telemetry interfaces, design system token workflows, and full-stack applications. Alongside engineering, I share tutorials on YouTube (<strong>{{ site.youtubeChannel.handle }}</strong>) with a community of over 45,000 developers.
     </p>
 
-    <p>
-      Alongside software engineering, I create videos on YouTube (<strong>{{ site.youtubeChannel.handle }}</strong>) where I teach modern frontend architecture and edge systems to over 45,000 developers.
-    </p>
-
-    <!-- Experience List -->
-    <div class="pt-6 border-t border-base-200/60">
-      <h2 class="text-base font-semibold text-base-content mb-4">Experience</h2>
-      <div class="space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-          <div>
-            <h3 class="font-medium text-sm text-base-content">Senior Frontend Engineer · Vortex Cloud</h3>
-            <p class="text-xs text-base-content/70 mt-0.5">High-throughput real-time telemetry interface and edge micro-frontends.</p>
+    <!-- Experience -->
+    <div class="pt-6 border-t border-dashed border-base-200/80">
+      <h2 class="font-['Newsreader',Georgia,serif] text-xl font-normal text-base-content mb-4">
+        Experience
+      </h2>
+      <div class="space-y-4">
+        <div>
+          <div class="flex items-baseline justify-between text-xs">
+            <span class="font-medium text-base-content">Senior Frontend Engineer · Vortex Cloud</span>
+            <span class="text-base-content/50 font-mono text-[11px]">2024 — Present</span>
           </div>
-          <span class="text-xs font-mono text-base-content/50 shrink-0">2024 — Present</span>
+          <p class="text-xs text-base-content/65 mt-1">Leading telemetry UI systems and distributed edge micro-frontends.</p>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-          <div>
-            <h3 class="font-medium text-sm text-base-content">Full-Stack Engineer · Hyperion Labs</h3>
-            <p class="text-xs text-base-content/70 mt-0.5">Data visualization portals and automated CI/CD deployment pipelines.</p>
+        <div>
+          <div class="flex items-baseline justify-between text-xs">
+            <span class="font-medium text-base-content">Full-Stack Engineer · Hyperion Labs</span>
+            <span class="text-base-content/50 font-mono text-[11px]">2022 — 2024</span>
           </div>
-          <span class="text-xs font-mono text-base-content/50 shrink-0">2022 — 2024</span>
+          <p class="text-xs text-base-content/65 mt-1">Engineered data ingestion pipelines and automated CI/CD workflows.</p>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-          <div>
-            <h3 class="font-medium text-sm text-base-content">Frontend Developer · Nexus Studio</h3>
-            <p class="text-xs text-base-content/70 mt-0.5">Jamstack web applications with 100/100 Lighthouse performance scores.</p>
+        <div>
+          <div class="flex items-baseline justify-between text-xs">
+            <span class="font-medium text-base-content">Frontend Developer · Nexus Studio</span>
+            <span class="text-base-content/50 font-mono text-[11px]">2021 — 2022</span>
           </div>
-          <span class="text-xs font-mono text-base-content/50 shrink-0">2021 — 2022</span>
+          <p class="text-xs text-base-content/65 mt-1">Built 15+ bespoke client web apps with 100/100 Lighthouse performance.</p>
         </div>
       </div>
     </div>
 
-    <!-- Minimal Gear / Setup -->
-    <div class="pt-6 border-t border-base-200/60">
-      <h2 class="text-base font-semibold text-base-content mb-3">Workstation & Tools</h2>
-      <ul class="text-xs text-base-content/70 space-y-1.5 list-disc list-inside">
+    <!-- Workstation -->
+    <div class="pt-6 border-t border-dashed border-base-200/80">
+      <h2 class="font-['Newsreader',Georgia,serif] text-xl font-normal text-base-content mb-3">
+        Tools & Studio
+      </h2>
+      <ul class="text-xs text-base-content/70 space-y-1 list-disc list-inside">
         <li>MacBook Pro M3 Max · Dell UltraSharp 38" Curved</li>
         <li>Keychron Q1 Pro · Logitech MX Master 3S</li>
         <li>Sony A7IV · Shure SM7B · DaVinci Resolve Studio</li>
@@ -67,9 +69,13 @@ permalink: /about/index.html
       </ul>
     </div>
 
-    <div class="pt-8 border-t border-base-200/60 flex items-center gap-4">
-      <a href="/resume/" class="btn btn-primary btn-sm">View Resume</a>
-      <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">YouTube →</a>
+    <div class="pt-6 border-t border-dashed border-base-200/80 flex items-center gap-3">
+      <a href="/resume/" class="btn btn-neutral btn-sm rounded-lg px-4 text-xs font-normal">
+        Resume
+      </a>
+      <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm text-xs">
+        YouTube Channel →
+      </a>
     </div>
 
   </div>
