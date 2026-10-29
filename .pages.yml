@@ -166,28 +166,6 @@ content:
             label: Icon Name (Optional)
             type: string
             description: Optional Phosphor icon class (e.g. ph-github-logo, ph-x-logo, ph-discord-logo, ph-envelope). If left blank, icon is auto-detected!
-      - name: featuredWork
-        label: Featured Work / Current Company
-        type: object
-        fields:
-          - name: company
-            label: Company Name
-            type: string
-          - name: role
-            label: Your Role / Title
-            type: string
-          - name: period
-            label: Date Period (e.g. August 2024 - Present)
-            type: string
-          - name: initial
-            label: Logo Badge Letter / Initial
-            type: string
-          - name: description
-            label: Project / Role Narrative
-            type: text
-          - name: image
-            label: Featured Preview Graphic
-            type: image
 
   # =====================================================================
   # 05 // ABOUT PAGE CONTENT & TOOLS

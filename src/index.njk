@@ -70,50 +70,7 @@ title: Home
 
 
 <!-- =======================================================================
-     02 // CURRENT WORK & FEATURED CASE STUDY (Matching Screenshot)
-     ======================================================================= -->
-<section class="p-4 sm:p-8 border-b border-dotted border-base-300">
-  
-  <!-- Company / Role Header -->
-  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs mb-2">
-    <div class="flex items-center gap-2">
-      <div class="w-6 h-6 rounded-md bg-base-content text-base-100 flex items-center justify-center font-bold text-[10px]">
-        {{ home.featuredWork.initial | default("V") }}
-      </div>
-      <span class="font-semibold text-base-content">{{ home.featuredWork.company | default("Vortex Cloud") }}</span>
-      <span class="text-base-content/50">/ {{ home.featuredWork.role | default("Senior Frontend Engineer") }}</span>
-    </div>
-    <span class="text-base-content/50 font-sans text-[11px]">{{ home.featuredWork.period | default("August 2024 - Present") }}</span>
-  </div>
-
-  <!-- Narrative Summary -->
-  <p class="text-xs sm:text-sm text-base-content/75 leading-relaxed mb-5 font-sans">
-    {{ home.featuredWork.description | default("At Vortex, I currently design user experiences for real-time telemetry and edge cloud infrastructure while also managing their design system tokens.") }}
-  </p>
-
-  <!-- Large Featured Preview Graphic with 'Coming soon' Badge -->
-  <div class="relative rounded-2xl overflow-hidden border border-dotted border-base-300 bg-base-200/30 aspect-16/9 sm:aspect-2/1">
-    <img 
-      src="{{ home.featuredWork.image | default('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80') }}" 
-      alt="{{ home.featuredWork.company | default('Vortex Cloud') }} System Interface" 
-      class="w-full h-full object-cover filter contrast-105"
-      loading="lazy"
-    />
-    <div class="absolute inset-0 bg-black/30"></div>
-    
-    <!-- Central Geometric Logo Badge -->
-    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border-2 border-white/60 bg-black/40 backdrop-blur-md flex items-center justify-center shadow-lg">
-        <span class="font-heading text-xl sm:text-2xl text-white font-bold">{{ home.featuredWork.initial | default("V") }}</span>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-
-<!-- =======================================================================
-     03 // INFINITE SCROLL (GSAP) WITH PROGRAMMING LANGUAGES
+     02 // INFINITE SCROLL (GSAP) WITH PROGRAMMING LANGUAGES
      ======================================================================= -->
 <section class="py-3 px-4 sm:px-8 border-b border-dotted border-base-300 overflow-hidden bg-base-200/20">
   <div class="marquee-container">
@@ -166,7 +123,7 @@ title: Home
 
 
 <!-- =======================================================================
-     04 // SELECTED PROJECTS (Work)
+     03 // SELECTED PROJECTS (Work)
      ======================================================================= -->
 <section id="projects" class="p-4 sm:p-8 border-b border-dotted border-base-300">
   
