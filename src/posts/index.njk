@@ -1,0 +1,57 @@
+---
+layout: page.njk
+title: Blog & Articles
+subtitle: Thoughts, tutorials, and project updates.
+permalink: /posts/index.html
+---
+
+<div class="space-y-6">
+  {% if collections.posts.length > 0 %}
+    <div class="grid gap-6">
+      {% for post in collections.posts | reverse %}
+        <article class="card sm:card-side bg-base-100 border border-base-200 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden">
+          {% if post.data.image %}
+            <figure class="sm:w-56 shrink-0 h-48 sm:h-auto overflow-hidden bg-base-200">
+              <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="w-full h-full object-cover" loading="lazy">
+            </figure>
+          {% endif %}
+          <div class="card-body p-6 justify-between">
+            <div>
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                <h2 class="card-title text-xl font-bold">
+                  <a href="{{ post.url }}" class="hover:text-primary transition-colors">
+                    {{ post.data.title }}
+                  </a>
+                </h2>
+                <time datetime="{{ post.date | htmlDateString }}" class="text-xs opacity-60 shrink-0">
+                  {{ post.date | readableDate }}
+                </time>
+              </div>
+
+              {% if post.data.description %}
+                <p class="text-sm opacity-80 leading-relaxed mb-4">
+                  {{ post.data.description }}
+                </p>
+              {% endif %}
+            </div>
+
+            <div class="card-actions justify-between items-center mt-auto pt-2">
+              <div class="flex flex-wrap gap-1">
+                {% for tag in post.data.tags %}
+                  {% if tag != "posts" %}
+                    <span class="badge badge-sm badge-soft badge-primary text-xs">#{{ tag }}</span>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <a href="{{ post.url }}" class="link link-primary font-semibold text-sm">
+                Read article →
+              </a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="opacity-60">No posts published yet. Check back soon!</p>
+  {% endif %}
+</div>

@@ -1,0 +1,127 @@
+# Pages CMS Configuration
+# Documentation: https://pagescms.org/docs/
+
+# Media Uploads Configuration
+# Every uploaded image from the Pages CMS media manager or content fields
+# is saved into `input` (in Git) and referenced by `output` (public URL).
+media:
+  input: src/assets/images
+  output: /assets/images
+  categories: [image]
+  rename: safe
+
+content:
+  # Blog Posts Collection
+  - name: posts
+    label: Blog Posts
+    type: collection
+    path: src/posts
+    format: yaml-frontmatter
+    exclude: [posts.json, index.njk]
+    filename: "{year}-{month}-{day}-{slug}.md"
+    view:
+      primary: title
+      sort: [date]
+      order: desc
+    fields:
+      - name: title
+        label: Post Title
+        type: string
+        required: true
+      - name: description
+        label: Excerpt / Meta Description
+        type: text
+      - name: date
+        label: Published Date
+        type: date
+        default: now
+      - name: image
+        label: Featured Image
+        type: image
+        description: Cover image for this post and Open Graph cards
+      - name: tags
+        label: Tags
+        type: list
+        list: string
+      - name: body
+        label: Post Content
+        type: rich-text
+
+  # Static Pages Collection (e.g. About, Contact)
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/pages
+    format: yaml-frontmatter
+    exclude: [pages.json]
+    filename: "{slug}.md"
+    view:
+      primary: title
+    fields:
+      - name: title
+        label: Page Title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: string
+      - name: image
+        label: Header / Banner Image
+        type: image
+      - name: permalink
+        label: URL Path
+        type: string
+      - name: body
+        label: Page Content
+        type: rich-text
+
+  # Global Site Configuration & Metadata
+  - name: settings
+    label: Site Settings
+    type: file
+    path: src/_data/site.json
+    fields:
+      - name: name
+        label: Site Name
+        type: string
+        required: true
+      - name: title
+        label: Browser Title
+        type: string
+      - name: description
+        label: Site Description
+        type: text
+      - name: url
+        label: Production URL
+        type: string
+      - name: avatar
+        label: Avatar / Logo Image
+        type: image
+        description: Upload your personal avatar or logo
+      - name: author
+        label: Author Info
+        type: object
+        fields:
+          - name: name
+            label: Author Name
+            type: string
+          - name: email
+            label: Email Address
+            type: string
+          - name: github
+            label: GitHub Profile URL
+            type: string
+          - name: linkedin
+            label: LinkedIn Profile URL
+            type: string
+      - name: navigation
+        label: Navigation Menu
+        type: list
+        fields:
+          - name: label
+            label: Nav Label
+            type: string
+          - name: url
+            label: Link URL
+            type: string
+

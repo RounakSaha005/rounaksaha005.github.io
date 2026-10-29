@@ -1,0 +1,47 @@
+<footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10 border-t border-base-300 mt-auto">
+  <div class="max-w-6xl mx-auto w-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start w-full">
+      <!-- About / Tagline -->
+      <aside>
+        <p class="font-bold text-lg">{{ site.name }}</p>
+        <p class="text-sm opacity-80 mt-2 max-w-xs leading-relaxed">
+          {{ site.description }}
+        </p>
+      </aside>
+
+      <!-- Navigation Links -->
+      <nav>
+        <h6 class="footer-title">Navigation</h6>
+        <div class="grid grid-flow-row gap-2 text-sm">
+          {% for item in site.navigation %}
+            <a href="{{ item.url }}" class="link link-hover">
+              {{ item.label }}
+            </a>
+          {% endfor %}
+        </div>
+      </nav>
+
+      <!-- Connect / Social -->
+      <nav>
+        <h6 class="footer-title">Connect</h6>
+        <div class="grid grid-flow-row gap-2 text-sm">
+          {% if site.author.github %}
+            <a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer" class="link link-hover">GitHub</a>
+          {% endif %}
+          {% if site.author.linkedin %}
+            <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="link link-hover">LinkedIn</a>
+          {% endif %}
+          {% if site.author.email %}
+            <a href="mailto:{{ site.author.email }}" class="link link-hover">Email</a>
+          {% endif %}
+        </div>
+      </nav>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-base-300 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs opacity-70 gap-4">
+      <p>© {% year %} {{ site.name }}. All rights reserved.</p>
+      <p>Powered by <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer" class="link">Eleventy</a> & <a href="https://daisyui.com/" target="_blank" rel="noopener noreferrer" class="link">daisyUI</a>.</p>
+    </div>
+  </div>
+</footer>

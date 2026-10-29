@@ -1,0 +1,37 @@
+{
+  "name": "Rounak Saha",
+  "role": "Frontend Engineer & UI Designer",
+  "location": "Bengaluru, India",
+  "title": "Rounak Saha · Frontend Engineer & UI Designer",
+  "description": "Personal portfolio of Rounak Saha. Crafting clean, performant, and accessible digital products.",
+  "url": "https://rounaksaha.dev",
+  "avatar": "",
+  "availability": "Available for new projects & roles",
+  "author": {
+    "name": "Rounak Saha",
+    "email": "rounak@example.com",
+    "github": "https://github.com/rounaksaha",
+    "linkedin": "https://linkedin.com/in/rounaksaha",
+    "twitter": "https://twitter.com/rounaksaha"
+  },
+  "skills": [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Eleventy",
+    "Tailwind CSS",
+    "daisyUI",
+    "Node.js",
+    "GraphQL",
+    "REST APIs",
+    "Accessibility (a11y)",
+    "Figma"
+  ],
+  "navigation": [
+    { "label": "Home", "url": "/" },
+    { "label": "About", "url": "/about/" },
+    { "label": "Blog", "url": "/posts/" },
+    { "label": "Components", "url": "/components/" }
+  ]
+}

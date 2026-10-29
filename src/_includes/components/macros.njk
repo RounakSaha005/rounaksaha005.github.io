@@ -1,0 +1,195 @@
+{# ==========================================================================
+   daisyUI 5 Official Component Macros
+   Usage: {% from "components/macros.njk" import card, badge, button, alert, stat, collapse, hero %}
+   ========================================================================== #}
+
+{# -------------------------------------------------------------------------
+   1. Card Component (daisyUI card)
+   ------------------------------------------------------------------------- #}
+{% macro card(opts) %}
+<div class="card bg-base-100 border border-base-200 shadow-sm hover:shadow-md transition-shadow {{ opts.class }}">
+  {% if opts.image %}
+    <figure class="relative aspect-video overflow-hidden">
+      <img src="{{ opts.image }}" alt="{{ opts.imageAlt | default(opts.title) }}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      {% if opts.badge %}
+        <div class="absolute top-3 right-3">
+          {{ badge({ text: opts.badge, color: opts.badgeColor | default("primary") }) }}
+        </div>
+      {% endif %}
+    </figure>
+  {% endif %}
+
+  <div class="card-body">
+    {% if not opts.image and opts.badge %}
+      <div class="mb-2">
+        {{ badge({ text: opts.badge, color: opts.badgeColor | default("primary") }) }}
+      </div>
+    {% endif %}
+
+    <h2 class="card-title text-xl">
+      {% if opts.href %}
+        <a href="{{ opts.href }}" class="hover:text-primary transition-colors">
+          {{ opts.title }}
+        </a>
+      {% else %}
+        {{ opts.title }}
+      {% endif %}
+    </h2>
+
+    {% if opts.description %}
+      <p class="text-sm opacity-80 leading-relaxed mt-1">
+        {{ opts.description }}
+      </p>
+    {% endif %}
+
+    {% if opts.actions or opts.href %}
+      <div class="card-actions justify-end items-center mt-4 pt-2">
+        {% if opts.actions %}
+          {{ opts.actions | safe }}
+        {% elif opts.href %}
+          <a href="{{ opts.href }}" class="btn btn-sm btn-primary">
+            {{ opts.ctaText | default("Learn More") }} →
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+
+{# -------------------------------------------------------------------------
+   2. Badge Component (daisyUI badge)
+   ------------------------------------------------------------------------- #}
+{% macro badge(opts) %}
+<span class="badge badge-{{ opts.color | default('primary') }} {% if opts.style %}badge-{{ opts.style }}{% else %}badge-soft{% endif %} {% if opts.size %}badge-{{ opts.size }}{% else %}badge-sm{% endif %} font-medium {{ opts.class }}">
+  {{ opts.text }}
+</span>
+{% endmacro %}
+
+
+{# -------------------------------------------------------------------------
+   3. Button Component (daisyUI btn)
+   ------------------------------------------------------------------------- #}
+{% macro button(opts) %}
+<a href="{{ opts.href | default('#') }}" class="btn btn-{{ opts.color | default('primary') }} {% if opts.style %}btn-{{ opts.style }}{% endif %} {% if opts.size %}btn-{{ opts.size }}{% endif %} {% if opts.wide %}btn-wide{% endif %} {{ opts.class }}">
+  {% if opts.iconLeft %}
+    <span class="mr-1">{{ opts.iconLeft | safe }}</span>
+  {% endif %}
+  {{ opts.text }}
+  {% if opts.iconRight %}
+    <span class="ml-1">{{ opts.iconRight | safe }}</span>
+  {% endif %}
+</a>
+{% endmacro %}
+
+
+{# -------------------------------------------------------------------------
+   4. Alert Component (daisyUI alert)
+   ------------------------------------------------------------------------- #}
+{% macro alert(opts) %}
+<div role="alert" class="alert alert-{{ opts.type | default('info') }} {% if opts.style %}alert-{{ opts.style }}{% else %}alert-soft{% endif %} my-4 rounded-box {{ opts.class }}">
+  {% if opts.type == "success" %}
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+  {% elif opts.type == "warning" %}
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+  {% elif opts.type == "error" %}
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+  {% else %}
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+  {% endif %}
+
+  <div>
+    {% if opts.title %}
+      <h3 class="font-bold text-sm">{{ opts.title }}</h3>
+    {% endif %}
+    <div class="text-xs sm:text-sm">{{ opts.text | default(opts.content) }}</div>
+  </div>
+
+  {% if opts.actionText and opts.actionHref %}
+    <a href="{{ opts.actionHref }}" class="btn btn-sm btn-ghost">
+      {{ opts.actionText }}
+    </a>
+  {% endif %}
+</div>
+{% endmacro %}
+
+
+{# -------------------------------------------------------------------------
+   5. Stat Component (daisyUI stats)
+   ------------------------------------------------------------------------- #}
+{% macro stat(opts) %}
+<div class="stats bg-base-100 border border-base-200 shadow-sm w-full {{ opts.class }}">
+  <div class="stat">
+    {% if opts.figure %}
+      <div class="stat-figure text-{{ opts.color | default('primary') }}">
+        {{ opts.figure | safe }}
+      </div>
+    {% endif %}
+    <div class="stat-title text-xs uppercase tracking-wider font-semibold opacity-70">{{ opts.title }}</div>
+    <div class="stat-value text-3xl font-extrabold text-{{ opts.color | default('primary') }} mt-1">{{ opts.value }}</div>
+    {% if opts.desc %}
+      <div class="stat-desc text-xs mt-1 opacity-70">{{ opts.desc }}</div>
+    {% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+
+{# -------------------------------------------------------------------------
+   6. Collapse Component (daisyUI collapse)
+   ------------------------------------------------------------------------- #}
+{% macro collapse(opts) %}
+<details class="collapse collapse-arrow bg-base-200 border border-base-300 my-3 rounded-box {{ opts.class }}" {% if opts.open %}open{% endif %}>
+  <summary class="collapse-title font-semibold text-base py-4 px-6">
+    {{ opts.title }}
+  </summary>
+  <div class="collapse-content px-6 pb-4 pt-1 text-sm opacity-80 leading-relaxed">
+    {{ opts.content | safe }}
+  </div>
+</details>
+{% endmacro %}
+
+
+{# -------------------------------------------------------------------------
+   7. Hero Component (daisyUI hero)
+   ------------------------------------------------------------------------- #}
+{% macro hero(opts) %}
+<div class="hero bg-base-200 py-16 sm:py-20 border-b border-base-300 {{ opts.class }}">
+  <div class="hero-content text-start max-w-5xl w-full px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      {% if opts.badge %}
+        <div class="badge badge-primary badge-soft mb-6 gap-2">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          {{ opts.badge }}
+        </div>
+      {% endif %}
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+        {{ opts.title }}
+      </h1>
+
+      {% if opts.subtitle %}
+        <p class="py-6 text-lg sm:text-xl opacity-80 leading-relaxed">
+          {{ opts.subtitle }}
+        </p>
+      {% endif %}
+
+      {% if opts.ctaText or opts.secondaryCtaText %}
+        <div class="flex flex-wrap gap-4">
+          {% if opts.ctaText %}
+            <a href="{{ opts.ctaHref | default('#') }}" class="btn btn-primary">
+              {{ opts.ctaText }}
+            </a>
+          {% endif %}
+          {% if opts.secondaryCtaText %}
+            <a href="{{ opts.secondaryCtaHref | default('#') }}" class="btn btn-outline">
+              {{ opts.secondaryCtaText }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endmacro %}

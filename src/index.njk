@@ -1,0 +1,243 @@
+---
+layout: base.njk
+title: Home
+---
+
+<!-- =======================================================================
+     1. Hero Bento Grid Section
+     ======================================================================= -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- Bento Item 1: Profile & Intro (Span 2) -->
+    <div class="md:col-span-2 card bg-base-100 border border-base-200 shadow-sm rounded-box p-6 sm:p-8 flex flex-col justify-between">
+      <div>
+        <!-- Avatar & Status Badge -->
+        <div class="flex items-center justify-between gap-4">
+          <div class="avatar avatar-online placeholder">
+            <div class="bg-primary text-primary-content w-16 rounded-full shadow-inner ring ring-base-100 ring-offset-2">
+              <span class="text-xl font-bold tracking-tight">RS</span>
+            </div>
+          </div>
+          <div class="badge badge-success badge-soft text-xs gap-1.5 py-3 px-3">
+            <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+            {{ site.availability }}
+          </div>
+        </div>
+
+        <!-- Headline & Bio -->
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mt-6 leading-tight">
+          Hi, I'm <span class="text-primary">{{ site.name }}</span>.
+        </h1>
+        <p class="text-lg sm:text-xl font-medium opacity-80 mt-2">
+          {{ site.role }} · {{ site.location }}
+        </p>
+        <p class="text-sm sm:text-base opacity-75 mt-4 leading-relaxed max-w-xl">
+          {{ site.description }} I build modern, resilient, and accessible web experiences using static-first architecture and clean design systems.
+        </p>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex flex-wrap items-center gap-3 mt-8 pt-6 border-t border-base-200">
+        <a href="#projects" class="btn btn-primary btn-sm sm:btn-md">
+          Explore Projects ↓
+        </a>
+        <a href="mailto:{{ site.author.email }}" class="btn btn-outline btn-sm sm:btn-md">
+          Get in Touch
+        </a>
+        <div class="ml-auto flex items-center gap-1">
+          {% if site.author.github %}
+            <a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-circle btn-sm" aria-label="GitHub">
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+          {% endif %}
+          {% if site.author.linkedin %}
+            <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-circle btn-sm" aria-label="LinkedIn">
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bento Item 2: Key Metrics & Stats (Span 1) -->
+    <div class="card bg-base-100 border border-base-200 shadow-sm rounded-box p-6 flex flex-col justify-between">
+      <div class="flex items-center justify-between pb-3 border-b border-base-200">
+        <h2 class="font-bold text-sm uppercase tracking-wider opacity-70">Key Metrics</h2>
+        <span class="badge badge-xs badge-primary">Verified</span>
+      </div>
+
+      <div class="stats stats-vertical bg-transparent border-0 w-full divide-y divide-base-200">
+        <div class="stat px-0 py-3">
+          <div class="stat-title text-xs">Experience</div>
+          <div class="stat-value text-2xl text-primary font-black">4+ Years</div>
+          <div class="stat-desc text-xs mt-0.5">Frontend & UI Systems</div>
+        </div>
+        <div class="stat px-0 py-3">
+          <div class="stat-title text-xs">Shipped Works</div>
+          <div class="stat-value text-2xl text-secondary font-black">20+ Projects</div>
+          <div class="stat-desc text-xs mt-0.5">Production & Open Source</div>
+        </div>
+        <div class="stat px-0 py-3">
+          <div class="stat-title text-xs">Lighthouse Score</div>
+          <div class="stat-value text-2xl text-accent font-black">100/100</div>
+          <div class="stat-desc text-xs mt-0.5">Speed & Core Web Vitals</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bento Item 3: Skills & Tech Stack (Span 2) -->
+    <div class="md:col-span-2 card bg-base-100 border border-base-200 shadow-sm rounded-box p-6">
+      <div class="flex items-center justify-between mb-4 pb-2 border-b border-base-200">
+        <h2 class="font-bold text-sm uppercase tracking-wider opacity-70">Tech Stack & Tools</h2>
+        <span class="text-xs opacity-60">Modern & Standard</span>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        {% for skill in site.skills %}
+          <span class="badge badge-soft badge-primary text-xs py-3 px-3.5 font-medium transition-transform hover:scale-105">
+            {{ skill }}
+          </span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Bento Item 4: Current Focus (Span 1) -->
+    <div class="card bg-base-200/60 border border-base-300 shadow-sm rounded-box p-6 flex flex-col justify-between">
+      <div>
+        <div class="badge badge-outline badge-primary text-[11px] font-semibold mb-3">
+          Now · 2026
+        </div>
+        <h3 class="font-bold text-base leading-snug">
+          Exploring Eleventy v3 & Component Systems
+        </h3>
+        <p class="text-xs opacity-75 leading-relaxed mt-2">
+          Deep-diving into static generation, WCAG AA/AAA theme tokens, and minimal design systems built with daisyUI 5.
+        </p>
+      </div>
+
+      <div class="mt-4 pt-3 border-t border-base-300 flex items-center justify-between text-xs opacity-70">
+        <span>Status</span>
+        <span class="font-semibold text-primary">Active Experiment</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =======================================================================
+     2. Featured Projects Grid
+     ======================================================================= -->
+<section id="projects" class="py-16 bg-base-200/40 border-t border-base-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3">
+      <div>
+        <span class="badge badge-primary badge-outline text-xs uppercase tracking-wider mb-2 font-semibold">Portfolio</span>
+        <h2 class="text-3xl font-extrabold tracking-tight">Featured Projects</h2>
+        <p class="text-sm opacity-70 mt-1">A curated selection of applications, libraries, and open-source tools.</p>
+      </div>
+      <a href="https://github.com/rounaksaha" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm text-primary">
+        View all on GitHub →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {% for project in projects %}
+        <article class="card bg-base-100 border border-base-200 shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-200 rounded-box flex flex-col justify-between">
+          <div class="card-body p-6">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="badge badge-sm badge-ghost text-xs font-semibold">{{ project.status }}</span>
+              <span class="text-xs opacity-60 font-mono">{{ project.year }}</span>
+            </div>
+
+            <h3 class="card-title text-xl font-bold mt-1">
+              {{ project.title }}
+            </h3>
+
+            <p class="text-sm opacity-75 leading-relaxed mt-2">
+              {{ project.description }}
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mt-4 pt-2">
+              {% for tag in project.tags %}
+                <span class="badge badge-xs badge-soft badge-primary text-[11px]">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="card-actions justify-end p-6 pt-0 border-t border-base-200 mt-auto">
+            {% if project.github %}
+              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
+                Code
+              </a>
+            {% endif %}
+            {% if project.link %}
+              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                Visit →
+              </a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- =======================================================================
+     3. Writing & Thoughts Section
+     ======================================================================= -->
+<section class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-between mb-10">
+    <div>
+      <span class="badge badge-secondary badge-outline text-xs uppercase tracking-wider mb-2 font-semibold">Writing</span>
+      <h2 class="text-3xl font-extrabold tracking-tight">Recent Articles</h2>
+      <p class="text-sm opacity-70 mt-1">Thoughts on web development, design engineering, and modern tools.</p>
+    </div>
+    <a href="/posts/" class="btn btn-ghost btn-sm text-primary">
+      All posts →
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for post in collections.posts | reverse | limit(4) %}
+      {% include "components/post-card.njk" %}
+    {% else %}
+      <p class="opacity-60">No posts published yet.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- =======================================================================
+     4. Minimal Call to Action / Connect Card
+     ======================================================================= -->
+<section class="py-12 bg-base-200/50 border-t border-base-300">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="card bg-base-100 border border-base-200 shadow-sm p-8 sm:p-12 rounded-box text-center">
+      <div class="max-w-xl mx-auto">
+        <span class="badge badge-primary badge-soft text-xs uppercase tracking-wider mb-3 font-semibold">Let's Connect</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+          Have an idea or project in mind?
+        </h2>
+        <p class="text-sm sm:text-base opacity-75 mt-3 leading-relaxed">
+          I'm currently open for freelance projects, open-source collaborations, and engineering roles. Drop me a line anytime.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="mailto:{{ site.author.email }}" class="btn btn-primary">
+            Send an Email
+          </a>
+          {% if site.author.linkedin %}
+            <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              LinkedIn
+            </a>
+          {% endif %}
+          {% if site.author.github %}
+            <a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+              GitHub Profile
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

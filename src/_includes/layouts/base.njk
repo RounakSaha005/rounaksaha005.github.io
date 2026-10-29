@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ocean-sun" class="h-full">
+<head>
+  {% include "components/head.njk" %}
+</head>
+<body class="min-h-screen flex flex-col bg-base-100 text-base-content font-sans antialiased">
+
+  <!-- Skip to content link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 btn btn-primary btn-sm">
+    Skip to main content
+  </a>
+
+  <!-- Global Header / Navbar -->
+  {% include "components/navbar.njk" %}
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="flex-1 w-full">
+    {{ content | safe }}
+  </main>
+
+  <!-- Global Footer -->
+  {% include "components/footer.njk" %}
+
+</body>
+</html>

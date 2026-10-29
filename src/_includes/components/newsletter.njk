@@ -1,0 +1,26 @@
+<div class="card bg-base-200 border border-base-300 shadow-sm max-w-3xl mx-auto my-12 rounded-box">
+  <div class="card-body items-center text-center p-8 sm:p-10">
+    <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xl mb-2">
+      📬
+    </div>
+    <h2 class="card-title text-2xl sm:text-3xl font-extrabold tracking-tight">
+      Stay in the loop
+    </h2>
+    <p class="text-sm sm:text-base opacity-80 max-w-md">
+      Get occasional updates on web development, new projects, and digital experiments. No spam, ever.
+    </p>
+
+    <form class="mt-6 flex flex-col sm:flex-row gap-3 w-full max-w-md justify-center" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+      <input 
+        type="email" 
+        placeholder="you@domain.com" 
+        required 
+        class="input input-bordered flex-1" 
+      />
+      <button type="submit" class="btn btn-primary">
+        Subscribe
+      </button>
+    </form>
+    <p class="text-xs opacity-60 mt-2">Unsubscribe at any time.</p>
+  </div>
+</div>
