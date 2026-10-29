@@ -24,6 +24,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="{{ ogImage }}">
 <meta property="og:image:alt" content="{{ pageTitle }}">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="600">
+<meta property="og:image:type" content="image/jpeg">
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
@@ -38,8 +41,9 @@
 <link rel="alternate" type="application/atom+xml" title="{{ site.name }} · RSS Feed" href="{{ '/feed.xml' | absoluteUrl(site.url) }}">
 <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ '/sitemap.xml' | absoluteUrl(site.url) }}">
 
-<!-- Theme Color -->
-<meta name="theme-color" content="#1A212D">
+<!-- Theme Color (Light and Dark Adaptive) -->
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FCFBF7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1A212D">
 
 <!-- Schema.org JSON-LD Knowledge Graph & Rich Snippets -->
 <script type="application/ld+json">
@@ -161,9 +165,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Geist+Mono:wght@100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
-<!-- Phosphor Icons (https://phosphoricons.com/): Local bundle with CDN fallback -->
+<!-- Phosphor Icons (Local high-performance self-hosted bundle) -->
 <link rel="stylesheet" type="text/css" href="/assets/phosphor/style.css">
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 
 <!-- Compiled Tailwind CSS & daisyUI -->
 <link rel="stylesheet" href="/styles/index.css">

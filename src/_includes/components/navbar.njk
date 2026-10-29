@@ -79,8 +79,11 @@
         <button 
           id="mobile-menu-trigger" 
           type="button"
-          class="cursor-pointer text-base-content/75 hover:text-base-content hover:bg-base-200/60 p-1.5 rounded-lg flex items-center justify-center transition-colors" 
+          class="cursor-pointer text-base-content/75 hover:text-base-content hover:bg-base-200/60 p-1.5 rounded-lg flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-primary" 
           aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-controls="mobile-menu-dropdown-list"
         >
           <!-- Hamburger list icon (shown when menu closed) -->
           <i id="mobile-menu-open-icon" class="ph ph-list text-lg"></i>
@@ -88,7 +91,7 @@
           <i id="mobile-menu-close-icon" class="ph ph-x text-lg hidden"></i>
         </button>
 
-        <ul tabindex="0" class="dropdown-content menu p-2 shadow-2xl bg-base-100 rounded-xl w-52 border border-dotted border-base-300 text-xs font-mono z-50 mt-2 space-y-0.5">
+        <ul id="mobile-menu-dropdown-list" tabindex="0" class="dropdown-content menu p-2 shadow-2xl bg-base-100 rounded-xl w-52 border border-dotted border-base-300 text-xs font-mono z-50 mt-2 space-y-0.5">
           <li>
             <a href="/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/' %}text-primary font-semibold bg-base-200/50{% endif %}">
               <i class="ph ph-house text-sm"></i>
@@ -180,6 +183,9 @@
 
     function setMobileMenuState(isOpen) {
       if (!mobileDropdown) return;
+      if (mobileTrigger) {
+        mobileTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
       if (isOpen) {
         mobileDropdown.classList.add('dropdown-open');
         if (mobileOpenIcon) mobileOpenIcon.classList.add('hidden');

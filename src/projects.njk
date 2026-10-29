@@ -17,14 +17,15 @@ permalink: /projects/index.html
 
   <div class="space-y-3.5 sm:space-y-4">
     {% for project in projects %}
-      <a 
-        href="{{ project.caseStudy | default(project.link) }}" 
-        class="group block p-3.5 sm:p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer flex flex-col justify-between"
+      <div 
+        class="group relative block p-3.5 sm:p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all flex flex-col justify-between"
       >
         <div>
           <div class="flex items-baseline justify-between gap-2 mb-1">
             <h2 class="text-xs sm:text-sm font-medium text-base-content group-hover:text-primary transition-colors">
-              {{ project.title }}
+              <a href="{{ project.caseStudy | default(project.link) }}" class="after:absolute after:inset-0 focus-visible:outline-none">
+                {{ project.title }}
+              </a>
             </h2>
             <span class="text-[11px] font-mono text-base-content/40">{{ project.year }}</span>
           </div>
@@ -37,21 +38,27 @@ permalink: /projects/index.html
         <div class="flex items-center justify-between gap-2 pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
           <span class="text-base-content/50 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none">{{ project.tags | join(" · ") }}</span>
           <div class="flex items-center gap-3 shrink-0">
-            <span class="font-medium text-primary group-hover:underline font-mono flex items-center gap-1">
+            <a 
+              href="{{ project.caseStudy | default(project.link) }}" 
+              class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-primary"
+            >
               {% if project.caseStudy %}Case study <i class="ph ph-arrow-right text-[11px]"></i>{% else %}Demo <i class="ph ph-arrow-right text-[11px]"></i>{% endif %}
-            </span>
+            </a>
             {% if project.github %}
-              <span 
-                onclick="event.preventDefault(); event.stopPropagation(); window.open('{{ project.github }}', '_blank', 'noopener,noreferrer');" 
-                class="opacity-70 hover:opacity-100 font-mono hover:underline cursor-pointer flex items-center gap-0.5"
-                title="View source code"
+              <a 
+                href="{{ project.github }}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="relative z-10 opacity-70 hover:opacity-100 font-mono hover:underline flex items-center gap-0.5 focus-visible:outline-2 focus-visible:outline-primary"
+                title="View source code on GitHub"
+                aria-label="View {{ project.title }} source code on GitHub"
               >
                 Code <i class="ph ph-arrow-up-right text-[11px]"></i>
-              </span>
+              </a>
             {% endif %}
           </div>
         </div>
-      </a>
+      </div>
     {% endfor %}
   </div>
 
