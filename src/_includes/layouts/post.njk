@@ -1,23 +1,22 @@
 ---
 layout: base.njk
-wide: true
 ---
 
-<div class="flex flex-col lg:flex-row min-h-full">
+<div class="flex flex-col md:flex-row min-h-full">
   
   <!-- =======================================================================
        01 // LEFT COLUMN: STICKY SECTION NAVIGATION (TOC)
        ======================================================================= -->
-  <aside class="hidden lg:block w-48 xl:w-56 shrink-0 border-r border-dotted border-base-300 p-6 sm:p-8">
-    <div class="sticky top-8 space-y-3 font-mono">
-      <div class="text-[10px] uppercase tracking-wider text-base-content/40 font-semibold mb-2">
+  <aside class="hidden md:block w-36 md:w-44 shrink-0 border-r border-dotted border-base-300 p-4 sm:p-5">
+    <div class="sticky top-6 space-y-2.5 font-mono">
+      <div class="text-[10px] uppercase tracking-wider text-base-content/40 font-semibold mb-1">
         Sections
       </div>
       <nav id="toc-desktop-nav" class="space-y-1" aria-label="Table of contents">
         <!-- Dynamically populated by JS: Top, • Context, Problem, etc. -->
         <a href="#article-top" class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono text-base-content font-medium active" data-target="article-top">
           <span class="toc-bullet text-primary shrink-0 opacity-100">•</span>
-          <span class="toc-label truncate">Top</span>
+          <span class="toc-label leading-snug break-words">Top</span>
         </a>
       </nav>
     </div>
@@ -26,7 +25,7 @@ wide: true
   <!-- =======================================================================
        02 // RIGHT COLUMN: MAIN ARTICLE CONTENT & ACTION HEADER
        ======================================================================= -->
-  <div class="flex-1 min-w-0 p-6 sm:p-8 lg:p-12 space-y-8">
+  <div class="flex-1 min-w-0 p-5 sm:p-6 md:p-8 space-y-6">
 
     <!-- Top Action Bar (Back Arrow & Copy Link as in Reference Screenshot) -->
     <div id="article-top" class="flex items-center justify-between pb-5 border-b border-dotted border-base-300">
@@ -59,8 +58,8 @@ wide: true
       </button>
     </div>
 
-    <!-- Mobile Sticky Section Quick-Jump (visible only < lg) -->
-    <div class="block lg:hidden border border-dotted border-base-300 rounded-lg p-2.5 bg-base-200/40 font-mono text-xs">
+    <!-- Mobile Sticky Section Quick-Jump (visible only < md) -->
+    <div class="block md:hidden border border-dotted border-base-300 rounded-lg p-2.5 bg-base-200/40 font-mono text-xs">
       <details id="toc-mobile-dropdown" class="dropdown w-full">
         <summary class="flex items-center justify-between cursor-pointer text-base-content/75 select-none">
           <span class="flex items-center gap-1.5 truncate">
@@ -181,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data-target="${item.id}"
       >
         <span class="toc-bullet text-primary shrink-0 transition-opacity duration-150 ${index === 0 ? 'opacity-100' : 'opacity-0'}">•</span>
-        <span class="toc-label truncate">${item.text}</span>
+        <span class="toc-label leading-snug break-words">${item.text}</span>
       </a>
     `).join('');
   }
