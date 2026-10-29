@@ -14,6 +14,33 @@
     "youtube": "https://youtube.com/@rounaksaha",
     "twitter": "https://twitter.com/rounaksaha"
   },
+  "socialLinks": [
+    {
+      "platform": "Email",
+      "url": "mailto:rounak@example.com",
+      "icon": "ph-envelope"
+    },
+    {
+      "platform": "X / Twitter",
+      "url": "https://twitter.com/rounaksaha",
+      "icon": "ph-x-logo"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/rounaksaha",
+      "icon": "ph-linkedin-logo"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://youtube.com/@rounaksaha",
+      "icon": "ph-youtube-logo"
+    },
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/RounakSaha005",
+      "icon": "ph-github-logo"
+    }
+  ],
   "youtubeChannel": {
     "handle": "@rounaksaha",
     "subscribers": "45K+",

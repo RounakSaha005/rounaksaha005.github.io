@@ -1,6 +1,33 @@
 {
   "headline": "Hello I'm Rounak Saha, developer & gamer",
   "bio": "Full-stack engineer based out of Bangalore with <strong>4 years</strong> of experience, currently <strong>engineering modern web platforms at Vortex</strong> and teaching <strong>45K+ developers on YouTube</strong>.",
+  "socialLinks": [
+    {
+      "platform": "Email",
+      "url": "mailto:rounak@example.com",
+      "icon": "ph-envelope"
+    },
+    {
+      "platform": "X / Twitter",
+      "url": "https://twitter.com/rounaksaha",
+      "icon": "ph-x-logo"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/rounaksaha",
+      "icon": "ph-linkedin-logo"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://youtube.com/@rounaksaha",
+      "icon": "ph-youtube-logo"
+    },
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/RounakSaha005",
+      "icon": "ph-github-logo"
+    }
+  ],
   "featuredWork": {
     "company": "AWS Academy",
     "role": "Intern",

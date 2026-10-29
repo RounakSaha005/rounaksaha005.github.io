@@ -118,6 +118,56 @@ export default function (eleventyConfig) {
       .replace(/'/g, '&apos;');
   });
 
+  // Filter to auto-detect or resolve Phosphor icon class for social and contact links
+  eleventyConfig.addFilter('socialIcon', (item) => {
+    if (!item) return 'ph-link';
+    if (typeof item === 'object' && item.icon && item.icon.trim()) {
+      let icon = item.icon.trim();
+      if (!icon.startsWith('ph-') && !icon.startsWith('ph ')) {
+        icon = 'ph-' + icon;
+      }
+      return icon;
+    }
+
+    const platform = (typeof item === 'object' ? (item.platform || '') : '').toLowerCase();
+    const url = (typeof item === 'object' ? (item.url || '') : (item || '')).toLowerCase();
+    const target = `${platform} ${url}`;
+
+    if (target.includes('mail') || url.startsWith('mailto:')) return 'ph-envelope';
+    if (target.includes('github')) return 'ph-github-logo';
+    if (target.includes('twitter') || target.includes('x.com') || target.includes('x-logo') || platform === 'x') return 'ph-x-logo';
+    if (target.includes('linkedin')) return 'ph-linkedin-logo';
+    if (target.includes('youtube') || target.includes('youtu.be')) return 'ph-youtube-logo';
+    if (target.includes('discord')) return 'ph-discord-logo';
+    if (target.includes('instagram')) return 'ph-instagram-logo';
+    if (target.includes('twitch')) return 'ph-twitch-logo';
+    if (target.includes('reddit')) return 'ph-reddit-logo';
+    if (target.includes('telegram') || target.includes('t.me')) return 'ph-telegram-logo';
+    if (target.includes('tiktok')) return 'ph-tiktok-logo';
+    if (target.includes('threads')) return 'ph-threads-logo';
+    if (target.includes('mastodon')) return 'ph-mastodon-logo';
+    if (target.includes('bluesky') || target.includes('bsky')) return 'ph-butterfly';
+    if (target.includes('steam')) return 'ph-steam-logo';
+    if (target.includes('spotify')) return 'ph-spotify-logo';
+    if (target.includes('figma')) return 'ph-figma-logo';
+    if (target.includes('dribbble')) return 'ph-dribbble-logo';
+    if (target.includes('stackoverflow') || target.includes('stack-overflow')) return 'ph-stack-overflow-logo';
+    if (target.includes('codepen')) return 'ph-codepen-logo';
+    if (target.includes('medium')) return 'ph-medium-logo';
+    if (target.includes('sub')) return 'ph-newspaper';
+    if (target.includes('resume') || target.includes('cv')) return 'ph-file-text';
+    if (target.includes('phone') || target.includes('tel:')) return 'ph-phone';
+    if (target.includes('web') || target.includes('site') || target.includes('blog')) return 'ph-globe';
+
+    return 'ph-link';
+  });
+
+  // Helper filter to detect external links for target="_blank"
+  eleventyConfig.addFilter('isExternalUrl', (url) => {
+    if (!url || typeof url !== 'string') return false;
+    return !url.startsWith('mailto:') && !url.startsWith('tel:') && !url.startsWith('/') && !url.startsWith('#');
+  });
+
   return {
     dir: { input: 'src', output: 'dist' },
   };

@@ -409,29 +409,43 @@ html.page-ready body {
 }
 
 /* 6. Social Channels & Contact */
-:is(a, button, .group, [role="button"]):hover .ph-envelope,
-.ph-envelope:hover {
+:is(a, button, .group, [role="button"]):not(.hero-social-link):hover .ph-envelope,
+.ph-envelope:not(.hero-social-link *):hover {
   transform: translateY(-3px) scale(1.14);
 }
 
-:is(a, button, .group, [role="button"]):hover .ph-x-logo,
-.ph-x-logo:hover {
+:is(a, button, .group, [role="button"]):not(.hero-social-link):hover .ph-x-logo,
+.ph-x-logo:not(.hero-social-link *):hover {
   transform: rotate(15deg) scale(1.18);
 }
 
-:is(a, button, .group, [role="button"]):hover .ph-linkedin-logo,
-.ph-linkedin-logo:hover {
+:is(a, button, .group, [role="button"]):not(.hero-social-link):hover .ph-linkedin-logo,
+.ph-linkedin-logo:not(.hero-social-link *):hover {
   transform: translateY(-3px) scale(1.16);
 }
 
-:is(a, button, .group, [role="button"]):hover .ph-youtube-logo,
-.ph-youtube-logo:hover {
+:is(a, button, .group, [role="button"]):not(.hero-social-link):hover .ph-youtube-logo,
+.ph-youtube-logo:not(.hero-social-link *):hover {
   transform: scale(1.24);
 }
 
-:is(a, button, .group, [role="button"]):hover .ph-github-logo,
-.ph-github-logo:hover {
+:is(a, button, .group, [role="button"]):not(.hero-social-link):hover .ph-github-logo,
+.ph-github-logo:not(.hero-social-link *):hover {
   transform: rotate(14deg) scale(1.18);
+}
+
+/* ==========================================================================
+   Hero Section Social Links: Completely Static (No Icon Hover Animations)
+   ========================================================================== */
+
+.hero-social-link,
+.hero-social-link:hover,
+.hero-social-link .ph,
+.hero-social-link:hover .ph,
+.hero-social-link i[class*="ph-"],
+.hero-social-link:hover i[class*="ph-"] {
+  transform: none !important;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease !important;
 }
 
 /* 7. Callouts & Badges */

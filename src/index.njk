@@ -36,7 +36,7 @@ title: Home
         </p>
       </div>
 
-      <!-- Action Row (Pill Button + Inline Social Icons) -->
+      <!-- Action Row (Pill Button + Fully Configurable & Static Hero Social Icons) -->
       <div class="flex items-center gap-2 pt-1 flex-wrap">
         <a 
           href="/resume/" 
@@ -45,51 +45,22 @@ title: Home
           Download Resume
         </a>
 
-        <!-- Mail Icon -->
-        <a 
-          href="mailto:{{ site.author.email }}" 
-          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors flex items-center justify-center"
-          title="Email"
-          aria-label="Send email"
-        >
-          <i class="ph ph-envelope text-sm"></i>
-        </a>
-
-        <!-- Twitter / X Icon -->
-        <a 
-          href="{{ site.author.twitter }}" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors flex items-center justify-center"
-          title="X / Twitter"
-          aria-label="Twitter profile"
-        >
-          <i class="ph ph-x-logo text-sm"></i>
-        </a>
-
-        <!-- LinkedIn Icon -->
-        <a 
-          href="{{ site.author.linkedin }}" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors flex items-center justify-center"
-          title="LinkedIn"
-          aria-label="LinkedIn profile"
-        >
-          <i class="ph ph-linkedin-logo text-sm"></i>
-        </a>
-
-        <!-- YouTube Icon -->
-        <a 
-          href="{{ site.author.youtube }}" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-red-500 transition-colors flex items-center justify-center"
-          title="YouTube Channel"
-          aria-label="YouTube Channel"
-        >
-          <i class="ph ph-youtube-logo text-sm"></i>
-        </a>
+        {% set heroSocials = home.socialLinks if (home.socialLinks and home.socialLinks.length > 0) else site.socialLinks %}
+        {% if heroSocials %}
+          {% for item in heroSocials %}
+            {% if item.url %}
+              <a 
+                href="{{ item.url }}" 
+                {% if item.url | isExternalUrl %}target="_blank" rel="noopener noreferrer"{% endif %}
+                class="hero-social-link p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors flex items-center justify-center shrink-0"
+                title="{{ item.platform | default('Social Profile') }}"
+                aria-label="{{ item.platform | default('Social Profile') }}"
+              >
+                <i class="ph {{ item | socialIcon }} text-sm pointer-events-none"></i>
+              </a>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
       </div>
 
     </div>

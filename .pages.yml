@@ -137,6 +137,24 @@ content:
       - name: bio
         label: Hero Biography Text (HTML supported)
         type: text
+      - name: socialLinks
+        label: Hero Social & Contact Links
+        type: object
+        list: true
+        description: Add, edit, reorder, or remove social and contact buttons in the hero section.
+        fields:
+          - name: platform
+            label: Platform Name (e.g. GitHub, X / Twitter, LinkedIn, YouTube, Discord, Email, Instagram)
+            type: string
+            required: true
+          - name: url
+            label: URL / Web Link (e.g. https://... or mailto:...)
+            type: string
+            required: true
+          - name: icon
+            label: Icon Name (Optional)
+            type: string
+            description: Optional Phosphor icon class (e.g. ph-github-logo, ph-x-logo, ph-discord-logo, ph-envelope). If left blank, icon is auto-detected!
       - name: featuredWork
         label: Featured Work / Current Company
         type: object
