@@ -96,9 +96,29 @@
 }
 </script>
 
-<!-- Theme script to prevent FOUC (Flash of Unstyled Content) -->
+<!-- Critical Anti-FOUC & Asset Readiness Controller (Text, Fonts, CSS & Scripts load before display) -->
+<style>
+  html:not(.page-ready) body {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  html.page-ready body {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+</style>
+<noscript>
+  <style>
+    html:not(.page-ready) body {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+  </style>
+</noscript>
 <script>
   (function() {
+    // 1. Sync theme immediately before any paint
     const saved = localStorage.getItem('theme');
     if (saved === 'dark' || saved === 'light') {
       document.documentElement.dataset.theme = saved;
@@ -106,6 +126,33 @@
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.dataset.theme = prefersDark ? 'dark' : 'light';
     }
+
+    // 2. Ensure fonts, CSS stylesheets, and DOM are fully ready before revealing page
+    let revealed = false;
+    function revealPage() {
+      if (revealed) return;
+      revealed = true;
+      document.documentElement.classList.add('page-ready');
+    }
+
+    // Fallback safety timeout (1200ms)
+    const safetyTimer = setTimeout(revealPage, 1200);
+
+    const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    const domReady = new Promise(function(resolve) {
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        resolve();
+      } else {
+        window.addEventListener('DOMContentLoaded', resolve, { once: true });
+      }
+    });
+
+    Promise.all([fontsReady, domReady]).then(function() {
+      clearTimeout(safetyTimer);
+      requestAnimationFrame(function() {
+        requestAnimationFrame(revealPage);
+      });
+    }).catch(revealPage);
   })();
 </script>
 

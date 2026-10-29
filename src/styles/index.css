@@ -225,3 +225,18 @@ a h1, a h2, a h3, a h4, a h5, a h6,
   width: max-content;
   will-change: transform;
 }
+
+/* ==========================================================================
+   Smooth Pre-Reveal State (Load Text, CSS & JS before Display)
+   ========================================================================== */
+
+html:not(.page-ready) body {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+html.page-ready body {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
