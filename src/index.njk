@@ -181,42 +181,57 @@ title: Home
   </div>
 
   <div class="space-y-3.5 sm:space-y-4">
-    {% for project in projects | limit(3) %}
+    {% for project in collections.projects | limit(3) %}
+      {% set projectUrl = project.url if (project.content and project.content.trim().length > 20) else (project.data.link | default(project.data.github | default(project.url))) %}
+      {% set hasCaseStudy = project.content and project.content.trim().length > 20 %}
       <div 
         class="group relative block p-3.5 sm:p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all flex flex-col justify-between"
       >
         <div>
           <div class="flex items-baseline justify-between gap-2 mb-1">
             <h3 class="font-medium text-xs sm:text-sm text-base-content group-hover:text-primary transition-colors">
-              <a href="{{ project.caseStudy | default(project.link) }}" class="after:absolute after:inset-0 focus-visible:outline-none">
-                {{ project.title }}
+              <a href="{{ projectUrl }}" {% if not hasCaseStudy and projectUrl | isExternalUrl %}target="_blank" rel="noopener noreferrer"{% endif %} class="after:absolute after:inset-0 focus-visible:outline-none">
+                {{ project.data.title }}
               </a>
             </h3>
-            <span class="text-[11px] font-mono text-base-content/40">{{ project.year }}</span>
+            <span class="text-[11px] font-mono text-base-content/40">{{ project.data.year | default(project.date | htmlDateString) }}</span>
           </div>
 
-          <p class="text-xs text-base-content/70 leading-relaxed font-sans">
-            {{ project.description }}
+          <p class="text-xs text-base-content/75 leading-relaxed font-sans">
+            {{ project.data.description }}
           </p>
         </div>
 
         <div class="flex items-center justify-between gap-2 pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
-          <span class="text-base-content/50 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none">{{ project.tags | join(" · ") }}</span>
+          <span class="text-base-content/50 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none">
+            {{ (project.data.tags | filterTagList | join(" · ")) or "Engineering" }}
+          </span>
           <div class="flex items-center gap-3 shrink-0">
-            <a 
-              href="{{ project.caseStudy | default(project.link) }}" 
-              class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-primary"
-            >
-              {% if project.caseStudy %}Case study <i class="ph ph-arrow-right text-[11px]"></i>{% else %}Demo <i class="ph ph-arrow-right text-[11px]"></i>{% endif %}
-            </a>
-            {% if project.github %}
+            {% if hasCaseStudy %}
               <a 
-                href="{{ project.github }}" 
+                href="{{ project.url }}" 
+                class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-primary"
+              >
+                Case study <i class="ph ph-arrow-right text-[11px]"></i>
+              </a>
+            {% elif project.data.link %}
+              <a 
+                href="{{ project.data.link }}" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-primary"
+              >
+                Demo <i class="ph ph-arrow-right text-[11px]"></i>
+              </a>
+            {% endif %}
+            {% if project.data.github %}
+              <a 
+                href="{{ project.data.github }}" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="relative z-10 opacity-70 hover:opacity-100 font-mono hover:underline flex items-center gap-0.5 focus-visible:outline-2 focus-visible:outline-primary"
                 title="View source code on GitHub"
-                aria-label="View {{ project.title }} source code on GitHub"
+                aria-label="View {{ project.data.title }} source code on GitHub"
               >
                 Code <i class="ph ph-arrow-up-right text-[11px]"></i>
               </a>
@@ -224,6 +239,8 @@ title: Home
           </div>
         </div>
       </div>
+    {% else %}
+      <p class="text-xs text-base-content/50 font-mono py-2">No projects published yet.</p>
     {% endfor %}
   </div>
 
@@ -394,7 +411,7 @@ title: Home
   </div>
 
   <div class="space-y-3">
-    {% for post in collections.posts | reverse | limit(3) %}
+    {% for post in collections.posts | limit(3) %}
       <article>
         <a 
           href="{{ post.url }}" 

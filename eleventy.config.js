@@ -145,7 +145,7 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter('filterTagList', (tags) => {
-    return (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ['all', 'nav', 'post', 'posts', 'project', 'projects'].indexOf(tag) === -1);
   });
 
   // SEO & Feed Filters
@@ -221,6 +221,20 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('isExternalUrl', (url) => {
     if (!url || typeof url !== 'string') return false;
     return !url.startsWith('mailto:') && !url.startsWith('tel:') && !url.startsWith('/') && !url.startsWith('#');
+  });
+
+  // Automatic Collections based on directories
+  eleventyConfig.addCollection("posts", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => b.date - a.date);
+  });
+
+  eleventyConfig.addCollection("projects", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("src/projects/*.md").sort((a, b) => {
+      const yearA = parseInt(a.data.year, 10) || (a.date ? a.date.getFullYear() : 0);
+      const yearB = parseInt(b.data.year, 10) || (b.date ? b.date.getFullYear() : 0);
+      if (yearB !== yearA) return yearB - yearA;
+      return b.date - a.date;
+    });
   });
 
   return {

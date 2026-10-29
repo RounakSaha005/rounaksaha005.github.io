@@ -50,13 +50,14 @@ content:
         type: rich-text
 
   # =====================================================================
-  # 02 // PROJECT CASE STUDIES (In-depth Markdown Case Studies)
+  # 02 // PROJECTS & WORK (Markdown Projects & Case Studies)
   # =====================================================================
-  - name: case-studies
-    label: Project Case Studies
+  - name: projects
+    label: Projects & Work
     type: collection
     path: src/projects
     format: yaml-frontmatter
+    exclude: [projects.json]
     filename: "{slug}.md"
     view:
       primary: title
@@ -66,33 +67,43 @@ content:
         type: string
         required: true
       - name: description
-        label: Short Summary
+        label: Short Summary / Teaser
         type: text
+      - name: year
+        label: Year (e.g. 2026)
+        type: string
+      - name: date
+        label: Published Date
+        type: date
+        default: now
+      - name: tags
+        label: Technology Tags
+        type: string
+        list: true
+      - name: link
+        label: Live Demo / Site URL (optional)
+        type: string
+      - name: github
+        label: GitHub Repository URL (optional)
+        type: string
       - name: role
         label: Your Role (e.g. Creator & Core Maintainer)
         type: string
       - name: timeline
         label: Timeline (e.g. 2025 — 2026)
         type: string
-      - name: year
-        label: Year
+      - name: image
+        label: Project Cover Image
+        type: image
+      - name: status
+        label: Status Badge (e.g. Production, Shipped, Open Source)
         type: string
-      - name: tags
-        label: Technology Tags
-        type: string
-        list: true
-      - name: link
-        label: Live Demo / Site URL
-        type: string
-      - name: github
-        label: GitHub Repository URL
-        type: string
-      - name: layout
-        label: Layout Template
-        type: string
-        default: project.njk
+      - name: featured
+        label: Feature on Homepage
+        type: boolean
+        default: true
       - name: body
-        label: Case Study Content (Markdown)
+        label: Case Study Content (Markdown - optional)
         type: rich-text
 
   # =====================================================================
@@ -203,46 +214,6 @@ content:
         label: Workstation Tools & Studio Gear
         type: string
         list: true
-
-  # =====================================================================
-  # 06 // PROJECTS CATALOG (Selected & All Projects)
-  # =====================================================================
-  - name: projects-list
-    label: Projects Catalog
-    type: file
-    path: src/_data/projects.json
-    list: true
-    fields:
-      - name: title
-        label: Project Title
-        type: string
-        required: true
-      - name: description
-        label: Project Description
-        type: text
-      - name: tags
-        label: Technology Tags
-        type: string
-        list: true
-      - name: caseStudy
-        label: Internal Case Study Path (or null)
-        type: string
-      - name: link
-        label: Live Demo / Product URL
-        type: string
-      - name: github
-        label: GitHub Repository URL
-        type: string
-      - name: featured
-        label: Feature on Homepage
-        type: boolean
-        default: true
-      - name: year
-        label: Year
-        type: string
-      - name: status
-        label: Status Badge (e.g. Production, Shipped)
-        type: string
 
   # =====================================================================
   # 07 // RESUME & WORK EXPERIENCE

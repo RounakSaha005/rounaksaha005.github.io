@@ -16,7 +16,7 @@ permalink: /blog/index.html
   </header>
 
   <div class="space-y-3.5 sm:space-y-4">
-    {% for post in collections.posts | reverse %}
+    {% for post in collections.posts %}
       <article>
         <a 
           href="{{ post.url }}" 
