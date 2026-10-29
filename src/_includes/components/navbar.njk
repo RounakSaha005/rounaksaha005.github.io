@@ -26,20 +26,28 @@
         Info
       </a>
 
-      <!-- 1-Click Light / Dark Theme Toggle Button -->
-      <button 
-        id="theme-toggle-btn"
-        type="button" 
-        onclick="toggleLightDarkTheme()" 
-        class="p-1.5 rounded-lg text-base-content/60 hover:text-base-content hover:bg-base-200/60 transition-colors cursor-pointer shrink-0 flex items-center justify-center"
+      <!-- 1-Click Light / Dark Theme Toggle (daisyUI Swap-Rotate) -->
+      <label 
+        id="theme-toggle-label"
+        class="swap swap-rotate p-1.5 rounded-lg text-base-content/60 hover:text-base-content hover:bg-base-200/60 transition-colors cursor-pointer shrink-0"
         aria-label="Toggle Light and Dark Theme"
         title="Toggle Theme (Light / Dark)"
       >
-        <!-- Sun icon (shown in dark theme) -->
-        <i id="theme-sun-icon" class="ph ph-sun text-base hidden"></i>
-        <!-- Moon icon (shown in light theme) -->
-        <i id="theme-moon-icon" class="ph ph-moon text-base"></i>
-      </button>
+        <!-- State controller checkbox -->
+        <input 
+          id="theme-toggle-checkbox" 
+          type="checkbox" 
+          class="theme-controller" 
+          value="dark"
+          aria-label="Dark mode toggle" 
+        />
+        
+        <!-- Sun icon (shown when swapped ON in dark mode - click to switch to light) -->
+        <i class="swap-on ph ph-sun text-base"></i>
+        
+        <!-- Moon icon (shown when swapped OFF in light mode - click to switch to dark) -->
+        <i class="swap-off ph ph-moon text-base"></i>
+      </label>
 
       <!-- Minimal Dropdown for other pages and mobile quick-access -->
       <div class="dropdown dropdown-end">
@@ -68,31 +76,34 @@
 </header>
 
 <script>
-  function updateThemeUI(theme) {
-    const sun = document.getElementById('theme-sun-icon');
-    const moon = document.getElementById('theme-moon-icon');
-    if (sun && moon) {
-      if (theme === 'dark') {
-        sun.classList.remove('hidden');
-        moon.classList.add('hidden');
-      } else {
-        sun.classList.add('hidden');
-        moon.classList.remove('hidden');
-      }
+  (function() {
+    const cb = document.getElementById('theme-toggle-checkbox');
+    if (!cb) return;
+
+    function syncCheckbox() {
+      const isDark = document.documentElement.dataset.theme === 'dark';
+      cb.checked = isDark;
     }
-  }
 
-  function toggleLightDarkTheme() {
-    const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem('theme', next);
-    updateThemeUI(next);
-  }
+    // Sync immediately
+    syncCheckbox();
 
-  // Sync icon on initial page load
-  document.addEventListener('DOMContentLoaded', () => {
-    const active = document.documentElement.dataset.theme || 'light';
-    updateThemeUI(active);
-  });
+    // Toggle listener
+    cb.addEventListener('change', function() {
+      const next = this.checked ? 'dark' : 'light';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+
+    // Cross-tab synchronization
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'theme') {
+        document.documentElement.dataset.theme = e.newValue;
+        syncCheckbox();
+      }
+    });
+
+    // Re-sync after page ready
+    document.addEventListener('DOMContentLoaded', syncCheckbox);
+  })();
 </script>
