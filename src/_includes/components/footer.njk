@@ -1,86 +1,18 @@
-<footer class="border-t border-base-200/80 bg-base-100 text-base-content mt-auto relative overflow-hidden">
-  <!-- Subtle background gridlines -->
-  <div class="absolute inset-0 grid-lines-dense opacity-20 pointer-events-none"></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-base-200/80">
-      
-      <!-- Col 1: Identity & YouTuber Status -->
-      <div class="md:col-span-2 pr-0 sm:pr-8">
-        <div class="flex items-center gap-2 mb-3">
-          <span class="font-mono font-bold text-lg text-primary tracking-tight">// {{ site.name }}</span>
-          <span class="badge badge-xs badge-success badge-soft font-mono">operational</span>
-        </div>
-        <p class="text-sm opacity-75 max-w-sm leading-relaxed mb-4">
-          {{ site.description }}
-        </p>
-        <!-- YouTube Creator Tagline -->
-        <div class="flex items-center gap-3 p-3 rounded-lg bg-base-200/60 border border-base-300/80 max-w-sm text-xs font-mono">
-          <svg class="h-5 w-5 fill-current text-red-500 shrink-0" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          <div class="flex-1 truncate">
-            <span class="font-semibold text-base-content">{{ site.youtubeChannel.handle }}</span>
-            <span class="opacity-60 block text-[11px]">{{ site.youtubeChannel.subscribers }} Subscribers · Tech & Engineering</span>
-          </div>
-          <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-outline">Sub</a>
-        </div>
-      </div>
-
-      <!-- Col 2: Navigation -->
-      <div>
-        <h6 class="font-mono text-xs uppercase tracking-widest text-primary font-bold mb-4">// Pages</h6>
-        <ul class="space-y-2 text-sm">
-          {% for item in site.navigation %}
-            <li>
-              <a href="{{ item.url }}" class="opacity-75 hover:opacity-100 hover:text-primary transition-colors duration-150 flex items-center gap-1.5">
-                <span class="text-xs opacity-40 font-mono">→</span> {{ item.label }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <!-- Col 3: Socials & Contact -->
-      <div>
-        <h6 class="font-mono text-xs uppercase tracking-widest text-primary font-bold mb-4">// Network</h6>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100 hover:text-primary transition-colors duration-150 flex items-center gap-2">
-              <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a href="{{ site.author.youtube }}" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100 hover:text-red-500 transition-colors duration-150 flex items-center gap-2">
-              <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              YouTube Channel
-            </a>
-          </li>
-          <li>
-            <a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100 hover:text-primary transition-colors duration-150 flex items-center gap-2">
-              <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a href="mailto:{{ site.author.email }}" class="opacity-75 hover:opacity-100 hover:text-primary transition-colors duration-150 flex items-center gap-2">
-              <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
-              {{ site.author.email }}
-            </a>
-          </li>
-        </ul>
-      </div>
-
+<footer class="border-t border-base-200/60 py-10 mt-auto text-xs text-base-content/70">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="font-medium text-base-content">{{ site.name }}</span>
+      <span>·</span>
+      <span>Full-Stack Engineer & YouTuber</span>
+      <span>·</span>
+      <span>© {% year %}</span>
     </div>
 
-    <!-- Bottom Bar: Status, Copyright & Specs -->
-    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs font-mono opacity-70 gap-4">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-success"></span>
-        <span>All systems normal · Edge routed via Cloudflare & Vercel</span>
-      </div>
-      <div>
-        <span>© {% year %} {{ site.name }}. Built with 11ty + daisyUI + Tailwind.</span>
-      </div>
+    <div class="flex items-center gap-5">
+      <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" class="hover:text-base-content transition-colors">LinkedIn</a>
+      <a href="{{ site.author.youtube }}" target="_blank" rel="noopener noreferrer" class="hover:text-base-content transition-colors">YouTube</a>
+      <a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-base-content transition-colors">GitHub</a>
+      <a href="mailto:{{ site.author.email }}" class="hover:text-base-content transition-colors">Email</a>
     </div>
   </div>
 </footer>

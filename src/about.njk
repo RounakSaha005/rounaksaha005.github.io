@@ -4,193 +4,74 @@ title: About
 permalink: /about/index.html
 ---
 
-<div class="relative py-16 sm:py-20 border-b border-base-200/80 overflow-hidden">
-  <div class="absolute inset-0 grid-lines-bg opacity-25 grid-mask-fade pointer-events-none"></div>
+<div class="py-14 sm:py-20 max-w-3xl mx-auto px-4 sm:px-6">
+  
+  <header class="mb-10 pb-6 border-b border-base-200/60">
+    <h1 class="text-3xl font-bold tracking-tight text-base-content">About Me</h1>
+    <p class="text-sm text-base-content/70 mt-1">
+      Full-stack software engineer and tech content creator based in Bengaluru.
+    </p>
+  </header>
 
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    
-    <!-- Header -->
-    <div class="mb-12 pb-6 border-b border-base-200/80">
-      <div class="text-xs font-mono text-primary font-bold tracking-wider mb-2">// 01 · BACKGROUND & JOURNEY</div>
-      <h1 class="text-4xl sm:text-5xl font-black tracking-tight">About Me</h1>
-      <p class="text-lg opacity-80 mt-2 max-w-2xl">
-        Full-stack software engineer, open-source enthusiast, and YouTube creator based in Bengaluru, India.
-      </p>
-    </div>
+  <div class="space-y-6 text-sm text-base-content/85 leading-relaxed">
+    <p>
+      I'm <strong>{{ site.name }}</strong>. I focus on building performant, accessible web systems with static architectures, edge runtimes, and clean design systems.
+    </p>
 
-    <!-- Bio Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mb-16">
-      
-      <!-- Left Column: Portrait & Highlights Card -->
-      <div class="crosshair-corner card bg-base-100 border border-base-300 shadow-sm p-5 rounded-2xl">
-        <div class="aspect-square rounded-xl overflow-hidden mb-4 border border-base-200">
-          <img 
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
-            alt="{{ site.name }}"
-            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
-          />
-        </div>
-        <div class="space-y-2 text-xs font-mono">
-          <div class="flex justify-between py-1 border-b border-base-200">
-            <span class="opacity-60">Location</span>
-            <span class="font-bold">{{ site.location }}</span>
+    <p>
+      Over the last 4+ years, I've worked across full-stack engineering, leading telemetry dashboards, data platforms, and design token implementations. I care deeply about web standards, zero-bloat interfaces, and 100/100 Lighthouse performance.
+    </p>
+
+    <p>
+      Alongside software engineering, I create videos on YouTube (<strong>{{ site.youtubeChannel.handle }}</strong>) where I teach modern frontend architecture and edge systems to over 45,000 developers.
+    </p>
+
+    <!-- Experience List -->
+    <div class="pt-6 border-t border-base-200/60">
+      <h2 class="text-base font-semibold text-base-content mb-4">Experience</h2>
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <div>
+            <h3 class="font-medium text-sm text-base-content">Senior Frontend Engineer · Vortex Cloud</h3>
+            <p class="text-xs text-base-content/70 mt-0.5">High-throughput real-time telemetry interface and edge micro-frontends.</p>
           </div>
-          <div class="flex justify-between py-1 border-b border-base-200">
-            <span class="opacity-60">Role</span>
-            <span class="font-bold text-primary">Senior Full-Stack</span>
-          </div>
-          <div class="flex justify-between py-1 border-b border-base-200">
-            <span class="opacity-60">YouTube</span>
-            <span class="font-bold text-error">45K+ Subscribers</span>
-          </div>
-          <div class="flex justify-between py-1">
-            <span class="opacity-60">Status</span>
-            <span class="font-bold text-success">Open for Contract</span>
-          </div>
+          <span class="text-xs font-mono text-base-content/50 shrink-0">2024 — Present</span>
         </div>
 
-        <div class="mt-4 pt-4 border-t border-base-200 flex flex-col gap-2">
-          <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-error btn-sm font-mono text-white w-full">
-            Visit YouTube Channel
-          </a>
-          <a href="/resume/" class="btn btn-outline btn-sm font-mono w-full">
-            Download Resume (PDF)
-          </a>
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <div>
+            <h3 class="font-medium text-sm text-base-content">Full-Stack Engineer · Hyperion Labs</h3>
+            <p class="text-xs text-base-content/70 mt-0.5">Data visualization portals and automated CI/CD deployment pipelines.</p>
+          </div>
+          <span class="text-xs font-mono text-base-content/50 shrink-0">2022 — 2024</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <div>
+            <h3 class="font-medium text-sm text-base-content">Frontend Developer · Nexus Studio</h3>
+            <p class="text-xs text-base-content/70 mt-0.5">Jamstack web applications with 100/100 Lighthouse performance scores.</p>
+          </div>
+          <span class="text-xs font-mono text-base-content/50 shrink-0">2021 — 2022</span>
         </div>
       </div>
-
-      <!-- Right Column: Narrative Story -->
-      <div class="md:col-span-2 space-y-6 text-base-content/85 leading-relaxed">
-        <h2 class="text-2xl font-bold font-mono tracking-tight text-base-content">
-          Building resilient systems with zero bloat.
-        </h2>
-
-        <p>
-          I started programming back in 2017 during my Computer Science degree, experimenting with low-level C and building static web pages with raw HTML and CSS. Over the last 5+ years, I've had the opportunity to build high-scale web products at startups and tech companies, serving millions of users daily.
-        </p>
-
-        <p>
-          My engineering philosophy centers around <strong>simplicity, speed, and strict accessibility</strong>. I'm a passionate advocate for static-first web architecture (SSG/Jamstack), edge computing (Cloudflare Workers, Vercel Edge), and lean CSS utility systems that don't weigh down the browser with megabytes of JavaScript.
-        </p>
-
-        <h3 class="text-xl font-bold font-mono text-base-content pt-4">
-          Why I Create on YouTube
-        </h3>
-        <p>
-          In 2023, I launched my YouTube channel <strong>{{ site.youtubeChannel.handle }}</strong> to teach concepts I wish were explained simply when I was starting out: edge runtimes, WebSocket architectures, CSS container queries, and clean component systems. Today, the channel has grown to a community of over 45,000 passionate developers worldwide.
-        </p>
-
-        <!-- Principles Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-          <div class="p-4 rounded-xl border border-base-300 bg-base-200/50">
-            <div class="font-mono text-xs font-bold text-primary mb-1">// 01 SPEED & PERFORMANCE</div>
-            <p class="text-xs opacity-75">Every millisecond counts. 100/100 Lighthouse scores, edge caching, and zero hydration tax.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-base-300 bg-base-200/50">
-            <div class="font-mono text-xs font-bold text-secondary mb-1">// 02 ACCESSIBLE BY DEFAULT</div>
-            <p class="text-xs opacity-75">Full WCAG AA contrast compliance, semantic markup, and complete keyboard navigability.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-base-300 bg-base-200/50">
-            <div class="font-mono text-xs font-bold text-accent mb-1">// 03 OPEN KNOWLEDGE</div>
-            <p class="text-xs opacity-75">Sharing code, tutorials, and engineering post-mortems transparently with the community.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-base-300 bg-base-200/50">
-            <div class="font-mono text-xs font-bold text-success mb-1">// 04 CLEAN SYSTEMS</div>
-            <p class="text-xs opacity-75">Maintainable design tokens, predictable state management, and minimal dependencies.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <!-- Career Timeline using daisyUI Timeline Component -->
-    <div class="pt-8 border-t border-base-200/80 mb-16">
-      <div class="text-xs font-mono text-primary font-bold tracking-wider mb-6">// 02 · CAREER MILESTONES</div>
-
-      <ul class="timeline timeline-vertical max-w-3xl mx-auto">
-        <li>
-          <div class="timeline-start font-mono text-xs opacity-60">2024 — Present</div>
-          <div class="timeline-middle">
-            <span class="w-3 h-3 rounded-full bg-primary block"></span>
-          </div>
-          <div class="timeline-end timeline-box bg-base-100 border border-base-300 shadow-xs p-4 mb-4">
-            <h4 class="font-bold text-sm">Senior Frontend Engineer @ Vortex Cloud</h4>
-            <p class="text-xs opacity-75 mt-1">Leading UI architecture and edge telemetry dashboards handling 12M+ real-time events daily.</p>
-          </div>
-          <hr class="bg-base-300"/>
-        </li>
-        <li>
-          <hr class="bg-base-300"/>
-          <div class="timeline-start font-mono text-xs opacity-60">2023</div>
-          <div class="timeline-middle">
-            <span class="w-3 h-3 rounded-full bg-error block"></span>
-          </div>
-          <div class="timeline-end timeline-box bg-base-100 border border-base-300 shadow-xs p-4 mb-4">
-            <h4 class="font-bold text-sm">Launched YouTube Channel (@rounaksaha)</h4>
-            <p class="text-xs opacity-75 mt-1">Grew community to 45K+ subscribers with tutorials on web systems and edge computing.</p>
-          </div>
-          <hr class="bg-base-300"/>
-        </li>
-        <li>
-          <hr class="bg-base-300"/>
-          <div class="timeline-start font-mono text-xs opacity-60">2022 — 2024</div>
-          <div class="timeline-middle">
-            <span class="w-3 h-3 rounded-full bg-secondary block"></span>
-          </div>
-          <div class="timeline-end timeline-box bg-base-100 border border-base-300 shadow-xs p-4 mb-4">
-            <h4 class="font-bold text-sm">Full-Stack Engineer @ Hyperion Labs</h4>
-            <p class="text-xs opacity-75 mt-1">Engineered data ingestion pipelines with TypeScript, Node.js, and PostgreSQL.</p>
-          </div>
-          <hr class="bg-base-300"/>
-        </li>
-        <li>
-          <hr class="bg-base-300"/>
-          <div class="timeline-start font-mono text-xs opacity-60">2021</div>
-          <div class="timeline-middle">
-            <span class="w-3 h-3 rounded-full bg-accent block"></span>
-          </div>
-          <div class="timeline-end timeline-box bg-base-100 border border-base-300 shadow-xs p-4">
-            <h4 class="font-bold text-sm">Graduated B.Tech in Computer Science</h4>
-            <p class="text-xs opacity-75 mt-1">National Institute of Technology · Graduated with honors in Distributed Computing.</p>
-          </div>
-        </li>
+    <!-- Minimal Gear / Setup -->
+    <div class="pt-6 border-t border-base-200/60">
+      <h2 class="text-base font-semibold text-base-content mb-3">Workstation & Tools</h2>
+      <ul class="text-xs text-base-content/70 space-y-1.5 list-disc list-inside">
+        <li>MacBook Pro M3 Max · Dell UltraSharp 38" Curved</li>
+        <li>Keychron Q1 Pro · Logitech MX Master 3S</li>
+        <li>Sony A7IV · Shure SM7B · DaVinci Resolve Studio</li>
+        <li>Cursor / VS Code · Ghostty Terminal · Figma</li>
       </ul>
     </div>
 
-    <!-- Hardware & Studio Setup Specs -->
-    <div class="pt-8 border-t border-base-200/80">
-      <div class="text-xs font-mono text-primary font-bold tracking-wider mb-6">// 03 · GEAR & STUDIO SETUP</div>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono text-xs">
-        <div class="p-5 rounded-2xl bg-base-100 border border-base-300">
-          <div class="font-bold text-primary mb-3">// WORKSTATION</div>
-          <ul class="space-y-2 opacity-80">
-            <li>• Apple MacBook Pro M3 Max (36GB)</li>
-            <li>• Dell UltraSharp 38" Curved WQHD+</li>
-            <li>• Keychron Q1 Pro (Gateron Oil Kings)</li>
-            <li>• Logitech MX Master 3S</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl bg-base-100 border border-base-300">
-          <div class="font-bold text-error mb-3">// YOUTUBE STUDIO</div>
-          <ul class="space-y-2 opacity-80">
-            <li>• Sony A7IV Mirrorless + 24-70mm f/2.8</li>
-            <li>• Shure SM7B Vocal Microphone</li>
-            <li>• Elgato Wave XLR + Elgato Key Lights</li>
-            <li>• DaVinci Resolve Studio 19</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl bg-base-100 border border-base-300">
-          <div class="font-bold text-accent mb-3">// SOFTWARE & TOOLS</div>
-          <ul class="space-y-2 opacity-80">
-            <li>• Cursor / VS Code (Night Owl Theme)</li>
-            <li>• Ghostty Terminal + Fish Shell + Tmux</li>
-            <li>• Raycast + Obsidian for notes</li>
-            <li>• Figma for UI & thumbnail drafting</li>
-          </ul>
-        </div>
-      </div>
+    <div class="pt-8 border-t border-base-200/60 flex items-center gap-4">
+      <a href="/resume/" class="btn btn-primary btn-sm">View Resume</a>
+      <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">YouTube →</a>
     </div>
 
   </div>
+
 </div>

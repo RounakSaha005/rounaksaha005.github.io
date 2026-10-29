@@ -3,7 +3,7 @@
 @plugin "daisyui";
 
 /* ==========================================================================
-   daisyUI 5 Theme Definitions
+   daisyUI 5 Theme Definitions (4 selectable palettes)
    ========================================================================== */
 
 @plugin "daisyui/theme" {
@@ -31,9 +31,9 @@
   --color-warning-content: #102E38;
   --color-error: #E53E3E;
   --color-error-content: #FFFFFF;
-  --radius-selector: 1rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1rem;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.75rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -65,9 +65,9 @@
   --color-warning-content: #0F172A;
   --color-error: #F70063;
   --color-error-content: #FFFFFF;
-  --radius-selector: 1rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1rem;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.75rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -99,9 +99,9 @@
   --color-warning-content: #030164;
   --color-error: #E53E3E;
   --color-error-content: #FFFFFF;
-  --radius-selector: 1rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1rem;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.75rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -133,9 +133,9 @@
   --color-warning-content: #202734;
   --color-error: #F56565;
   --color-error-content: #FFFFFF;
-  --radius-selector: 1rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1rem;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.75rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -208,68 +208,27 @@
 @custom-variant dark (&:where([data-theme="midnight-indigo"], [data-theme="slate-mint"], [data-theme="midnight-indigo"] *, [data-theme="slate-mint"] *));
 
 /* ==========================================================================
-   Vercel & Cloudflare Developer Gridlines & Utility Aesthetics
+   Minimal Developer Gridlines (Clean, subtle Vercel & Cloudflare feel)
    ========================================================================== */
 
 .grid-lines-bg {
   background-image: 
-    linear-gradient(to right, color-mix(in srgb, currentColor 8%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, currentColor 8%, transparent) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.grid-lines-dense {
-  background-image: 
-    linear-gradient(to right, color-mix(in srgb, currentColor 7%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, currentColor 7%, transparent) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.grid-dots-bg {
-  background-image: radial-gradient(color-mix(in srgb, currentColor 12%, transparent) 1.2px, transparent 1.2px);
-  background-size: 24px 24px;
+    linear-gradient(to right, color-mix(in srgb, currentColor 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, currentColor 4%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 .grid-mask-fade {
-  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
-}
-
-.grid-mask-radial {
-  mask-image: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 75%);
-  -webkit-mask-image: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 75%);
-}
-
-/* Developer Corner Crosshairs (+) for Cloudflare/Vercel Grid Cards */
-.crosshair-corner {
-  position: relative;
-}
-.crosshair-corner::before,
-.crosshair-corner::after {
-  content: "+";
-  position: absolute;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 13px;
-  line-height: 1;
-  color: color-mix(in srgb, currentColor 40%, transparent);
-  pointer-events: none;
-  z-index: 10;
-}
-.crosshair-corner::before {
-  top: -7px;
-  left: -5px;
-}
-.crosshair-corner::after {
-  bottom: -7px;
-  right: -5px;
+  mask-image: radial-gradient(ellipse at 50% 20%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 20%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
 }
 
 /* GSAP Marquee Container */
 .marquee-container {
   overflow: hidden;
   position: relative;
-  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
 .marquee-track {
@@ -277,4 +236,3 @@
   width: max-content;
   will-change: transform;
 }
-
