@@ -1,14 +1,15 @@
 ---
 title: Welcome to My New Digital Space
-description: Architectural notes on building a minimal, high-performance developer portfolio with Eleventy v3, Tailwind CSS v4, and daisyUI.
+description: Architectural notes on building a minimal, high-performance
+  developer portfolio with Eleventy v3, Tailwind CSS v4, and daisyUI.
 date: 2026-10-29
+image: /assets/images/20260120125709.jpg
 tags:
   - eleventy
   - webdev
   - tailwindcss
   - architecture
 ---
-
 Welcome to my new digital space! This site is statically generated using **Eleventy (11ty) v3**, styled with **Tailwind CSS v4**, and accented with **daisyUI** components.
 
 ## Context
@@ -17,17 +18,9 @@ As a developer and creator, my portfolio needs to reflect the same care, perform
 
 My goal with this rebuild was to adopt a craftsmanship approach: clean editorial layout, clear architectural dotted gridlines, soft eye-friendly themes, and instant sub-second page delivery.
 
-<div class="my-6 overflow-hidden rounded-xl border border-dotted border-base-300 bg-base-200/30">
-  <img 
-    src="/assets/images/eleventy-architecture.svg" 
-    alt="Static Site Generation Pipeline Architecture with Eleventy v3 and Tailwind CSS v4" 
-    class="w-full h-auto cursor-zoom-in hover:opacity-95 transition-opacity" 
-    loading="lazy"
-  />
-  <p class="px-4 py-2 text-[11px] font-mono text-base-content/60 border-t border-dotted border-base-300 bg-base-100">
-    Fig 01 // Pipeline flow: Markdown sources compiled by Eleventy v3 + PostCSS into pure static HTML in under 0.8 seconds.
-  </p>
-</div>
+![Static Site Generation Pipeline Architecture with Eleventy v3 and Tailwind CSS v4](/assets/images/eleventy-architecture.svg)
+
+Fig 01 // Pipeline flow: Markdown sources compiled by Eleventy v3 + PostCSS into pure static HTML in under 0.8 seconds.
 
 ## Architecture and Stack
 
@@ -73,17 +66,9 @@ export default function (eleventyConfig) {
 
 Building with static primitives yields remarkable performance characteristics:
 
-<div class="my-6 overflow-hidden rounded-xl border border-dotted border-base-300 bg-base-200/30">
-  <img 
-    src="/assets/images/lighthouse-score.svg" 
-    alt="Google Lighthouse 100/100 Audit Scores across Performance, Accessibility, Best Practices, and SEO" 
-    class="w-full h-auto cursor-zoom-in hover:opacity-95 transition-opacity" 
-    loading="lazy"
-  />
-  <p class="px-4 py-2 text-[11px] font-mono text-base-content/60 border-t border-dotted border-base-300 bg-base-100">
-    Fig 02 // Production audit: Flawless 100/100 across all 4 Lighthouse audit categories with 0.2s First Contentful Paint.
-  </p>
-</div>
+![Google Lighthouse 100/100 Audit Scores across Performance, Accessibility, Best Practices, and SEO](/assets/images/lighthouse-score.svg)
+
+Fig 02 // Production audit: Flawless 100/100 across all 4 Lighthouse audit categories with 0.2s First Contentful Paint.
 
 - **First Contentful Paint (FCP)**: < 0.2s on mobile networks.
 - **Cumulative Layout Shift (CLS)**: Exactly 0.000 across all viewports.
