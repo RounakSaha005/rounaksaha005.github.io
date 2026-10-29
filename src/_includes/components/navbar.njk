@@ -1,9 +1,13 @@
 <header class="border-b border-dotted border-base-300 px-4 sm:px-8 py-3.5 sm:py-5">
   <div class="flex items-center justify-between gap-2">
     
-    <!-- Left: Brand Identity -->
-    <a href="/" class="group flex items-center shrink-0">
-      <span class="font-heading text-base sm:text-lg font-semibold text-base-content tracking-tight group-hover:text-primary transition-colors">
+    <!-- Left: Brand Identity with GSAP Rolling Text -->
+    <a href="/" id="brand-link" class="group flex items-center shrink-0 cursor-pointer" aria-label="Rounak Saha Home">
+      <span 
+        id="brand-name-roll" 
+        class="font-heading text-base sm:text-lg font-semibold text-base-content tracking-tight inline-flex overflow-hidden h-[1.3em] leading-[1.3em] select-none"
+        aria-hidden="true"
+      >
         Rounak Saha
       </span>
     </a>
@@ -13,19 +17,19 @@
 
       <!-- Desktop Navigation Links (visible on desktop sm and up, hidden on mobile) -->
       <nav class="max-sm:hidden flex items-center gap-3.5 sm:gap-6 text-xs text-base-content/75 font-mono">
-        <a href="/" class="hover:text-base-content transition-colors {% if page.url == '/' %}text-base-content font-semibold{% endif %}">
+        <a href="/" class="nav-scramble hover:text-base-content transition-colors {% if page.url == '/' %}text-base-content font-semibold{% endif %}" data-scramble="Home">
           Home
         </a>
-        <a href="/projects/" class="hover:text-base-content transition-colors {% if page.url == '/projects/' %}text-base-content font-semibold{% endif %}">
+        <a href="/projects/" class="nav-scramble hover:text-base-content transition-colors {% if page.url == '/projects/' %}text-base-content font-semibold{% endif %}" data-scramble="Work">
           Work
         </a>
-        <a href="/blog/" class="hover:text-base-content transition-colors {% if page.url == '/blog/' %}text-base-content font-semibold{% endif %}">
+        <a href="/blog/" class="nav-scramble hover:text-base-content transition-colors {% if page.url == '/blog/' %}text-base-content font-semibold{% endif %}" data-scramble="Notes">
           Notes
         </a>
-        <a href="/photos/" class="hover:text-base-content transition-colors {% if page.url == '/photos/' %}text-base-content font-semibold{% endif %}">
+        <a href="/photos/" class="nav-scramble hover:text-base-content transition-colors {% if page.url == '/photos/' %}text-base-content font-semibold{% endif %}" data-scramble="Art">
           Art
         </a>
-        <a href="/about/" class="hover:text-base-content transition-colors {% if page.url == '/about/' %}text-base-content font-semibold{% endif %}">
+        <a href="/about/" class="nav-scramble hover:text-base-content transition-colors {% if page.url == '/about/' %}text-base-content font-semibold{% endif %}" data-scramble="Info">
           Info
         </a>
       </nav>
@@ -62,13 +66,13 @@
           <li>
             <a href="/resume/" class="flex items-center gap-2 py-2 px-2.5 rounded-lg hover:bg-base-200 hover:text-primary transition-colors">
               <i class="ph ph-file-text text-sm"></i> 
-              <span>Resume / CV</span>
+              <span class="nav-scramble" data-scramble="Resume / CV">Resume / CV</span>
             </a>
           </li>
           <li>
             <a href="/friends/" class="flex items-center gap-2 py-2 px-2.5 rounded-lg hover:bg-base-200 hover:text-primary transition-colors">
               <i class="ph ph-users text-sm"></i> 
-              <span>Friends / Roll</span>
+              <span class="nav-scramble" data-scramble="Friends / Roll">Friends / Roll</span>
             </a>
           </li>
         </ul>
@@ -95,44 +99,44 @@
           <li>
             <a href="/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/' %}text-primary font-semibold bg-base-200/50{% endif %}">
               <i class="ph ph-house text-sm"></i>
-              <span>Home</span>
+              <span class="nav-scramble" data-scramble="Home">Home</span>
             </a>
           </li>
           <li>
             <a href="/projects/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/projects/' %}text-primary font-semibold bg-base-200/50{% endif %}">
               <i class="ph ph-folder text-sm"></i>
-              <span>Work</span>
+              <span class="nav-scramble" data-scramble="Work">Work</span>
             </a>
           </li>
           <li>
             <a href="/blog/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/blog/' %}text-primary font-semibold bg-base-200/50{% endif %}">
               <i class="ph ph-note-pencil text-sm"></i>
-              <span>Notes</span>
+              <span class="nav-scramble" data-scramble="Notes">Notes</span>
             </a>
           </li>
           <li>
             <a href="/photos/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/photos/' %}text-primary font-semibold bg-base-200/50{% endif %}">
               <i class="ph ph-image text-sm"></i>
-              <span>Art</span>
+              <span class="nav-scramble" data-scramble="Art">Art</span>
             </a>
           </li>
           <li>
             <a href="/about/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/about/' %}text-primary font-semibold bg-base-200/50{% endif %}">
               <i class="ph ph-info text-sm"></i>
-              <span>Info</span>
+              <span class="nav-scramble" data-scramble="Info">Info</span>
             </a>
           </li>
           <li class="border-t border-dotted border-base-300 my-1"></li>
           <li>
             <a href="/resume/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/resume/' %}text-primary font-semibold bg-base-200/50{% endif %}">
               <i class="ph ph-file-text text-sm"></i>
-              <span>Resume / CV</span>
+              <span class="nav-scramble" data-scramble="Resume / CV">Resume / CV</span>
             </a>
           </li>
           <li>
             <a href="/friends/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/friends/' %}text-primary font-semibold bg-base-200/50{% endif %}">
               <i class="ph ph-users text-sm"></i>
-              <span>Friends / Roll</span>
+              <span class="nav-scramble" data-scramble="Friends / Roll">Friends / Roll</span>
             </a>
           </li>
         </ul>
@@ -224,6 +228,127 @@
           setMobileMenuState(false);
         });
       });
+    }
+
+    // 3. GSAP Rolling Text for Brand Identity ("Rounak Saha")
+    function initRollingBrandText() {
+      const container = document.getElementById('brand-name-roll');
+      const link = document.getElementById('brand-link');
+      if (!container || !link) return;
+
+      const rawText = "Rounak Saha";
+      container.innerHTML = rawText.split('').map(function(char) {
+        if (char === ' ') {
+          return '<span class="inline-block w-[0.28em]">&nbsp;</span>';
+        }
+        return (
+          '<span class="roll-col inline-block overflow-hidden h-[1.3em] leading-[1.3em] pointer-events-none">' +
+            '<span class="roll-track inline-flex flex-col">' +
+              '<span class="roll-char-top block h-[1.3em] leading-[1.3em] group-hover:text-primary transition-colors">' + char + '</span>' +
+              '<span class="roll-char-bottom block h-[1.3em] leading-[1.3em] text-primary">' + char + '</span>' +
+            '</span>' +
+          '</span>'
+        );
+      }).join('');
+
+      const tracks = container.querySelectorAll('.roll-track');
+      let rollTween = null;
+
+      link.addEventListener('mouseenter', function() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (typeof gsap === 'undefined') return;
+
+        if (rollTween) rollTween.kill();
+        rollTween = gsap.to(tracks, {
+          y: '-50%',
+          duration: 0.42,
+          stagger: 0.022,
+          ease: 'power3.inOut'
+        });
+      });
+
+      link.addEventListener('mouseleave', function() {
+        if (typeof gsap === 'undefined') return;
+        if (rollTween) rollTween.kill();
+        rollTween = gsap.to(tracks, {
+          y: '0%',
+          duration: 0.35,
+          stagger: 0.015,
+          ease: 'power3.out'
+        });
+      });
+    }
+
+    // 4. GSAP Text Scrambler for Navigation Links
+    function initNavScramble() {
+      const elements = document.querySelectorAll('.nav-scramble');
+      const charset = "!<>-_\\/[]{}—=+*^?#01";
+
+      elements.forEach(function(el) {
+        const originalText = el.getAttribute('data-scramble') || el.textContent.trim();
+        el.setAttribute('data-scramble', originalText);
+        const trigger = el.closest('a') || el;
+
+        let scrambleTween = null;
+
+        trigger.addEventListener('mouseenter', function() {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          if (typeof gsap === 'undefined') return;
+
+          if (scrambleTween) scrambleTween.kill();
+
+          const length = originalText.length;
+          const state = { progress: 0 };
+
+          scrambleTween = gsap.to(state, {
+            progress: 1,
+            duration: 0.38,
+            ease: 'power2.out',
+            onUpdate: function() {
+              const solvedCount = Math.floor(state.progress * length);
+              let scrambled = '';
+              for (let i = 0; i < length; i++) {
+                if (originalText[i] === ' ') {
+                  scrambled += ' ';
+                } else if (i < solvedCount) {
+                  scrambled += originalText[i];
+                } else {
+                  scrambled += charset[Math.floor(Math.random() * charset.length)];
+                }
+              }
+              el.textContent = scrambled;
+            },
+            onComplete: function() {
+              el.textContent = originalText;
+              scrambleTween = null;
+            }
+          });
+        });
+
+        trigger.addEventListener('mouseleave', function() {
+          if (scrambleTween) {
+            scrambleTween.kill();
+            scrambleTween = null;
+          }
+          el.textContent = originalText;
+        });
+      });
+    }
+
+    // 5. Initialize GSAP animations once GSAP is ready
+    function initCreativeEffects() {
+      if (!window.gsap) {
+        setTimeout(initCreativeEffects, 50);
+        return;
+      }
+      initRollingBrandText();
+      initNavScramble();
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initCreativeEffects();
+    } else {
+      document.addEventListener('DOMContentLoaded', initCreativeEffects, { once: true });
     }
   })();
 </script>
