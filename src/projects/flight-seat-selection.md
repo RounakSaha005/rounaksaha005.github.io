@@ -72,3 +72,4 @@ Following launch to 100% of production traffic:
 - **+24.6% increase** in overall seat selection adoption across both direct and meta-search traffic channels.
 - **-38% reduction** in booking abandonment at the add-ons checkout step.
 - **100/100 Lighthouse Performance** rating maintained across all mobile viewports.
+
