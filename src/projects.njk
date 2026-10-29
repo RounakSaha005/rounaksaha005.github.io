@@ -10,48 +10,48 @@ permalink: /projects/index.html
     <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
       Work
     </h1>
-    <p class="text-xs sm:text-sm text-base-content/60 mt-1">
+    <p class="text-xs sm:text-sm text-base-content/60 mt-1 font-sans">
       Selected production builds, libraries, and open source utilities.
     </p>
   </header>
 
   <div class="space-y-4">
     {% for project in projects %}
-      <div class="p-4 rounded-xl border border-dotted border-base-300 bg-base-100 flex flex-col justify-between hover:border-primary transition-colors">
+      <a 
+        href="{{ project.caseStudy | default(project.link) }}" 
+        class="group block p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer flex flex-col justify-between"
+      >
         <div>
           <div class="flex items-baseline justify-between gap-2 mb-1">
-            <h2 class="text-sm font-medium text-base-content">
-              {% if project.caseStudy %}
-                <a href="{{ project.caseStudy }}" class="hover:text-primary transition-colors">
-                  {{ project.title }}
-                </a>
-              {% else %}
-                {{ project.title }}
-              {% endif %}
+            <h2 class="text-sm font-medium text-base-content group-hover:text-primary transition-colors">
+              {{ project.title }}
             </h2>
             <span class="text-[11px] font-mono text-base-content/40">{{ project.year }}</span>
           </div>
 
-          <p class="text-xs text-base-content/75 leading-relaxed">
+          <p class="text-xs text-base-content/75 leading-relaxed font-sans">
             {{ project.description }}
           </p>
         </div>
 
         <div class="flex items-center justify-between pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
           <span class="text-base-content/50">{{ project.tags | join(" · ") }}</span>
-          <div class="flex gap-3">
-            {% if project.caseStudy %}
-              <a href="{{ project.caseStudy }}" class="font-medium text-primary hover:underline font-mono">Case study →</a>
-            {% endif %}
+          <div class="flex items-center gap-3">
+            <span class="font-medium text-primary group-hover:underline font-mono">
+              {% if project.caseStudy %}Case study →{% else %}Demo →{% endif %}
+            </span>
             {% if project.github %}
-              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 font-mono">Code</a>
-            {% endif %}
-            {% if project.link and not project.caseStudy %}
-              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="font-medium text-primary hover:underline font-mono">Demo →</a>
+              <span 
+                onclick="event.preventDefault(); event.stopPropagation(); window.open('{{ project.github }}', '_blank', 'noopener,noreferrer');" 
+                class="opacity-70 hover:opacity-100 font-mono hover:underline cursor-pointer"
+                title="View source code"
+              >
+                Code ↗
+              </span>
             {% endif %}
           </div>
         </div>
-      </div>
+      </a>
     {% endfor %}
   </div>
 

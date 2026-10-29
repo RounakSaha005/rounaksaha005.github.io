@@ -2,18 +2,17 @@
 layout: base.njk
 ---
 
-<div class="flex flex-col md:flex-row min-h-full">
+<div class="relative w-full">
   
   <!-- =======================================================================
-       01 // LEFT COLUMN: STICKY SECTION NAVIGATION (TOC)
+       01 // OUTSIDE LEFT SECTION NAVIGATION (TOC)
+       Floating to the left outside the max-width column, vertically centered in viewport
+       (Matching Reference Screenshot media_1793281174454_52e7e69e.png)
        ======================================================================= -->
-  <aside class="hidden md:block w-36 md:w-44 shrink-0 border-r border-dotted border-base-300 p-4 sm:p-5">
-    <div class="sticky top-6 space-y-2.5 font-mono">
-      <div class="text-[10px] uppercase tracking-wider text-base-content/40 font-semibold mb-1">
-        Sections
-      </div>
+  <aside class="hidden xl:block absolute right-full top-0 bottom-0 mr-8 2xl:mr-14 w-44 2xl:w-52 pointer-events-none select-none">
+    <div class="sticky top-1/2 -translate-y-1/2 font-mono pointer-events-auto">
       <nav id="toc-desktop-nav" class="space-y-1" aria-label="Table of contents">
-        <!-- Dynamically populated by JS: Top, • Context, Problem, etc. -->
+        <!-- Dynamically populated by JS: Top, • Context, Problem and opportunity, etc. -->
         <a href="#article-top" class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono text-base-content font-medium active" data-target="article-top">
           <span class="toc-bullet text-primary shrink-0 opacity-100">•</span>
           <span class="toc-label leading-snug break-words">Top</span>
@@ -23,9 +22,9 @@ layout: base.njk
   </aside>
 
   <!-- =======================================================================
-       02 // RIGHT COLUMN: MAIN CASE STUDY CONTENT & ACTION HEADER
+       02 // MAIN CONTENT COLUMN (Exact Same Max-Width as All Pages)
        ======================================================================= -->
-  <div class="flex-1 min-w-0 p-5 sm:p-6 md:p-8 space-y-6">
+  <div class="p-6 sm:p-8 space-y-6">
 
     <!-- Top Action Bar (Back Arrow & Copy Link as in Reference Screenshot) -->
     <div id="article-top" class="flex items-center justify-between pb-5 border-b border-dotted border-base-300">
@@ -58,15 +57,15 @@ layout: base.njk
       </button>
     </div>
 
-    <!-- Mobile Sticky Section Quick-Jump (visible only < md) -->
-    <div class="block md:hidden border border-dotted border-base-300 rounded-lg p-2.5 bg-base-200/40 font-mono text-xs">
+    <!-- Mobile/Tablet Sticky Section Quick-Jump (visible only < xl) -->
+    <div class="block xl:hidden border border-dotted border-base-300 rounded-lg p-2.5 bg-base-200/40 font-mono text-xs">
       <details id="toc-mobile-dropdown" class="dropdown w-full">
         <summary class="flex items-center justify-between cursor-pointer text-base-content/75 select-none">
           <span class="flex items-center gap-1.5 truncate">
             <span class="text-primary">•</span>
             <span id="toc-mobile-current" class="truncate">Top</span>
           </span>
-          <span class="text-base-content/50 text-[10px]">Jump to ↓</span>
+          <span class="text-base-content/50 text-[10px]">Jump to section ↓</span>
         </summary>
         <ul id="toc-mobile-nav" class="menu p-2 mt-2 w-full bg-base-100 rounded-lg border border-dotted border-base-300 space-y-1">
           <!-- Populated by JS -->
@@ -82,7 +81,7 @@ layout: base.njk
 
       {% if description %}
         <p class="text-base sm:text-lg text-base-content/75 leading-relaxed font-sans">
-          {{ description }}
+          {{ description | safe }}
         </p>
       {% endif %}
 
@@ -115,7 +114,7 @@ layout: base.njk
 
       {% if image %}
         <div class="mt-4 overflow-hidden rounded-xl border border-dotted border-base-300 bg-base-200/30">
-          <img src="{{ image }}" alt="{{ title }}" class="w-full h-auto max-h-[460px] object-cover" loading="lazy">
+          <img src="{{ image }}" alt="{{ title }}" class="w-full h-auto max-h-[460px] object-cover cursor-zoom-in" loading="lazy">
         </div>
       {% endif %}
     </header>
@@ -139,6 +138,9 @@ layout: base.njk
 
 </div>
 
+<!-- Reusable Lightbox for Case Study Images -->
+{% include "components/lightbox.njk" %}
+
 <script>
 function copyPageLink(button) {
   const url = window.location.href;
@@ -158,10 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileLabel = document.getElementById('toc-mobile-current');
   if (!contentArea || (!desktopNav && !mobileNav)) return;
 
-  const headings = Array.from(contentArea.querySelectorAll('h2, h3'));
+  // Extract main section headings (h2) matching reference screenshot
+  const headings = Array.from(contentArea.querySelectorAll('h2'));
   if (headings.length === 0) return;
 
-  const items = [{ id: 'article-top', text: 'Top', level: 2 }];
+  const items = [{ id: 'article-top', text: 'Top' }];
 
   headings.forEach((heading, idx) => {
     let id = heading.id;
@@ -175,15 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
       heading.id = id;
     }
     heading.classList.add('scroll-mt-24');
-    const isH3 = heading.tagName.toLowerCase() === 'h3';
-    items.push({ id, text: heading.textContent.trim(), level: isH3 ? 3 : 2 });
+    items.push({ id, text: heading.textContent.trim() });
   });
 
   if (desktopNav) {
     desktopNav.innerHTML = items.map((item, index) => `
       <a 
         href="#${item.id}" 
-        class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono transition-colors duration-150 ${item.level === 3 ? 'pl-3' : ''} ${index === 0 ? 'text-base-content font-medium active' : 'text-base-content/40 hover:text-base-content/75'}"
+        class="toc-item group flex items-start gap-1.5 py-1 text-xs font-mono transition-colors duration-150 ${index === 0 ? 'text-base-content font-medium active' : 'text-base-content/40 hover:text-base-content/80'}"
         data-target="${item.id}"
       >
         <span class="toc-bullet text-primary shrink-0 transition-opacity duration-150 ${index === 0 ? 'opacity-100' : 'opacity-0'}">•</span>
@@ -197,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <li>
         <a 
           href="#${item.id}" 
-          class="toc-mobile-link text-xs font-mono ${item.level === 3 ? 'pl-4 opacity-75' : ''}"
+          class="toc-mobile-link text-xs font-mono"
           data-target="${item.id}"
         >
           ${item.text}
@@ -215,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetElem) {
         targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
         history.pushState(null, '', '#' + targetId);
+        updateActiveSection(targetId);
         const mobileDetails = document.getElementById('toc-mobile-dropdown');
         if (mobileDetails) mobileDetails.removeAttribute('open');
       }
@@ -263,5 +266,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const topAnchor = document.getElementById('article-top');
   if (topAnchor) observer.observe(topAnchor);
   headings.forEach(h => observer.observe(h));
+
+  // Connect images to lightbox
+  const contentImages = contentArea.querySelectorAll('img');
+  contentImages.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      if (typeof openLightbox === 'function') {
+        window.galleryImages = Array.from(contentImages).map(el => ({
+          src: el.src,
+          title: el.alt || 'Figure Illustration',
+          desc: el.closest('div')?.querySelector('p')?.textContent?.trim() || '',
+          meta: 'Case Study Graphic'
+        }));
+        openLightbox(index);
+      }
+    });
+  });
 });
 </script>

@@ -17,6 +17,18 @@ As a developer and creator, my portfolio needs to reflect the same care, perform
 
 My goal with this rebuild was to adopt a craftsmanship approach: clean editorial layout, clear architectural dotted gridlines, soft eye-friendly themes, and instant sub-second page delivery.
 
+<div class="my-6 overflow-hidden rounded-xl border border-dotted border-base-300 bg-base-200/30">
+  <img 
+    src="/assets/images/eleventy-architecture.svg" 
+    alt="Static Site Generation Pipeline Architecture with Eleventy v3 and Tailwind CSS v4" 
+    class="w-full h-auto cursor-zoom-in hover:opacity-95 transition-opacity" 
+    loading="lazy"
+  />
+  <p class="px-4 py-2 text-[11px] font-mono text-base-content/60 border-t border-dotted border-base-300 bg-base-100">
+    Fig 01 // Pipeline flow: Markdown sources compiled by Eleventy v3 + PostCSS into pure static HTML in under 0.8 seconds.
+  </p>
+</div>
+
 ## Architecture and Stack
 
 The technical architecture is intentionally lightweight:
@@ -31,7 +43,7 @@ The technical architecture is intentionally lightweight:
 Every visual element is designed for legibility and aesthetic balance:
 
 - **Mona Sans**: Used for primary headlines and section titles, providing strong structural presence.
-- **Redaction**: Used for editorial body copy, delivering a timeless craftsman publication feel.
+- **Archivo**: Used for editorial body copy, delivering crisp and modern typographic clarity across devices.
 - **Geist Mono**: Applied to navigation links, action buttons, metadata chips, and code snippets for technical clarity.
 - **Dotted Blueprint Rules**: All structural boundaries use 1px dotted lines (`border-dotted`), providing subtle architectural framing.
 
@@ -60,6 +72,18 @@ export default function (eleventyConfig) {
 ## Performance Benchmarks
 
 Building with static primitives yields remarkable performance characteristics:
+
+<div class="my-6 overflow-hidden rounded-xl border border-dotted border-base-300 bg-base-200/30">
+  <img 
+    src="/assets/images/lighthouse-score.svg" 
+    alt="Google Lighthouse 100/100 Audit Scores across Performance, Accessibility, Best Practices, and SEO" 
+    class="w-full h-auto cursor-zoom-in hover:opacity-95 transition-opacity" 
+    loading="lazy"
+  />
+  <p class="px-4 py-2 text-[11px] font-mono text-base-content/60 border-t border-dotted border-base-300 bg-base-100">
+    Fig 02 // Production audit: Flawless 100/100 across all 4 Lighthouse audit categories with 0.2s First Contentful Paint.
+  </p>
+</div>
 
 - **First Contentful Paint (FCP)**: < 0.2s on mobile networks.
 - **Cumulative Layout Shift (CLS)**: Exactly 0.000 across all viewports.

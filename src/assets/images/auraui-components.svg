@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%" class="w-full h-auto rounded-xl">
+  <!-- Canvas Background -->
+  <rect width="960" height="520" fill="#0B0F17" rx="16"/>
+  <rect width="958" height="518" x="1" y="1" fill="none" stroke="#334155" stroke-dasharray="4,4" stroke-width="1" rx="15"/>
+
+  <!-- Header -->
+  <g transform="translate(480, 40)" text-anchor="middle">
+    <rect x="-160" y="-22" width="320" height="36" rx="18" fill="#38BDF8" fill-opacity="0.1" stroke="#38BDF8" stroke-width="1.5"/>
+    <text y="2" fill="#38BDF8" font-family="monospace" font-size="12" font-weight="bold" letter-spacing="1">AURAUI · WEB COMPONENT PRIMITIVES</text>
+    <text y="30" fill="#94A3B8" font-family="sans-serif" font-size="12">Native Custom Elements · Zero Framework Lock-In · Tailwind CSS Utility Styled</text>
+  </g>
+
+  <!-- Component Card 1: Buttons & Actions -->
+  <g transform="translate(60, 95)">
+    <rect width="260" height="180" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="30" fill="#E2E8F0" font-family="sans-serif" font-size="12" font-weight="bold">Interactive Buttons</text>
+    <text x="20" y="46" fill="#64748B" font-family="monospace" font-size="9">&lt;aura-button&gt;</text>
+    
+    <!-- Primary -->
+    <rect x="20" y="62" width="100" height="32" rx="6" fill="#0284C7"/>
+    <text x="70" y="82" fill="#FFFFFF" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Primary</text>
+
+    <!-- Outline -->
+    <rect x="130" y="62" width="110" height="32" rx="6" fill="none" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="185" y="82" fill="#38BDF8" font-family="sans-serif" font-size="11" font-weight="medium" text-anchor="middle">Outline</text>
+
+    <!-- Ghost / Secondary -->
+    <rect x="20" y="106" width="100" height="32" rx="6" fill="#1E293B"/>
+    <text x="70" y="126" fill="#94A3B8" font-family="sans-serif" font-size="11" text-anchor="middle">Ghost</text>
+
+    <!-- Success with Icon -->
+    <rect x="130" y="106" width="110" height="32" rx="6" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1"/>
+    <circle cx="148" cy="122" r="5" fill="#10B981"/>
+    <text x="190" y="126" fill="#34D399" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Confirmed ✓</text>
+
+    <text x="20" y="162" fill="#64748B" font-family="monospace" font-size="9">Keyboard focus trap built-in</text>
+  </g>
+
+  <!-- Component Card 2: Modal Dialog -->
+  <g transform="translate(350, 95)">
+    <rect width="260" height="180" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="30" fill="#E2E8F0" font-family="sans-serif" font-size="12" font-weight="bold">Accessible Dialog</text>
+    <text x="20" y="46" fill="#64748B" font-family="monospace" font-size="9">&lt;aura-dialog&gt; · Native &lt;dialog&gt;</text>
+
+    <rect x="20" y="60" width="220" height="96" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="32" y="82" fill="#F8FAFC" font-family="sans-serif" font-size="11" font-weight="bold">Deploy Confirmation</text>
+    <text x="32" y="98" fill="#94A3B8" font-family="sans-serif" font-size="9">Deploy changes to edge CDN?</text>
+
+    <rect x="32" y="118" width="76" height="24" rx="4" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+    <text x="70" y="134" fill="#94A3B8" font-family="sans-serif" font-size="9" text-anchor="middle">Cancel</text>
+
+    <rect x="116" y="118" width="80" height="24" rx="4" fill="#0284C7"/>
+    <text x="156" y="134" fill="#FFFFFF" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">Confirm</text>
+
+    <text x="20" y="170" fill="#64748B" font-family="monospace" font-size="9">Esc key &amp; outside click support</text>
+  </g>
+
+  <!-- Component Card 3: Form Controls & Switch -->
+  <g transform="translate(640, 95)">
+    <rect width="260" height="180" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="30" fill="#E2E8F0" font-family="sans-serif" font-size="12" font-weight="bold">Form Primitives</text>
+    <text x="20" y="46" fill="#64748B" font-family="monospace" font-size="9">&lt;aura-input&gt; · &lt;aura-switch&gt;</text>
+
+    <rect x="20" y="60" width="220" height="34" rx="6" fill="#1E293B" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="32" y="82" fill="#F8FAFC" font-family="sans-serif" font-size="11">rounak@design.dev</text>
+
+    <!-- Switch toggle -->
+    <rect x="20" y="108" width="48" height="26" rx="13" fill="#10B981"/>
+    <circle cx="53" cy="121" r="9" fill="#FFFFFF"/>
+    <text x="80" y="125" fill="#E2E8F0" font-family="sans-serif" font-size="11">Auto-sync state</text>
+
+    <text x="20" y="162" fill="#64748B" font-family="monospace" font-size="9">Full ARIA 1.2 form compliance</text>
+  </g>
+
+  <!-- Component Card 4: Design Tokens & Palettes -->
+  <g transform="translate(60, 300)">
+    <rect width="840" height="180" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <text x="28" y="34" fill="#E2E8F0" font-family="sans-serif" font-size="13" font-weight="bold">Dynamic OKLCH Color Engine &amp; Design Token Scale</text>
+    <text x="28" y="52" fill="#64748B" font-family="monospace" font-size="10">Zero CSS specificity bloat · Light &amp; Dark theme hot-swapping</text>
+
+    <!-- Color swatches -->
+    <g transform="translate(28, 72)">
+      <rect x="0" y="0" width="140" height="42" rx="6" fill="#0284C7"/>
+      <text x="12" y="22" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold">primary-600</text>
+      <text x="12" y="34" fill="#E0F2FE" font-family="monospace" font-size="8">oklch(0.58 0.16 240)</text>
+
+      <rect x="156" y="0" width="140" height="42" rx="6" fill="#10B981"/>
+      <text x="168" y="22" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold">success-500</text>
+      <text x="168" y="34" fill="#DCFCE7" font-family="monospace" font-size="8">oklch(0.72 0.18 160)</text>
+
+      <rect x="312" y="0" width="140" height="42" rx="6" fill="#F59E0B"/>
+      <text x="324" y="22" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold">warning-500</text>
+      <text x="324" y="34" fill="#FEF3C7" font-family="monospace" font-size="8">oklch(0.76 0.16 75)</text>
+
+      <rect x="468" y="0" width="140" height="42" rx="6" fill="#EF4444"/>
+      <text x="480" y="22" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold">error-500</text>
+      <text x="480" y="34" fill="#FEE2E2" font-family="monospace" font-size="8">oklch(0.63 0.23 28)</text>
+
+      <rect x="624" y="0" width="160" height="42" rx="6" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+      <text x="636" y="22" fill="#F8FAFC" font-family="monospace" font-size="10" font-weight="bold">neutral-800</text>
+      <text x="636" y="34" fill="#94A3B8" font-family="monospace" font-size="8">oklch(0.24 0.02 260)</text>
+    </g>
+
+    <text x="28" y="152" fill="#34D399" font-family="monospace" font-size="10">✓ 18,000+ monthly npm downloads · 24 accessible components · 0 runtime dependencies</text>
+  </g>
+</svg>

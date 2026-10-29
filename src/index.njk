@@ -211,16 +211,13 @@ title: Home
 
   <div class="space-y-4">
     {% for project in projects | limit(3) %}
-      <div class="group block p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary transition-colors">
+      <a 
+        href="{{ project.caseStudy | default(project.link) }}" 
+        class="group block p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer"
+      >
         <div class="flex items-baseline justify-between gap-2 mb-1">
           <h3 class="font-medium text-sm text-base-content group-hover:text-primary transition-colors">
-            {% if project.caseStudy %}
-              <a href="{{ project.caseStudy }}" class="hover:underline">
-                {{ project.title }}
-              </a>
-            {% else %}
-              {{ project.title }}
-            {% endif %}
+            {{ project.title }}
           </h3>
           <span class="text-[11px] font-mono text-base-content/40">{{ project.year }}</span>
         </div>
@@ -231,19 +228,22 @@ title: Home
 
         <div class="flex items-center justify-between pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
           <span class="text-base-content/50">{{ project.tags | join(" · ") }}</span>
-          <div class="flex gap-3">
-            {% if project.caseStudy %}
-              <a href="{{ project.caseStudy }}" class="font-medium text-primary hover:underline font-mono">Case study →</a>
-            {% endif %}
+          <div class="flex items-center gap-3">
+            <span class="font-medium text-primary group-hover:underline font-mono">
+              {% if project.caseStudy %}Case study →{% else %}Demo →{% endif %}
+            </span>
             {% if project.github %}
-              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 font-mono">Code</a>
-            {% endif %}
-            {% if project.link and not project.caseStudy %}
-              <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="font-medium text-primary hover:underline font-mono">Demo →</a>
+              <span 
+                onclick="event.preventDefault(); event.stopPropagation(); window.open('{{ project.github }}', '_blank', 'noopener,noreferrer');" 
+                class="opacity-70 hover:opacity-100 font-mono hover:underline cursor-pointer"
+                title="View source code"
+              >
+                Code ↗
+              </span>
             {% endif %}
           </div>
         </div>
-      </div>
+      </a>
     {% endfor %}
   </div>
 
@@ -315,16 +315,26 @@ title: Home
     </a>
   </div>
 
-  <div class="divide-y divide-dotted divide-base-300">
+  <div class="space-y-3">
     {% for post in collections.posts | reverse | limit(3) %}
-      <article class="py-3.5 first:pt-0 last:pb-0">
-        <a href="{{ post.url }}" class="group flex items-baseline justify-between gap-4">
-          <h3 class="text-xs sm:text-sm font-medium group-hover:text-primary transition-colors text-base-content truncate">
-            {{ post.data.title }}
-          </h3>
-          <time datetime="{{ post.date | htmlDateString }}" class="text-[11px] text-base-content/40 font-mono shrink-0">
-            {{ post.date | readableDate }}
-          </time>
+      <article>
+        <a 
+          href="{{ post.url }}" 
+          class="group block p-3.5 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer"
+        >
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-xs sm:text-sm font-medium group-hover:text-primary transition-colors text-base-content truncate">
+              {{ post.data.title }}
+            </h3>
+            <time datetime="{{ post.date | htmlDateString }}" class="text-[11px] text-base-content/40 font-mono shrink-0">
+              {{ post.date | readableDate }}
+            </time>
+          </div>
+          {% if post.data.description %}
+            <p class="text-xs text-base-content/70 leading-relaxed mt-1 line-clamp-2">
+              {{ post.data.description }}
+            </p>
+          {% endif %}
         </a>
       </article>
     {% else %}

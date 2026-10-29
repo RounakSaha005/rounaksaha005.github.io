@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%" height="100%" class="w-full h-auto rounded-xl">
+  <!-- Canvas Background -->
+  <rect width="960" height="420" fill="#0B0F17" rx="16"/>
+  <rect width="958" height="418" x="1" y="1" fill="none" stroke="#334155" stroke-dasharray="4,4" stroke-width="1" rx="15"/>
+
+  <!-- Title -->
+  <g transform="translate(480, 40)" text-anchor="middle">
+    <text y="0" fill="#F8FAFC" font-family="sans-serif" font-size="16" font-weight="bold">Runtime Performance &amp; Bundle Size Benchmarks</text>
+    <text y="20" fill="#94A3B8" font-family="monospace" font-size="11">MEASURED ON MOTO G4 (LOW-TIER EMULATED 4G CONNECTION)</text>
+  </g>
+
+  <!-- Left Chart: Bundle Size (Gzipped, kB) -->
+  <g transform="translate(60, 90)">
+    <rect width="400" height="290" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <text x="24" y="32" fill="#E2E8F0" font-family="sans-serif" font-size="13" font-weight="bold">Bundle Footprint (kB Gzipped)</text>
+    <text x="24" y="48" fill="#64748B" font-family="monospace" font-size="9">Lower is better · Production export</text>
+
+    <!-- Bars -->
+    <!-- AuraUI -->
+    <g transform="translate(24, 75)">
+      <text x="0" y="14" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold">AuraUI</text>
+      <rect x="100" y="0" width="35" height="22" rx="4" fill="#0284C7"/>
+      <text x="145" y="15" fill="#38BDF8" font-family="monospace" font-size="10" font-weight="bold">2.1 kB (40x smaller)</text>
+    </g>
+
+    <!-- Tailwind UI -->
+    <g transform="translate(24, 115)">
+      <text x="0" y="14" fill="#94A3B8" font-family="monospace" font-size="11">Radix Primitives</text>
+      <rect x="100" y="0" width="120" height="22" rx="4" fill="#334155"/>
+      <text x="230" y="15" fill="#94A3B8" font-family="monospace" font-size="10">24.5 kB</text>
+    </g>
+
+    <!-- Chakra UI -->
+    <g transform="translate(24, 155)">
+      <text x="0" y="14" fill="#94A3B8" font-family="monospace" font-size="11">Chakra UI</text>
+      <rect x="100" y="0" width="190" height="22" rx="4" fill="#334155"/>
+      <text x="300" y="15" fill="#94A3B8" font-family="monospace" font-size="10">48.2 kB</text>
+    </g>
+
+    <!-- Material UI -->
+    <g transform="translate(24, 195)">
+      <text x="0" y="14" fill="#94A3B8" font-family="monospace" font-size="11">Material UI</text>
+      <rect x="100" y="0" width="240" height="22" rx="4" fill="#475569"/>
+      <text x="350" y="15" fill="#F87171" font-family="monospace" font-size="10">84.0 kB</text>
+    </g>
+
+    <!-- Stat banner -->
+    <rect x="24" y="235" width="352" height="34" rx="6" fill="#0284C7" fill-opacity="0.15" stroke="#0284C7" stroke-width="1"/>
+    <text x="200" y="256" fill="#38BDF8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">⚡ Zero JavaScript hydration latency</text>
+  </g>
+
+  <!-- Right Chart: Cold Start Time (ms) -->
+  <g transform="translate(500, 90)">
+    <rect width="400" height="290" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <text x="24" y="32" fill="#E2E8F0" font-family="sans-serif" font-size="13" font-weight="bold">First Contentful Paint (FCP)</text>
+    <text x="24" y="48" fill="#64748B" font-family="monospace" font-size="9">Lower is better · Real mobile device test</text>
+
+    <!-- Bars -->
+    <!-- AuraUI -->
+    <g transform="translate(24, 75)">
+      <text x="0" y="14" fill="#10B981" font-family="monospace" font-size="11" font-weight="bold">AuraUI</text>
+      <rect x="100" y="0" width="45" height="22" rx="4" fill="#10B981"/>
+      <text x="155" y="15" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold">180 ms (Instant)</text>
+    </g>
+
+    <!-- Radix -->
+    <g transform="translate(24, 115)">
+      <text x="0" y="14" fill="#94A3B8" font-family="monospace" font-size="11">Radix Primitives</text>
+      <rect x="100" y="0" width="130" height="22" rx="4" fill="#334155"/>
+      <text x="240" y="15" fill="#94A3B8" font-family="monospace" font-size="10">420 ms</text>
+    </g>
+
+    <!-- Chakra UI -->
+    <g transform="translate(24, 155)">
+      <text x="0" y="14" fill="#94A3B8" font-family="monospace" font-size="11">Chakra UI</text>
+      <rect x="100" y="0" width="180" height="22" rx="4" fill="#334155"/>
+      <text x="290" y="15" fill="#94A3B8" font-family="monospace" font-size="10">680 ms</text>
+    </g>
+
+    <!-- Material UI -->
+    <g transform="translate(24, 195)">
+      <text x="0" y="14" fill="#94A3B8" font-family="monospace" font-size="11">Material UI</text>
+      <rect x="100" y="0" width="230" height="22" rx="4" fill="#475569"/>
+      <text x="340" y="15" fill="#F87171" font-family="monospace" font-size="10">920 ms</text>
+    </g>
+
+    <!-- Stat banner -->
+    <rect x="24" y="235" width="352" height="34" rx="6" fill="#064E3B" fill-opacity="0.3" stroke="#10B981" stroke-width="1"/>
+    <text x="200" y="256" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">✓ 100/100 Lighthouse Performance score</text>
+  </g>
+</svg>

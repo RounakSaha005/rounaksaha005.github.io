@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%" height="100%" class="w-full h-auto rounded-xl">
+  <!-- Canvas Background -->
+  <rect width="960" height="400" fill="#0B0F17" rx="16"/>
+  <rect width="958" height="398" x="1" y="1" fill="none" stroke="#334155" stroke-dasharray="4,4" stroke-width="1" rx="15"/>
+
+  <!-- Section Header -->
+  <g transform="translate(480, 36)" text-anchor="middle">
+    <text y="0" fill="#F8FAFC" font-family="sans-serif" font-size="16" font-weight="bold">Interaction Pattern Explorations</text>
+    <text y="20" fill="#94A3B8" font-family="monospace" font-size="11">A/B BENCHMARK: HORIZONTAL CAROUSEL VS CONTINUOUS VERTICAL CANVAS</text>
+  </g>
+
+  <!-- Card 1: Horizontal Carousel (Discarded) -->
+  <g transform="translate(60, 80)">
+    <rect width="400" height="280" rx="12" fill="#0F172A" stroke="#EF4444" stroke-opacity="0.4" stroke-width="1.5"/>
+    
+    <!-- Status Chip -->
+    <rect x="20" y="20" width="130" height="24" rx="12" fill="#7F1D1D" fill-opacity="0.3" stroke="#DC2626" stroke-width="1"/>
+    <text x="85" y="36" fill="#F87171" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">✕ DISCARDED (34% Drop)</text>
+
+    <text x="20" y="68" fill="#F8FAFC" font-family="sans-serif" font-size="14" font-weight="bold">Pattern A: Horizontal Paginated Swipe</text>
+    <text x="20" y="88" fill="#94A3B8" font-family="sans-serif" font-size="11">Swiping left/right across front, wing, and rear cabin zones.</text>
+
+    <!-- Visual schematic -->
+    <g transform="translate(20, 108)">
+      <rect width="110" height="100" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+      <text x="55" y="55" fill="#94A3B8" font-family="sans-serif" font-size="10" text-anchor="middle">Front (1-10)</text>
+
+      <path d="M 135 55 L 155 55 M 150 48 L 157 55 L 150 62" stroke="#64748B" stroke-width="2" stroke-linecap="round"/>
+
+      <rect x="160" y="108" width="110" height="100" rx="8" fill="#1E293B" stroke="#DC2626" stroke-width="1.5"/>
+      <text x="215" y="163" fill="#F87171" font-family="sans-serif" font-size="10" text-anchor="middle">Wing (11-20)</text>
+
+      <rect x="280" y="108" width="80" height="100" rx="8" fill="#1E293B" stroke="#475569" stroke-dasharray="2,2" stroke-width="1"/>
+      <text x="320" y="163" fill="#64748B" font-family="sans-serif" font-size="10" text-anchor="middle">Rear...</text>
+    </g>
+
+    <!-- Qualitative Finding -->
+    <rect x="20" y="226" width="360" height="38" rx="6" fill="#1E293B"/>
+    <text x="30" y="244" fill="#FCA5A5" font-family="sans-serif" font-size="10">Users lost spatial awareness between emergency exit rows</text>
+    <text x="30" y="256" fill="#94A3B8" font-family="sans-serif" font-size="9">and could not compare total seat prices across the cabin.</text>
+  </g>
+
+  <!-- Card 2: Continuous Vertical Canvas (Selected) -->
+  <g transform="translate(500, 80)">
+    <rect width="400" height="280" rx="12" fill="#0F172A" stroke="#10B981" stroke-opacity="0.4" stroke-width="1.5"/>
+
+    <!-- Status Chip -->
+    <rect x="20" y="20" width="130" height="24" rx="12" fill="#064E3B" fill-opacity="0.4" stroke="#10B981" stroke-width="1"/>
+    <text x="85" y="36" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">✓ SELECTED (+24.6% Lift)</text>
+
+    <text x="20" y="68" fill="#F8FAFC" font-family="sans-serif" font-size="14" font-weight="bold">Pattern B: Continuous Fluid Canvas</text>
+    <text x="20" y="88" fill="#94A3B8" font-family="sans-serif" font-size="11">Unified 60 FPS vertical pan with sticky aircraft wings.</text>
+
+    <!-- Visual schematic -->
+    <g transform="translate(20, 108)">
+      <rect width="360" height="100" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+      
+      <!-- Aircraft nose, wings, fuselage -->
+      <path d="M 180 10 C 140 10 130 50 130 90 L 230 90 C 230 50 220 10 180 10 Z" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+      <text x="180" y="45" fill="#38BDF8" font-family="monospace" font-size="9" text-anchor="middle">Nose Cone</text>
+      <text x="180" y="70" fill="#94A3B8" font-family="sans-serif" font-size="9" text-anchor="middle">Rows 1 to 30 Continuous Pan</text>
+      
+      <path d="M 60 70 L 130 75 L 130 85 L 60 80 Z" fill="#334155"/>
+      <path d="M 300 70 L 230 75 L 230 85 L 300 80 Z" fill="#334155"/>
+      <text x="90" y="62" fill="#64748B" font-family="monospace" font-size="8">Wing L</text>
+      <text x="270" y="62" fill="#64748B" font-family="monospace" font-size="8">Wing R</text>
+    </g>
+
+    <!-- Qualitative Finding -->
+    <rect x="20" y="226" width="360" height="38" rx="6" fill="#1E293B"/>
+    <text x="30" y="244" fill="#34D399" font-family="sans-serif" font-size="10">Full cabin context in 1 fluid gesture · zero navigation lag</text>
+    <text x="30" y="256" fill="#94A3B8" font-family="sans-serif" font-size="9">Average seat selection time dropped from 82s to 38s.</text>
+  </g>
+</svg>

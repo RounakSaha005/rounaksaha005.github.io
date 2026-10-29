@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%" class="w-full h-auto rounded-xl">
+  <defs>
+    <linearGradient id="phoneBgLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E232A" />
+      <stop offset="100%" stop-color="#14181E" />
+    </linearGradient>
+    <linearGradient id="screenBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="960" height="540" fill="#0B0F17" rx="16"/>
+  <rect width="958" height="538" x="1" y="1" fill="none" stroke="#334155" stroke-dasharray="4,4" stroke-width="1" rx="15"/>
+
+  <!-- Top Title Banner -->
+  <g transform="translate(480, 42)" text-anchor="middle">
+    <rect x="-140" y="-24" width="280" height="40" rx="8" fill="#EA580C" fill-opacity="0.15" stroke="#EA580C" stroke-width="1.5"/>
+    <text y="3" fill="#FB923C" font-family="'Brush Script MT', 'Caveat', cursive, sans-serif" font-size="28" font-weight="bold" letter-spacing="1">Before</text>
+    <text y="32" fill="#94A3B8" font-family="monospace" font-size="11" letter-spacing="0.5">LEGACY SEAT SELECTION FLOW &amp; USABILITY BOTTLENECK</text>
+  </g>
+
+  <!-- ================= PHONE 1: OLD SEAT MAP ================= -->
+  <g transform="translate(110, 80)" filter="url(#shadow)">
+    <!-- Device Body -->
+    <rect width="320" height="420" rx="28" fill="url(#phoneBgLight)" stroke="#334155" stroke-width="2"/>
+    <rect width="300" height="400" x="10" y="10" rx="20" fill="url(#screenBg)"/>
+    
+    <!-- Status Bar -->
+    <text x="28" y="32" fill="#94A3B8" font-family="monospace" font-size="10">02:07</text>
+    <circle cx="270" cy="28" r="3" fill="#22C55E"/>
+    <text x="280" y="32" fill="#94A3B8" font-family="monospace" font-size="10">81%</text>
+
+    <!-- App Header -->
+    <rect x="22" y="44" width="276" height="34" rx="6" fill="#1E293B"/>
+    <path d="M 32 61 L 40 54 M 32 61 L 40 68" stroke="#F8FAFC" stroke-width="2" stroke-linecap="round"/>
+    <text x="50" y="65" fill="#F8FAFC" font-family="sans-serif" font-size="12" font-weight="bold">Select Seats (DEL → BOM)</text>
+
+    <!-- Problem Warning Tag -->
+    <rect x="22" y="86" width="276" height="36" rx="4" fill="#7F1D1D" fill-opacity="0.3" stroke="#DC2626" stroke-width="1"/>
+    <text x="32" y="102" fill="#FCA5A5" font-family="sans-serif" font-size="10" font-weight="bold">Issue 1: Tiny SVG nodes &amp; touch target failure</text>
+    <text x="32" y="115" fill="#F87171" font-family="sans-serif" font-size="9">300ms+ touch latency · high accidental taps</text>
+
+    <!-- Aircraft Body Outline -->
+    <rect x="36" y="130" width="248" height="230" rx="24" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+    <text x="160" y="148" fill="#64748B" font-family="sans-serif" font-size="9" text-anchor="middle">Airbus A320 — Front Cabin</text>
+
+    <!-- Column labels -->
+    <text x="66" y="166" fill="#64748B" font-family="monospace" font-size="9">A</text>
+    <text x="96" y="166" fill="#64748B" font-family="monospace" font-size="9">B</text>
+    <text x="126" y="166" fill="#64748B" font-family="monospace" font-size="9">C</text>
+    <text x="160" y="166" fill="#475569" font-family="monospace" font-size="8">AISLE</text>
+    <text x="194" y="166" fill="#64748B" font-family="monospace" font-size="9">D</text>
+    <text x="224" y="166" fill="#64748B" font-family="monospace" font-size="9">E</text>
+    <text x="254" y="166" fill="#64748B" font-family="monospace" font-size="9">F</text>
+
+    <!-- Row 1 -->
+    <rect x="58" y="174" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+    <rect x="88" y="174" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+    <rect x="118" y="174" width="20" height="20" rx="3" fill="#334155"/>
+    <text x="160" y="188" fill="#475569" font-family="monospace" font-size="9" text-anchor="middle">1</text>
+    <rect x="186" y="174" width="20" height="20" rx="3" fill="#334155"/>
+    <rect x="216" y="174" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+    <rect x="246" y="174" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+
+    <!-- Row 2 -->
+    <rect x="58" y="200" width="20" height="20" rx="3" fill="#0284C7"/>
+    <rect x="88" y="200" width="20" height="20" rx="3" fill="#334155"/>
+    <rect x="118" y="200" width="20" height="20" rx="3" fill="#334155"/>
+    <text x="160" y="214" fill="#475569" font-family="monospace" font-size="9" text-anchor="middle">2</text>
+    <rect x="186" y="200" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+    <rect x="216" y="200" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+    <rect x="246" y="200" width="20" height="20" rx="3" fill="#0284C7"/>
+
+    <!-- Row 3 (Exit Row - Confusing) -->
+    <rect x="58" y="226" width="20" height="20" rx="3" fill="#F59E0B" stroke="#B45309" stroke-width="1"/>
+    <rect x="88" y="226" width="20" height="20" rx="3" fill="#F59E0B" stroke="#B45309" stroke-width="1"/>
+    <rect x="118" y="226" width="20" height="20" rx="3" fill="#F59E0B"/>
+    <text x="160" y="240" fill="#F59E0B" font-family="monospace" font-size="8" text-anchor="middle">EXIT?</text>
+    <rect x="186" y="226" width="20" height="20" rx="3" fill="#F59E0B"/>
+    <rect x="216" y="226" width="20" height="20" rx="3" fill="#334155"/>
+    <rect x="246" y="226" width="20" height="20" rx="3" fill="#334155"/>
+
+    <!-- Row 4 -->
+    <rect x="58" y="252" width="20" height="20" rx="3" fill="#334155"/>
+    <rect x="88" y="252" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+    <rect x="118" y="252" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+    <text x="160" y="266" fill="#475569" font-family="monospace" font-size="9" text-anchor="middle">4</text>
+    <rect x="186" y="252" width="20" height="20" rx="3" fill="#334155"/>
+    <rect x="216" y="252" width="20" height="20" rx="3" fill="#334155"/>
+    <rect x="246" y="252" width="20" height="20" rx="3" fill="#334155"/>
+
+    <!-- Row 5 -->
+    <rect x="58" y="278" width="20" height="20" rx="3" fill="#334155"/>
+    <rect x="88" y="278" width="20" height="20" rx="3" fill="#334155"/>
+    <rect x="118" y="278" width="20" height="20" rx="3" fill="#334155"/>
+    <text x="160" y="292" fill="#475569" font-family="monospace" font-size="9" text-anchor="middle">5</text>
+    <rect x="186" y="278" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+    <rect x="216" y="278" width="20" height="20" rx="3" fill="#DC2626" opacity="0.8"/>
+    <rect x="246" y="278" width="20" height="20" rx="3" fill="#334155"/>
+
+    <!-- Old bottom bar -->
+    <rect x="22" y="366" width="276" height="34" rx="4" fill="#334155"/>
+    <text x="32" y="388" fill="#F8FAFC" font-family="sans-serif" font-size="10">1 Seat Selected · ₹350</text>
+    <rect x="216" y="371" width="76" height="24" rx="4" fill="#EA580C"/>
+    <text x="254" y="387" fill="#FFFFFF" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Done</text>
+  </g>
+
+  <!-- ================= PHONE 2: MULTI-LEG ABANDONMENT ================= -->
+  <g transform="translate(530, 80)" filter="url(#shadow)">
+    <!-- Device Body -->
+    <rect width="320" height="420" rx="28" fill="url(#phoneBgLight)" stroke="#334155" stroke-width="2"/>
+    <rect width="300" height="400" x="10" y="10" rx="20" fill="url(#screenBg)"/>
+    
+    <!-- Status Bar -->
+    <text x="28" y="32" fill="#94A3B8" font-family="monospace" font-size="10">11:59</text>
+    <circle cx="270" cy="28" r="3" fill="#22C55E"/>
+    <text x="280" y="32" fill="#94A3B8" font-family="monospace" font-size="10">78%</text>
+
+    <!-- App Header -->
+    <rect x="22" y="44" width="276" height="34" rx="6" fill="#1E293B"/>
+    <path d="M 32 61 L 40 54 M 32 61 L 40 68" stroke="#F8FAFC" stroke-width="2" stroke-linecap="round"/>
+    <text x="50" y="65" fill="#F8FAFC" font-family="sans-serif" font-size="12" font-weight="bold">Flight 2: Connecting Leg</text>
+
+    <!-- Problem Warning Tag -->
+    <rect x="22" y="86" width="276" height="36" rx="4" fill="#7F1D1D" fill-opacity="0.3" stroke="#DC2626" stroke-width="1"/>
+    <text x="32" y="102" fill="#FCA5A5" font-family="sans-serif" font-size="10" font-weight="bold">Issue 2: Connecting leg drop-off</text>
+    <text x="32" y="115" fill="#F87171" font-family="sans-serif" font-size="9">Users picked leg 1, missed leg 2 tabs completely</text>
+
+    <!-- Confusing Multi-sector Tabs -->
+    <rect x="22" y="130" width="134" height="28" rx="4" fill="#1E293B" stroke="#0284C7" stroke-width="1.5"/>
+    <text x="32" y="148" fill="#38BDF8" font-family="sans-serif" font-size="10" font-weight="bold">1. DEL → BOM (Done)</text>
+
+    <rect x="162" y="130" width="136" height="28" rx="4" fill="#0F172A" stroke="#EF4444" stroke-dasharray="3,3" stroke-width="1.5"/>
+    <text x="172" y="148" fill="#F87171" font-family="sans-serif" font-size="10">2. BOM → GOI (0/2)</text>
+
+    <!-- Abandonment Illustration Card -->
+    <rect x="22" y="168" width="276" height="188" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    
+    <circle cx="160" cy="220" r="32" fill="#EF4444" fill-opacity="0.15" stroke="#EF4444" stroke-width="2"/>
+    <text x="160" y="226" fill="#EF4444" font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle">!</text>
+    
+    <text x="160" y="272" fill="#F8FAFC" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">38% Users Skipped Leg 2</text>
+    <text x="160" y="292" fill="#94A3B8" font-family="sans-serif" font-size="10" text-anchor="middle">Tab friction caused users to think</text>
+    <text x="160" y="306" fill="#94A3B8" font-family="sans-serif" font-size="10" text-anchor="middle">they had already finished selecting seats.</text>
+
+    <rect x="42" y="324" width="236" height="24" rx="4" fill="#1E293B"/>
+    <text x="160" y="340" fill="#E2E8F0" font-family="monospace" font-size="9" text-anchor="middle">RESULT: Random airport seat assignments</text>
+
+    <!-- Skip Button which users tapped in confusion -->
+    <rect x="22" y="366" width="276" height="34" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="160" y="387" fill="#94A3B8" font-family="sans-serif" font-size="11" text-anchor="middle">Skip seat selection</text>
+  </g>
+</svg>

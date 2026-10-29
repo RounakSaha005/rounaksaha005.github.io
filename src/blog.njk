@@ -10,15 +10,18 @@ permalink: /blog/index.html
     <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
       Notes
     </h1>
-    <p class="text-xs sm:text-sm text-base-content/60 mt-1">
+    <p class="text-xs sm:text-sm text-base-content/60 mt-1 font-sans">
       Thoughts, architecture breakdowns, and web development notes.
     </p>
   </header>
 
-  <div class="divide-y divide-dotted divide-base-300">
+  <div class="space-y-4">
     {% for post in collections.posts | reverse %}
-      <article class="py-4 first:pt-0 last:pb-0">
-        <a href="{{ post.url }}" class="group block space-y-1">
+      <article>
+        <a 
+          href="{{ post.url }}" 
+          class="group block p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer space-y-2"
+        >
           <div class="flex items-baseline justify-between gap-4">
             <h2 class="text-sm font-medium text-base-content group-hover:text-primary transition-colors">
               {{ post.data.title }}
@@ -27,9 +30,29 @@ permalink: /blog/index.html
               {{ post.date | readableDate }}
             </time>
           </div>
-          <p class="text-xs text-base-content/70 leading-relaxed line-clamp-2">
+          
+          <p class="text-xs text-base-content/70 leading-relaxed line-clamp-2 font-sans">
             {{ post.data.description | default(post.templateContent | striptags | truncate(140)) }}
           </p>
+
+          <div class="flex items-center justify-between pt-2 border-t border-dotted border-base-300 text-[11px] font-mono">
+            <span class="text-base-content/50">
+              {% if post.data.tags %}
+                {% set filteredTags = [] %}
+                {% for t in post.data.tags %}
+                  {% if t != "posts" %}
+                    {% set filteredTags = (filteredTags.push(t), filteredTags) %}
+                  {% endif %}
+                {% endfor %}
+                {{ filteredTags | join(" · ") }}
+              {% else %}
+                Architecture
+              {% endif %}
+            </span>
+            <span class="text-primary font-medium group-hover:underline">
+              Read note →
+            </span>
+          </div>
         </a>
       </article>
     {% else %}
