@@ -6,7 +6,7 @@ permalink: /photos/index.html
 
 <div class="p-6 sm:p-8 space-y-6">
   
-  <header class="pb-6 border-b border-dashed border-base-200/80">
+  <header class="pb-6 border-b border-dotted border-base-300">
     <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
       Art & Photography
     </h1>
@@ -18,7 +18,7 @@ permalink: /photos/index.html
   <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
     {% for photo in photos %}
       <figure class="group">
-        <div class="aspect-square rounded-xl overflow-hidden bg-base-200 border border-base-200/80">
+        <div class="aspect-square rounded-xl overflow-hidden bg-base-200 border border-dotted border-base-300">
           <img 
             src="{{ photo.image }}" 
             alt="{{ photo.title }}" 

@@ -6,12 +6,12 @@ title: Home
 <!-- =======================================================================
      01 // HERO SECTION (Image on Left, Text on Right with Buttons)
      ======================================================================= -->
-<section class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+<section class="p-6 sm:p-8 border-b border-dotted border-base-300">
   <div class="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
     
     <!-- Hero Left: Portrait Image -->
     <div class="shrink-0">
-      <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-base-200/80 bg-base-200/40 shadow-2xs">
+      <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-dotted border-base-300 bg-base-200/40 shadow-2xs">
         <img 
           src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" 
           alt="{{ site.name }}"
@@ -46,7 +46,7 @@ title: Home
         <!-- Mail Icon -->
         <a 
           href="mailto:{{ site.author.email }}" 
-          class="p-2 rounded-lg border border-base-200/80 hover:border-base-300 text-base-content/70 hover:text-base-content transition-colors"
+          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors"
           title="Email"
           aria-label="Send email"
         >
@@ -58,7 +58,7 @@ title: Home
           href="{{ site.author.twitter }}" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-2 rounded-lg border border-base-200/80 hover:border-base-300 text-base-content/70 hover:text-base-content transition-colors"
+          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors"
           title="X / Twitter"
           aria-label="Twitter profile"
         >
@@ -70,7 +70,7 @@ title: Home
           href="{{ site.author.linkedin }}" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-2 rounded-lg border border-base-200/80 hover:border-base-300 text-base-content/70 hover:text-base-content transition-colors"
+          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-base-content transition-colors"
           title="LinkedIn"
           aria-label="LinkedIn profile"
         >
@@ -82,7 +82,7 @@ title: Home
           href="{{ site.author.youtube }}" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-2 rounded-lg border border-base-200/80 hover:border-base-300 text-base-content/70 hover:text-red-500 transition-colors"
+          class="p-2 rounded-lg border border-dotted border-base-300 hover:border-primary text-base-content/70 hover:text-red-500 transition-colors"
           title="YouTube Channel"
           aria-label="YouTube Channel"
         >
@@ -99,7 +99,7 @@ title: Home
 <!-- =======================================================================
      02 // CURRENT WORK & FEATURED CASE STUDY (Matching Screenshot)
      ======================================================================= -->
-<section class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+<section class="p-6 sm:p-8 border-b border-dotted border-base-300">
   
   <!-- Company / Role Header -->
   <div class="flex items-center justify-between text-xs mb-2">
@@ -119,7 +119,7 @@ title: Home
   </p>
 
   <!-- Large Featured Preview Graphic with 'Coming soon' Badge -->
-  <div class="relative rounded-2xl overflow-hidden border border-base-200/80 bg-base-200/30 aspect-16/9 sm:aspect-2/1">
+  <div class="relative rounded-2xl overflow-hidden border border-dotted border-base-300 bg-base-200/30 aspect-16/9 sm:aspect-2/1">
     <img 
       src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" 
       alt="Vortex Cloud System Interface" 
@@ -142,7 +142,7 @@ title: Home
 <!-- =======================================================================
      03 // INFINITE SCROLL (GSAP) WITH PROGRAMMING LANGUAGES
      ======================================================================= -->
-<section class="py-3 px-6 sm:px-8 border-b border-dashed border-base-200/80 overflow-hidden bg-base-200/20">
+<section class="py-3 px-6 sm:px-8 border-b border-dotted border-base-300 overflow-hidden bg-base-200/20">
   <div class="marquee-container">
     <div id="gsap-marquee-track" class="marquee-track flex items-center gap-6 text-[11px] text-base-content/70 font-mono cursor-pointer">
       
@@ -196,7 +196,7 @@ title: Home
 <!-- =======================================================================
      04 // SELECTED PROJECTS (Work)
      ======================================================================= -->
-<section id="projects" class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+<section id="projects" class="p-6 sm:p-8 border-b border-dotted border-base-300">
   
   <div class="flex items-baseline justify-between mb-5">
     <h2 class="font-heading text-xl font-semibold text-base-content">
@@ -209,7 +209,7 @@ title: Home
 
   <div class="space-y-4">
     {% for project in projects | limit(3) %}
-      <div class="group block p-4 rounded-xl border border-base-200/80 bg-base-100 hover:border-base-300 transition-colors">
+      <div class="group block p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary transition-colors">
         <div class="flex items-baseline justify-between gap-2 mb-1">
           <h3 class="font-medium text-sm text-base-content group-hover:text-primary transition-colors">
             {{ project.title }}
@@ -221,7 +221,7 @@ title: Home
           {{ project.description }}
         </p>
 
-        <div class="flex items-center justify-between pt-3 mt-3 border-t border-base-200/50 text-[11px]">
+        <div class="flex items-center justify-between pt-3 mt-3 border-t border-dotted border-base-300 text-[11px]">
           <span class="text-base-content/50 font-mono">{{ project.tags | join(" · ") }}</span>
           <div class="flex gap-3">
             {% if project.github %}
@@ -242,7 +242,7 @@ title: Home
 <!-- =======================================================================
      05 // YOUTUBE VIDEOS (Featured by Creator)
      ======================================================================= -->
-<section id="videos" class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+<section id="videos" class="p-6 sm:p-8 border-b border-dotted border-base-300">
   
   <div class="flex items-baseline justify-between mb-5">
     <div class="flex items-center gap-2">
@@ -262,7 +262,7 @@ title: Home
         href="{{ video.url }}" 
         target="_blank" 
         rel="noopener noreferrer" 
-        class="group block p-3 rounded-xl border border-base-200/80 bg-base-100 hover:border-base-300 transition-colors"
+        class="group block p-3 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary transition-colors"
       >
         <div class="relative aspect-video rounded-lg overflow-hidden bg-base-200 mb-2.5">
           <img 
@@ -293,7 +293,7 @@ title: Home
 <!-- =======================================================================
      06 // WRITING (Notes / Blog)
      ======================================================================= -->
-<section id="blog" class="p-6 sm:p-8 border-b border-dashed border-base-200/80">
+<section id="blog" class="p-6 sm:p-8 border-b border-dotted border-base-300">
   
   <div class="flex items-baseline justify-between mb-4">
     <h2 class="font-heading text-xl font-semibold text-base-content">
@@ -304,7 +304,7 @@ title: Home
     </a>
   </div>
 
-  <div class="divide-y divide-base-200/60">
+  <div class="divide-y divide-dotted divide-base-300">
     {% for post in collections.posts | reverse | limit(3) %}
       <article class="py-3.5 first:pt-0 last:pb-0">
         <a href="{{ post.url }}" class="group flex items-baseline justify-between gap-4">
@@ -341,7 +341,7 @@ title: Home
   <div class="grid grid-cols-3 gap-3">
     {% for photo in photos | limit(3) %}
       <figure class="group">
-        <div class="aspect-square rounded-xl overflow-hidden bg-base-200 border border-base-200/80">
+        <div class="aspect-square rounded-xl overflow-hidden bg-base-200 border border-dotted border-base-300">
           <img 
             src="{{ photo.image }}" 
             alt="{{ photo.title }}" 

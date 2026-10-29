@@ -4,7 +4,7 @@ layout: base.njk
 
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <!-- Page Header -->
-  <header class="mb-8 pb-6 border-b border-base-200">
+  <header class="mb-8 pb-6 border-b border-dotted border-base-300">
     <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
       {{ title }}
     </h1>
@@ -14,7 +14,7 @@ layout: base.njk
       </p>
     {% endif %}
     {% if image %}
-      <div class="mt-6 overflow-hidden rounded-box border border-base-200 shadow-sm">
+      <div class="mt-6 overflow-hidden rounded-box border border-dotted border-base-300 shadow-sm">
         <img src="{{ image }}" alt="{{ title }}" class="w-full h-auto max-h-[400px] object-cover" loading="lazy">
       </div>
     {% endif %}

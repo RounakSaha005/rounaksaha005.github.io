@@ -6,7 +6,7 @@ permalink: /resume/index.html
 
 <div class="p-6 sm:p-8 space-y-8">
   
-  <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-dashed border-base-200/80">
+  <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-dotted border-base-300">
     <div>
       <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
         {{ resume.basics.name }}
@@ -35,7 +35,7 @@ permalink: /resume/index.html
     </div>
 
     <!-- Experience -->
-    <div class="pt-6 border-t border-dashed border-base-200/80">
+    <div class="pt-6 border-t border-dotted border-base-300">
       <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-4">Experience</h2>
       <div class="space-y-5">
         {% for exp in resume.experience %}
@@ -60,7 +60,7 @@ permalink: /resume/index.html
     </div>
 
     <!-- Skills -->
-    <div class="pt-6 border-t border-dashed border-base-200/80">
+    <div class="pt-6 border-t border-dotted border-base-300">
       <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-3">Skills</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         {% for skillGroup in resume.skills %}
@@ -73,7 +73,7 @@ permalink: /resume/index.html
     </div>
 
     <!-- Education -->
-    <div class="pt-6 border-t border-dashed border-base-200/80">
+    <div class="pt-6 border-t border-dotted border-base-300">
       <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-2">Education</h2>
       {% for edu in resume.education %}
         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs gap-1">

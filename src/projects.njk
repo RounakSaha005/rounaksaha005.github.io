@@ -6,7 +6,7 @@ permalink: /projects/index.html
 
 <div class="p-6 sm:p-8 space-y-6">
   
-  <header class="pb-6 border-b border-dashed border-base-200/80">
+  <header class="pb-6 border-b border-dotted border-base-300">
     <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
       Work
     </h1>
@@ -17,7 +17,7 @@ permalink: /projects/index.html
 
   <div class="space-y-4">
     {% for project in projects %}
-      <div class="p-4 rounded-xl border border-base-200/80 bg-base-100 flex flex-col justify-between hover:border-base-300 transition-colors">
+      <div class="p-4 rounded-xl border border-dotted border-base-300 bg-base-100 flex flex-col justify-between hover:border-primary transition-colors">
         <div>
           <div class="flex items-baseline justify-between gap-2 mb-1">
             <h2 class="text-sm font-medium text-base-content">
@@ -31,7 +31,7 @@ permalink: /projects/index.html
           </p>
         </div>
 
-        <div class="flex items-center justify-between pt-3 mt-3 border-t border-base-200/50 text-[11px]">
+        <div class="flex items-center justify-between pt-3 mt-3 border-t border-dotted border-base-300 text-[11px]">
           <span class="text-base-content/50 font-mono">{{ project.tags | join(" · ") }}</span>
           <div class="flex gap-3">
             {% if project.github %}

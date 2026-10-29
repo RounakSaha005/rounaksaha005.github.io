@@ -6,7 +6,7 @@ permalink: /friends/index.html
 
 <div class="p-6 sm:p-8 space-y-6">
   
-  <header class="pb-6 border-b border-dashed border-base-200/80">
+  <header class="pb-6 border-b border-dotted border-base-300">
     <h1 class="font-heading text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
       Friends & Peers
     </h1>
@@ -17,9 +17,9 @@ permalink: /friends/index.html
 
   <div class="space-y-3.5">
     {% for friend in friends %}
-      <div class="p-4 rounded-xl border border-base-200/80 bg-base-100 flex items-start justify-between gap-4 hover:border-base-300 transition-colors">
+      <div class="p-4 rounded-xl border border-dotted border-base-300 bg-base-100 flex items-start justify-between gap-4 hover:border-primary transition-colors">
         <div class="flex items-start gap-3">
-          <div class="w-8 h-8 rounded-full overflow-hidden bg-base-200 shrink-0 border border-base-200">
+          <div class="w-8 h-8 rounded-full overflow-hidden bg-base-200 shrink-0 border border-base-300">
             <img src="{{ friend.avatar }}" alt="{{ friend.name }}" class="w-full h-full object-cover" loading="lazy" />
           </div>
           <div>
