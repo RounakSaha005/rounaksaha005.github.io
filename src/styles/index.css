@@ -245,7 +245,7 @@ html.page-ready body {
    Phosphor Icons Base & Bespoke Hover Animations
    ========================================================================== */
 
-.hidden, [hidden], .ph.hidden {
+.ph.hidden {
   display: none !important;
 }
 

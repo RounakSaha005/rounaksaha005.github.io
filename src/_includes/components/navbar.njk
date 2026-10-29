@@ -11,8 +11,8 @@
     <!-- Center/Right: Clean Muted Navigation Links & Controls -->
     <div class="flex items-center gap-2 sm:gap-6">
 
-      <!-- Desktop Navigation Links (hidden on mobile, visible on sm and up) -->
-      <nav class="hidden sm:flex items-center gap-4 md:gap-6 text-xs text-base-content/75 font-mono">
+      <!-- Desktop Navigation Links (visible on desktop sm and up, hidden on mobile) -->
+      <nav class="max-sm:hidden flex items-center gap-3.5 sm:gap-6 text-xs text-base-content/75 font-mono">
         <a href="/" class="hover:text-base-content transition-colors {% if page.url == '/' %}text-base-content font-semibold{% endif %}">
           Home
         </a>
@@ -54,7 +54,7 @@
       </label>
 
       <!-- Desktop Dropdown for secondary pages (Resume, Friends) - hidden on mobile -->
-      <div class="dropdown dropdown-end hidden sm:inline-block">
+      <div class="dropdown dropdown-end max-sm:hidden">
         <label tabindex="0" class="cursor-pointer text-base-content/60 hover:text-base-content hover:bg-base-200/60 p-1.5 rounded-lg flex items-center justify-center transition-colors" aria-label="More navigation links">
           <i class="ph ph-dots-three-vertical text-base"></i>
         </label>
