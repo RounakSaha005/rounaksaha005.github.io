@@ -1,13 +1,12 @@
 {
-  "headline": "Hello I'm Rounak Saha, engineer, craftsman",
+  "headline": "Hello I'm Rounak Saha, developer & gamer",
   "bio": "Full-stack engineer based out of Bangalore with <strong>4 years</strong> of experience, currently <strong>engineering modern web platforms at Vortex</strong> and teaching <strong>45K+ developers on YouTube</strong>.",
   "featuredWork": {
-    "company": "Vortex Cloud",
-    "role": "Senior Frontend Engineer",
-    "period": "August 2024 - Present",
-    "initial": "V",
-    "description": "At Vortex, I currently design user experiences for real-time telemetry and edge cloud infrastructure while also managing their design system tokens.",
-    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+    "company": "AWS Academy",
+    "role": "Intern",
+    "period": "Jul 2025 - Jan 2026",
+    "initial": "AWS",
+    "description": "At AWS Internship, I learned how to use AWS features and services",
+    "image": "/assets/images/792324028179447294342996117902266739707325023n.webp"
   }
 }
-
