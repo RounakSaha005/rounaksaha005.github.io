@@ -5,10 +5,18 @@
 
 # Media Uploads Configuration
 media:
-  input: src/assets/images
-  output: /assets/images
-  categories: [image]
-  rename: safe
+  - name: images
+    label: Images
+    input: src/assets/images
+    output: /assets/images
+    categories: [image, document]
+    rename: safe
+  - name: documents
+    label: Documents & PDFs
+    input: src/assets/documents
+    output: /assets/documents
+    categories: [document]
+    rename: safe
 
 content:
   # =====================================================================
@@ -220,6 +228,13 @@ content:
           - name: url
             label: Website URL
             type: string
+          - name: pdf
+            label: Resume PDF Document
+            type: file
+            media: documents
+            description: Upload or select a PDF resume file for the download button
+            options:
+              categories: [document]
           - name: summary
             label: Executive Summary
             type: text

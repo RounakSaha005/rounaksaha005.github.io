@@ -27,9 +27,17 @@ permalink: /resume/index.html
       {% endif %}
     </div>
     <div class="flex items-center gap-2 pt-1 sm:pt-0">
-      <button onclick="window.print()" class="btn btn-outline btn-xs font-mono flex items-center gap-1 group leading-none">
-        <i class="ph ph-printer text-xs"></i> <span class="text-scramble" data-scramble="Print / PDF">Print / PDF</span>
-      </button>
+      <a 
+        href="{{ resume.basics.pdf | default('/assets/documents/rounak-saha-resume.pdf') }}" 
+        download="Rounak_Saha_Resume.pdf"
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn btn-outline btn-xs font-mono flex items-center gap-1.5 group leading-none hover:border-primary hover:text-primary transition-colors"
+        title="Download Resume (PDF)"
+        aria-label="Download Resume PDF"
+      >
+        <i class="ph ph-download-simple text-xs"></i> <span class="text-scramble" data-scramble="Resume">Resume</span>
+      </a>
       <a href="mailto:{{ resume.basics.email }}" class="btn btn-neutral btn-xs rounded-lg font-mono flex items-center gap-1 group leading-none">
         <i class="ph ph-envelope text-xs"></i> <span class="text-scramble" data-scramble="Contact">Contact</span>
       </a>

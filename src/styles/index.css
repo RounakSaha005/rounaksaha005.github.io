@@ -707,3 +707,78 @@ pre[class*="language-"] .token.variable {
     left: -42px;
   }
 }
+
+/* ==========================================================================
+   PRINT STYLESHEET (Clean A4 / Letter PDF Output for Resume & Portfolio)
+   ========================================================================== */
+
+@media print {
+  /* Ensure page content is always 100% visible regardless of FOUC controller */
+  html,
+  html:not(.page-ready) body,
+  html.page-ready body,
+  body {
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10.5pt !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body * {
+    visibility: visible !important;
+  }
+
+  /* Hide navigation bar, footer, buttons, and interactive controls */
+  header.site-navbar,
+  footer,
+  .no-print,
+  #article-top,
+  .btn,
+  button,
+  .swap,
+  [data-theme-toggle],
+  #active-tag-filter,
+  .code-toolbar,
+  #toc-fixed-container,
+  #toc-mobile-dropdown {
+    display: none !important;
+  }
+
+  /* Remove outer bounds, shadows, and screen borders */
+  .max-w-2xl,
+  .max-w-3xl,
+  .border-x,
+  .min-h-screen {
+    max-width: 100% !important;
+    min-height: auto !important;
+    border-left: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+    padding-left: 0.5in !important;
+    padding-right: 0.5in !important;
+  }
+
+  /* Keep links clean without underlines */
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  /* High contrast for blueprint dotted borders */
+  .border-dotted {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Prevent awkward page break splitting */
+  .resume-timeline-item,
+  article,
+  .card,
+  section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
