@@ -56,6 +56,31 @@
         'txt': 'Plain Text'
       };
 
+      function getEffectiveCodeTheme(wrapper) {
+        if (wrapper && wrapper.dataset.codeTheme) {
+          return wrapper.dataset.codeTheme;
+        }
+        const saved = localStorage.getItem('code_theme');
+        if (saved === 'dark' || saved === 'light') {
+          return saved;
+        }
+        return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+      }
+
+      function updateAllCodeThemeButtons() {
+        document.querySelectorAll('.code-block-wrapper').forEach(function(el) {
+          const isDark = getEffectiveCodeTheme(el) === 'dark';
+          const btn = el.querySelector('.code-theme-toggle');
+          if (btn) {
+            btn.innerHTML = isDark
+              ? '<i class="ph ph-sun text-xs"></i>'
+              : '<i class="ph ph-moon text-xs"></i>';
+            btn.setAttribute('aria-label', isDark ? 'Switch code to light theme' : 'Switch code to dark theme');
+            btn.setAttribute('title', isDark ? 'Switch code to light theme' : 'Switch code to dark theme');
+          }
+        });
+      }
+
       codeBlocks.forEach(function(pre) {
         if (pre.dataset.enhanced === 'true') return;
         pre.dataset.enhanced = 'true';
@@ -66,25 +91,66 @@
 
         // Create outer wrapper
         const wrapper = document.createElement('div');
-        wrapper.className = 'code-block-wrapper my-5 sm:my-6 rounded-xl border border-dotted border-base-300 overflow-hidden bg-base-200/40 shadow-2xs';
+        wrapper.className = 'code-block-wrapper my-5 sm:my-6 rounded-xl border border-dotted overflow-hidden shadow-2xs transition-colors duration-200';
+        
+        const saved = localStorage.getItem('code_theme');
+        if (saved === 'dark' || saved === 'light') {
+          wrapper.dataset.codeTheme = saved;
+          pre.dataset.codeTheme = saved;
+        }
 
         // Create top toolbar
         const toolbar = document.createElement('div');
-        toolbar.className = 'flex items-center justify-between px-3.5 py-2 border-b border-dotted border-base-300 bg-base-200/70 font-mono text-[11px] select-none';
+        toolbar.className = 'code-toolbar flex items-center justify-between px-3.5 py-2 border-b border-dotted font-mono text-[11px] select-none transition-colors duration-200';
 
         // Left side: Language name
         const left = document.createElement('div');
         left.className = 'flex items-center';
-        left.innerHTML = '<span class="font-mono text-xs font-medium text-base-content/75">' + langLabel + '</span>';
+        left.innerHTML = '<span class="font-mono text-xs font-medium">' + langLabel + '</span>';
 
-        // Right side: One-click Copy Code Button
+        // Right side: Theme toggle + Divider + Copy button
+        const right = document.createElement('div');
+        right.className = 'flex items-center gap-1.5';
+
+        // Code Theme Toggle Button (Light / Dark)
+        const themeBtn = document.createElement('button');
+        themeBtn.type = 'button';
+        themeBtn.className = 'code-theme-toggle flex items-center justify-center w-6 h-6 rounded opacity-70 hover:opacity-100 hover:bg-base-content/10 transition-colors cursor-pointer';
+        
+        const isDark = getEffectiveCodeTheme(wrapper) === 'dark';
+        themeBtn.innerHTML = isDark
+          ? '<i class="ph ph-sun text-xs"></i>'
+          : '<i class="ph ph-moon text-xs"></i>';
+        themeBtn.setAttribute('aria-label', isDark ? 'Switch code to light theme' : 'Switch code to dark theme');
+        themeBtn.setAttribute('title', isDark ? 'Switch code to light theme' : 'Switch code to dark theme');
+
+        themeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const currentTheme = getEffectiveCodeTheme(wrapper);
+          const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          localStorage.setItem('code_theme', nextTheme);
+          document.querySelectorAll('.code-block-wrapper').forEach(function(el) {
+            el.dataset.codeTheme = nextTheme;
+            const p = el.querySelector('pre');
+            if (p) p.dataset.codeTheme = nextTheme;
+          });
+          updateAllCodeThemeButtons();
+        });
+
+        // Subtle divider
+        const divider = document.createElement('span');
+        divider.className = 'w-px h-3 bg-current opacity-20 inline-block';
+
+        // Copy Code Button
         const copyBtn = document.createElement('button');
         copyBtn.type = 'button';
-        copyBtn.className = 'copy-code-btn flex items-center gap-1 text-[11px] text-base-content/60 hover:text-base-content px-2 py-0.5 rounded hover:bg-base-300/30 transition-colors cursor-pointer';
+        copyBtn.className = 'copy-code-btn flex items-center gap-1 text-[11px] opacity-70 hover:opacity-100 px-2 py-0.5 rounded hover:bg-base-content/10 transition-colors cursor-pointer';
         copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
         copyBtn.innerHTML = '<i class="ph ph-copy text-xs"></i><span>Copy</span>';
 
-        copyBtn.addEventListener('click', function() {
+        copyBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
           const codeEl = pre.querySelector('code');
           const textToCopy = codeEl ? codeEl.innerText : pre.innerText;
           navigator.clipboard.writeText(textToCopy).then(function() {
@@ -97,13 +163,25 @@
           });
         });
 
+        right.appendChild(themeBtn);
+        right.appendChild(divider);
+        right.appendChild(copyBtn);
+
         toolbar.appendChild(left);
-        toolbar.appendChild(copyBtn);
+        toolbar.appendChild(right);
 
         pre.parentNode.insertBefore(wrapper, pre);
         wrapper.appendChild(toolbar);
         wrapper.appendChild(pre);
       });
+
+      // Synchronize code block icons when site theme is toggled (if no manual code theme is saved)
+      const siteThemeObserver = new MutationObserver(function() {
+        if (!localStorage.getItem('code_theme')) {
+          updateAllCodeThemeButtons();
+        }
+      });
+      siteThemeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     }
 
     if (document.readyState === 'loading') {
