@@ -229,6 +229,17 @@ export default function (eleventyConfig) {
     return !url.startsWith('mailto:') && !url.startsWith('tel:') && !url.startsWith('/') && !url.startsWith('#');
   });
 
+  // Extract clean domain hostname from URL (e.g. "https://amitendu.me/" -> "amitendu.me")
+  eleventyConfig.addFilter('cleanDomain', (url) => {
+    if (!url || typeof url !== 'string') return '';
+    try {
+      const parsed = new URL(url.startsWith('http') ? url : 'https://' + url);
+      return parsed.hostname.replace(/^www\./, '');
+    } catch (e) {
+      return url.replace(/^https?:\/\//, '').replace(/^www\./, '').split('/')[0];
+    }
+  });
+
   // Automatic Collections based on directories
   eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => b.date - a.date);

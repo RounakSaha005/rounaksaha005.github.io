@@ -6,41 +6,149 @@ permalink: /friends/index.html
 
 <div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
   
-  <header class="pb-5 sm:pb-6 border-b border-dotted border-base-300">
-    <h1 class="font-heading text-2xl xs:text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
-      Friends & Peers
-    </h1>
-    <p class="text-xs sm:text-sm text-base-content/60 mt-1 font-sans">
-      Engineers, creators, and designers whose craftsmanship I admire.
-    </p>
+  <!-- Header: Title, Peer Counter & Connect Action -->
+  <header class="pb-5 sm:pb-6 border-b border-dotted border-base-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+    <div>
+      <div class="flex items-center gap-2">
+        <h1 class="font-heading text-2xl xs:text-3xl sm:text-4xl text-base-content font-bold tracking-tight leading-none">
+          Friends & Peers
+        </h1>
+        <span class="text-xs text-base-content/50 font-mono leading-none">
+          · {{ friends.length }} {{ "peer" if friends.length == 1 else "peers" }}
+        </span>
+      </div>
+      <p class="text-xs sm:text-sm text-base-content/60 mt-1 font-sans">
+        Engineers, creators, and designers whose craftsmanship and craft I admire.
+      </p>
+    </div>
+
+    <a 
+      href="mailto:{{ site.author.email }}?subject=Connecting%20via%20your%20website" 
+      class="btn btn-neutral btn-xs rounded-lg font-mono shrink-0 self-start sm:self-auto flex items-center gap-1 group leading-none"
+    >
+      <i class="ph ph-handshake text-xs"></i> <span class="text-scramble" data-scramble="Connect">Connect</span>
+    </a>
   </header>
 
-  <div class="space-y-3 sm:space-y-3.5">
+  <!-- Friends Cards Grid: 2 Columns on Tablet/Desktop for Balanced Proportions -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
     {% for friend in friends %}
-      <a 
-        href="{{ friend.url }}" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        class="group block p-3.5 sm:p-4 rounded-xl border border-dotted border-base-300 bg-base-100 flex items-start justify-between gap-3 sm:gap-4 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer"
+      <div 
+        class="group relative p-4 sm:p-5 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/25 transition-all flex flex-col justify-between"
       >
-        <div class="flex items-start gap-3">
-          <div class="w-8 h-8 rounded-full overflow-hidden bg-base-200 shrink-0 border border-base-300">
-            <img src="{{ friend.avatar }}" alt="{{ friend.name }}" width="32" height="32" class="w-full h-full object-cover" loading="lazy" />
+        <div>
+          <!-- Identity Row: Avatar, Name & Role -->
+          <div class="flex items-start gap-3.5">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-base-200 shrink-0 border border-dotted border-base-300 group-hover:border-primary/50 transition-colors shadow-xs">
+              <img 
+                src="{{ friend.avatar }}" 
+                alt="{{ friend.name }}" 
+                width="56" 
+                height="56" 
+                class="w-full h-full object-cover filter grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" 
+                loading="lazy" 
+              />
+            </div>
+
+            <div class="min-w-0 flex-1">
+              <div class="flex items-start justify-between gap-2">
+                <h2 class="font-heading text-sm sm:text-base font-semibold text-base-content group-hover:text-primary transition-colors leading-snug">
+                  <a 
+                    href="{{ friend.url }}" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="after:absolute after:inset-0 focus-visible:outline-none"
+                  >
+                    {{ friend.name }}
+                  </a>
+                </h2>
+                <i class="ph ph-arrow-up-right text-xs text-base-content/40 group-hover:text-primary transition-colors shrink-0 pt-0.5"></i>
+              </div>
+
+              <!-- Domain & Role Subline -->
+              <div class="text-[11px] font-mono mt-1 flex items-center gap-1.5 flex-wrap leading-tight">
+                <span class="text-primary font-medium">{{ friend.url | cleanDomain }}</span>
+                <span class="text-base-content/30">·</span>
+                <span class="text-base-content/65 truncate max-w-[140px] xs:max-w-[180px] sm:max-w-none">{{ friend.role }}</span>
+              </div>
+            </div>
           </div>
-          <div>
-            <h2 class="font-medium text-xs sm:text-sm text-base-content group-hover:text-primary transition-colors">{{ friend.name }}</h2>
-            <p class="text-[11px] text-base-content/50 font-mono">{{ friend.role }}</p>
-            <p class="text-xs text-base-content/75 leading-relaxed mt-1 font-sans">
-              {{ friend.bio }}
+
+          <!-- Bio -->
+          <p class="text-xs text-base-content/75 leading-relaxed font-sans mt-3 line-clamp-2">
+            {{ friend.bio }}
+          </p>
+        </div>
+
+        <!-- Bottom Bar: Tech Tags & Direct Link -->
+        <div class="flex items-center justify-between gap-2 pt-3 mt-4 border-t border-dotted border-base-300 text-[11px] font-mono">
+          <div class="flex flex-wrap gap-1 items-center min-w-0 flex-1 leading-none">
+            {% if friend.tags and friend.tags.length > 0 %}
+              {% for tag in friend.tags | limit(4) %}
+                <span class="px-1.5 py-0.5 rounded bg-base-200/80 border border-dotted border-base-300/80 text-base-content/60 text-[10px] font-mono group-hover:border-primary/30 group-hover:text-base-content/85 transition-colors">
+                  #{{ tag }}
+                </span>
+              {% endfor %}
+            {% else %}
+              <span class="text-base-content/40">Developer & Peer</span>
+            {% endif %}
+          </div>
+
+          <a 
+            href="{{ friend.url }}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 shrink-0 leading-none"
+            aria-label="Visit {{ friend.name }}'s website"
+          >
+            <span class="text-scramble" data-scramble="Visit site">Visit site</span> <i class="ph ph-arrow-up-right text-[11px]"></i>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+
+    <!-- Webring / Link Exchange Card (Fills empty grid slot when odd, spans full width when even) -->
+    <div class="group relative p-4 sm:p-5 rounded-xl border border-dotted border-base-300 bg-base-100/50 hover:border-primary hover:bg-base-200/25 transition-all flex flex-col justify-between {% if friends.length % 2 == 0 %}sm:col-span-2{% endif %}">
+      <div>
+        <div class="flex items-start gap-3.5">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 border border-dotted border-primary/40 flex items-center justify-center text-primary shrink-0 group-hover:scale-105 transition-transform duration-300">
+            <i class="ph ph-link-simple text-xl sm:text-2xl"></i>
+          </div>
+
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center justify-between gap-1.5">
+              <h2 class="font-heading text-sm sm:text-base font-semibold text-base-content leading-snug">
+                Exchange Links
+              </h2>
+              <span class="badge badge-primary badge-outline text-[9px] font-mono leading-none px-1.5 py-0.5">
+                Webring
+              </span>
+            </div>
+
+            <p class="text-[11px] font-mono text-base-content/50 mt-1 leading-tight">
+              Open blogroll & digital garden
             </p>
           </div>
         </div>
 
-        <span class="text-xs text-primary group-hover:underline font-mono font-medium shrink-0 pt-0.5 flex items-center gap-0.5">
-          Visit <i class="ph ph-arrow-up-right text-[11px]"></i>
+        <p class="text-xs text-base-content/70 leading-relaxed font-sans mt-3 line-clamp-2">
+          Building software or writing online? Let's connect and link our gardens.
+        </p>
+      </div>
+
+      <div class="flex items-center justify-between gap-2 pt-3 mt-4 border-t border-dotted border-base-300 text-[11px] font-mono">
+        <span class="text-base-content/50 flex items-center gap-1 leading-none text-[10px]">
+          <i class="ph ph-rss text-xs"></i> IndieWeb / RSS
         </span>
-      </a>
-    {% endfor %}
+
+        <a 
+          href="mailto:{{ site.author.email }}?subject=Exchanging%20Links%20with%20Rounak" 
+          class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 shrink-0 leading-none"
+        >
+          <span class="text-scramble" data-scramble="Say hello">Say hello</span> <i class="ph ph-arrow-right text-[11px]"></i>
+        </a>
+      </div>
+    </div>
   </div>
 
 </div>
