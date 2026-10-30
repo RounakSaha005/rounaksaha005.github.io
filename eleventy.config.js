@@ -10,6 +10,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addWatchTarget('./src/assets/');
 
   // Passthrough copy for media uploads and static assets
+  eleventyConfig.addPassthroughCopy({ './src/public': '/' });
   eleventyConfig.addPassthroughCopy({ './src/assets': 'assets' });
   eleventyConfig.addPassthroughCopy({ './me.jpeg': 'me.jpeg' });
   eleventyConfig.addPassthroughCopy({ './node_modules/@phosphor-icons/web/src/regular': 'assets/phosphor' });
