@@ -22,11 +22,11 @@ permalink: /blog/index.html
           href="{{ post.url }}" 
           class="group block p-3.5 sm:p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer space-y-2"
         >
-          <div class="flex flex-col xs:flex-row xs:items-baseline justify-between gap-1 xs:gap-4">
-            <h2 class="text-xs sm:text-sm font-medium text-base-content group-hover:text-primary transition-colors">
+          <div class="flex items-center justify-between gap-3 sm:gap-4">
+            <h2 class="text-xs sm:text-sm font-medium text-base-content group-hover:text-primary transition-colors leading-none truncate">
               {{ post.data.title }}
             </h2>
-            <time datetime="{{ post.date | htmlDateString }}" class="text-[11px] text-base-content/40 font-mono shrink-0">
+            <time datetime="{{ post.date | htmlDateString }}" class="text-[11px] text-base-content/40 font-mono shrink-0 leading-none">
               {{ post.date | readableDate }}
             </time>
           </div>
@@ -36,10 +36,10 @@ permalink: /blog/index.html
           </p>
 
           <div class="flex items-center justify-between gap-2 pt-2 border-t border-dotted border-base-300 text-[11px] font-mono">
-            <span class="text-base-content/50 truncate max-w-[150px] sm:max-w-none">
+            <span class="text-base-content/50 truncate max-w-[150px] sm:max-w-none leading-none">
               {{ (post.data.tags | filterTagList | join(" · ")) or "Architecture" }}
             </span>
-            <span class="text-primary font-medium group-hover:underline shrink-0 flex items-center gap-1">
+            <span class="text-primary font-medium group-hover:underline shrink-0 flex items-center gap-1 leading-none">
               <span class="text-scramble" data-scramble="Read note">Read note</span> <i class="ph ph-arrow-right text-[11px]"></i>
             </span>
           </div>

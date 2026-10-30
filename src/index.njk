@@ -127,11 +127,11 @@ title: Home
      ======================================================================= -->
 <section id="projects" class="p-4 sm:p-8 border-b border-dotted border-base-300">
   
-  <div class="flex items-baseline justify-between mb-4 sm:mb-5">
-    <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
+  <div class="flex items-center justify-between mb-4 sm:mb-5">
+    <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content leading-none">
       Selected Work
     </h2>
-    <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group">
+    <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group leading-none">
       <span class="text-scramble" data-scramble="View all">View all</span> <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
@@ -144,13 +144,13 @@ title: Home
         class="group relative block p-3.5 sm:p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all flex flex-col justify-between"
       >
         <div>
-          <div class="flex items-baseline justify-between gap-2 mb-1">
-            <h3 class="font-medium text-xs sm:text-sm text-base-content group-hover:text-primary transition-colors">
+          <div class="flex items-center justify-between gap-2 mb-1.5">
+            <h3 class="font-medium text-xs sm:text-sm text-base-content group-hover:text-primary transition-colors leading-none">
               <a href="{{ projectUrl }}" {% if not hasCaseStudy and projectUrl | isExternalUrl %}target="_blank" rel="noopener noreferrer"{% endif %} class="after:absolute after:inset-0 focus-visible:outline-none">
                 {{ project.data.title }}
               </a>
             </h3>
-            <span class="text-[11px] font-mono text-base-content/40">{{ project.data.year | default(project.date | htmlDateString) }}</span>
+            <span class="text-[11px] font-mono text-base-content/40 leading-none">{{ project.data.year | default(project.date | htmlDateString) }}</span>
           </div>
 
           <p class="text-xs text-base-content/75 leading-relaxed font-sans">
@@ -159,10 +159,10 @@ title: Home
         </div>
 
         <div class="flex items-center justify-between gap-2 pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
-          <span class="text-base-content/50 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none">
+          <span class="text-base-content/50 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none leading-none">
             {{ (project.data.tags | filterTagList | join(" · ")) or "Engineering" }}
           </span>
-          <div class="flex items-center gap-3 shrink-0">
+          <div class="flex items-center gap-3 shrink-0 leading-none">
             {% if hasCaseStudy %}
               <a 
                 href="{{ project.url }}" 
@@ -208,21 +208,21 @@ title: Home
      ======================================================================= -->
 <section id="videos" class="p-4 sm:p-8 border-b border-dotted border-base-300">
   
-  <div class="flex items-baseline justify-between mb-4 sm:mb-5">
+  <div class="flex items-center justify-between mb-4 sm:mb-5">
     <div class="flex items-center gap-2">
-      <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
+      <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content leading-none">
         YouTube
       </h2>
       <span 
         id="yt-sub-count"
-        class="yt-sub-count text-xs text-base-content/50"
+        class="yt-sub-count text-xs text-base-content/50 font-mono leading-none"
         data-channel-url="{{ site.youtubeChannel.url }}"
         data-channel-id="{{ site.youtubeChannel.channelId }}"
       >
         · {{ site.youtubeChannel.subscribers or 'Subscribers' }}
       </span>
     </div>
-    <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group">
+    <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group leading-none">
       <span class="text-scramble" data-scramble="Channel">Channel</span> <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
@@ -357,11 +357,11 @@ title: Home
      ======================================================================= -->
 <section id="blog" class="p-4 sm:p-8 border-b border-dotted border-base-300">
   
-  <div class="flex items-baseline justify-between mb-4">
-    <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
+  <div class="flex items-center justify-between mb-4 sm:mb-5">
+    <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content leading-none">
       Notes
     </h2>
-    <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group">
+    <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group leading-none">
       <span class="text-scramble" data-scramble="All notes">All notes</span> <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
@@ -373,11 +373,11 @@ title: Home
           href="{{ post.url }}" 
           class="group block p-3.5 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all cursor-pointer"
         >
-          <div class="flex items-baseline justify-between gap-4">
-            <h3 class="text-xs sm:text-sm font-medium group-hover:text-primary transition-colors text-base-content truncate">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="text-xs sm:text-sm font-medium group-hover:text-primary transition-colors text-base-content truncate leading-none">
               {{ post.data.title }}
             </h3>
-            <time datetime="{{ post.date | htmlDateString }}" class="text-[11px] text-base-content/40 font-mono shrink-0">
+            <time datetime="{{ post.date | htmlDateString }}" class="text-[11px] text-base-content/40 font-mono shrink-0 leading-none">
               {{ post.date | readableDate }}
             </time>
           </div>
@@ -401,11 +401,11 @@ title: Home
      ======================================================================= -->
 <section id="gallery" class="p-4 sm:p-8">
   
-  <div class="flex items-baseline justify-between mb-4">
-    <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
+  <div class="flex items-center justify-between mb-4 sm:mb-5">
+    <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content leading-none">
       Art & Photography
     </h2>
-    <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group">
+    <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group leading-none">
       <span class="text-scramble" data-scramble="Gallery">Gallery</span> <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>

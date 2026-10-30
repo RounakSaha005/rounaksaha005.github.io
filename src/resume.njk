@@ -6,7 +6,7 @@ permalink: /resume/index.html
 
 <div class="p-4 sm:p-8 space-y-6 sm:space-y-8">
   
-  <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 pb-5 sm:pb-6 border-b border-dotted border-base-300">
+  <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 sm:pb-6 border-b border-dotted border-base-300">
     <div>
       <h1 class="font-heading text-2xl xs:text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
         {{ resume.basics.name }}
@@ -40,11 +40,11 @@ permalink: /resume/index.html
       <div class="space-y-5">
         {% for exp in resume.experience %}
           <div class="space-y-1.5">
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-0.5 text-xs">
-              <span class="font-semibold text-base-content">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 text-xs">
+              <span class="font-semibold text-base-content sm:leading-none">
                 {{ exp.position }} · {{ exp.company }}
               </span>
-              <span class="font-mono text-base-content/40">{{ exp.startDate }} — {{ exp.endDate }}</span>
+              <span class="font-mono text-base-content/40 sm:leading-none">{{ exp.startDate }} — {{ exp.endDate }}</span>
             </div>
             <ul class="list-disc list-inside space-y-1 text-xs text-base-content/75 leading-relaxed font-sans">
               {% for item in exp.highlights %}
@@ -76,12 +76,12 @@ permalink: /resume/index.html
     <div class="pt-5 sm:pt-6 border-t border-dotted border-base-300">
       <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-2">Education</h2>
       {% for edu in resume.education %}
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs gap-0.5">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between text-xs gap-0.5">
           <div>
-            <span class="font-semibold text-base-content">{{ edu.institution }}</span>
-            <span class="text-base-content/65 block font-sans">{{ edu.studyType }} in {{ edu.area }}</span>
+            <span class="font-semibold text-base-content leading-none">{{ edu.institution }}</span>
+            <span class="text-base-content/65 block font-sans mt-0.5">{{ edu.studyType }} in {{ edu.area }}</span>
           </div>
-          <span class="font-mono text-base-content/40">{{ edu.startDate }} — {{ edu.endDate }}</span>
+          <span class="font-mono text-base-content/40 sm:pt-0.5 sm:leading-none">{{ edu.startDate }} — {{ edu.endDate }}</span>
         </div>
       {% endfor %}
     </div>

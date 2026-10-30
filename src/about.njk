@@ -32,9 +32,9 @@ permalink: /about/index.html
       <div class="space-y-4">
         {% for exp in resume.experience %}
           <div>
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-0.5 text-xs">
-              <span class="font-medium text-base-content">{{ exp.position }} · {{ exp.company }}</span>
-              <span class="text-base-content/50 font-mono text-[11px]">{{ exp.startDate }} — {{ exp.endDate }}</span>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 text-xs">
+              <span class="font-medium text-base-content sm:leading-none">{{ exp.position }} · {{ exp.company }}</span>
+              <span class="text-base-content/50 font-mono text-[11px] sm:leading-none">{{ exp.startDate }} — {{ exp.endDate }}</span>
             </div>
             {% if exp.highlights and exp.highlights[0] %}
               <p class="text-xs text-base-content/65 mt-1 font-sans">{{ exp.highlights[0] }}</p>

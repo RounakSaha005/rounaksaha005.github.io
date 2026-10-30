@@ -23,13 +23,13 @@ permalink: /projects/index.html
         class="group relative block p-3.5 sm:p-4 rounded-xl border border-dotted border-base-300 bg-base-100 hover:border-primary hover:bg-base-200/30 transition-all flex flex-col justify-between"
       >
         <div>
-          <div class="flex items-baseline justify-between gap-2 mb-1">
-            <h2 class="text-xs sm:text-sm font-medium text-base-content group-hover:text-primary transition-colors">
+          <div class="flex items-center justify-between gap-2 mb-1.5">
+            <h2 class="text-xs sm:text-sm font-medium text-base-content group-hover:text-primary transition-colors leading-none">
               <a href="{{ projectUrl }}" {% if not hasCaseStudy and projectUrl | isExternalUrl %}target="_blank" rel="noopener noreferrer"{% endif %} class="after:absolute after:inset-0 focus-visible:outline-none">
                 {{ project.data.title }}
               </a>
             </h2>
-            <span class="text-[11px] font-mono text-base-content/40">{{ project.data.year | default(project.date | htmlDateString) }}</span>
+            <span class="text-[11px] font-mono text-base-content/40 leading-none">{{ project.data.year | default(project.date | htmlDateString) }}</span>
           </div>
 
           <p class="text-xs text-base-content/75 leading-relaxed font-sans">
@@ -38,10 +38,10 @@ permalink: /projects/index.html
         </div>
 
         <div class="flex items-center justify-between gap-2 pt-3 mt-3 border-t border-dotted border-base-300 text-[11px] font-mono">
-          <span class="text-base-content/50 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none">
+          <span class="text-base-content/50 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none leading-none">
             {{ (project.data.tags | filterTagList | join(" · ")) or "Engineering" }}
           </span>
-          <div class="flex items-center gap-3 shrink-0">
+          <div class="flex items-center gap-3 shrink-0 leading-none">
             {% if hasCaseStudy %}
               <a 
                 href="{{ project.url }}" 
