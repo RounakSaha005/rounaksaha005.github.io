@@ -40,9 +40,9 @@ title: Home
       <div class="flex items-center gap-2 pt-1 flex-wrap">
         <a 
           href="/resume/" 
-          class="btn btn-neutral btn-sm rounded-lg px-3.5 sm:px-4 font-normal text-xs normal-case shadow-2xs font-mono"
+          class="btn btn-neutral btn-sm rounded-lg px-3.5 sm:px-4 font-normal text-xs normal-case shadow-2xs font-mono group"
         >
-          Download Resume
+          <span class="text-scramble" data-scramble="Download Resume">Download Resume</span>
         </a>
 
         {% set heroSocials = home.socialLinks if (home.socialLinks and home.socialLinks.length > 0) else site.socialLinks %}
@@ -131,8 +131,8 @@ title: Home
     <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
       Selected Work
     </h2>
-    <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1">
-      View all <i class="ph ph-arrow-right text-[11px]"></i>
+    <a href="/projects/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group">
+      <span class="text-scramble" data-scramble="View all">View all</span> <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
 
@@ -168,7 +168,7 @@ title: Home
                 href="{{ project.url }}" 
                 class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-primary"
               >
-                Case study <i class="ph ph-arrow-right text-[11px]"></i>
+                <span class="text-scramble" data-scramble="Case study">Case study</span> <i class="ph ph-arrow-right text-[11px]"></i>
               </a>
             {% elif project.data.link %}
               <a 
@@ -177,7 +177,7 @@ title: Home
                 rel="noopener noreferrer"
                 class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-primary"
               >
-                Demo <i class="ph ph-arrow-right text-[11px]"></i>
+                <span class="text-scramble" data-scramble="Demo">Demo</span> <i class="ph ph-arrow-right text-[11px]"></i>
               </a>
             {% endif %}
             {% if project.data.github %}
@@ -222,8 +222,8 @@ title: Home
         · {{ site.youtubeChannel.subscribers or 'Subscribers' }}
       </span>
     </div>
-    <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1">
-      Channel <i class="ph ph-arrow-right text-[11px]"></i>
+    <a href="{{ site.youtubeChannel.url }}" target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group">
+      <span class="text-scramble" data-scramble="Channel">Channel</span> <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
 
@@ -361,8 +361,8 @@ title: Home
     <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
       Notes
     </h2>
-    <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1">
-      All notes <i class="ph ph-arrow-right text-[11px]"></i>
+    <a href="/blog/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group">
+      <span class="text-scramble" data-scramble="All notes">All notes</span> <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
 
@@ -405,8 +405,8 @@ title: Home
     <h2 class="font-heading text-lg sm:text-xl font-semibold text-base-content">
       Art & Photography
     </h2>
-    <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1">
-      Gallery <i class="ph ph-arrow-right text-[11px]"></i>
+    <a href="/photos/" class="text-xs text-base-content/50 hover:text-base-content font-mono flex items-center gap-1 group">
+      <span class="text-scramble" data-scramble="Gallery">Gallery</span> <i class="ph ph-arrow-right text-[11px]"></i>
     </a>
   </div>
 

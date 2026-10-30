@@ -283,64 +283,81 @@
       });
     }
 
-    // 3. GSAP Rolling Text for Brand Identity ("Rounak Saha")
-    function initRollingBrandText() {
-      const container = document.getElementById('brand-name-roll');
-      const link = document.getElementById('brand-link');
-      if (!container || !link) return;
+    // 3. GSAP Rolling Text Engine (Supports #brand-name-roll and any .text-roll element)
+    function initRollingText() {
+      function setupRoll(container, trigger, rawText) {
+        if (!container || !trigger || container.dataset.rollReady) return;
+        container.dataset.rollReady = "true";
 
-      const rawText = "Rounak Saha";
-      container.innerHTML = rawText.split('').map(function(char) {
-        if (char === ' ') {
-          return '<span class="inline-block w-[0.28em]">&nbsp;</span>';
-        }
-        return (
-          '<span class="roll-col inline-block overflow-hidden h-[1.3em] leading-[1.3em] pointer-events-none">' +
-            '<span class="roll-track inline-flex flex-col">' +
-              '<span class="roll-char-top block h-[1.3em] leading-[1.3em] group-hover:text-primary transition-colors">' + char + '</span>' +
-              '<span class="roll-char-bottom block h-[1.3em] leading-[1.3em] text-primary">' + char + '</span>' +
-            '</span>' +
-          '</span>'
-        );
-      }).join('');
+        container.innerHTML = rawText.split('').map(function(char) {
+          if (char === ' ') {
+            return '<span class="inline-block w-[0.28em]">&nbsp;</span>';
+          }
+          return (
+            '<span class="roll-col inline-block overflow-hidden h-[1.3em] leading-[1.3em] pointer-events-none">' +
+              '<span class="roll-track inline-flex flex-col">' +
+                '<span class="roll-char-top block h-[1.3em] leading-[1.3em] group-hover:text-primary transition-colors">' + char + '</span>' +
+                '<span class="roll-char-bottom block h-[1.3em] leading-[1.3em] text-primary">' + char + '</span>' +
+              '</span>' +
+            '</span>'
+          );
+        }).join('');
 
-      const tracks = container.querySelectorAll('.roll-track');
-      let rollTween = null;
+        const tracks = container.querySelectorAll('.roll-track');
+        let rollTween = null;
 
-      link.addEventListener('mouseenter', function() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        if (typeof gsap === 'undefined') return;
+        trigger.addEventListener('mouseenter', function() {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          if (typeof gsap === 'undefined') return;
 
-        if (rollTween) rollTween.kill();
-        rollTween = gsap.to(tracks, {
-          y: '-50%',
-          duration: 0.42,
-          stagger: 0.022,
-          ease: 'power3.inOut'
+          if (rollTween) rollTween.kill();
+          rollTween = gsap.to(tracks, {
+            y: '-50%',
+            duration: 0.42,
+            stagger: 0.02,
+            ease: 'power3.inOut'
+          });
         });
-      });
 
-      link.addEventListener('mouseleave', function() {
-        if (typeof gsap === 'undefined') return;
-        if (rollTween) rollTween.kill();
-        rollTween = gsap.to(tracks, {
-          y: '0%',
-          duration: 0.35,
-          stagger: 0.015,
-          ease: 'power3.out'
+        trigger.addEventListener('mouseleave', function() {
+          if (typeof gsap === 'undefined') return;
+          if (rollTween) rollTween.kill();
+          rollTween = gsap.to(tracks, {
+            y: '0%',
+            duration: 0.35,
+            stagger: 0.012,
+            ease: 'power3.out'
+          });
         });
+      }
+
+      // Navbar brand
+      const headerBrand = document.getElementById('brand-name-roll');
+      const headerLink = document.getElementById('brand-link');
+      if (headerBrand && headerLink) {
+        setupRoll(headerBrand, headerLink, "Rounak Saha");
+      }
+
+      // Any other .text-roll elements (e.g. footer brand)
+      document.querySelectorAll('.text-roll').forEach(function(el) {
+        const trigger = el.closest('a, button, .group') || el;
+        const text = el.getAttribute('data-roll') || el.textContent.trim();
+        setupRoll(el, trigger, text);
       });
     }
 
-    // 4. GSAP Text Scrambler for Navigation Links
-    function initNavScramble() {
-      const elements = document.querySelectorAll('.nav-scramble');
+    // 4. GSAP Text Scrambler Engine (Supports .nav-scramble and any .text-scramble element)
+    function initTextScramble() {
+      const elements = document.querySelectorAll('.nav-scramble, .text-scramble');
       const charset = "!<>-_\\/[]{}—=+*^?#01";
 
       elements.forEach(function(el) {
+        if (el.dataset.scrambleReady) return;
+        el.dataset.scrambleReady = "true";
+
         const originalText = el.getAttribute('data-scramble') || el.textContent.trim();
         el.setAttribute('data-scramble', originalText);
-        const trigger = el.closest('a') || el;
+        const trigger = el.closest('a, button, .group') || el;
 
         let scrambleTween = null;
 
@@ -355,7 +372,7 @@
 
           scrambleTween = gsap.to(state, {
             progress: 1,
-            duration: 0.38,
+            duration: 0.36,
             ease: 'power2.out',
             onUpdate: function() {
               const solvedCount = Math.floor(state.progress * length);
@@ -394,8 +411,8 @@
         setTimeout(initCreativeEffects, 50);
         return;
       }
-      initRollingBrandText();
-      initNavScramble();
+      initRollingText();
+      initTextScramble();
     }
 
     if (document.readyState === 'complete' || document.readyState === 'interactive') {

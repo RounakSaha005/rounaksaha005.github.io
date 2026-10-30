@@ -47,7 +47,7 @@ permalink: /projects/index.html
                 href="{{ project.url }}" 
                 class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-primary"
               >
-                Case study <i class="ph ph-arrow-right text-[11px]"></i>
+                <span class="text-scramble" data-scramble="Case study">Case study</span> <i class="ph ph-arrow-right text-[11px]"></i>
               </a>
             {% elif project.data.link %}
               <a 
@@ -56,7 +56,7 @@ permalink: /projects/index.html
                 rel="noopener noreferrer"
                 class="relative z-10 font-medium text-primary group-hover:underline font-mono flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-primary"
               >
-                Demo <i class="ph ph-arrow-right text-[11px]"></i>
+                <span class="text-scramble" data-scramble="Demo">Demo</span> <i class="ph ph-arrow-right text-[11px]"></i>
               </a>
             {% endif %}
             {% if project.data.github %}
