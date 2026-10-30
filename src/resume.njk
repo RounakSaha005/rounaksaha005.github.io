@@ -6,6 +6,7 @@ permalink: /resume/index.html
 
 <div class="p-4 sm:p-8 space-y-6 sm:space-y-8">
   
+  <!-- Header: Name, Label, Print & Contact Actions -->
   <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 sm:pb-6 border-b border-dotted border-base-300">
     <div>
       <h1 class="font-heading text-2xl xs:text-3xl sm:text-4xl text-base-content font-bold tracking-tight">
@@ -16,10 +17,10 @@ permalink: /resume/index.html
       </p>
     </div>
     <div class="flex items-center gap-2 pt-1 sm:pt-0">
-      <button onclick="window.print()" class="btn btn-outline btn-xs font-mono flex items-center gap-1 group">
+      <button onclick="window.print()" class="btn btn-outline btn-xs font-mono flex items-center gap-1 group leading-none">
         <i class="ph ph-printer text-xs"></i> <span class="text-scramble" data-scramble="Print / PDF">Print / PDF</span>
       </button>
-      <a href="mailto:{{ resume.basics.email }}" class="btn btn-neutral btn-xs rounded-lg font-mono flex items-center gap-1 group">
+      <a href="mailto:{{ resume.basics.email }}" class="btn btn-neutral btn-xs rounded-lg font-mono flex items-center gap-1 group leading-none">
         <i class="ph ph-envelope text-xs"></i> <span class="text-scramble" data-scramble="Contact">Contact</span>
       </a>
     </div>
@@ -28,63 +29,147 @@ permalink: /resume/index.html
   <div class="space-y-6 sm:space-y-8 text-xs sm:text-sm">
     <!-- Summary -->
     <div>
-      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-2">Summary</h2>
+      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-2 leading-none">Summary</h2>
       <p class="text-base-content/80 leading-relaxed font-sans">
         {{ resume.basics.summary }}
       </p>
     </div>
 
-    <!-- Experience -->
+    <!-- Experience Timeline -->
     <div class="pt-5 sm:pt-6 border-t border-dotted border-base-300">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-4">Experience</h2>
-      <div class="space-y-5">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold leading-none">Experience Timeline</h2>
+        <span class="text-[11px] font-mono text-base-content/40 leading-none">{{ resume.experience.length }} positions</span>
+      </div>
+
+      <!-- Vertical Dotted Blueprint Timeline Stem -->
+      <div class="resume-timeline ml-1.5 sm:ml-2">
         {% for exp in resume.experience %}
-          <div class="space-y-1.5">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 text-xs">
-              <span class="font-semibold text-base-content sm:leading-none">
-                {{ exp.position }} · {{ exp.company }}
+          <div class="resume-timeline-item group space-y-2">
+            
+            <!-- Timeline Node Marker (centered on dotted border stem) -->
+            <span class="resume-timeline-node block">
+              {% if exp.endDate == 'Present' %}
+                <span class="absolute inset-0 rounded-full bg-primary animate-ping opacity-60"></span>
+              {% endif %}
+            </span>
+
+            <!-- Position Header & Date Badge -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4">
+              <div class="flex items-center gap-2 flex-wrap leading-tight">
+                <h3 class="font-heading text-sm sm:text-base font-semibold text-base-content group-hover:text-primary transition-colors">
+                  {{ exp.position }}
+                </h3>
+                <span class="text-xs text-base-content/40 font-mono">·</span>
+                <span class="font-medium text-xs sm:text-sm text-primary">{{ exp.company }}</span>
+              </div>
+              <span class="font-mono text-[11px] text-base-content/65 bg-base-200/80 px-2 py-0.5 rounded border border-dotted border-base-300/80 shrink-0 self-start sm:self-auto leading-none">
+                {{ exp.startDate }} — {{ exp.endDate }}
               </span>
-              <span class="font-mono text-base-content/40 sm:leading-none">{{ exp.startDate }} — {{ exp.endDate }}</span>
             </div>
-            <ul class="list-disc list-inside space-y-1 text-xs text-base-content/75 leading-relaxed font-sans">
+
+            <!-- Location & Work Mode Subtitle -->
+            {% if exp.location %}
+              <p class="text-[11px] font-mono text-base-content/45 flex items-center gap-1">
+                <i class="ph ph-map-pin text-[10px]"></i> {{ exp.location }}
+              </p>
+            {% endif %}
+
+            <!-- Bullet Highlights -->
+            <ul class="space-y-1.5 text-xs text-base-content/75 leading-relaxed font-sans pt-0.5">
               {% for item in exp.highlights %}
-                <li>{{ item }}</li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary/70 mt-1 shrink-0 text-[10px]">▪</span>
+                  <span>{{ item }}</span>
+                </li>
               {% endfor %}
             </ul>
-            <p class="text-[11px] font-mono text-base-content/45 pt-0.5">
-              Stack: {{ exp.technologies | join(", ") }}
-            </p>
+
+            <!-- Tech Stack Mini Badges -->
+            {% if exp.technologies and exp.technologies.length > 0 %}
+              <div class="flex flex-wrap gap-1 items-center pt-2">
+                <span class="text-[10px] font-mono uppercase text-base-content/40 tracking-wider mr-1">Stack:</span>
+                {% for tech in exp.technologies %}
+                  <span class="px-1.5 py-0.5 rounded bg-base-200/60 border border-dotted border-base-300/60 text-base-content/65 text-[10px] font-mono">
+                    {{ tech }}
+                  </span>
+                {% endfor %}
+              </div>
+            {% endif %}
+
           </div>
         {% endfor %}
       </div>
     </div>
 
-    <!-- Skills -->
+    <!-- Skills Grid -->
     <div class="pt-5 sm:pt-6 border-t border-dotted border-base-300">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-3">Skills</h2>
+      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-3 leading-none">Skills & Architecture</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         {% for skillGroup in resume.skills %}
-          <div>
-            <span class="font-semibold text-base-content block">{{ skillGroup.category }}</span>
-            <span class="text-base-content/70 font-sans">{{ skillGroup.items | join(", ") }}</span>
+          <div class="p-3 rounded-xl border border-dotted border-base-300 bg-base-100/50">
+            <span class="font-semibold text-base-content block font-heading text-xs sm:text-sm mb-1 leading-tight">{{ skillGroup.category }}</span>
+            <span class="text-base-content/70 font-sans leading-relaxed">{{ skillGroup.items | join(", ") }}</span>
           </div>
         {% endfor %}
       </div>
     </div>
 
-    <!-- Education -->
+    <!-- Education Timeline -->
     <div class="pt-5 sm:pt-6 border-t border-dotted border-base-300">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-2">Education</h2>
-      {% for edu in resume.education %}
-        <div class="flex flex-col sm:flex-row sm:items-start justify-between text-xs gap-0.5">
-          <div>
-            <span class="font-semibold text-base-content leading-none">{{ edu.institution }}</span>
-            <span class="text-base-content/65 block font-sans mt-0.5">{{ edu.studyType }} in {{ edu.area }}</span>
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold leading-none">Education Timeline</h2>
+        <span class="text-[11px] font-mono text-base-content/40 leading-none">Academics</span>
+      </div>
+
+      <div class="resume-timeline ml-1.5 sm:ml-2">
+        {% for edu in resume.education %}
+          <div class="resume-timeline-item group space-y-1.5">
+            
+            <!-- Education Node Marker -->
+            <span class="resume-timeline-node block"></span>
+
+            <!-- Institution & Date -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4">
+              <h3 class="font-heading text-sm sm:text-base font-semibold text-base-content group-hover:text-primary transition-colors leading-tight">
+                {{ edu.institution }}
+              </h3>
+              <span class="font-mono text-[11px] text-base-content/65 bg-base-200/80 px-2 py-0.5 rounded border border-dotted border-base-300/80 shrink-0 self-start sm:self-auto leading-none">
+                {{ edu.startDate }} — {{ edu.endDate }}
+              </span>
+            </div>
+
+            <!-- Degree & Area -->
+            <p class="text-xs text-base-content/75 font-sans">
+              {{ edu.studyType }} in <span class="font-medium text-base-content">{{ edu.area }}</span>
+            </p>
+
+            <!-- Score / CGPA -->
+            {% if edu.score %}
+              <p class="text-[11px] font-mono text-primary/85 pt-0.5 flex items-center gap-1 leading-none">
+                <i class="ph ph-seal-check text-xs"></i> Score: {{ edu.score }}
+              </p>
+            {% endif %}
+
           </div>
-          <span class="font-mono text-base-content/40 sm:pt-0.5 sm:leading-none">{{ edu.startDate }} — {{ edu.endDate }}</span>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
+
+    <!-- Key Milestones & Honors -->
+    {% if resume.achievements and resume.achievements.length > 0 %}
+      <div class="pt-5 sm:pt-6 border-t border-dotted border-base-300">
+        <h2 class="text-xs font-mono uppercase tracking-wider text-base-content/40 font-semibold mb-3 leading-none">Key Milestones & Honors</h2>
+        <div class="space-y-2">
+          {% for item in resume.achievements %}
+            <div class="flex items-start gap-2.5 p-3 rounded-xl border border-dotted border-base-300 bg-base-100/50 text-xs">
+              <i class="ph ph-trophy text-primary text-sm shrink-0 mt-0.5"></i>
+              <p class="text-base-content/80 font-sans leading-relaxed">{{ item }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
 
   </div>
 

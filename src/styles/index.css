@@ -568,3 +568,44 @@ pre[class*="language-"] code,
 [data-theme="dark"] .token.variable {
   color: #F87171;
 }
+
+/* ==========================================================================
+   Architectural Resume Timeline (Zero-Drift Calibrated Vertical Stem)
+   ========================================================================== */
+.resume-timeline {
+  position: relative;
+  padding-left: 1.75rem;
+  border-left: 2px dotted color-mix(in srgb, var(--color-base-content, #14333E) 30%, transparent);
+}
+
+@media (min-width: 640px) {
+  .resume-timeline {
+    padding-left: 2.25rem;
+  }
+}
+
+.resume-timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.resume-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-timeline-node {
+  position: absolute;
+  top: 0.35rem;
+  left: -34px;
+  width: 0.625rem; /* 10px */
+  height: 0.625rem; /* 10px */
+  border-radius: 9999px;
+  background-color: var(--color-primary, #218DAE);
+  box-shadow: 0 0 0 4px var(--color-base-100, #FCFBF7);
+}
+
+@media (min-width: 640px) {
+  .resume-timeline-node {
+    left: -42px;
+  }
+}
