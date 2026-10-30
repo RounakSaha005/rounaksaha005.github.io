@@ -71,11 +71,11 @@
       </div>
 
       <!-- Mobile Hamburger Dropdown (visible only on mobile: sm:hidden) -->
-      <div id="mobile-menu-dropdown" class="dropdown dropdown-end sm:hidden">
+      <div id="mobile-menu-dropdown" class="relative sm:hidden">
         <button 
           id="mobile-menu-trigger" 
           type="button"
-          class="cursor-pointer text-base-content/75 hover:text-base-content hover:bg-base-200/60 p-1.5 rounded-lg flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-primary" 
+          class="cursor-pointer text-base-content/75 hover:text-base-content hover:bg-base-200/60 p-1.5 rounded-lg flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-primary relative z-50 pointer-events-auto" 
           aria-label="Toggle navigation menu"
           aria-expanded="false"
           aria-haspopup="true"
@@ -87,7 +87,10 @@
           <i id="mobile-menu-close-icon" class="ph ph-x text-lg hidden"></i>
         </button>
 
-        <ul id="mobile-menu-dropdown-list" tabindex="0" class="dropdown-content menu p-2 shadow-2xl bg-base-100 rounded-xl w-52 border border-dotted border-base-300 text-xs font-mono z-50 mt-2 space-y-0.5">
+        <!-- Backdrop overlay when menu is open on mobile -->
+        <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/25 backdrop-blur-xs z-40 hidden" aria-hidden="true"></div>
+
+        <ul id="mobile-menu-dropdown-list" class="hidden absolute right-0 top-full mt-2 menu p-2 shadow-2xl bg-base-100 rounded-xl w-52 border border-dotted border-base-300 text-xs font-mono z-50 space-y-0.5">
           <li>
             <a href="/" class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-base-200 transition-colors {% if page.url == '/' %}text-primary font-semibold bg-base-200/50{% endif %}">
               <i class="ph ph-house text-sm"></i>
@@ -235,38 +238,61 @@
     // 2. Mobile Hamburger Menu Toggle Controller
     const mobileDropdown = document.getElementById('mobile-menu-dropdown');
     const mobileTrigger = document.getElementById('mobile-menu-trigger');
+    const mobileMenu = document.getElementById('mobile-menu-dropdown-list');
+    const mobileBackdrop = document.getElementById('mobile-menu-backdrop');
     const mobileOpenIcon = document.getElementById('mobile-menu-open-icon');
     const mobileCloseIcon = document.getElementById('mobile-menu-close-icon');
 
     function setMobileMenuState(isOpen) {
-      if (!mobileDropdown) return;
       if (mobileTrigger) {
         mobileTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       }
-      if (isOpen) {
-        mobileDropdown.classList.add('dropdown-open');
-        if (mobileOpenIcon) mobileOpenIcon.classList.add('hidden');
-        if (mobileCloseIcon) mobileCloseIcon.classList.remove('hidden');
-      } else {
-        mobileDropdown.classList.remove('dropdown-open');
-        if (mobileOpenIcon) mobileOpenIcon.classList.remove('hidden');
-        if (mobileCloseIcon) mobileCloseIcon.classList.add('hidden');
+      if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden', !isOpen);
+      }
+      if (mobileBackdrop) {
+        mobileBackdrop.classList.toggle('hidden', !isOpen);
+      }
+      if (mobileOpenIcon) {
+        mobileOpenIcon.classList.toggle('hidden', isOpen);
+      }
+      if (mobileCloseIcon) {
+        mobileCloseIcon.classList.toggle('hidden', !isOpen);
+      }
+      if (!isOpen && document.activeElement && mobileDropdown && mobileDropdown.contains(document.activeElement)) {
+        document.activeElement.blur();
       }
     }
 
-    if (mobileTrigger && mobileDropdown) {
+    if (mobileTrigger && mobileMenu) {
       mobileTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
         e.stopPropagation();
-        const willOpen = !mobileDropdown.classList.contains('dropdown-open');
-        setMobileMenuState(willOpen);
+        const isCurrentlyOpen = !mobileMenu.classList.contains('hidden');
+        setMobileMenuState(!isCurrentlyOpen);
       });
 
-      // Close when tapping outside
-      document.addEventListener('click', function(e) {
-        if (mobileDropdown && !mobileDropdown.contains(e.target)) {
+      if (mobileBackdrop) {
+        mobileBackdrop.addEventListener('click', function(e) {
+          e.preventDefault();
           setMobileMenuState(false);
+        });
+        mobileBackdrop.addEventListener('touchstart', function(e) {
+          e.preventDefault();
+          setMobileMenuState(false);
+        }, { passive: false });
+      }
+
+      // Close when tapping/clicking anywhere outside the menu on mobile
+      function handleOutsideInteraction(e) {
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+          if (mobileDropdown && !mobileDropdown.contains(e.target)) {
+            setMobileMenuState(false);
+          }
         }
-      });
+      }
+      document.addEventListener('pointerdown', handleOutsideInteraction);
+      document.addEventListener('click', handleOutsideInteraction);
 
       // Close when pressing Escape key
       document.addEventListener('keydown', function(e) {
@@ -276,11 +302,18 @@
       });
 
       // Close when any link inside menu is clicked
-      mobileDropdown.querySelectorAll('a').forEach(function(link) {
+      mobileMenu.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', function() {
           setMobileMenuState(false);
         });
       });
+
+      // Close if window resized above mobile breakpoint (640px)
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 640 && !mobileMenu.classList.contains('hidden')) {
+          setMobileMenuState(false);
+        }
+      }, { passive: true });
     }
 
     // 3. GSAP Rolling Text Engine (Supports #brand-name-roll and any .text-roll element)
