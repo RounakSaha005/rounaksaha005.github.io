@@ -42,6 +42,8 @@ permalink: /photos/index.html
           {{ photo.title }}
         </figcaption>
       </figure>
+    {% else %}
+      <p class="text-xs text-base-content/50 font-mono py-8 col-span-full text-center">No photos published yet. Add photos in Pages CMS.</p>
     {% endfor %}
   </div>
 

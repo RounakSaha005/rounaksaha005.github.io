@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Rounak Saha",
-    "label": "Full-Stack Engineer & Tech YouTuber",
+    "label": "Full-Stack Engineer & Creator",
     "email": "rounak@example.com",
     "url": "https://rounaksaha.dev",
     "summary": "Full-Stack Engineer with 4+ years of experience engineering high-performance web systems, static architectures, and scalable cloud edge APIs. Creator of technical tutorials on YouTube reaching over 45K developers worldwide. Specialized in TypeScript, React, Next.js, Eleventy, and distributed edge runtimes.",
@@ -22,8 +22,8 @@
       },
       {
         "network": "YouTube",
-        "username": "@rounaksaha",
-        "url": "https://youtube.com/@rounaksaha"
+        "username": "@OnePlayerOdyssey-05",
+        "url": "https://www.youtube.com/@OnePlayerOdyssey-05"
       }
     ]
   },

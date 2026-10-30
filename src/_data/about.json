@@ -2,12 +2,11 @@
   "title": "About Me",
   "subtitle": "Background, engineering focus, and tools.",
   "bio1": "I'm Rounak Saha, a software engineer and digital creator based in Bangalore, India. I specialize in building performant, accessible web systems, static architectures, and edge services.",
-  "bio2": "Over the last 4 years, I've engineered telemetry interfaces, design system token workflows, and full-stack applications. Alongside engineering, I share tutorials on YouTube (@rounaksaha) with a community of over 45,000 developers.",
+  "bio2": "Alongside software development, I create gameplay walkthroughs, story games, and gaming videos on YouTube at <strong>@OnePlayerOdyssey-05</strong> (One Player Odyssey).",
   "tools": [
-    "MacBook Pro M3 Max · Dell UltraSharp 38\" Curved",
-    "Keychron Q1 Pro · Logitech MX Master 3S",
-    "Sony A7IV · Shure SM7B · DaVinci Resolve Studio",
-    "Cursor / VS Code · Ghostty Terminal · Figma"
+    "MacBook Pro M3 Max \u00b7 Dell UltraSharp 38\" Curved",
+    "Keychron Q1 Pro \u00b7 Logitech MX Master 3S",
+    "Sony A7IV \u00b7 Shure SM7B \u00b7 DaVinci Resolve Studio",
+    "Cursor / VS Code \u00b7 Ghostty Terminal \u00b7 Figma"
   ]
 }
-

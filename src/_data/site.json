@@ -11,7 +11,7 @@
     "email": "rounak@example.com",
     "github": "https://github.com/RounakSaha005",
     "linkedin": "https://linkedin.com/in/rounaksaha",
-    "youtube": "https://youtube.com/@rounaksaha",
+    "youtube": "https://www.youtube.com/@OnePlayerOdyssey-05",
     "twitter": "https://twitter.com/rounaksaha"
   },
   "socialLinks": [
@@ -32,7 +32,7 @@
     },
     {
       "platform": "YouTube",
-      "url": "https://youtube.com/@rounaksaha",
+      "url": "https://www.youtube.com/@OnePlayerOdyssey-05",
       "icon": "ph-youtube-logo"
     },
     {
@@ -42,10 +42,10 @@
     }
   ],
   "youtubeChannel": {
-    "url": "https://youtube.com/@rounaksaha",
-    "channelId": "UCHwXorK49Qxv77JlwW3WKZA",
-    "handle": "@rounaksaha",
-    "subscribers": "2.38K subscribers"
+    "url": "https://www.youtube.com/@OnePlayerOdyssey-05",
+    "channelId": "UC1Qu8R-nWQfdikEHrZTfPjQ",
+    "handle": "@OnePlayerOdyssey-05",
+    "subscribers": "195 subscribers"
   },
   "skills": [
     "TypeScript",
