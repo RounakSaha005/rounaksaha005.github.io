@@ -3,8 +3,8 @@
     "name": "Rounak Saha",
     "label": "Full-Stack Engineer & Creator",
     "email": "rounak@example.com",
-    "url": "https://rounaksaha.dev",
-    "summary": "Full-Stack Engineer with 4+ years of experience engineering high-performance web systems, static architectures, and scalable cloud edge APIs. Creator of technical tutorials on YouTube reaching over 45K developers worldwide. Specialized in TypeScript, React, Next.js, Eleventy, and distributed edge runtimes.",
+    "url": "https://rounaksaha005.github.io",
+    "summary": "Full-Stack Engineer, developer, and digital creator based in Bengaluru, India. Building modern web systems, exploring cloud architecture, and creating gaming content on YouTube (@OnePlayerOdyssey-05).",
     "location": {
       "city": "Bengaluru",
       "country": "India"
@@ -12,8 +12,8 @@
     "profiles": [
       {
         "network": "GitHub",
-        "username": "rounaksaha",
-        "url": "https://github.com/rounaksaha"
+        "username": "RounakSaha005",
+        "url": "https://github.com/RounakSaha005"
       },
       {
         "network": "LinkedIn",
@@ -28,6 +28,24 @@
     ]
   },
   "experience": [
+    {
+      "company": "AWS Academy",
+      "position": "Cloud Architecture Intern",
+      "startDate": "Jul 2025",
+      "endDate": "Jan 2026",
+      "location": "Bengaluru, India",
+      "highlights": [
+        "Worked with AWS core cloud services, exploring real-world cloud architectures, scalable deployments, and cloud-native infrastructure principles.",
+        "Designed and provisioned cloud resources, evaluated serverless architectures, and managed security groups, VPCs, and IAM access controls."
+      ],
+      "technologies": [
+        "AWS",
+        "Cloud Architecture",
+        "Serverless",
+        "IAM",
+        "VPC"
+      ]
+    },
     {
       "company": "Vortex Cloud Inc.",
       "position": "Senior Frontend Engineer",
@@ -146,8 +164,8 @@
     }
   ],
   "achievements": [
-    "YouTube Silver Creator Milestone candidate with 45,000+ subscribers and 3.2M views.",
-    "Open Source maintainer of 3 community plugins downloaded over 50,000 times on npm.",
-    "Speaker at JSConf India 2025 on 'Building Resilient Edge Interfaces'."
+    "Gaming content creator on YouTube with channel @OnePlayerOdyssey-05.",
+    "Hands-on completion of AWS Academy Cloud Internship with practical cloud infrastructure deployments.",
+    "Creator of full-stack open-source web and mobile experiments on GitHub."
   ]
 }
