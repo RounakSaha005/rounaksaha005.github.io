@@ -50,21 +50,8 @@ layout: base.njk
       </button>
     </div>
 
-    <!-- Mobile/Tablet Sticky Section Quick-Jump (visible only < xl) -->
-    <div class="block xl:hidden sticky top-3 z-30 border border-dotted border-base-300 rounded-lg p-2.5 bg-base-100/95 backdrop-blur-md shadow-xs font-mono text-xs">
-      <details id="toc-mobile-dropdown" class="dropdown w-full">
-        <summary class="flex items-center justify-between cursor-pointer text-base-content/75 select-none">
-          <span id="toc-mobile-current" class="truncate font-medium">Top</span>
-          <span class="text-base-content/50 text-[10px] flex items-center gap-0.5">Jump to section <i class="ph ph-arrow-down text-[10px]"></i></span>
-        </summary>
-        <ul id="toc-mobile-nav" class="menu p-2 mt-2 w-full bg-base-100 rounded-lg border border-dotted border-base-300 space-y-1">
-          <!-- Populated by JS -->
-        </ul>
-      </details>
-    </div>
-
     <!-- Article Header -->
-    <header class="space-y-3.5 sm:space-y-4">
+    <header class="space-y-3 sm:space-y-4">
       <div class="flex items-center gap-2 text-xs font-mono text-base-content/50">
         <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
         <span>·</span>
@@ -74,6 +61,19 @@ layout: base.njk
       <h1 class="font-heading text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-base-content leading-tight">
         {{ title }}
       </h1>
+
+      <!-- Mobile/Tablet Sticky Section Quick-Jump (Placed directly beneath content heading) -->
+      <div class="block xl:hidden sticky top-14 z-30 border border-dotted border-base-300 rounded-lg p-2 bg-base-100/95 backdrop-blur-md shadow-xs font-mono text-xs my-1">
+        <details id="toc-mobile-dropdown" class="dropdown w-full relative">
+          <summary class="flex items-center justify-between cursor-pointer text-base-content/75 select-none p-1">
+            <span id="toc-mobile-current" class="truncate font-medium">Top</span>
+            <span class="text-base-content/50 text-[10px] flex items-center gap-0.5">Jump to section <i class="ph ph-caret-down text-[10px]"></i></span>
+          </summary>
+          <ul id="toc-mobile-nav" class="dropdown-content menu p-2 mt-2 absolute left-0 right-0 w-full bg-base-100 rounded-xl border border-dotted border-base-300 shadow-xl z-50 space-y-1 max-h-64 overflow-y-auto">
+            <!-- Populated by JS -->
+          </ul>
+        </details>
+      </div>
 
       {% if description %}
         <p class="text-sm sm:text-lg text-base-content/75 leading-relaxed font-sans">
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!id) id = 'section-' + (idx + 1);
       heading.id = id;
     }
-    heading.classList.add('scroll-mt-24');
+    heading.classList.add('scroll-mt-16');
     items.push({ id, text: heading.textContent.trim() });
   });
 
@@ -193,12 +193,27 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const targetId = link.getAttribute('data-target');
       const targetElem = document.getElementById(targetId);
+
+      // Close mobile dropdown first to maintain stable closed layout
+      const mobileDetails = document.getElementById('toc-mobile-dropdown');
+      if (mobileDetails) mobileDetails.removeAttribute('open');
+
       if (targetElem) {
-        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (targetId === 'article-top') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          // Precise scroll landing: 56px navbar + 12px snug breathing room = 68px
+          const headerOffset = 68;
+          const elementPosition = targetElem.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
         history.pushState(null, '', '#' + targetId);
         updateActiveSection(targetId);
-        const mobileDetails = document.getElementById('toc-mobile-dropdown');
-        if (mobileDetails) mobileDetails.removeAttribute('open');
       }
     });
   });
