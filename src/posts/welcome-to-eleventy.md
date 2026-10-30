@@ -40,15 +40,17 @@ Every visual element is designed for legibility and aesthetic balance:
 - **Geist Mono**: Applied to navigation links, action buttons, metadata chips, and code snippets for technical clarity.
 - **Dotted Blueprint Rules**: All structural boundaries use 1px dotted lines (`border-dotted`), providing subtle architectural framing.
 
-## Code Sample
+## Code Samples & Build Pipeline
 
-Here is the PostCSS and Tailwind configuration pipeline powering this setup:
+Here is the PostCSS and Tailwind compilation hook configured in `eleventy.config.js`:
 
 ```javascript
 // eleventy.config.js
 export default function (eleventyConfig) {
+  // Watch CSS directories for hot reloading
   eleventyConfig.addWatchTarget('./src/styles/');
   
+  // Compile Tailwind CSS v4 via PostCSS before Eleventy builds
   eleventyConfig.on('eleventy.before', async () => {
     const css = fs.readFileSync('./src/styles/index.css', 'utf8');
     const result = await postcss([tailwindcss()]).process(css, {
@@ -59,6 +61,28 @@ export default function (eleventyConfig) {
   });
   
   return { dir: { input: 'src', output: 'dist' } };
+}
+```
+
+Terminal commands to run local development with live reloading and compile optimized production distributions:
+
+```bash
+# Start local development server with hot reload
+npm run dev
+
+# Compile static HTML and optimized CSS distribution
+npm run build
+```
+
+The architectural CSS styles providing the dotted blueprint theme:
+
+```css
+/* Custom dotted blueprint styling */
+.blueprint-card {
+  border: 1px dotted var(--color-base-300);
+  background-color: var(--color-base-100);
+  border-radius: var(--radius-box, 0.75rem);
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 ```
 

@@ -1,0 +1,94 @@
+<!-- Syntax Highlighting & Code Block Interactive Enhancements -->
+<script>
+  (function() {
+    function enhanceCodeBlocks() {
+      const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+      if (!codeBlocks.length) return;
+
+      const langMap = {
+        'javascript': 'JS',
+        'js': 'JS',
+        'typescript': 'TS',
+        'ts': 'TS',
+        'html': 'HTML',
+        'markup': 'HTML',
+        'xml': 'XML',
+        'svg': 'SVG',
+        'css': 'CSS',
+        'json': 'JSON',
+        'python': 'PYTHON',
+        'py': 'PYTHON',
+        'bash': 'BASH',
+        'sh': 'SHELL',
+        'shell': 'SHELL',
+        'yaml': 'YAML',
+        'yml': 'YAML',
+        'markdown': 'MD',
+        'md': 'MD',
+        'sql': 'SQL',
+        'rust': 'RUST',
+        'go': 'GO'
+      };
+
+      codeBlocks.forEach(function(pre) {
+        if (pre.dataset.enhanced === 'true') return;
+        pre.dataset.enhanced = 'true';
+
+        const match = pre.className.match(/language-([\w-]+)/);
+        const rawLang = match ? match[1].toLowerCase() : '';
+        const langLabel = langMap[rawLang] || (rawLang ? rawLang.toUpperCase() : 'CODE');
+
+        // Create outer wrapper
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper my-5 sm:my-6 rounded-xl border border-dotted border-base-300 overflow-hidden bg-base-200/40 shadow-2xs';
+
+        // Create top toolbar
+        const toolbar = document.createElement('div');
+        toolbar.className = 'flex items-center justify-between px-3.5 py-2 border-b border-dotted border-base-300 bg-base-200/70 font-mono text-[11px] text-base-content/60 select-none';
+
+        // Left side: 3 architectural window dots + language badge
+        const left = document.createElement('div');
+        left.className = 'flex items-center gap-2';
+        left.innerHTML = '<span class="flex items-center gap-1.5 opacity-40">' +
+          '<span class="w-2 h-2 rounded-full bg-base-content inline-block"></span>' +
+          '<span class="w-2 h-2 rounded-full bg-base-content inline-block"></span>' +
+          '<span class="w-2 h-2 rounded-full bg-base-content inline-block"></span>' +
+        '</span>' +
+        '<span class="font-semibold text-primary text-[10px] tracking-wider uppercase ml-1">' + langLabel + '</span>';
+
+        // Right side: One-click Copy Code Button
+        const copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'copy-code-btn flex items-center gap-1 text-[11px] text-base-content/60 hover:text-base-content px-2 py-0.5 rounded hover:bg-base-300/30 transition-colors cursor-pointer';
+        copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
+        copyBtn.innerHTML = '<i class="ph ph-copy text-xs"></i><span>Copy</span>';
+
+        copyBtn.addEventListener('click', function() {
+          const codeEl = pre.querySelector('code');
+          const textToCopy = codeEl ? codeEl.innerText : pre.innerText;
+          navigator.clipboard.writeText(textToCopy).then(function() {
+            copyBtn.innerHTML = '<i class="ph ph-check text-xs text-success"></i><span class="text-success font-medium">Copied!</span>';
+            setTimeout(function() {
+              copyBtn.innerHTML = '<i class="ph ph-copy text-xs"></i><span>Copy</span>';
+            }, 2000);
+          }).catch(function() {
+            copyBtn.innerText = 'Failed';
+          });
+        });
+
+        toolbar.appendChild(left);
+        toolbar.appendChild(copyBtn);
+
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(toolbar);
+        wrapper.appendChild(pre);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', enhanceCodeBlocks);
+    } else {
+      enhanceCodeBlocks();
+    }
+  })();
+</script>

@@ -3,8 +3,13 @@ import path from 'path';
 import https from 'https';
 import postcss from 'postcss';
 import tailwindcss from '@tailwindcss/postcss';
+import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 
 export default function (eleventyConfig) {
+  // Syntax Highlighting Plugin
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    preAttributes: { tabindex: 0 }
+  });
   // Watch CSS and assets directory for changes
   eleventyConfig.addWatchTarget('./src/styles/');
   eleventyConfig.addWatchTarget('./src/assets/');
