@@ -15,6 +15,16 @@ permalink: /resume/index.html
       <p class="text-xs sm:text-sm text-base-content/60 mt-1 font-sans">
         {{ resume.basics.label }} · {{ resume.basics.location.city }}, {{ resume.basics.location.country }}
       </p>
+      {% if resume.basics.profiles and resume.basics.profiles.length > 0 %}
+        <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5 mt-2.5 text-xs font-mono text-base-content/60">
+          {% for profile in resume.basics.profiles %}
+            <a href="{{ profile.url }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1 border border-dotted border-base-300 rounded px-2 py-0.5 bg-base-100 hover:border-primary/50">
+              <i class="ph {{ profile | socialIcon }} text-sm"></i>
+              <span>{{ profile.network }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
     <div class="flex items-center gap-2 pt-1 sm:pt-0">
       <button onclick="window.print()" class="btn btn-outline btn-xs font-mono flex items-center gap-1 group leading-none">
