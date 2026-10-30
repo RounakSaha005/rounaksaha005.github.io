@@ -6,28 +6,54 @@
       if (!codeBlocks.length) return;
 
       const langMap = {
-        'javascript': 'JS',
-        'js': 'JS',
-        'typescript': 'TS',
-        'ts': 'TS',
+        'javascript': 'JavaScript',
+        'js': 'JavaScript',
+        'typescript': 'TypeScript',
+        'ts': 'TypeScript',
         'html': 'HTML',
         'markup': 'HTML',
         'xml': 'XML',
         'svg': 'SVG',
         'css': 'CSS',
+        'scss': 'SCSS',
+        'sass': 'SASS',
+        'less': 'LESS',
         'json': 'JSON',
-        'python': 'PYTHON',
-        'py': 'PYTHON',
-        'bash': 'BASH',
-        'sh': 'SHELL',
-        'shell': 'SHELL',
+        'python': 'Python',
+        'py': 'Python',
+        'bash': 'Bash',
+        'sh': 'Shell',
+        'shell': 'Shell',
+        'zsh': 'Zsh',
+        'powershell': 'PowerShell',
+        'ps1': 'PowerShell',
         'yaml': 'YAML',
         'yml': 'YAML',
-        'markdown': 'MD',
-        'md': 'MD',
+        'markdown': 'Markdown',
+        'md': 'Markdown',
         'sql': 'SQL',
-        'rust': 'RUST',
-        'go': 'GO'
+        'rust': 'Rust',
+        'rs': 'Rust',
+        'go': 'Go',
+        'golang': 'Go',
+        'c': 'C',
+        'cpp': 'C++',
+        'csharp': 'C#',
+        'cs': 'C#',
+        'java': 'Java',
+        'kotlin': 'Kotlin',
+        'kt': 'Kotlin',
+        'swift': 'Swift',
+        'php': 'PHP',
+        'ruby': 'Ruby',
+        'rb': 'Ruby',
+        'dockerfile': 'Dockerfile',
+        'docker': 'Dockerfile',
+        'graphql': 'GraphQL',
+        'diff': 'Diff',
+        'text': 'Plain Text',
+        'plain': 'Plain Text',
+        'txt': 'Plain Text'
       };
 
       codeBlocks.forEach(function(pre) {
@@ -36,7 +62,7 @@
 
         const match = pre.className.match(/language-([\w-]+)/);
         const rawLang = match ? match[1].toLowerCase() : '';
-        const langLabel = langMap[rawLang] || (rawLang ? rawLang.toUpperCase() : 'CODE');
+        const langLabel = langMap[rawLang] || (rawLang ? (rawLang.charAt(0).toUpperCase() + rawLang.slice(1)) : 'Code');
 
         // Create outer wrapper
         const wrapper = document.createElement('div');
@@ -44,17 +70,12 @@
 
         // Create top toolbar
         const toolbar = document.createElement('div');
-        toolbar.className = 'flex items-center justify-between px-3.5 py-2 border-b border-dotted border-base-300 bg-base-200/70 font-mono text-[11px] text-base-content/60 select-none';
+        toolbar.className = 'flex items-center justify-between px-3.5 py-2 border-b border-dotted border-base-300 bg-base-200/70 font-mono text-[11px] select-none';
 
-        // Left side: 3 architectural window dots + language badge
+        // Left side: Language name
         const left = document.createElement('div');
-        left.className = 'flex items-center gap-2';
-        left.innerHTML = '<span class="flex items-center gap-1.5 opacity-40">' +
-          '<span class="w-2 h-2 rounded-full bg-base-content inline-block"></span>' +
-          '<span class="w-2 h-2 rounded-full bg-base-content inline-block"></span>' +
-          '<span class="w-2 h-2 rounded-full bg-base-content inline-block"></span>' +
-        '</span>' +
-        '<span class="font-semibold text-primary text-[10px] tracking-wider uppercase ml-1">' + langLabel + '</span>';
+        left.className = 'flex items-center';
+        left.innerHTML = '<span class="font-mono text-xs font-medium text-base-content/75">' + langLabel + '</span>';
 
         // Right side: One-click Copy Code Button
         const copyBtn = document.createElement('button');
@@ -92,4 +113,3 @@
     }
   })();
 </script>
-
