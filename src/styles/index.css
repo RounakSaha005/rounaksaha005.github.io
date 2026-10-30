@@ -385,6 +385,22 @@ footer a:hover :is(.ph, i[class*="ph-"]) {
   }
 }
 
+/* Table of Contents Item Active Glow States */
+.toc-item {
+  position: relative;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.toc-item.active {
+  color: var(--color-primary, #218DAE) !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+.toc-item.active .toc-label {
+  text-shadow: 0 0 10px color-mix(in srgb, var(--color-primary, #218DAE) 45%, transparent);
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

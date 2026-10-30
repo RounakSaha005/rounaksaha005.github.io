@@ -12,7 +12,7 @@ layout: base.njk
   <aside class="hidden xl:block toc-fixed-left font-mono select-none pointer-events-auto" aria-label="Table of contents navigation">
     <nav id="toc-desktop-nav" class="space-y-1 max-h-[82vh] overflow-y-auto no-scrollbar py-2" aria-label="Table of contents">
       <!-- Dynamically populated by JS: Top, Context, Architecture, etc. -->
-      <a href="#article-top" class="toc-item block py-1 text-xs font-mono text-base-content font-medium active" data-target="article-top">
+      <a href="#article-top" class="toc-item block py-1 text-xs font-mono text-primary font-semibold active" data-target="article-top">
         <span class="toc-label leading-snug break-words">Top</span>
       </a>
     </nav>
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     desktopNav.innerHTML = items.map((item, index) => `
       <a 
         href="#${item.id}" 
-        class="toc-item block py-1 text-xs font-mono transition-colors duration-150 ${index === 0 ? 'text-base-content font-medium active' : 'text-base-content/40 hover:text-base-content/80'}"
+        class="toc-item block py-1 text-xs font-mono transition-colors duration-150 ${index === 0 ? 'text-primary font-semibold active' : 'text-base-content/40 hover:text-base-content/80'}"
         data-target="${item.id}"
       >
         <span class="toc-label leading-snug break-words">${item.text}</span>
@@ -174,11 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (mobileNav) {
-    mobileNav.innerHTML = items.map(item => `
+    mobileNav.innerHTML = items.map((item, index) => `
       <li>
         <a 
           href="#${item.id}" 
-          class="toc-mobile-link text-xs font-mono"
+          class="toc-mobile-link text-xs font-mono ${index === 0 ? 'text-primary font-semibold active' : ''}"
           data-target="${item.id}"
         >
           ${item.text}
@@ -224,10 +224,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const isCurrent = link.getAttribute('data-target') === activeId;
       if (isCurrent) {
         link.classList.remove('text-base-content/40', 'font-normal');
-        link.classList.add('text-base-content', 'font-medium', 'active');
+        link.classList.add('text-primary', 'font-semibold', 'active');
       } else {
-        link.classList.remove('text-base-content', 'font-medium', 'active');
+        link.classList.remove('text-primary', 'font-semibold', 'active');
         link.classList.add('text-base-content/40');
+      }
+    });
+
+    const mobileLinks = document.querySelectorAll('.toc-mobile-link');
+    mobileLinks.forEach(link => {
+      const isCurrent = link.getAttribute('data-target') === activeId;
+      if (isCurrent) {
+        link.classList.add('active', 'text-primary', 'font-semibold');
+      } else {
+        link.classList.remove('active', 'text-primary', 'font-semibold');
       }
     });
 
@@ -237,20 +247,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const checkScrollPosition = () => {
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    
+    // Bottom of page detection (within 120px buffer of bottom to guarantee last item glow)
+    if ((scrollY + viewportHeight) >= (docHeight - 120) && items.length > 0) {
+      updateActiveSection(items[items.length - 1].id);
+      return true;
+    }
+
+    // Top of page detection
+    if (scrollY < 60) {
+      updateActiveSection('article-top');
+      return true;
+    }
+
+    return false;
+  };
+
   const observer = new IntersectionObserver((entries) => {
+    if (checkScrollPosition()) return;
+
     const visibleEntries = entries.filter(e => e.isIntersecting);
     if (visibleEntries.length > 0) {
       const topVisible = visibleEntries.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
       updateActiveSection(topVisible.target.id);
+    } else {
+      // Fallback: heading closest above viewport midpoint
+      const viewportHeight = window.innerHeight;
+      let currentId = 'article-top';
+      for (const h of headings) {
+        if (h.getBoundingClientRect().top <= viewportHeight * 0.45) {
+          currentId = h.id;
+        } else {
+          break;
+        }
+      }
+      updateActiveSection(currentId);
     }
   }, {
-    rootMargin: '-10% 0px -60% 0px',
+    rootMargin: '-10% 0px -50% 0px',
     threshold: 0
   });
 
   const topAnchor = document.getElementById('article-top');
   if (topAnchor) observer.observe(topAnchor);
   headings.forEach(h => observer.observe(h));
+
+  // High-performance scroll listener to guarantee bottom and top state activations
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        checkScrollPosition();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 
   // Connect images to lightbox
   const contentImages = Array.from(document.querySelectorAll('#article-content img, header img'));
