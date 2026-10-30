@@ -83,12 +83,17 @@ layout: base.njk
 
       <!-- Tags Bar -->
       {% if tags %}
-        <div class="flex flex-wrap gap-2 pt-3 pb-4 border-y border-dotted border-base-300">
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-3 pb-3.5 border-y border-dotted border-base-300">
           {% for tag in tags %}
             {% if tag != "posts" %}
-              <span class="badge badge-sm badge-neutral font-mono text-[11px] opacity-80">
-                #{{ tag }}
-              </span>
+              <a 
+                href="/blog/?tag={{ tag | urlencode }}" 
+                class="group inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-base-200/50 hover:bg-base-200/90 border border-dotted border-base-300 hover:border-primary/60 text-xs font-mono transition-all duration-150 cursor-pointer shadow-2xs"
+                title="Filter notes by #{{ tag }}"
+              >
+                <span class="text-primary/70 group-hover:text-primary font-semibold select-none transition-colors">#</span>
+                <span class="text-base-content/75 group-hover:text-base-content font-medium transition-colors">{{ tag }}</span>
+              </a>
             {% endif %}
           {% endfor %}
         </div>
